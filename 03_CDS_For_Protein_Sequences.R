@@ -2,4 +2,15 @@
 # 10 June 2022
 # Anchitaa Ghag
 
-# Test to see if GitHub worked succesfully remotely.
+#### 01 INSTALL PACKAGES & DOWNLOAD LIBRARIES ####
+
+#install.packages("devtools")
+#if (!require("BiocManager", quietly = TRUE))
+#  install.packages("BiocManager")
+#devtools::install_github("mhahsler/rBLAST")
+library("rBLAST")
+
+#### 02 DATA AQUISITION ####
+
+# Read in the file with the protein names created in 01_Data_
+

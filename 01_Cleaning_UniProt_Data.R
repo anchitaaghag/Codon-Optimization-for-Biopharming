@@ -105,11 +105,13 @@ for (i in unique_duplicates) {
 View(dfData_Duplicates)
 
 # Manually filter out entries and fragments.
+
 # remove marked (frafment) and keep the longest of the sequences if tie, pick last one
 rows_to_keep <- c(1,5,13,14,16,20,22,62,64,65,71,73,75,77,79,81,83,86,88,89,90,92,93)
 dfKeep <- dfData_Duplicates[rows_to_keep,]
 
 # Add back to original data frame.
+# https://stackoverflow.com/questions/17338411/delete-rows-that-exist-in-another-data-frame
 
 dfNew <- dfData[!(dfData$Protein.names %in% dfData_Duplicates$Protein.names),]
 

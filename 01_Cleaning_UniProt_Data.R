@@ -15,14 +15,25 @@ library("XML")
 
 #### 02 IMPORT EXCEL FILE ####
 
-# Load the excel file with protein sequences downloaded from UniProt.
-# FIXME How can we get this data? Is there a package? Can I download through a link??
+# A list of the proteins in Nicotiana benthamiana, protein sequences, and corresponding information can be obtained from UniProt.
+# https://www.uniprot.org/uniprot/?query=Nicotiana%20benthamiana&columns=id%2Centry%20name%2Creviewed%2Cprotein%20names%2Cgenes%2Corganism%2Clength%2Cdatabase(RefSeq)%2Cfragment%2Cannotation%20score%2Ccitation%2Cgo(biological%20process)%2Cgo(cellular%20component)%2Cgo(molecular%20function)%2Ccomment(POST-TRANSLATIONAL%20MODIFICATION)&sort=score
 
-dfData <- as.data.frame(readxl::read_xlsx("~/Major_Research_project_2022/06_Code/uniprot-nicotiana+benthamiana.xlsx"))
+# Load the excel file with protein sequences downloaded from UniProt.
+
+dfUniProt <- as.data.frame(readxl::read_xlsx("~/Major_Research_project_2022/06_Code/Uniprot_Data.xlsx"))
 
 # Reformat column names to ensure there are no spaces.
 
-names(dfData) <- make.names(names(dfData),unique(TRUE))
+names(dfUniProt) <- make.names(names(dfData),unique(TRUE))
+
+# View the data frame.
+
+View(dfUniProt)
+
+# Not all organisms are N. benthamiana. Subset only the N. benthamiana entries.
+
+dfData <- dfUniProt[dfUniProt$Organism == "Nicotiana benthamiana",]
+
 
 #### 03 SUMMARY STATS ####
 

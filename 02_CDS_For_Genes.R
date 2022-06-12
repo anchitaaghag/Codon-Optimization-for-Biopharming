@@ -243,18 +243,23 @@ rm(Gene_Names,dfData_Duplicates,dfKeep,dfNew)
 
 #### IDs to CDS Sequences #### 
 
-pop_ids = c("307082412", "307075396", "307075338", "307075274")
-pop_summ <- entrez_summary(db="popset", id=pop_ids)
-extract_from_esummary(pop_summ, "title")
-
-
-
 # Use ids to obtain fasta file of coding sequences.
 
-ids = dfFinal$IDs
+#ID Name.of.Protein Start Stop Length CDS.Sequence
+
+ids = c(dfFinal$IDs)
 nico_retrive <- entrez_fetch(db="nucleotide", id = ids , retmax = 2000, use_history=FALSE, rettype = fasta)
 
+#BiocManager::install("genbankr")
+library("genbankr")
+browseVignettes("genbankr")
 
+gba = GBAccession("JN609462.1")
+test <- readGenBank(gba, partial=TRUE)
+
+  # This is the data I want
+
+testing <- as.data.frame(test@cds@ranges)
 
 #### NO HITS FOUND: DATA FOR BLAST####
 

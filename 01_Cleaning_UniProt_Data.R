@@ -65,7 +65,7 @@ sum(is.na(dfData$Gene.names)) # 304 missing gene names.
 # Since there are missing gene names the data set must be split. 
 # Next, we will look at the gene names for the entries that have them.
 
-#### 03 CLEANING GENE NAMES ####
+#### 04 CLEANING GENE NAMES ####
 
 # View the gene names.
 
@@ -82,14 +82,7 @@ Replaced_Gene_Names <- str_trim(str_replace(Replaced_Gene_Names,"GIP2 Niben101Sc
 
 dfData["Gene.names"] <- Replaced_Gene_Names
 
-#### 0 REMOVING FRAGMENTED PROTEIN SEQUENCES ####
-
-# https://stackoverflow.com/questions/7381455/filtering-a-data-frame-by-values-in-a-column
-
-dfNewData <- subset(dfData, Fragment == "fragment")
-
-
-#### 03 DEALING WITH DUPLICATES ####
+#### 05 DEALING WITH DUPLICATES ####
 
 # Any duplicate gene names?
 
@@ -126,14 +119,14 @@ dfData_No_LecRK <- dfData[!(dfData$Protein.names %in% dfLecRK$Protein.names),]
 
 # Find duplicated entries.
 
-Duplicate_Names <- unlist(dfData_No_LecRK$Gene.names)
+Gene_Names <- unlist(dfData_No_LecRK$Gene.names)
 
-duplicates <- Duplicate_Names[ Duplicate_Names %in% Duplicate_Names[duplicated(Duplicate_Names)] ]
+Duplicate_Names <- Gene_Names[ Gene_Names %in% Gene_Names[duplicated(Gene_Names)] ]
 
 # https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
 
-NAs <- is.na(duplicates) 
-dup <- duplicates[!NAs] 
+NAs <- is.na(Duplicate_Names) 
+dup <- Duplicate_Names[!NAs] 
 # https://stackoverflow.com/questions/57832161/how-to-remove-na-in-character-vector-in-r
 
 # Final list of gene names that have multiple entries.
@@ -141,9 +134,7 @@ dup <- duplicates[!NAs]
 unique_duplicates <- unique(dup)
 
 # 22 genes with multiple entries. Can these be filtered further?
-
-# Since these specific protein sequences are not going to be used, keep only unique gene name entries going forward.
-# However, it would be constrictive to ensure that these associated sequences and information makes sense.
+# It would be constrictive to ensure that these associated sequences and information makes sense.
 
 # Subset duplicates into a separate data frame.
 
@@ -157,22 +148,44 @@ for (i in unique_duplicates) {
 
 View(dfData_Duplicates)
 
-# Manually filter out entries and fragments.
+# Filtering of duplicates. 
+# There are several duplicates for a single gene in dfData_Duplicates.
+# For a number of these genes, there is one full sequence and several "duplicates" fragmented sequences. e.g. CMT3
+# It is expected that the full protein sequence will be longer than any one fragmented sequence.
+# In addition, the full sequence will most likely begin with a "M" rather than another amino acid.
+# For other entries, there is one sequence longer than the others. e.g. Hsp90 has 3 sequences with the lengths 80.81, and 80.
+# In this case, only the longest sequence will be retained since there may be more information present that is valuable to downstream analysis. 
+# If the sequence lengths only differ by 1 - 2 amino acids, it is expected that BLAST or aligning of sequences will not be grossly impacted.
 
-# remove marked (frafment) and keep the longest of the sequences if tie, pick last one
-rows_to_keep <- c(1,5,13,14,16,20,22,62,64,65,71,73,75,77,79,81,83,86,88,89,90,92,93)
-dfKeep <- dfData_Duplicates[rows_to_keep,]
+#Steps:
+# 1. Subset the duplicates from dfData
+# 2. Remove these duplicated entries from dfData
+# 3. Sort the duplicated entries by sequence length.
+# Remove duplicates using function. This will retain the first entry (a.k.a. the longest sequence) and remove the succeeding entries.
+
+# Sort dfData_Duplicates by sequence length.
+
+dfDataSorted <- dfData_Duplicates[order(-dfData_Duplicates$Length),] 
+
+terms <- duplicated(dfDataSorted$Gene.names) 
+term <- str_replace(terms,"FALSE","No")
+term2 <- str_replace(term,"TRUE","Yes")
+
+dfDataSorted["Is.A.Duplicate"] <- term2
+
+dfKeep <- subset(dfDataSorted, Is.A.Duplicate == "No")
+dfKeep <- dfKeep[1:(length(dfKeep)-1)]
 
 # Add back to original data frame.
 # https://stackoverflow.com/questions/17338411/delete-rows-that-exist-in-another-data-frame
 
-dfNew <- dfData[!(dfData$Protein.names %in% dfData_Duplicates$Protein.names),]
+dfNew <- dfData_No_LecRK[!(dfData_No_LecRK$Protein.names %in% dfData_Duplicates$Protein.names),]
 
 df_Final <- rbind(dfNew,dfKeep)
 
 rm(dup,Duplicate_Names,duplicates)
 
-#### 05 EXAMINING THE PROTEIN LENGTHS ####
+#### 06 EXAMINING THE PROTEIN LENGTHS ####
 
 # https://r-charts.com/distribution/add-points-boxplot/
 
@@ -219,7 +232,7 @@ stripchart(dfData$Length,              # Data
 # FIXME Interpretation.
 
 
-#### 06 SUBSET DATA FRAME FOR NEXT STEPS ####
+#### 07 SUBSET DATA FRAME FOR NEXT STEPS ####
 
 # Subset data frame into two separate data frames depending on gene information presence or absence.
 
@@ -237,3 +250,5 @@ dfData_For_BLAST <- dfData %>%
 
 write.table(dfData_For_NCBI,"Data_For_NCBI.txt",sep="\t",row.names=FALSE) 
 write.table(dfData_For_BLAST,"Data_For_BLAST.txt",sep="\t",row.names=FALSE) 
+
+#### 08 REFERENCES ####

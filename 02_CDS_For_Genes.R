@@ -100,10 +100,9 @@ for (i in Gene_Names) {
     IDs <- nico_search[["ids"]]
   
 #https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html#dealing-with-many-records
-#multi_summs <- entrez_summary(db="nucleotide", id=nico_search$ids)
-# SAVE AUTHOR DATES INFO!! CITE
-#date_and_cite <- extract_from_esummary(multi_summs, c("pubdate", "pmcrefcount",  "title"))
-# FIXME knitr::kable(head(t(date_and_cite)), row.names=FALSE)
+    multi_summs <- entrez_summary(db="nucleotide", id=nico_search$ids)
+    # Save GenBank Accesion Numbers
+    Accession <- multi_summs[["accessionversion"]]
 
     # Next, get the list of titles.
     nico_summs <- entrez_summary(db="nucleotide", id=nico_search$ids)
@@ -114,7 +113,7 @@ for (i in Gene_Names) {
     df_len <- length(Titles)
     Gene.Name <- rep(i,df_len)
     # Create a data frame with ncbi ids and titles.
-    dfIDs_and_Titles <- data.frame(IDs,Titles,Gene.Name)
+    dfIDs_and_Titles <- data.frame(IDs,Accession,Titles,Gene.Name)
     #Append to dataframe.
     mydf <- rbind(mydf,dfIDs_and_Titles)
   
@@ -243,6 +242,18 @@ df_Final <- rbind(dfNew,dfKeep)
 rm(Gene_Names,dfData_Duplicates,dfKeep,dfNew)
 
 #### IDs to CDS Sequences #### 
+
+pop_ids = c("307082412", "307075396", "307075338", "307075274")
+pop_summ <- entrez_summary(db="popset", id=pop_ids)
+extract_from_esummary(pop_summ, "title")
+
+
+
+# Use ids to obtain fasta file of coding sequences.
+
+ids = dfFinal$IDs
+nico_retrive <- entrez_fetch(db="nucleotide", id = ids , retmax = 2000, use_history=FALSE, rettype = fasta)
+
 
 
 #### NO HITS FOUND: DATA FOR BLAST####

@@ -249,20 +249,19 @@ rm(lab_y,y)
 
 # For proteins with corresponding gene information.
 
-dfData_For_NCBI <- df_Final$Gene.names
-dfData_For_NCBI_Full <- df_Final$Gene.names %>%
+dfData_For_NCBI <- df_Final %>%
   filter(!is.na(Gene.names))
-dfData_For_NCBI_LecRK <- dfLecRK
 
 # For proteins without corresponding gene information.
 
-dfData_For_BLAST <- dfData %>%
+dfData_For_BLAST <- df_Final %>%
   filter(is.na(Gene.names))
 
 # Write both of these newly created data frames to separate .txt files. Saving to a .txt file makes it easier to import in non-R environments (i.e. to open in Excel)
 # This line of code was adapted from: https://stackoverflow.com/questions/18514694/how-to-save-a-data-frame-in-a-txt-or-excel-file-separated-by-columns
 
 write.table(dfData_For_NCBI,"Data_For_NCBI.txt",sep="\t",row.names=FALSE)
+write.table(dfLecRK,"Data_For_LecRK.txt",sep="\t",row.names=FALSE)
 write.table(dfData_For_BLAST,"Data_For_BLAST.txt",sep="\t",row.names=FALSE)
 
 

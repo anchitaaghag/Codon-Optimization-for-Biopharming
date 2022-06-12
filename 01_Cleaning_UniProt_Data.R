@@ -15,7 +15,7 @@ library("XML")
 
 #### 02 IMPORT EXCEL FILE ####
 
-# A list of the proteins in Nicotiana benthamiana, protein sequences, and corresponding information can be obtained from UniProt.
+# A list of the proteins in Nicotiana benthamiana, protein sequences, and corresponding information can be obtained from the UniProt database (Bateman et. al., 2021).
 # https://www.uniprot.org/uniprot/?query=Nicotiana%20benthamiana&columns=id%2Centry%20name%2Creviewed%2Cprotein%20names%2Cgenes%2Corganism%2Clength%2Cfragment%2Ccitation%2Csequence&sort=score
 
 # Load the excel file with protein sequences downloaded from UniProt.
@@ -111,10 +111,7 @@ unique(str_replace(unique(dfData$Gene.names),"LecRK.*","LecRK"))
 
 dfData["Gene.names"] <- str_trim(str_replace(dfData$Gene.names,"LecRK.*","LecRK")) 
 
-
-# https://stackoverflow.com/questions/7381455/filtering-a-data-frame-by-values-in-a-column
-
-dfLecRK <- subset(dfData, Gene.names == "LecRK")
+dfLecRK <- subset(dfData, Gene.names == "LecRK") # (Kincaid, 2011). Code adapted from: https://stackoverflow.com/questions/7381455/filtering-a-data-frame-by-values-in-a-column
 
 # Remove LecRK entries from dfData data frame.
 
@@ -205,7 +202,7 @@ rm(Gene_Names,dfData_Duplicates,dfData_No_LecRK,dfKeep,dfNew)
 
 # Subset the potential list of entries for BLAST from dfData.
 
-dfData_Selected_For_BLAST <- dfData %>%
+dfData_Selected_For_BLAST <- df_Final %>%
   filter(is.na(Gene.names))
 
 # Are the protein lengths normally distributed?
@@ -214,7 +211,7 @@ dfData_Selected_For_BLAST <- dfData %>%
 hist(dfData_Selected_For_BLAST$Length)
 shapiro.test(dfData_Selected_For_BLAST$Length)
 
-# W = 0.8731, p-value = 3.861e-15
+# W = 0.87271, p-value = 4.144e-15
 # Data is not normally distributed.
 
 boxplot(dfData_Selected_For_BLAST$Length,
@@ -223,28 +220,28 @@ boxplot(dfData_Selected_For_BLAST$Length,
         xlab = "Protein Sequences from Uniprot", 
         main = "Boxplot of Protein Sequence Length (no gene information)")
 
-length(boxplot(dfData_Selected_For_BLAST$Length)$out) # 9 Outliers.
+length(boxplot(dfData_Selected_For_BLAST$Length)$out) # 11 Outliers.
 
 #https://www.r-statistics.com/2011/01/how-to-label-all-the-outliers-in-a-boxplot/
 #install.packages("TeachingDemos")
 library("TeachingDemos")
 source("https://raw.githubusercontent.com/talgalili/R-code-snippets/master/boxplot.with.outlier.label.r") # Load the function
-set.seed(6484)
+
 y <- dfData_Selected_For_BLAST$Length
 lab_y <- dfData_Selected_For_BLAST$Protein.names
 
 boxplot.with.outlier.label(y, lab_y, spread_text = F)
-
-stripchart(dfData$Length,              # Data
+set.seed(1212)
+stripchart(dfData_Selected_For_BLAST$Length,              # Data
            method = "jitter", # Random noise
            pch = 19,          # Pch symbols
            col = 4,           # Color of the symbol
            vertical = TRUE,   # Vertical mode
            add = TRUE)        # Add it over
 
+# Retain these outliers since there is no evidence to exclude them at this point.
 
-# FIXME Interpretation.
-
+rm(lab_y,y)
 
 #### 07 SUBSET DATA FRAME FOR NEXT STEPS ####
 
@@ -252,7 +249,10 @@ stripchart(dfData$Length,              # Data
 
 # For proteins with corresponding gene information.
 
-dfData_For_NCBI <- unique(df_Final$Gene.names)
+dfData_For_NCBI <- df_Final$Gene.names
+dfData_For_NCBI_Full <- df_Final$Gene.names %>%
+  filter(!is.na(Gene.names))
+dfData_For_NCBI_LecRK <- dfLecRK
 
 # For proteins without corresponding gene information.
 
@@ -262,8 +262,12 @@ dfData_For_BLAST <- dfData %>%
 # Write both of these newly created data frames to separate .txt files. Saving to a .txt file makes it easier to import in non-R environments (i.e. to open in Excel)
 # This line of code was adapted from: https://stackoverflow.com/questions/18514694/how-to-save-a-data-frame-in-a-txt-or-excel-file-separated-by-columns
 
-write.table(dfData_For_NCBI,"Data_For_NCBI.txt",sep="\t",row.names=FALSE) 
-write.table(dfData_For_BLAST,"Data_For_BLAST.txt",sep="\t",row.names=FALSE) 
+write.table(dfData_For_NCBI,"Data_For_NCBI.txt",sep="\t",row.names=FALSE)
+write.table(dfData_For_BLAST,"Data_For_BLAST.txt",sep="\t",row.names=FALSE)
+
 
 #### 08 REFERENCES ####
 
+# Bateman, A., Martin, M.-J., Orchard, S., Magrane, M., Agivetova, R., Ahmad, S., Alpi, E., Bowler-Barnett, E. H., Britto, R., Bursteinas, B., Bye-A-Jee, H., Coetzee, R., Cukura, A., da Silva, A., Denny, P., Dogan, T., Ebenezer, T., Fan, J., Castro, L. G., … Teodoro, D. (2021). UniProt: the universal protein knowledgebase in 2021. Nucleic Acids Research, 49(D1), D480–D489. https://doi.org/10.1093/nar/gkaa1100/
+
+# Kincaid, D. (2011, September 11). Filtering a data frame by values in a column [duplicate]. Stack Overflow. https://stackoverflow.com/questions/7381455/filtering-a-data-frame-by-values-in-a-column</div>

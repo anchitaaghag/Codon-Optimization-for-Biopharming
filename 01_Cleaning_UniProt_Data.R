@@ -24,7 +24,7 @@ dfUniProt <- as.data.frame(readxl::read_xlsx("~/Major_Research_project_2022/06_C
 
 # Reformat column names to ensure there are no spaces.
 
-names(dfUniProt) <- make.names(names(dfData),unique(TRUE))
+names(dfUniProt) <- make.names(names(dfUniProt),unique(TRUE))
 
 # View the data frame.
 
@@ -34,6 +34,9 @@ View(dfUniProt)
 
 dfData <- dfUniProt[dfUniProt$Organism == "Nicotiana benthamiana",]
 
+# Reformat column names to ensure there are no spaces.
+
+names(dfData) <- make.names(names(dfData),unique(TRUE))
 
 #### 03 SUMMARY STATS ####
 
@@ -62,15 +65,39 @@ sum(is.na(dfData$Gene.names)) # 304 missing gene names.
 # Since there are missing gene names the data set must be split. 
 # Next, we will look at the gene names for the entries that have them.
 
+#### 03 CLEANING GENE NAMES ####
+
+# View the gene names.
+
+dfData$Gene.names
+
+# There are some gene names that have been marked with "Nb" at the beginning. 
+# Filter this out since we have already subsetted the data above to include only N. benthamiana entries.
+
+Replaced_Gene_Names <- str_trim(str_replace(dfData$Gene.names,"^Nb"," "))
+
+# There is one entry for "GIP2 Niben101Scf03191g04002" which needs to be changed to "GIP2".
+
+Replaced_Gene_Names <- str_trim(str_replace(Replaced_Gene_Names,"GIP2 Niben101Scf03191g04002","GIP2"))
+
+dfData["Gene.names"] <- Replaced_Gene_Names
+
+#### 0 REMOVING FRAGMENTED PROTEIN SEQUENCES ####
+
+# https://stackoverflow.com/questions/7381455/filtering-a-data-frame-by-values-in-a-column
+
+dfNewData <- subset(dfData, Fragment == "fragment")
+
+
 #### 03 DEALING WITH DUPLICATES ####
 
 # Any duplicate gene names?
 
-length(dfData$Gene.names) - length(unique(dfData$Gene.names)) # 339 duplicate entries.
+length(dfData$Gene.names) - length(unique(dfData$Gene.names)) # 340 duplicate entries.
 
-# There appears to be 527 unique gene names.
+# There appears to be 526 unique gene names.
 
-# View the duplicated names.
+# View the gene names.
 
 unique(dfData$Gene.names)
 
@@ -79,12 +106,27 @@ unique(dfData$Gene.names)
 
 unique(str_replace(unique(dfData$Gene.names),"LecRK.*","LecRK")) 
 
-Replaced_Gene_Names <- str_replace(dfData$Gene.names,"LecRK.*","LecRK")
-dfData["Gene.names"] <- Replaced_Gene_Names
+# There are 490 unique gene names.
 
-# There are 491 unique gene names.
+# There are several LecRK entries corresponding to different clades. Filter these out separately into a data frame. 
+# Treat these entries separeately when importing the CDS from NCBI.
 
-Duplicate_Names <- unlist(dfData$Gene.names)
+dfData["Gene.names"] <- str_trim(str_replace(dfData$Gene.names,"LecRK.*","LecRK")) 
+
+class(dfData)
+
+# https://stackoverflow.com/questions/7381455/filtering-a-data-frame-by-values-in-a-column
+
+dfLecRK <- subset(dfData, Gene.names == "LecRK")
+
+# Remove LecRK entries from dfData data frame.
+
+dfData_No_LecRK <- dfData[!(dfData$Protein.names %in% dfLecRK$Protein.names),]
+# https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
+
+# Find duplicated entries.
+
+Duplicate_Names <- unlist(dfData_No_LecRK$Gene.names)
 
 duplicates <- Duplicate_Names[ Duplicate_Names %in% Duplicate_Names[duplicated(Duplicate_Names)] ]
 

@@ -16,11 +16,11 @@ library("XML")
 #### 02 IMPORT EXCEL FILE ####
 
 # A list of the proteins in Nicotiana benthamiana, protein sequences, and corresponding information can be obtained from UniProt.
-# https://www.uniprot.org/uniprot/?query=Nicotiana%20benthamiana&columns=id%2Centry%20name%2Creviewed%2Cprotein%20names%2Cgenes%2Corganism%2Clength%2Cdatabase(RefSeq)%2Cfragment%2Cannotation%20score%2Ccitation%2Cgo(biological%20process)%2Cgo(cellular%20component)%2Cgo(molecular%20function)%2Ccomment(POST-TRANSLATIONAL%20MODIFICATION)&sort=score
+# https://www.uniprot.org/uniprot/?query=Nicotiana%20benthamiana&columns=id%2Centry%20name%2Creviewed%2Cprotein%20names%2Cgenes%2Corganism%2Clength%2Cfragment%2Ccitation%2Csequence&sort=score
 
 # Load the excel file with protein sequences downloaded from UniProt.
 
-dfUniProt <- as.data.frame(readxl::read_xlsx("~/Major_Research_project_2022/06_Code/Uniprot_Data.xlsx"))
+dfUniProt <- as.data.frame(readxl::read_xlsx("~/Major_Research_project_2022/06_Code/UniProt_Data.xlsx"))
 
 # Reformat column names to ensure there are no spaces.
 
@@ -62,10 +62,14 @@ sum(is.na(dfData$Sequence)) # 0
 
 sum(is.na(dfData$Gene.names)) # 304 missing gene names.
 
+# Any missing protein name entries?
+
+sum(is.na(dfData$Protein.names)) # 0 
+
 # Since there are missing gene names the data set must be split. 
 # Next, we will look at the gene names for the entries that have them.
 
-#### 04 CLEANING GENE NAMES ####
+#### 04 CLEANING UP GENE NAMES ####
 
 # View the gene names.
 
@@ -74,13 +78,14 @@ dfData$Gene.names
 # There are some gene names that have been marked with "Nb" at the beginning. 
 # Filter this out since we have already subsetted the data above to include only N. benthamiana entries.
 
-Replaced_Gene_Names <- str_trim(str_replace(dfData$Gene.names,"^Nb"," "))
+Replaced_Gene_Names <- str_trim(str_replace(dfData$Gene.names,"^Nb"," ")) %>% 
 
 # There is one entry for "GIP2 Niben101Scf03191g04002" which needs to be changed to "GIP2".
-
-Replaced_Gene_Names <- str_trim(str_replace(Replaced_Gene_Names,"GIP2 Niben101Scf03191g04002","GIP2"))
+  {str_trim(str_replace(Replaced_Gene_Names,"GIP2 Niben101Scf03191g04002","GIP2"))}
 
 dfData["Gene.names"] <- Replaced_Gene_Names
+
+rm(Replaced_Gene_Names)
 
 #### 05 DEALING WITH DUPLICATES ####
 
@@ -106,7 +111,6 @@ unique(str_replace(unique(dfData$Gene.names),"LecRK.*","LecRK"))
 
 dfData["Gene.names"] <- str_trim(str_replace(dfData$Gene.names,"LecRK.*","LecRK")) 
 
-class(dfData)
 
 # https://stackoverflow.com/questions/7381455/filtering-a-data-frame-by-values-in-a-column
 
@@ -116,6 +120,8 @@ dfLecRK <- subset(dfData, Gene.names == "LecRK")
 
 dfData_No_LecRK <- dfData[!(dfData$Protein.names %in% dfLecRK$Protein.names),]
 # https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
+
+rm(dfData)
 
 # Find duplicated entries.
 
@@ -133,6 +139,8 @@ dup <- Duplicate_Names[!NAs]
 
 unique_duplicates <- unique(dup)
 
+rm(Duplicate_Names,NAs, dup)
+
 # 22 genes with multiple entries. Can these be filtered further?
 # It would be constrictive to ensure that these associated sequences and information makes sense.
 
@@ -141,11 +149,12 @@ unique_duplicates <- unique(dup)
 dfData_Duplicates <- data.frame()
 
 for (i in unique_duplicates) {
-  matching_row <- dfData %>%
+  matching_row <- dfData_No_LecRK %>%
     filter(Gene.names == i)
   dfData_Duplicates <- rbind(dfData_Duplicates, matching_row)
 }
 
+rm(unique_duplicates, matching_row, i)
 View(dfData_Duplicates)
 
 # Filtering of duplicates. 
@@ -167,14 +176,19 @@ View(dfData_Duplicates)
 
 dfDataSorted <- dfData_Duplicates[order(-dfData_Duplicates$Length),] 
 
-terms <- duplicated(dfDataSorted$Gene.names) 
-term <- str_replace(terms,"FALSE","No")
-term2 <- str_replace(term,"TRUE","Yes")
+#https://stackoverflow.com/questions/62075537/r-pipe-in-does-not-work-with-stringrs-str-extract-all
 
-dfDataSorted["Is.A.Duplicate"] <- term2
+terms <- duplicated(dfDataSorted$Gene.names) %>%
+{str_replace(.,"FALSE","No") %>%
+str_replace(.,"TRUE","Yes")}
+
+dfDataSorted["Is.A.Duplicate"] <- terms
+rm(terms)
 
 dfKeep <- subset(dfDataSorted, Is.A.Duplicate == "No")
 dfKeep <- dfKeep[1:(length(dfKeep)-1)]
+
+rm(dfDataSorted)
 
 # Add back to original data frame.
 # https://stackoverflow.com/questions/17338411/delete-rows-that-exist-in-another-data-frame
@@ -183,7 +197,7 @@ dfNew <- dfData_No_LecRK[!(dfData_No_LecRK$Protein.names %in% dfData_Duplicates$
 
 df_Final <- rbind(dfNew,dfKeep)
 
-rm(dup,Duplicate_Names,duplicates)
+rm(Gene_Names,dfData_Duplicates,dfData_No_LecRK,dfKeep,dfNew)
 
 #### 06 EXAMINING THE PROTEIN LENGTHS ####
 
@@ -252,3 +266,4 @@ write.table(dfData_For_NCBI,"Data_For_NCBI.txt",sep="\t",row.names=FALSE)
 write.table(dfData_For_BLAST,"Data_For_BLAST.txt",sep="\t",row.names=FALSE) 
 
 #### 08 REFERENCES ####
+

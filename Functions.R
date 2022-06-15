@@ -1,6 +1,8 @@
 # FUNCTIONS FOR 
 
-# 5 FUNCTIONS 
+
+
+#### 01 Install Packages & Load Libraries ####
 
 # install.packages("rentrez")
 library("rentrez")
@@ -9,15 +11,7 @@ library("XML")
 #BiocManager::install("genbankr")
 library("genbankr")
 
-# Input should be a NCBI ID
-
-NCBI <- IDs
-Accession <- list()
-Start <- list()
-End <- list()
-Length <- list()
-
-#### 01 Get_Accession_Number() Function ####
+#### 02 Get_Accession_Number() Function ####
 
 # This function will take a NCBI id and return the corresponding GenBank accession number.
 # It uses the "rentrez" package functions and extracts the relevant line of information from a created list.
@@ -33,7 +27,7 @@ Get_Accession_Number <- function(ncbi_id) {
   
   }
 
-#### 02 Get_CDS_Range_Start() Function ####
+#### 03 Get_CDS_Range_Start() Function ####
 
 # This function will take a GenBank accession number and return the corresponding CDS start site from the range.
 # It uses the "genbankr" package functions and extracts the relevant line of information from a created object.
@@ -43,15 +37,34 @@ Get_CDS_Range_Start <- function(genbank_accession_number) {
   # First, using the genbankr package to retrieve GenBank information by the provided versioned accession number.
   # Search for entries that match the search term.
   gba = GBAccession(genbank_accession_number)
-  # Read in the genbank information.
-  test <- readGenBank(gba, partial=TRUE)
+  # Read in the GenBank information.
+  gb_info <- readGenBank(gba, partial=TRUE)
   # Save the range information to a dataframe.
-  testing <- as.data.frame(test@cds@ranges)
-  # Save the start, end, and length of the CDS sequences to corresponsding lists.
-  range_start <-  testing[1]
+  dfRange <- as.data.frame(gb_info@cds@ranges)
+  # Save the start of the coding sequence.
+  range_start <- dfRange[1]
   # Finally, return the starting point for the range.
   return(range_start) 
   
   }
 
+#### 03 Get_CDS_Range_End() Function ####
 
+# This function will take a GenBank accession number and return the corresponding CDS end site from the range.
+# It uses the "genbankr" package functions and extracts the relevant line of information from a created object.
+
+Get_CDS_Range_End <- function(genbank_accession_number) {
+  
+  # First, using the genbankr package to retrieve GenBank information by the provided versioned accession number.
+  # Search for entries that match the search term.
+  gba = GBAccession(genbank_accession_number)
+  # Read in the GenBank information.
+  gb_info <- readGenBank(gba, partial=TRUE)
+  # Save the range information to a dataframe.
+  dfRange <- as.data.frame(gb_info@cds@ranges)
+  # Save the end of the coding sequence.
+  range_end <- dfRange[2]
+  # Finally, return the ending point for the range.
+  return(range_end) 
+  
+  }

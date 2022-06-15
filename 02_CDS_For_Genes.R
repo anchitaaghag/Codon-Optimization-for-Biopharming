@@ -101,26 +101,6 @@ for (i in Gene_Names) {
   if (checkpoint > 0) {
     # Save the IDs to a list.
     IDs <- nico_search[["ids"]]
-  
-#https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html#dealing-with-many-records
-    multi_summs <- entrez_summary(db="nucleotide", id=nico_search$ids)
-    # Save GenBank Accesion Numbers
-    Accession <- multi_summs[["accessionversion"]]
-    
-    # Create the search term.
-    wrapping_txt_begin <- " "
-    wrapping_txt_end <- " "
-    wrapped_str <- Reformat(Accession,wrapping_txt_begin,wrapping_txt_end)
-    search_term <- str_trim(wrapped_str)
-    # Search for entries that match the search term.
-    gba = GBAccession(search_term)
-    test <- readGenBank(gba, partial=TRUE)
-    # This is the data I want
-    testing <- as.data.frame(test@cds@ranges)
-    Start <- testing[1]
-    End <- testing[2]
-    Length <- testing[3]
-    
     # Next, get the list of titles.
     nico_summs <- entrez_summary(db="nucleotide", id=nico_search$ids)
     titles <- extract_from_esummary(nico_summs, "title")
@@ -130,7 +110,7 @@ for (i in Gene_Names) {
     df_len <- length(Titles)
     Gene.Name <- rep(i,df_len)
     # Create a data frame with ncbi ids and titles.
-    dfIDs_and_Titles <- data.frame(IDs,Accession,Titles,Gene.Name,Start,End,Length)
+    dfIDs_and_Titles <- data.frame(IDs,Accession,Titles,Gene.Name)
     #Append to dataframe.
     mydf <- rbind(mydf,dfIDs_and_Titles)
   

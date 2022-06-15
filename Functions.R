@@ -88,4 +88,8 @@ Get_CDS_Length <- function(genbank_accession_number) {
   # Finally, return the length for the sequence.
   return(range_length) 
   
-  }
+}
+
+#### 06 References ####
+
+# https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html#dealing-with-many-records

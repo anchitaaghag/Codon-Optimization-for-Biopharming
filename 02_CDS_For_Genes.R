@@ -14,7 +14,7 @@ library("rentrez")
 library("XML")
 #BiocManager::install("genbankr")
 library("genbankr")
-browseVignettes("genbankr")
+
 
 #### 02 IMPORT FILE ####
 
@@ -257,6 +257,12 @@ dfNew <- mydf[!(mydf$Titles %in% dfData_Duplicates$Titles),]
 df_Final <- rbind(dfNew,dfKeep)
 
 rm(Gene_Names,dfData_Duplicates,dfKeep,dfNew)
+
+#### IDs to CDS Information ####
+
+source("~/Major_Research_project_2022/06_Code/Codon-Optimization-for-Biopharming/Functions.R")
+
+
 
 #### IDs to CDS Sequences #### 
 

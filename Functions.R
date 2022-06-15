@@ -1,5 +1,6 @@
-# FUNCTIONS FOR 
-
+# Functions to Obtain CDS Information from NCBI & GenBank
+# 13 June 2022
+# Anchitaa Ghag 
 
 #### 01 Install Packages & Load Libraries ####
 
@@ -47,7 +48,7 @@ Get_CDS_Start <- function(genbank_accession_number) {
   
   }
 
-#### 03 Get_CDS_End() Function ####
+#### 04 Get_CDS_End() Function ####
 
 # This function will take a GenBank accession number and return the corresponding CDS end site from the range.
 # It uses the "genbankr" package functions and extracts the relevant line of information from a created object.
@@ -68,7 +69,7 @@ Get_CDS_End <- function(genbank_accession_number) {
   
   }
 
-#### 03 Get_CDS_Length() Function ####
+#### 05 Get_CDS_Length() Function ####
 
 # This function will take a GenBank accession number and return the corresponding CDS length from the range.
 # It uses the "genbankr" package functions and extracts the relevant line of information from a created object.

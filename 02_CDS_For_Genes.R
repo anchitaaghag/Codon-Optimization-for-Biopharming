@@ -2,6 +2,11 @@
 # 9 June 2022
 # Anchitaa Ghag
 
+#### POTENTIAL CHANGES TO BE MADE ####
+
+# 1) It currently takes around 17 minutes to run the For Loop below. This is too slow. 
+# Potentially, this could be converted to a function and then use lapply or sapply to reiterate over all the gene names.
+
 #### 01 INSTALL PACKAGES & DOWNLOAD LIBRARIES ####
 
 # install.packages("seqinr")
@@ -125,8 +130,6 @@ for (i in Gene_Names) {
 
 }
 )
-
-# 17 minutes to run For Loop ! NoOoOo! Potentially, change this! Too Slow!
 
 # Write this data to a file.
 # write.table(mydf,"Results_From_NCBI.txt",sep="\t",row.names=FALSE)

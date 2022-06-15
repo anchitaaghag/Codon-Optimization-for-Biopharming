@@ -92,4 +92,6 @@ Get_CDS_Length <- function(genbank_accession_number) {
 
 #### 06 References ####
 
+#http://bioconductor.riken.jp/packages/3.8/bioc/vignettes/genbankr/inst/doc/genbankr.html
+# https://bioconductor.org/packages/release/bioc/html/genbankr.html
 # https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html#dealing-with-many-records

@@ -42,11 +42,11 @@ Get_CDS_Start <- function(genbank_accession_number) {
   # Save the range information to a dataframe.
   dfRange <- as.data.frame(gb_info@cds@ranges)
   # Save the start of the coding sequence.
-  range_start <- dfRange[1]
+  range_start <- unlist(dfRange[1,1])
   # Finally, return the starting point for the range.
   return(range_start) 
   
-  }
+}
 
 #### 04 Get_CDS_End() Function ####
 
@@ -63,7 +63,7 @@ Get_CDS_End <- function(genbank_accession_number) {
   # Save the range information to a dataframe.
   dfRange <- as.data.frame(gb_info@cds@ranges)
   # Save the end of the coding sequence.
-  range_end <- dfRange[2]
+  range_end <- unlist(dfRange[1,2])
   # Finally, return the ending point for the range.
   return(range_end) 
   
@@ -84,7 +84,7 @@ Get_CDS_Length <- function(genbank_accession_number) {
   # Save the range information to a dataframe.
   dfRange <- as.data.frame(gb_info@cds@ranges)
   # Save the length of the coding sequence.
-  range_length <- dfRange[3]
+  range_length <- unlist(dfRange[1,3])
   # Finally, return the length for the sequence.
   return(range_length) 
   

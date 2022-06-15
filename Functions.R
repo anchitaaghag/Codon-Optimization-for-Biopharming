@@ -17,10 +17,10 @@ Start <- list()
 End <- list()
 Length <- list()
 
-#### Get_Accession_Number() Function ####
+#### 01 Get_Accession_Number() Function ####
 
 # This function will take a NCBI id and return the corresponding GenBank accession number.
-# It uses the "rentrez" pacakge functionality 
+# It uses the "rentrez" package functions and extracts the relevant line of information from a created list.
 
 Get_Accession_Number <- function(ncbi_id) {
   
@@ -31,13 +31,16 @@ Get_Accession_Number <- function(ncbi_id) {
   # Finally, return the GenBank accession number.
   return(genbank_accession_number)
   
-   }
+  }
 
-#### Get_CDS_Range_Start() Function ####
+#### 02 Get_CDS_Range_Start() Function ####
+
+# This function will take a GenBank accession number and return the corresponding CDS start site from the range.
+# It uses the "genbankr" package functions and extracts the relevant line of information from a created object.
 
 Get_CDS_Range_Start <- function(genbank_accession_number) {
   
-  # Next, using the genbank package to retrieve GenBank information by the versioned accession found above.
+  # First, using the genbankr package to retrieve GenBank information by the provided versioned accession number.
   # Search for entries that match the search term.
   gba = GBAccession(genbank_accession_number)
   # Read in the genbank information.
@@ -45,12 +48,10 @@ Get_CDS_Range_Start <- function(genbank_accession_number) {
   # Save the range information to a dataframe.
   testing <- as.data.frame(test@cds@ranges)
   # Save the start, end, and length of the CDS sequences to corresponsding lists.
-  Range_Start <-  testing[1]
-  Range_End <- testing[2]
-  Range_Length <- testing[3]
+  range_start <-  testing[1]
+  # Finally, return the starting point for the range.
+  return(range_start) 
   
-  return(Range_Start)
-  
-}
+  }
 
 

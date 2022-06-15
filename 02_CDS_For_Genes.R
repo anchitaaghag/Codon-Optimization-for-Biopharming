@@ -115,7 +115,7 @@ for (i in Gene_Names) {
     df_len <- length(Titles)
     Gene.Name <- rep(i,df_len)
     # Create a data frame with ncbi ids and titles.
-    dfIDs_and_Titles <- data.frame(IDs,Accession,Titles,Gene.Name)
+    dfIDs_and_Titles <- data.frame(IDs,Titles,Gene.Name)
     #Append to dataframe.
     mydf <- rbind(mydf,dfIDs_and_Titles)
   
@@ -130,6 +130,8 @@ for (i in Gene_Names) {
 
 }
 )
+
+rm(checkpoint,df_len,titles,Titles,nico_summs,nico_search,search_term,wrapped_str,wrapping_txt_begin,wrapping_txt_end,dfIDs_and_Titles)
 
 # Write this data to a file.
 # write.table(mydf,"Results_From_NCBI.txt",sep="\t",row.names=FALSE)
@@ -206,7 +208,7 @@ new_gene_names <- str_replace(dfData_Duplicates$Gene.Name,"AGO1a", "AGO1A") %>%
   {str_replace(.,"AGO1b", "AGO1B")} 
 
 dfData_Duplicates["Gene.Name"] <- new_gene_names
-
+rm(new_gene_names)
 
 # Clean-up dfData_Duplicates titles.
 
@@ -216,6 +218,7 @@ new_titles <- str_replace(dfData_Duplicates$Titles,".*clone.*", "NA") %>%
   str_replace(.,".*AGO1b.*", "NA")} 
 
 dfData_Duplicates["Titles"] <- new_titles
+rm(new_titles)
 
 dfData_Duplicates <- dfData_Duplicates %>%
   filter(!Titles == "NA")
@@ -245,7 +248,26 @@ rm(Gene_Names,dfData_Duplicates,dfKeep,dfNew)
 
 source("~/Major_Research_project_2022/06_Code/Codon-Optimization-for-Biopharming/Functions.R")
 
+# Convert the IDs to a list.
+ids <- df_Final$IDs
+# Apply the Get_Accession_Number() function to each element in the list.
+system.time(Accession <- lapply(ids, Get_Accession_Number))
+# Append the corresponding GenBank accession numbers to the final data frame.
+df_Final["Accession.Number"] <- unlist(Accession)
+rm(ids)
 
+# Repeat this process for obtaining the start, end, and length of the coding sequences.
+# Convert the GenBank accession numbers to a list.
+gba_acc <- df_Final$Accession.Number
+# Apply the Get_CDS ... () functions to each element in the list.
+system.time(Start <- lapply(gba_acc, Get_CDS_Start))
+system.time(End <- lapply(gba_acc, Get_CDS_End))
+system.time(Length <- lapply(gba_acc, Get_CDS_Length))
+# Append the corresponding information to the final data frame.
+df_Final["Start.of.CDS"] <- unlist(Start)
+df_Final["End.of.CDS"] <- unlist(End)
+df_Final["Length.of.CDS"] <- unlist(Length)
+rm(gba_acc,Start,End,Length)
 
 #### IDs to CDS Sequences #### 
 

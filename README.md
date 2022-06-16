@@ -1,14 +1,20 @@
 # Codon Optimization for Biopharming
 
-Major Reasearch Project ro fullfill the requirements of the Master of Bioinformatics degree (University of Guelph, ON, Canada).
+A set of 
+Nicotiana benthamiana
 
-Project Duration: May 2022 - August 2022
+## What Can I Do With This?
+
+The code in this project can be used
+
+1) Creation and omparison of codon usage to existing/standard codon usages.
+2) Usage of the script to translate a given protein sequence into correspondign DNA sequence.
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Prerequisites/Dependencies
 
 What things you need to install the software and how to install them
 
@@ -34,11 +40,11 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
+## Example Usage
 
 Explain how to run the automated tests for this system
 
-### Break down into end to end tests
+### Example 1
 
 Explain what these tests test and why
 
@@ -46,17 +52,13 @@ Explain what these tests test and why
 Give an example
 ```
 
-### And coding style tests
+### Example 2
 
 Explain what these tests test and why
 
 ```
 Give an example
 ```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
@@ -64,26 +66,13 @@ Add additional notes about how to deploy this on a live system
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
 
-* **Anchitaa Ghag** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* **Anchitaa Ghag** - [anchitaaghag](https://github.com/anchitaaghag)
 
 ## Acknowledgments
 
+* This project is part of my major reasearch project to fullfill the requirements of the Master of Bioinformatics degree (University of Guelph, ON, Canada). Project Duration: May 2022 - August 2022.
 * Hat tip to anyone whose code was used
 * Inspiration
 * etc

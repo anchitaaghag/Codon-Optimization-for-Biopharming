@@ -281,6 +281,7 @@ write(nico_retrive, file="nico_retrive.fasta")
 
 # Obtain the list of CDS and add to the data frame.
 
+#BiocManager::install("Biostrings")
 library("Biostrings")
 
 fastaFile <- readDNAStringSet("nico_retrive.fasta")
@@ -298,13 +299,15 @@ FindNonCoding(mystrset)
 
 mystrset <- DNAStringSet(x=sequence, start=NA, end=NA, width=NA, use.names=TRUE)
 
-### TIMMING SEQUENCES ####
+### TIMMING THE SEQUENCES ####
 
 # Want to get rid of flanking non-coding regions.
 
 # Test if the f has been applied correctly by checking if the start of the sequences begins with ATG
 
 # Start_With_ATG() return True False
+
+
 
 #### NO HITS FOUND: DATA FOR BLAST####
 

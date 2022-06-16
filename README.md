@@ -1,6 +1,8 @@
-# Project Title
+# Codon Optimization for Biopharming
 
-One Paragraph of project description goes here
+Major Reasearch Project ro fullfill the requirements of the Master of Bioinformatics degree (University of Guelph, ON, Canada).
+
+Project Duration: May 2022 - August 2022
 
 ## Getting Started
 
@@ -14,7 +16,7 @@ What things you need to install the software and how to install them
 Give examples
 ```
 
-### Installing
+### Installation
 
 A step by step series of examples that tell you how to get a development env running
 
@@ -72,7 +74,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Anchitaa Ghag** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -86,3 +88,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Inspiration
 * etc
 
+## Template Credit
+
+This file was created by adapting the README.md file template by Billie Thompson [PurpleBooth](https://github.com/PurpleBooth). The template can be found [here](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).

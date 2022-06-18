@@ -287,27 +287,27 @@ library("Biostrings")
 fastaFile <- readDNAStringSet("nico_retrive.fasta")
 sequences = paste(fastaFile)
 df_Final["CDS.(Untrimmed)"] <- sequences
-rm(sequences)
-
-
-#if (!requireNamespace("BiocManager", quietly=TRUE))
-#  +     install.packages("BiocManager")
-#BiocManager::install("DECIPHER")
-library("DECIPHER")
-
-FindNonCoding(mystrset)
-
-mystrset <- DNAStringSet(x=sequence, start=NA, end=NA, width=NA, use.names=TRUE)
 
 ### TIMMING THE SEQUENCES ####
 
-# Want to get rid of flanking non-coding regions.
+# To get rid of flanking non-coding regions in the CDS, need to trim the seqences based on the start, stop, and length columns.
 
-# Test if the f has been applied correctly by checking if the start of the sequences begins with ATG
+start_positions <- df_Final$Start.of.CDS
+end_positions <- df_Final$End.of.CDS
 
-# Start_With_ATG() return True False
+# https://stackoverflow.com/questions/6827299/r-apply-function-with-multiple-parameters
+trimmed_seqs <- mapply(str_sub,string=sequences,start=start_positions,end=end_positions)
 
+# Test if this has been done successfully by comparing the lengths of the trimmed sequences with the expected lengths (i.e. the Length.of.CDS column in the data frame.)
 
+trimmed_lengths <- unlist(lapply(trimmed_seqs,nchar))
+df_Final["Trimmed.Length"] <- trimmed_lengths
+identical(df_Final$Length.of.CDS,df_Final$Trimmed.Length)
+
+# TRUE. 
+# Can proceed and add the trimmed CDS to the data frame.
+
+df_Final["Trimmed.CDS"] <- trimmed_seqs
 
 #### NO HITS FOUND: DATA FOR BLAST####
 

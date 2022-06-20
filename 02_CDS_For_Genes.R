@@ -341,9 +341,34 @@ library("coRdon")
 cds <- DNAStringSet(df_Final$Trimmed.CDS)
 CUTs <- codonTable(cds)
 CU <- codonCounts(CUTs)
-
-
+getlen(CUTs)
 row.names(CU) <- df_Final$Titles
+
+Average.CU.All.Genes <- colMeans(CU)
+  
+#(colMeans(CU)/colSums(CU))*1000
+
+#### Kazuza's CU Table ####
+
+
+
+# code adapted from: https://stackoverflow.com/questions/24546312/vector-of-most-used-codons-from-table-of-codon-usage-in-r
+# install.packages("XML")
+library("XML")
+
+# Table can be found here:
+# https://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG
+
+Kazuza <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG')
+dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue), 
+                 header=TRUE, 
+                 fill=TRUE)
+  
+# Most used codons (1 for each amino acid residue)
+
+dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
+  filter(Number==max(Number)) %>% 
+  select(AmAcid, Codon)
 
 #### Statistical Tests ####
 

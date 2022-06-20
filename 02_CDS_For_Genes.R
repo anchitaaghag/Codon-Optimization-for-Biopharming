@@ -276,8 +276,11 @@ rm(gba_acc,Start,End,Length)
 #ID Name.of.Protein Start Stop Length CDS.Sequence
 
 ids = c(df_Final$IDs)
-nico_retrive <- entrez_fetch(db="nucleotide", id = ids , rettype = "fasta")
+nico_retrive <- entrez_fetch(db="nucleotide", id = ids[1:300], rettype = "fasta")
+nico_retrive1 <- entrez_fetch(db="nucleotide", id = ids[301:356], rettype = "fasta")
 write(nico_retrive, file="nico_retrive.fasta")
+write(nico_retrive1, file="nico_retrive1.fasta")
+
 
 # Obtain the list of CDS and add to the data frame.
 
@@ -285,7 +288,10 @@ write(nico_retrive, file="nico_retrive.fasta")
 library("Biostrings")
 
 fastaFile <- readDNAStringSet("nico_retrive.fasta")
-sequences = paste(fastaFile)
+fastaFile1 <- readDNAStringSet("nico_retrive1.fasta")
+seq1 <- paste(fastaFile)
+seq2 <- paste(fastaFile1)
+sequences = c(seq1,seq2)
 df_Final["CDS.(Untrimmed)"] <- sequences
 
 ### TIMMING THE SEQUENCES ####
@@ -309,6 +315,13 @@ identical(df_Final$Length.of.CDS,df_Final$Trimmed.Length)
 
 df_Final["Trimmed.CDS"] <- trimmed_seqs
 
+# Recheck the timmed sequences. Are these divisible by three?
+# If sequence lengths are divisible by three, we can continue to retain. 
+# If not, either check the trimming or discard.
+
+# FIXME
+
+
 #### NO HITS FOUND: DATA FOR BLAST####
 
 # For the genes where no corresponding CDS information was found in Nicotiana benthamiana.
@@ -318,4 +331,23 @@ df_Final["Trimmed.CDS"] <- trimmed_seqs
 # If no hits are found by protein name then:
 # Use N. tabacum or use homologs
 
+#### CU Table Generation ####
 
+#https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
+
+#BiocManager::install("coRdon")
+library("coRdon")
+
+cds <- DNAStringSet(df_Final$Trimmed.CDS)
+CUTs <- codonTable(cds)
+CU <- codonCounts(CUTs)
+
+
+row.names(CU) <- df_Final$Titles
+
+#### Statistical Tests ####
+
+milc <- MILC(CUTs)
+head(milc)
+  
+  

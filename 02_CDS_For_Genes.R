@@ -350,8 +350,6 @@ Average.CU.All.Genes <- colMeans(CU)
 
 #### Kazuza's CU Table ####
 
-
-
 # code adapted from: https://stackoverflow.com/questions/24546312/vector-of-most-used-codons-from-table-of-codon-usage-in-r
 # install.packages("XML")
 library("XML")

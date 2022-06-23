@@ -14,3 +14,4 @@ library("rBLAST")
 
 # Read in the file with the protein names created in 01_Data_
 
+#read_file("")

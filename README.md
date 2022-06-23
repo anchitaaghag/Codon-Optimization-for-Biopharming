@@ -27,7 +27,7 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Give examples BLAST+ needs to be installed 
+Give examples BLAST+ needs to be installed (what version?)
 ```
 
 ### Installation
@@ -68,25 +68,20 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
 ## Authors
 
 * **Anchitaa Ghag** - [anchitaaghag](https://github.com/anchitaaghag)
 
 ## Advisors
 
-* **Dr. Andrew Hamilton-Wright** - Associate Professor, Department of Computer Science, University of Guelph, Guelph, ON N1G 2W1, Canada. *(Computational/Informatics Expertise)*
+* **Dr. Andrew Hamilton-Wright** - [andrewhw](https://github.com/andrewhw) Associate Professor, Department of Computer Science, University of Guelph, Guelph, ON N1G 2W1, Canada. *(Computational/Informatics Expertise)*
 * **Dr. Doug Cossar** - VP Research, PlantForm Corporation Canada, Toronto, ON M4S 3E2, Canada. *(External/Industry Advisor)*
 * **Dr. Jennifer Geddes-McAlister** - Assistant Professor, Department of Molecular and Cellular Biology, University of Guelph, Guelph, ON N1G 2W1, Canada. *(Biological Expertise)*
 
 ## Acknowledgments
 
-* This project is part of my major reasearch project (BINF 6999) to fullfill the requirements of the Master of Bioinformatics degree (University of Guelph, ON, Canada). Project Duration: May 2022 - August 2022. See also "Advisors" section above.
+* This project is part of my major reasearch project (BINF 6999) to fullfill the requirements of the Master of Bioinformatics degree (University of Guelph, ON, Canada). Project Duration: May 2022 - August 2022. 
+* I would like to thank my advisors, Drs. Cossar, Geddes-McAlister, and Hamilton-Wright for their support and advice. See also the "Advisors" section above.
 * Hat tip to anyone whose code was used
 * Inspiration
 * etc

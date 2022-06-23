@@ -71,21 +71,13 @@ Get_CDS_End <- function(genbank_accession_number) {
 
 #### 05 Get_CDS_Length() Function ####
 
-# This function will take a GenBank accession number and return the corresponding CDS length from the range.
-# It uses the "genbankr" package functions and extracts the relevant line of information from a created object.
+# This function will take the start and stopping points for a sequence and return the corresponding sequence length.
 
-Get_CDS_Length <- function(genbank_accession_number) {
+Get_CDS_Length <- function(start,stop) {
   
-  # First, using the genbankr package to retrieve GenBank information by the provided versioned accession number.
-  # Search for entries that match the search term.
-  gba = GBAccession(genbank_accession_number)
-  # Read in the GenBank information.
-  gb_info <- readGenBank(gba, partial=TRUE)
-  # Save the range information to a dataframe.
-  dfRange <- as.data.frame(gb_info@cds@ranges)
-  # Save the length of the coding sequence.
-  range_length <- unlist(dfRange[1,3])
-  # Finally, return the length for the sequence.
+  # Subtract the start from the stop to get the overall length of the sequence.
+  range_length <- (stop-start)+1
+  # Return the length for the sequence.
   return(range_length) 
   
 }

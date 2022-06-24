@@ -77,18 +77,27 @@ nico_summs <- entrez_summary(db="nucleotide", web_history=nico_search$web_histor
 
 # Extract all the titles, NCBI ids, GenBank accession versions, and untrimmed sequence lengths from the esummary as a matrix.
 
-titles <- extract_from_esummary(nico_summs, c("Title","Length","AccessionVersion"))
+Info <- extract_from_esummary(nico_summs, c("Title","Length","AccessionVersion"))
 
-# To ensure readability, transpose the matrices above, to make the "title", "uid", "slen","accessionversion" fields into columns.
+# To ensure readability, transpose the matrix, to make the "Title","Length","AccessionVersion" fields into columns.
 
-matInformation <- t(titles)
+InfoTable <-  t(Info)
 
-# Change the column names for readability.
-# Use row names to create a NCBI_ID column.
+# Convert to a data frame.
 
-colnames(dfIDs_and_Titles)
+dfIDs_and_Titles <- as.data.frame(InfoTable)
 
-dfIDs_and_Titles <- data.frame(NCBI_ID,Titles,CDS_Length,GenBank_Accession)
+# Change the column names to be more descriptive.
+
+colnames(dfIDs_and_Titles) <- c("Titles","Untrimmed_Sequence_Length","GenBank_Accession")
+
+# Use the rownames_to_column() from the tibble package to create a NCBI_ID column in the new data frame.
+
+dfIDs_and_Titles <- rownames_to_column(dfIDs_and_Titles, "NCBI_ID")
+
+#### FILTER RECORDS ####
+
+# FIXME Summary Stats here, see previous script work
 
 # Filter the data by information in the title.
 

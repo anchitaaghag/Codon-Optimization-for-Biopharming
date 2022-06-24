@@ -5,7 +5,7 @@
 
 #### PERSONAL NOTE: FIXES NEEDED ####
 
-# 1) Currently, there are 4 entrez searches being performed since the maximum number of hits I can query per search is ~300. Is there a simpler way to code this without creating 4 search objects, 4 summary objects, 4 titles, and 4 id lists? [i.e perform this search using 1 search object, 1 summary obj ... ]
+# 1) Currently, there are 4 entrez searches being performed since the maximum number of hits I can query per search is ~300. Is there a simpler way to code this without creating 4 search objects, 4 summary objects, 4 titles, and 4 id lists? [i.e perform this search using 1 search object, 1 summary obj ... ] Partially done
 # 2) At the very beginning, include a section or a way for the user to input ALL search parameters or thresholds (to ensure reproducible code).
 # 3) Try to amend the Get_CDS...() functions created to avoid outputting every step (may save time?) Done
 # 4) May want to switch sections for flow. E.g. moving the section of importing of the Kazuza table up so that you can import all information once at the beginning of the script.
@@ -49,7 +49,7 @@ library("XML") # Using this to parse HTML Kazuza's codon usage table
 
 # Load additional functions that are used in this script.
 
-source("~/Major_Research_project_2022/06_Code/Codon-Optimization-for-Biopharming/Functions.R")
+source("~/Major_Research_project_2022/06_Code/Codon-Optimization-for-Biopharming/R_Files/Functions.R")
 source("https://raw.githubusercontent.com/talgalili/R-code-snippets/master/boxplot.with.outlier.label.r") # Load the function
 
 #### 02 IMPORT IDS FROM NCBI ####
@@ -75,113 +75,27 @@ nico_summs2 <- entrez_summary(db="nucleotide", id=nico_search$ids[301:600])
 nico_summs3 <- entrez_summary(db="nucleotide", id=nico_search$ids[601:900])
 nico_summs4 <- entrez_summary(db="nucleotide", id=nico_search$ids[901:1200])
 
-# Extract all the titles.
+# Extract all the titles, NCBI ids, GenBank accession versions, and untrimmed sequence lengths from the esummary as a matrix.
 
-titles1 <- extract_from_esummary(nico_summs1, "title")
-titles2 <- extract_from_esummary(nico_summs2, "title")
-titles3 <- extract_from_esummary(nico_summs3, "title")
-titles4 <- extract_from_esummary(nico_summs4, "title")
+titles1 <- extract_from_esummary(nico_summs1, c("title", "uid", "slen","accessionversion"))
+titles2 <- extract_from_esummary(nico_summs2, c("title", "uid", "slen","accessionversion"))
+titles3 <- extract_from_esummary(nico_summs3, c("title", "uid", "slen","accessionversion"))
+titles4 <- extract_from_esummary(nico_summs4, c("title", "uid", "slen","accessionversion"))
 
-# Extract all the NCBI ids.
+# To ensure readability, transpose the matrices above, to make the "title", "uid", "slen","accessionversion" fields into columns.
 
-# Create an empty list to hold the names of gene which has no hits.
-ID1 = list()
-ID2 = list()
-ID3 = list()
-ID4 = list()
+matInformation1 <- t(titles1)
+matInformation2 <- t(titles2)
+matInformation3 <- t(titles3)
+matInformation4 <- t(titles4)
 
-LEN1 = list()
-LEN2 = list()
-LEN3 = list()
-LEN4 = list()
+# Combine all the transposed matrices together.
 
-ACC1 = list()
-ACC2 = list()
-ACC3 = list()
-ACC4 = list()
-
-for (j in nico_summs1) {
- uid <- j[["uid"]]
- slen <- j[["slen"]]
- accn <- j[["accessionversion"]]
-  #Append the id to the list.
-  ID1 <- append(ID1,uid)
-  # Append length of sequences to the list.
-  LEN1 <- append(LEN1,slen)
-  # Append GenBank accession version to the list.
-  ACC1 <- append(ACC1, accn)
-}
-
-for (j in nico_summs2) {
-  uid <- j[["uid"]]
-  slen <- j[["slen"]]
-  accn <- j[["accessionversion"]]
-  #Append the id to the list.
-  ID2 <- append(ID2,uid)
-  # Append length of sequences to the list.
-  LEN2 <- append(LEN2,slen)
-  # Append GenBank accession version to the list.
-  ACC2 <- append(ACC2, accn)
-}
-
-for (j in nico_summs3) {
-  uid <- j[["uid"]]
-  slen <- j[["slen"]]
-  accn <- j[["accessionversion"]]
-  #Append the id to the list.
-  ID3 <- append(ID3,uid)
-  # Append length of sequences to the list.
-  LEN3 <- append(LEN3,slen)
-  # Append GenBank accession version to the list.
-  ACC3 <- append(ACC3, accn)
-}
-
-for (j in nico_summs4) {
-  uid <- j[["uid"]]
-  slen <- j[["slen"]]
-  accn <- j[["accessionversion"]]
-  #Append the id to the list.
-  ID4 <- append(ID4,uid)
-  # Append length of sequences to the list.
-  LEN4 <- append(LEN4,slen)
-  # Append GenBank accession version to the list.
-  ACC4 <- append(ACC4, accn)
-}
-
-# Save theGenBank accession version to one list.
-
-GenBank_Accession <- unlist(c(ACC1,ACC2,ACC3,ACC4))
-
-rm(ACC1,ACC2,ACC3,ACC4)
-
-# Save the ids to one list.
-
-NCBI_ID <- unlist(c(ID1,ID2,ID3,ID4))
-
-rm(ID1,ID2,ID3,ID4)
-
-# Save the lengths to one list.
-
-CDS_Length <- unlist(c(LEN1,LEN2,LEN3,LEN4))
-
-rm(LEN1,LEN2,LEN3,LEN4)
-
-# Save the titles to one list.
-
-t<-c(titles1,titles2,titles3,titles4)
-
-Titles <- unname(t)
-
-rm(t,titles1,titles2,titles3,titles4)
+dfNCBI <- as.data.frame(rbind(matInformation1,matInformation2,matInformation3,matInformation4))
 
 # Add the ids and titles into a dataframe.
 
 dfIDs_and_Titles <- data.frame(NCBI_ID,Titles,CDS_Length,GenBank_Accession)
-
-length(NCBI_ID)
-length(Titles)
-length(CDS_Length)
-length(GenBank_Accession)
 
 
 # Filter the data by information in the title.

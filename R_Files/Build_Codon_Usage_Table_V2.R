@@ -5,7 +5,7 @@
 
 #### PERSONAL NOTE: FIXES NEEDED ####
 
-# 1) Currently, there are 4 entrez searches being performed since the maximum number of hits I can query per search is ~300. Is there a simpler way to code this without creating 4 search objects, 4 summary objects, 4 titles, and 4 id lists? [i.e perform this search using 1 search object, 1 summary obj ... ] Partially done
+# 1) Currently, there are 4 entrez searches being performed since the maximum number of hits I can query per search is ~300. Is there a simpler way to code this without creating 4 search objects, 4 summary objects, 4 titles, and 4 id lists? [i.e perform this search using 1 search object, 1 summary obj ... ] DONE! :)
 # 2) At the very beginning, include a section or a way for the user to input ALL search parameters or thresholds (to ensure reproducible code).
 # 3) Try to amend the Get_CDS...() functions created to avoid outputting every step (may save time?) Done
 # 4) May want to switch sections for flow. E.g. moving the section of importing of the Kazuza table up so that you can import all information once at the beginning of the script.
@@ -66,37 +66,29 @@ entrez_dbs()
 
 entrez_db_searchable(db="nucleotide", config = NULL)
 
-nico_search <- entrez_search(db="nucleotide", term="Nicotiana benthamiana[Organism] AND CDS[FKEY]", use_history=FALSE, retmax = 98000)
+# Using a web history object. The maximum retmax chaned from defalut 20 to 5000 , can be increaded if it is anticipated that more records will be retrived.
+
+nico_search <- entrez_search(db="nucleotide", term="Nicotiana benthamiana[Organism] AND CDS[FKEY]", use_history=TRUE, retmax = 5000)
 
 # Create the summary information for each title from the entrez search result.
+# This script will use version 1.0 or XML (as opposed to the more extensive version 2.0 or JSON). This is because the maximum number of UIDs is 500 for a JSON format output. For longer secuence requests (more than 500), even with a web history object, using a single entrez_summary search will result in a "Too many UIDs in request." error. To ensure that all records can be fetched in one order, regardless of request size, the more limeted summaries of a database record in version 1.0 is being used. This can be changed to version 2.0 and submitted in batches.
 
-nico_summs1 <- entrez_summary(db="nucleotide", id=nico_search$ids[1:300])
-nico_summs2 <- entrez_summary(db="nucleotide", id=nico_search$ids[301:600])
-nico_summs3 <- entrez_summary(db="nucleotide", id=nico_search$ids[601:900])
-nico_summs4 <- entrez_summary(db="nucleotide", id=nico_search$ids[901:1200])
+nico_summs <- entrez_summary(db="nucleotide", web_history=nico_search$web_history, version = "1.0")
 
 # Extract all the titles, NCBI ids, GenBank accession versions, and untrimmed sequence lengths from the esummary as a matrix.
 
-titles1 <- extract_from_esummary(nico_summs1, c("title", "uid", "slen","accessionversion"))
-titles2 <- extract_from_esummary(nico_summs2, c("title", "uid", "slen","accessionversion"))
-titles3 <- extract_from_esummary(nico_summs3, c("title", "uid", "slen","accessionversion"))
-titles4 <- extract_from_esummary(nico_summs4, c("title", "uid", "slen","accessionversion"))
+titles <- extract_from_esummary(nico_summs, c("Title","Length","AccessionVersion"))
 
 # To ensure readability, transpose the matrices above, to make the "title", "uid", "slen","accessionversion" fields into columns.
 
-matInformation1 <- t(titles1)
-matInformation2 <- t(titles2)
-matInformation3 <- t(titles3)
-matInformation4 <- t(titles4)
+matInformation <- t(titles)
 
-# Combine all the transposed matrices together.
+# Change the column names for readability.
+# Use row names to create a NCBI_ID column.
 
-dfNCBI <- as.data.frame(rbind(matInformation1,matInformation2,matInformation3,matInformation4))
-
-# Add the ids and titles into a dataframe.
+colnames(dfIDs_and_Titles)
 
 dfIDs_and_Titles <- data.frame(NCBI_ID,Titles,CDS_Length,GenBank_Accession)
-
 
 # Filter the data by information in the title.
 

@@ -7,7 +7,7 @@
 
 # 1) Currently, there are 4 entrez searches being performed since the maximum number of hits I can query per search is ~300. Is there a simpler way to code this without creating 4 search objects, 4 summary objects, 4 titles, and 4 id lists? [i.e perform this search using 1 search object, 1 summary obj ... ]
 # 2) At the very beginning, include a section or a way for the user to input ALL search parameters or thresholds (to ensure reproducible code).
-# 3) Try to amend the Get_CDS...() functions created to avoid outputting every step (may save time?)
+# 3) Try to amend the Get_CDS...() functions created to avoid outputting every step (may save time?) Done
 # 4) May want to switch sections for flow. E.g. moving the section of importing of the Kazuza table up so that you can import all information once at the beginning of the script.
 
 #### 00 OVERVIEW - WHY A VERSION 2? ####
@@ -95,42 +95,65 @@ LEN2 = list()
 LEN3 = list()
 LEN4 = list()
 
+ACC1 = list()
+ACC2 = list()
+ACC3 = list()
+ACC4 = list()
+
 for (j in nico_summs1) {
  uid <- j[["uid"]]
  slen <- j[["slen"]]
+ accn <- j[["accessionversion"]]
   #Append the id to the list.
   ID1 <- append(ID1,uid)
   # Append length of sequences to the list.
   LEN1 <- append(LEN1,slen)
+  # Append GenBank accession version to the list.
+  ACC1 <- append(ACC1, accn)
 }
 
 for (j in nico_summs2) {
   uid <- j[["uid"]]
   slen <- j[["slen"]]
+  accn <- j[["accessionversion"]]
   #Append the id to the list.
   ID2 <- append(ID2,uid)
   # Append length of sequences to the list.
   LEN2 <- append(LEN2,slen)
+  # Append GenBank accession version to the list.
+  ACC2 <- append(ACC2, accn)
 }
 
 for (j in nico_summs3) {
   uid <- j[["uid"]]
   slen <- j[["slen"]]
+  accn <- j[["accessionversion"]]
   #Append the id to the list.
   ID3 <- append(ID3,uid)
   # Append length of sequences to the list.
   LEN3 <- append(LEN3,slen)
+  # Append GenBank accession version to the list.
+  ACC3 <- append(ACC3, accn)
 }
 
 for (j in nico_summs4) {
   uid <- j[["uid"]]
   slen <- j[["slen"]]
+  accn <- j[["accessionversion"]]
   #Append the id to the list.
   ID4 <- append(ID4,uid)
   # Append length of sequences to the list.
   LEN4 <- append(LEN4,slen)
+  # Append GenBank accession version to the list.
+  ACC4 <- append(ACC4, accn)
 }
-  
+
+# Save theGenBank accession version to one list.
+
+GenBank_Accession <- unlist(c(ACC1,ACC2,ACC3,ACC4))
+
+rm(ACC1,ACC2,ACC3,ACC4)
+
 # Save the ids to one list.
 
 NCBI_ID <- unlist(c(ID1,ID2,ID3,ID4))
@@ -153,7 +176,13 @@ rm(t,titles1,titles2,titles3,titles4)
 
 # Add the ids and titles into a dataframe.
 
-dfIDs_and_Titles <- data.frame(NCBI_ID,Titles,CDS_Length)
+dfIDs_and_Titles <- data.frame(NCBI_ID,Titles,CDS_Length,GenBank_Accession)
+
+length(NCBI_ID)
+length(Titles)
+length(CDS_Length)
+length(GenBank_Accession)
+
 
 # Filter the data by information in the title.
 
@@ -263,24 +292,27 @@ table(duplicated(dfFinal$Titles))
 #### 04 OBTAIN CDS RANGE INFORMATION ####
 
 # Convert the IDs to a list.
-ids <- dfFinal$NCBI_ID
+#ids <- dfFinal$NCBI_ID
 # Apply the Get_Accession_Number() function to each element in the list.
-system.time(Accession <- lapply(ids, Get_Accession_Number))
+#system.time(Accession <- lapply(ids, Get_Accession_Number))
 # Append the corresponding GenBank accession numbers to the final data frame.
-dfFinal["GenBank_Accession"] <- unlist(Accession)
+#dfFinal["GenBank_Accession"] <- unlist(Accession)
 
 # Repeat this process for obtaining the start, end, and length of the coding sequences.
 # Convert the GenBank accession numbers to a list.
 gba_acc <- dfFinal$GenBank_Accession
 # Apply the Get_CDS ... () functions to each element in the list.
-system.time(Start <- lapply(gba_acc, Get_CDS_Start))
-system.time(End <- lapply(gba_acc, Get_CDS_End))
-system.time(Length <- lapply(gba_acc, Get_CDS_Length))
+system.time(StartStop <- lapply(gba_acc, Get_CDS_Ranges))
+# Convert the list of lists to a data frame. 
+# https://stackoverflow.com/questions/29674661/r-list-of-lists-to-data-frame
+dfStartStop <- do.call(rbind, StartStop)
 # Append the corresponding information to the final data frame.
-dfFinal["Start_of_CDS"] <- unlist(Start)
-dfFinal["End_of_CDS"] <- unlist(End)
-dfFinal["GenBank_Length_of_CDS"] <- unlist(Length)
-rm(gba_acc,Start,End,Length)
+dfFinal["Start_of_CDS"] <- unlist(dfStartStop[,1])
+dfFinal["End_of_CDS"] <- unlist(dfStartStop[,2])
+# Append a new column with the length of the CDS.
+dfFinal["GenBank_Length_of_CDS"] <- ((dfFinal$End_of_CDS - dfFinal$Start_of_CDS) + 1)
+rm(gba_acc,StartStop,dfStartStop)
+
 
 #### 05 OBTAIN CODING SEQUENCES ####
 
@@ -288,6 +320,7 @@ rm(gba_acc,Start,End,Length)
 
 #ID Name.of.Protein Start Stop Length CDS.Sequence
 
+ids <- dfFinal$NCBI_ID
 nico_retrive <- entrez_fetch(db="nucleotide", id = ids[1:300], rettype = "fasta")
 nico_retrive1 <- entrez_fetch(db="nucleotide", id = ids[301:600], rettype = "fasta")
 write(nico_retrive, file="nico_retrive.fasta")

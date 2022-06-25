@@ -5,9 +5,7 @@
 
 #### PERSONAL NOTE: FIXES NEEDED ####
 
-# 1) Currently, there are 4 entrez searches being performed since the maximum number of hits I can query per search is ~300. Is there a simpler way to code this without creating 4 search objects, 4 summary objects, 4 titles, and 4 id lists? [i.e perform this search using 1 search object, 1 summary obj ... ] DONE! :)
 # 2) At the very beginning, include a section or a way for the user to input ALL search parameters or thresholds (to ensure reproducible code).
-# 3) Try to amend the Get_CDS...() functions created to avoid outputting every step (may save time?) Done
 # 4) May want to switch sections for flow. E.g. moving the section of importing of the Kazuza table up so that you can import all information once at the beginning of the script.
 
 #### 00 OVERVIEW - WHY A VERSION 2? ####
@@ -64,45 +62,73 @@ entrez_dbs()
 
 # Once, a database has been chosen define the search field. This script is using the [FKEY] parameter to return only coding sequences.
 
-entrez_db_searchable(db="nucleotide", config = NULL)
+entrez_db_searchable(db="nucleotide")
 
 # Using a web history object. The maximum retmax chaned from defalut 20 to 5000 , can be increaded if it is anticipated that more records will be retrived.
 
-nico_search <- entrez_search(db="nucleotide", term="Nicotiana benthamiana[Organism] AND CDS[FKEY]", use_history=TRUE, retmax = 5000)
+nico_search <- entrez_search(db="nucleotide", 
+                             term="Nicotiana benthamiana[Organism] AND CDS[FKEY]", 
+                             use_history=TRUE, 
+                             retmax = 5000)
 
 # Create the summary information for each title from the entrez search result.
 # This script will use version 1.0 or XML (as opposed to the more extensive version 2.0 or JSON). This is because the maximum number of UIDs is 500 for a JSON format output. For longer secuence requests (more than 500), even with a web history object, using a single entrez_summary search will result in a "Too many UIDs in request." error. To ensure that all records can be fetched in one order, regardless of request size, the more limeted summaries of a database record in version 1.0 is being used. This can be changed to version 2.0 and submitted in batches.
 
-nico_summs <- entrez_summary(db="nucleotide", web_history=nico_search$web_history, version = "1.0")
+nico_summs <- entrez_summary(db="nucleotide", 
+                             web_history=nico_search$web_history, 
+                             version = "1.0")
 
 # Extract all the titles, NCBI ids, GenBank accession versions, and untrimmed sequence lengths from the esummary as a matrix.
 
-Info <- extract_from_esummary(nico_summs, c("Title","Length","AccessionVersion"))
+InfoTable <- extract_from_esummary(nico_summs, c("Title","Length","AccessionVersion"))
 
-# To ensure readability, transpose the matrix, to make the "Title","Length","AccessionVersion" fields into columns.
+# To ensure readability, transpose the matrix, to make the "Title","Length","AccessionVersion" fields into columns and convert to a data frame.
 
-InfoTable <-  t(Info)
-
-# Convert to a data frame.
-
-dfIDs_and_Titles <- as.data.frame(InfoTable)
+dfNCBI <- as.data.frame(t(InfoTable))
 
 # Change the column names to be more descriptive.
 
-colnames(dfIDs_and_Titles) <- c("Titles","Untrimmed_Sequence_Length","GenBank_Accession")
+colnames(dfNCBI) <- c("Titles","Untrimmed_Sequence_Length","GenBank_Accession")
 
 # Use the rownames_to_column() from the tibble package to create a NCBI_ID column in the new data frame.
 
-dfIDs_and_Titles <- rownames_to_column(dfIDs_and_Titles, "NCBI_ID")
+dfNCBI <- rownames_to_column(dfNCBI, "NCBI_ID")
+
+# Ensure that we have a traditional data frame and not one composed of lists.
+# Convert to a traditonal dat frame format.
+
+dfIDs_and_Titles <- as.data.frame(lapply(dfNCBI, unlist))
+
+#### 05 OBTAIN CODING SEQUENCES ####
+
+# Use web history to obtain fasta file of coding sequences.
+
+#ID Name.of.Protein Start Stop Length CDS.Sequence
+
+# Since the entrez_fetch() function
+
+nico_retrive <- entrez_fetch(db="nucleotide", web_history = nico_search$web_history, rettype = "fasta")
+
+write(nico_retrive, file="nico_retrive.fasta")
+
+# Obtain the list of CDS and add to the data frame.
+
+fastaFile <- readDNAStringSet("nico_retrive.fasta")
+
+sequences <- paste(fastaFile)
+
+dfIDs_and_Titles["Untrimmed_Sequences"] <- sequences
 
 #### FILTER RECORDS ####
 
 # FIXME Summary Stats here, see previous script work
 
+
+
 # Filter the data by information in the title.
 
 T_Filtered <- dfIDs_and_Titles$Titles %>%
-  str_extract("Nicotiana benthamiana.*") %>% # Keep only N. benthamiana entries
+  str_extract("Nicotiana benthamiana.*") %>% # Ensure that only N. benthamiana entries are retained
   str_extract(".*complete cds") %>% # Keep only complete cds (i.e. remove partial cds) 
   str_extract(".*mRNA.*") %>% # Keep only mRNA records (i.e. remove any gene or unknown records) 
   str_replace("Nicotiana benthamiana mRNA for hypothetical protein.*", "") %>% # Remove records for hypothetical proteins
@@ -121,6 +147,7 @@ dfFiltered_IDs_Titles <- na.omit(dfIDs_and_Titles)
 dfData <- subset(dfFiltered_IDs_Titles, Titles != "") # Removing any empty rows.
 
 length(unique(dfData$Titles)) # 585 Entries.
+
 
 #### 03 REMOVE DUPLICATED TITLES ####
 
@@ -175,13 +202,13 @@ View(dfData_Duplicates)
 
 # Sort dfData_Duplicates by sequence length. 
 
-dfDataSorted <- dfData_Duplicates[order(-dfData_Duplicates$CDS_Length),] 
+dfDataSorted <- dfData_Duplicates[order(dfData_Duplicates$Untrimmed_Sequence_Length, decreasing = TRUE),] 
 
 #https://stackoverflow.com/questions/62075537/r-pipe-in-does-not-work-with-stringrs-str-extract-all
 
 terms <- duplicated(dfDataSorted$Titles) %>%
   {str_replace(.,"FALSE","No") %>%
-      str_replace(.,"TRUE","Yes")}
+  str_replace(.,"TRUE","Yes")}
 
 dfDataSorted["Is.A.Duplicate"] <- terms
 rm(terms)
@@ -206,52 +233,28 @@ table(duplicated(dfFinal$Titles))
 
 #### 04 OBTAIN CDS RANGE INFORMATION ####
 
-# Convert the IDs to a list.
-#ids <- dfFinal$NCBI_ID
-# Apply the Get_Accession_Number() function to each element in the list.
-#system.time(Accession <- lapply(ids, Get_Accession_Number))
-# Append the corresponding GenBank accession numbers to the final data frame.
-#dfFinal["GenBank_Accession"] <- unlist(Accession)
-
-# Repeat this process for obtaining the start, end, and length of the coding sequences.
 # Convert the GenBank accession numbers to a list.
 gba_acc <- dfFinal$GenBank_Accession
+
 # Apply the Get_CDS ... () functions to each element in the list.
 system.time(StartStop <- lapply(gba_acc, Get_CDS_Ranges))
+
 # Convert the list of lists to a data frame. 
 # https://stackoverflow.com/questions/29674661/r-list-of-lists-to-data-frame
+
 dfStartStop <- do.call(rbind, StartStop)
+
 # Append the corresponding information to the final data frame.
+
 dfFinal["Start_of_CDS"] <- unlist(dfStartStop[,1])
 dfFinal["End_of_CDS"] <- unlist(dfStartStop[,2])
+
 # Append a new column with the length of the CDS.
+
 dfFinal["GenBank_Length_of_CDS"] <- ((dfFinal$End_of_CDS - dfFinal$Start_of_CDS) + 1)
 rm(gba_acc,StartStop,dfStartStop)
 
 
-#### 05 OBTAIN CODING SEQUENCES ####
-
-# Use ids to obtain fasta file of coding sequences.
-
-#ID Name.of.Protein Start Stop Length CDS.Sequence
-
-ids <- dfFinal$NCBI_ID
-nico_retrive <- entrez_fetch(db="nucleotide", id = ids[1:300], rettype = "fasta")
-nico_retrive1 <- entrez_fetch(db="nucleotide", id = ids[301:600], rettype = "fasta")
-write(nico_retrive, file="nico_retrive.fasta")
-write(nico_retrive1, file="nico_retrive1.fasta")
-
-# Obtain the list of CDS and add to the data frame.
-
-#BiocManager::install("Biostrings")
-library("Biostrings")
-
-fastaFile <- readDNAStringSet("nico_retrive.fasta")
-fastaFile1 <- readDNAStringSet("nico_retrive1.fasta")
-seq1 <- paste(fastaFile)
-seq2 <- paste(fastaFile1)
-sequences = c(seq1,seq2)
-dfFinal["CDS.(Untrimmed)"] <- sequences
 
 #### 06 TRIMMING SEQUENCES ####
 
@@ -261,7 +264,10 @@ start_positions <- dfFinal$Start_of_CDS
 end_positions <- dfFinal$End_of_CDS
 
 # https://stackoverflow.com/questions/6827299/r-apply-function-with-multiple-parameters
-trimmed_seqs <- mapply(str_sub,string=sequences,start=start_positions,end=end_positions)
+trimmed_seqs <- mapply(str_sub,
+                       string=sequences,
+                       start=start_positions,
+                       end=end_positions)
 
 # Test if this has been done successfully by comparing the lengths of the trimmed sequences with the expected lengths (i.e. the Length.of.CDS column in the data frame.)
 
@@ -342,8 +348,12 @@ Average.CU.All.Genes <- colMeans(CU)
 
 # code adapted from: https://stackoverflow.com/questions/24546312/vector-of-most-used-codons-from-table-of-codon-usage-in-r
 
-# Table can be found here:
+# The existing codon usage table from Kazuza can be imported from: 
 # https://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG
+
+# It can also be imported from the "Kazuza_Codon_Usage.txt" file using the following lines of code. File originally created on 24 June 2022.
+
+# Kazuza <- read_table("Kazuza_Codon_Usage.txt")
 
 # Using the XML package's htmlParse() function to "read" an HTML file and generate an HTML/XMLInternalDocument class object.
 

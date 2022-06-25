@@ -72,9 +72,9 @@ dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue),
 
 # Finally, calculate the most used codons (1 for each amino acid residue) from the data frame.
 
-dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
-  filter(Number==max(Number)) %>% 
-  select(AmAcid, Codon)
+#dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
+#  filter(Number==max(Number)) %>% 
+#  select(AmAcid, Codon)
 # Remove all objects no longer needed from the environment.
 
 rm(Kazuza)
@@ -131,10 +131,10 @@ dfIDs_and_Titles <- as.data.frame(lapply(dfNCBI, unlist))
 #### 04 DATA AQUISITION : OBTAIN CDS RANGE INFORMATION ####
 
 # Convert the GenBank accession numbers to a list.
-gba_acc <- dfIDs_and_Titles$GenBank_Accession
+gba_acc <- unlist(dfIDs_and_Titles$GenBank_Accession)
 
 # Apply the Get_CDS ... () functions to each element in the list.
-system.time(StartStop <- lapply(gba_acc, Get_CDS_Ranges))
+system.time(StartStop <- lapply(gba_acc, Get_CDS_End))
 
 # Convert the list of lists to a data frame. 
 # https://stackoverflow.com/questions/29674661/r-list-of-lists-to-data-frame

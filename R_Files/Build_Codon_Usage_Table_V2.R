@@ -50,7 +50,34 @@ library("XML") # Using this to parse HTML Kazuza's codon usage table
 source("~/Major_Research_project_2022/06_Code/Codon-Optimization-for-Biopharming/R_Files/Functions.R")
 source("https://raw.githubusercontent.com/talgalili/R-code-snippets/master/boxplot.with.outlier.label.r") # Load the function
 
-#### 02 IMPORT IDS FROM NCBI ####
+#### 02 DATA AQUISITION : IMPORT EXISTING CU FROM KAZUZA ####
+
+# code adapted from: https://stackoverflow.com/questions/24546312/vector-of-most-used-codons-from-table-of-codon-usage-in-r
+
+# The existing codon usage table from Kazuza can be imported from: 
+# https://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG
+
+# It can also be imported from the "Kazuza_Codon_Usage.txt" file using the following lines of code. File originally created on 24 June 2022.
+
+# Kazuza <- read_table("Kazuza_Codon_Usage.txt")
+
+# Using the XML package's htmlParse() function to "read" an HTML file and generate an HTML/XMLInternalDocument class object.
+
+Kazuza <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG')
+
+# Next, read this object and convert to a dataframe.
+
+dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue), 
+                       header=TRUE, 
+                       fill=TRUE)
+
+# Finally, calculate the most used codons (1 for each amino acid residue) from the data frame.
+
+dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
+  filter(Number==max(Number)) %>% 
+  select(AmAcid, Codon)
+
+#### 03 DATA AQUISITION : OBTAIN IDS FROM NCBI ####
 
 # A list of the all complete coding sequences in Nicotiana benthamiana and corresponding information can be obtained from the NCBI database.
 
@@ -99,7 +126,29 @@ dfNCBI <- rownames_to_column(dfNCBI, "NCBI_ID")
 
 dfIDs_and_Titles <- as.data.frame(lapply(dfNCBI, unlist))
 
-#### 05 OBTAIN CODING SEQUENCES ####
+#### 04 DATA AQUISITION : OBTAIN CDS RANGE INFORMATION ####
+
+# Convert the GenBank accession numbers to a list.
+gba_acc <- dfIDs_and_Titles$GenBank_Accession
+
+# Apply the Get_CDS ... () functions to each element in the list.
+system.time(StartStop <- lapply(gba_acc, Get_CDS_Ranges))
+
+# Convert the list of lists to a data frame. 
+# https://stackoverflow.com/questions/29674661/r-list-of-lists-to-data-frame
+
+dfStartStop <- do.call(rbind, StartStop)
+
+# Append the corresponding information to the final data frame.
+
+dfIDs_and_Titles["Start_of_CDS"] <- unlist(dfStartStop[,1])
+dfIDs_and_Titles["End_of_CDS"] <- unlist(dfStartStop[,2])
+
+# Append a new column with the length of the CDS.
+
+dfIDs_and_Titles["GenBank_Length_of_CDS"] <- ((dfIDs_and_Titles$End_of_CDS - dfIDs_and_Titles$Start_of_CDS) + 1)
+rm(gba_acc,StartStop,dfStartStop)
+#### 05 DATA AQUISITION : OBTAIN SEQUENCES ####
 
 # Use web history to obtain fasta file of coding sequences.
 
@@ -119,11 +168,9 @@ sequences <- paste(fastaFile)
 
 dfIDs_and_Titles["Untrimmed_Sequences"] <- sequences
 
-#### FILTER RECORDS ####
+#### 06 DATA FILTERING : FILTER RECORDS ####
 
 # FIXME Summary Stats here, see previous script work
-
-
 
 # Filter the data by information in the title.
 
@@ -149,7 +196,7 @@ dfData <- subset(dfFiltered_IDs_Titles, Titles != "") # Removing any empty rows.
 length(unique(dfData$Titles)) # 585 Entries.
 
 
-#### 03 REMOVE DUPLICATED TITLES ####
+#### 07 DATA FILTERING : REMOVE DUPLICATED TITLES ####
 
 # # Because entrez-searches are not case sensetive, many different enties are possible for the same gene.
 # For example, while AGO1b and AGO1B are the same gene, their diffrent spelling leads to 4 entries returned instead of one.
@@ -231,32 +278,7 @@ rm(dfData_Duplicates,dfKeep,dfNew)
 
 table(duplicated(dfFinal$Titles))
 
-#### 04 OBTAIN CDS RANGE INFORMATION ####
-
-# Convert the GenBank accession numbers to a list.
-gba_acc <- dfFinal$GenBank_Accession
-
-# Apply the Get_CDS ... () functions to each element in the list.
-system.time(StartStop <- lapply(gba_acc, Get_CDS_Ranges))
-
-# Convert the list of lists to a data frame. 
-# https://stackoverflow.com/questions/29674661/r-list-of-lists-to-data-frame
-
-dfStartStop <- do.call(rbind, StartStop)
-
-# Append the corresponding information to the final data frame.
-
-dfFinal["Start_of_CDS"] <- unlist(dfStartStop[,1])
-dfFinal["End_of_CDS"] <- unlist(dfStartStop[,2])
-
-# Append a new column with the length of the CDS.
-
-dfFinal["GenBank_Length_of_CDS"] <- ((dfFinal$End_of_CDS - dfFinal$Start_of_CDS) + 1)
-rm(gba_acc,StartStop,dfStartStop)
-
-
-
-#### 06 TRIMMING SEQUENCES ####
+#### 08 DATA FILTERING : TRIM SEQUENCES ####
 
 # To get rid of flanking non-coding regions in the CDS, need to trim the seqences based on the start, stop, and length columns.
 
@@ -280,7 +302,7 @@ identical(dfFinal$GenBank_Length_of_CDS,dfFinal$Trimmed_Length)
 
 dfFinal["Trimmed_CDS"] <- trimmed_seqs
 
-#### 07 EXAMINING THE CDS LENGTHS ####
+#### 09 DATA FILTERING : EXAMINE THE CDS LENGTHS ####
 
 # https://r-charts.com/distribution/add-points-boxplot/
 
@@ -328,7 +350,7 @@ dfCodingSeqs <- subset(dfFinal, Trimmed_Length >= 240)
   # If sequence lengths are divisible by three, we can continue to retain. 
   # If not, either check the trimming or discard.
 
-#### 08 GENERATE CODON UGAGE TABLE (CUT) ####
+#### 10 GENERATE CODON UGAGE TABLES ####
 
 #https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 
@@ -344,34 +366,8 @@ Average.CU.All.Genes <- colMeans(CU)
 
 #(colMeans(CU)/colSums(CU))*1000
 
-#### 09 IMPORT EXISTING CUT FROM KAZUZA ####
 
-# code adapted from: https://stackoverflow.com/questions/24546312/vector-of-most-used-codons-from-table-of-codon-usage-in-r
-
-# The existing codon usage table from Kazuza can be imported from: 
-# https://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG
-
-# It can also be imported from the "Kazuza_Codon_Usage.txt" file using the following lines of code. File originally created on 24 June 2022.
-
-# Kazuza <- read_table("Kazuza_Codon_Usage.txt")
-
-# Using the XML package's htmlParse() function to "read" an HTML file and generate an HTML/XMLInternalDocument class object.
-
-Kazuza <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG')
-
-# Next, read this object and convert to a dataframe.
-
-dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue), 
-                       header=TRUE, 
-                       fill=TRUE)
-
-# Finally, calculate the most used codons (1 for each amino acid residue) from the data frame.
-
-dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
-  filter(Number==max(Number)) %>% 
-  select(AmAcid, Codon)
-
-#### 10 STATISTICS ####
+#### 11 STATISTICS ####
 
 # Currently in progress.
 

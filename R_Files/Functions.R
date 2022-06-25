@@ -39,7 +39,8 @@ Get_CDS_Ranges <- function(genbank_accession_number) {
   # Search for entries that match the search term.
   gba = GBAccession(genbank_accession_number)
   # Read in the GenBank information.
-  suppressMessages(gb_info <- readGenBank(gba, partial=TRUE, verbose = FALSE))
+ # suppressMessages(gb_info <- readGenBank(gba, partial=TRUE, verbose = FALSE))
+  gb_info <- readGenBank(gba, partial=TRUE, verbose = FALSE)
   # Save the range information to a dataframe.
   dfRange <- as.data.frame(gb_info@cds@ranges)
   # Save the start of the coding sequence.
@@ -58,22 +59,22 @@ Get_CDS_Ranges <- function(genbank_accession_number) {
 # This function will take a GenBank accession number and return the corresponding CDS end site from the range.
 # It uses the "genbankr" package functions and extracts the relevant line of information from a created object.
 
-#Get_CDS_End <- function(genbank_accession_number) {
+Get_CDS_End <- function(genbank_accession_number) {
   
   # To avoid printing several informative messages to the console while running this function, the suppressMessages() function will be used. This can be removed, if messages are desired, by commenting out this function below.
   # First, using the genbankr package to retrieve GenBank information by the provided versioned accession number.
   # Search for entries that match the search term.
-  #gba = GBAccession(genbank_accession_number)
+  gba = GBAccession(genbank_accession_number)
   # Read in the GenBank information.
-  #suppressMessages(gb_info <- readGenBank(gba, partial=TRUE, verbose = FALSE))
+  suppressMessages(gb_info <- readGenBank(gba, partial=TRUE, verbose = FALSE))
   # Save the range information to a dataframe.
-  #dfRange <- as.data.frame(gb_info@cds@ranges)
+  dfRange <- as.data.frame(gb_info@cds@ranges)
   # Save the end of the coding sequence.
-  #range_end <- unlist(dfRange[1,2])
+  range_end <- unlist(dfRange[1,2])
   # Finally, return the ending point for the range.
-  #return(range_end) 
+  return(range_end) 
   
-#}
+}
 
 #### 05 Get_CDS_Length() Function ####
 

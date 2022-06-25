@@ -133,6 +133,18 @@ dfIDs_and_Titles <- as.data.frame(lapply(dfNCBI, unlist))
 # Convert the GenBank accession numbers to a list.
 gba_acc <- unlist(dfIDs_and_Titles$GenBank_Accession)
 
+dfResults <- data.frame()
+
+for (i in gba_acc) {
+gba = GBAccession(i)
+# Read in the GenBank information.
+gb_info <- readGenBank(gba, partial=TRUE, verbose = FALSE)
+# Convert the GRanges object into a data frame with 8 columns.
+test <- as.data.frame(gb_info@cds)
+dfResults <- append(dfResults,test)
+}
+
+
 # Apply the Get_CDS ... () functions to each element in the list.
 system.time(StartStop <- lapply(gba_acc, Get_CDS_End))
 

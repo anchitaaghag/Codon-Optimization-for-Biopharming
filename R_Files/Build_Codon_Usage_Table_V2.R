@@ -5,8 +5,7 @@
 
 #### PERSONAL NOTE: FIXES NEEDED ####
 
-# 2) At the very beginning, include a section or a way for the user to input ALL search parameters or thresholds (to ensure reproducible code).
-# 4) May want to switch sections for flow. E.g. moving the section of importing of the Kazuza table up so that you can import all information once at the beginning of the script.
+# At the very beginning, include a section or a way for the user to input ALL search parameters or thresholds (to ensure reproducible code).
 
 #### 00 OVERVIEW - WHY A VERSION 2? ####
 
@@ -76,6 +75,9 @@ dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue),
 dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
   filter(Number==max(Number)) %>% 
   select(AmAcid, Codon)
+# Remove all objects no longer needed from the environment.
+
+rm(Kazuza)
 
 #### 03 DATA AQUISITION : OBTAIN IDS FROM NCBI ####
 
@@ -365,7 +367,6 @@ row.names(CU) <- dfFinal$Titles
 Average.CU.All.Genes <- colMeans(CU)
 
 #(colMeans(CU)/colSums(CU))*1000
-
 
 #### 11 STATISTICS ####
 

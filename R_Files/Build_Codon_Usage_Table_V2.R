@@ -130,42 +130,6 @@ dfNCBI <- rownames_to_column(dfNCBI, "NCBI_ID")
 
 dfIDs_and_Titles <- as.data.frame(lapply(dfNCBI, unlist))
 
-#### 04 DATA AQUISITION : OBTAIN CDS RANGE INFORMATION ####
-
-# Convert the GenBank accession numbers to a list.
-gba_acc <- unlist(dfIDs_and_Titles$GenBank_Accession) 
-#%>%
- # str_replace("\\.[0-9]","") # Removing the version information.
-
-# Check class. Ensure that the class is a character vector.
-class(gba_acc) 
-
-# Using the getAnnotationsGenBank() function from the ape package to get the annotations for each sequence from GenBank.
-
-system.time(newlist <- lapply(gba_acc,getAnnotationsGenBank)) # system time = 7.418
-
-system.time(hi <- getAnnotationsGenBank(gba_acc)) # system time  = 7.713
-
-# Other options include the biofiles package and the genbankr package functions. However, the ape package function is the fastest function (it takes 7.5 minutes compared to 9-11 + minutes) that can also handle large amounts of queries. It also does not require parsing of GenBank files (which may be tedious when dealing with a large number of records).
-
-# Convert the list of dataframes to a data frame. 
-#https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
-
-dfAnnotations <- bind_rows(newlist, .id = "column_label") # Error length is 1415 instead of 1084
-d <- dfAnnotations[,1:6]
-dfTest <- do.call("rbind", newlist)
-
-
-# Append the corresponding information to the final data frame.
-
-dfIDs_and_Titles["Start_of_CDS"] <- unlist(dfStartStop[,1])
-cbind(dfIDs_and_Titles,dfAnnotations[,2:6])
-
-# Append a new column with the length of the CDS.
-
-dfIDs_and_Titles["GenBank_Length_of_CDS"] <- ((dfIDs_and_Titles$End_of_CDS - dfIDs_and_Titles$Start_of_CDS) + 1)
-rm(gba_acc,StartStop,dfStartStop)
-
 #### 05 DATA AQUISITION : OBTAIN SEQUENCES ####
 
 # Use web history to obtain fasta file of coding sequences.
@@ -185,6 +149,91 @@ fastaFile <- readDNAStringSet("nico_retrive.fasta")
 sequences <- paste(fastaFile)
 
 dfIDs_and_Titles["Untrimmed_Sequences"] <- sequences
+
+#### 04 DATA AQUISITION : OBTAIN CDS RANGE INFORMATION ####
+
+# Convert the GenBank accession numbers to a list.
+gba_acc <- unlist(dfIDs_and_Titles$GenBank_Accession) 
+#%>%
+ # str_replace("\\.[0-9]","") # Removing the version information.
+
+# Check class. Ensure that the class is a character vector.
+class(gba_acc) 
+
+# Using the getAnnotationsGenBank() function from the ape package to get the annotations for each sequence from GenBank.
+
+#install.packages("tictoc")
+library(tictoc)
+tic("getannotation")
+newlist <- getAnnotationsGenBank(gba_acc) # system time  = 7.713
+toc()
+# 9.05445 minutes
+
+# Other options include the biofiles package and the genbankr package functions. However, the ape package function is the fastest function (it takes 7.5 minutes compared to 9-11 + minutes) that can also handle large amounts of queries. It also does not require parsing of GenBank files (which may be tedious when dealing with a large number of records).
+
+# Convert the list of dataframes to a data frame. 
+#https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
+
+dfAnnotations <- bind_rows(newlist, .id = "column_label") # Error length is 1415 instead of 1084
+
+#### DATA FILTERING : COMBINE ALL INFO INTO ONE DATAFRAME AND SUMMARY INFO HERE ####
+
+# Do we have one feature "row" for each gene? Should be equal in length.
+table(duplicated(dfAnnotations$column_label)) # No. 332 "extra" features annotated.
+
+# What type of features have been annotated?
+table(dfAnnotations$type)
+
+# Several features including coding sequences, mRNA 3'and  5' untranslated regions (UTRs).
+# We do not need several of these features, however, we will only omit the UTR for now.
+
+dfAnnotations.sub <- dfAnnotations[,1:6] %>%
+  filter(!type == "3'UTR") %>% # Filter out the feature "rows" marked 3' UTR 
+  filter(!type == "5'UTR") %>% # Filter out the feature "rows" marked 5' UTR
+  filter(!type == "intron") %>% # Filter out the feature "rows" marked 5' UTR
+  filter(!type == "misc_feature") %>% # Filter out the feature "rows" marked 5' UTR
+  filter(!type == "mobile_element") %>% # Filter out the feature "rows" marked 5' UTR
+  filter(!type == "polyA_site") %>% # Filter out the feature "rows" marked 5' UTR
+  filter(!type == "protein_bind") %>% # Filter out the feature "rows" marked 5' UTR
+  filter(!type == "regulatory") %>% # Filter out the feature "rows" marked 5' UTR
+  filter(!type == "repeat_region") %>% # Filter out the feature "rows" marked 5' UTR
+  filter(!type == "rRNA") %>% # Filter out the feature "rows" marked 5' UTR
+  filter(!type == "variation") # Filter out the feature "rows" marked 5' UTR
+  
+# Sort dfAnnotations.sub by alphabetical order. 
+
+dfData <- dfAnnotations.sub[order(dfAnnotations.sub$type, decreasing = FALSE),] 
+
+# Subsetting will omit duplicate entries. All CDS will be retained, then for any entries
+
+terms <- duplicated(dfData$column_label) %>%
+  {str_replace(.,"FALSE","No") %>%
+      str_replace(.,"TRUE","Yes")}
+
+dfData["Is.A.Duplicate"] <- terms
+rm(terms)
+
+dfKeep <- subset(dfData, Is.A.Duplicate == "No") # Subset the column for unique entries.
+dfKeep <- dfKeep[1:(length(dfKeep)-1)] # Remove the last column indication is the entry is a duplicate or not.
+
+rm(dfData)
+
+
+
+d <- dfAnnotations[,1:6]
+dfTest <- do.call("rbind", newlist)
+
+
+# Append the corresponding information to the final data frame.
+
+dfIDs_and_Titles["Start_of_CDS"] <- unlist(dfStartStop[,1])
+cbind(dfIDs_and_Titles,dfAnnotations[,2:6])
+
+# Append a new column with the length of the CDS.
+
+dfIDs_and_Titles["GenBank_Length_of_CDS"] <- ((dfIDs_and_Titles$End_of_CDS - dfIDs_and_Titles$Start_of_CDS) + 1)
+rm(gba_acc,StartStop,dfStartStop)
+
 
 #### 06 DATA FILTERING : FILTER RECORDS ####
 

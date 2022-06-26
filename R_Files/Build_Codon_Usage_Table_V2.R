@@ -24,6 +24,7 @@
 # This script requires the following packages and libraries.
 # If these packages have not yet been installed please remove the "#" and run the following lines.
 
+# install.packages("ape")
 # install.packages("BiocManager")
 # install.packages("rentrez")
 # install.packages("seqinr")
@@ -35,9 +36,7 @@
 # BiocManager::install("Biostrings")
 # BiocManager::install("coRdon")
 
-# This script uses ape (v.5.6.2)
 library("ape")
-packageVersion("ape")
 library("Biostrings")
 library("coRdon")
 library("rentrez")
@@ -134,37 +133,39 @@ dfIDs_and_Titles <- as.data.frame(lapply(dfNCBI, unlist))
 #### 04 DATA AQUISITION : OBTAIN CDS RANGE INFORMATION ####
 
 # Convert the GenBank accession numbers to a list.
-gba_acc <- unlist(dfIDs_and_Titles$GenBank_Accession) %>%
-  str_replace("\\.[0-9]","") # Removing the version information.
+gba_acc <- unlist(dfIDs_and_Titles$GenBank_Accession) 
+#%>%
+ # str_replace("\\.[0-9]","") # Removing the version information.
 
 # Check class. Ensure that the class is a character vector.
 class(gba_acc) 
 
-
-
-?getAnnotationsGenBank
+# Using the getAnnotationsGenBank() function from the ape package to get the annotations for each sequence from GenBank.
 
 system.time(newlist <- lapply(gba_acc,getAnnotationsGenBank)) # system time = 7.418
 
 system.time(hi <- getAnnotationsGenBank(gba_acc)) # system time  = 7.713
 
-# Other options include the biofiles package and the genbankr package functions. However, the ape package function is the fastest function (it takes 7.5 minutes compared to 9-11 + minutes) that can also handle large amounts of queries. It also doe not require parsing of GenBank files (which may be tedious when dealing with a large number of records).
+# Other options include the biofiles package and the genbankr package functions. However, the ape package function is the fastest function (it takes 7.5 minutes compared to 9-11 + minutes) that can also handle large amounts of queries. It also does not require parsing of GenBank files (which may be tedious when dealing with a large number of records).
 
 # Convert the list of dataframes to a data frame. 
-# https://stackoverflow.com/questions/29674661/r-list-of-lists-to-data-frame
-dfAnnotations <- bind_rows(newlist, .id = "column_label")
+#https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
 
-dfStartStop <- do.call(rbind, StartStop)
+dfAnnotations <- bind_rows(newlist, .id = "column_label") # Error length is 1415 instead of 1084
+d <- dfAnnotations[,1:6]
+dfTest <- do.call("rbind", newlist)
+
 
 # Append the corresponding information to the final data frame.
 
 dfIDs_and_Titles["Start_of_CDS"] <- unlist(dfStartStop[,1])
-dfIDs_and_Titles["End_of_CDS"] <- unlist(dfStartStop[,2])
+cbind(dfIDs_and_Titles,dfAnnotations[,2:6])
 
 # Append a new column with the length of the CDS.
 
 dfIDs_and_Titles["GenBank_Length_of_CDS"] <- ((dfIDs_and_Titles$End_of_CDS - dfIDs_and_Titles$Start_of_CDS) + 1)
 rm(gba_acc,StartStop,dfStartStop)
+
 #### 05 DATA AQUISITION : OBTAIN SEQUENCES ####
 
 # Use web history to obtain fasta file of coding sequences.

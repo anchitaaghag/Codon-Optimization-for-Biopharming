@@ -131,25 +131,25 @@ dfIDs_and_Titles <- as.data.frame(lapply(dfNCBI, unlist))
 #### 04 DATA AQUISITION : OBTAIN CDS RANGE INFORMATION ####
 
 # Convert the GenBank accession numbers to a list.
-gba_acc <- unlist(dfIDs_and_Titles$GenBank_Accession)
+gba_acc <- unlist(dfIDs_and_Titles$GenBank_Accession) %>%
+  str_replace("\\.[0-9]","") # Removing the version information.
+# Check class.
+class(gba_acc) # character vector
 
-dfResults <- data.frame()
+library("ape")
+packageVersion("ape")
 
-for (i in gba_acc) {
-gba = GBAccession(i)
-# Read in the GenBank information.
-gb_info <- readGenBank(gba, partial=TRUE, verbose = FALSE)
-# Convert the GRanges object into a data frame with 8 columns.
-test <- as.data.frame(gb_info@cds)
-dfResults <- append(dfResults,test)
-}
+?getAnnotationsGenBank
 
+system.time(newlist <- lapply(gba_acc,getAnnotationsGenBank))
 
-# Apply the Get_CDS ... () functions to each element in the list.
-system.time(StartStop <- lapply(gba_acc, Get_CDS_End))
+system.time(hi <- getAnnotationsGenBank(gba_acc))
 
-# Convert the list of lists to a data frame. 
+# Other options include the biofiles package and the genbankr package functions. However, the ape package function is the fastest function (it takes 7.5 minutes compared to 9-11 + minutes) that can also handle large amounts of queries. It also doe not require parsing of GenBank files (which may be tedious when dealing with a large number of records).
+
+# Convert the list of dataframes to a data frame. 
 # https://stackoverflow.com/questions/29674661/r-list-of-lists-to-data-frame
+dfAnnotations <- bind_rows(newlist, .id = "column_label")
 
 dfStartStop <- do.call(rbind, StartStop)
 

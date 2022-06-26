@@ -35,6 +35,9 @@
 # BiocManager::install("Biostrings")
 # BiocManager::install("coRdon")
 
+# This script uses ape (v.5.6.2)
+library("ape")
+packageVersion("ape")
 library("Biostrings")
 library("coRdon")
 library("rentrez")
@@ -133,17 +136,17 @@ dfIDs_and_Titles <- as.data.frame(lapply(dfNCBI, unlist))
 # Convert the GenBank accession numbers to a list.
 gba_acc <- unlist(dfIDs_and_Titles$GenBank_Accession) %>%
   str_replace("\\.[0-9]","") # Removing the version information.
-# Check class.
-class(gba_acc) # character vector
 
-library("ape")
-packageVersion("ape")
+# Check class. Ensure that the class is a character vector.
+class(gba_acc) 
+
+
 
 ?getAnnotationsGenBank
 
-system.time(newlist <- lapply(gba_acc,getAnnotationsGenBank))
+system.time(newlist <- lapply(gba_acc,getAnnotationsGenBank)) # system time = 7.418
 
-system.time(hi <- getAnnotationsGenBank(gba_acc))
+system.time(hi <- getAnnotationsGenBank(gba_acc)) # system time  = 7.713
 
 # Other options include the biofiles package and the genbankr package functions. However, the ape package function is the fastest function (it takes 7.5 minutes compared to 9-11 + minutes) that can also handle large amounts of queries. It also doe not require parsing of GenBank files (which may be tedious when dealing with a large number of records).
 

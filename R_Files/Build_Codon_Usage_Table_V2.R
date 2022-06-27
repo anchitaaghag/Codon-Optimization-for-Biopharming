@@ -76,6 +76,7 @@ dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue),
 #dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
 #  filter(Number==max(Number)) %>% 
 #  select(AmAcid, Codon)
+
 # Remove all objects no longer needed from the environment.
 
 rm(Kazuza)
@@ -129,13 +130,13 @@ dfTemp <- rownames_to_column(dfTemp, "NCBI_ID")
 
 dfNCBI <- as.data.frame(lapply(dfTemp, unlist))
 
+# Remove all objects no longer needed from the environment.
+
 rm(InfoTable,dfTemp)
 
 #### 05 DATA AQUISITION : OBTAIN SEQUENCES ####
 
 # Use web history to obtain fasta file of coding sequences.
-
-#ID Name.of.Protein Start Stop Length CDS.Sequence
 
 # Since the entrez_fetch() function
 
@@ -150,6 +151,8 @@ fastaFile <- readDNAStringSet("nico_retrive.fasta")
 sequences <- paste(fastaFile)
 
 dfNCBI["Untrimmed_Sequences"] <- sequences
+
+# Remove all objects no longer needed from the environment.
 
 rm(fastaFile, nico_search, nico_summs, nico_retrive, sequences)
 
@@ -175,9 +178,19 @@ Feature_List <- getAnnotationsGenBank(Accessions, quiet = FALSE)
 # Convert the list of dataframes to a data frame. 
 #https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
 
-dfFeatures <- bind_rows(Feature_List, .id = "column_label")
+dfFeatures <- bind_rows(Feature_List, .id = "GB_Accession")
+
+# Change the column names to be more descriptive.
+
+colnames(dfFeatures) <- c("GB_Accession","Start_of_CDS","End_of_CDS","Type","Product","Protein_ID","Gene")
+
+# Remove all objects no longer needed from the environment.
 
 rm(Accessions,Feature_List)
+
+#### SUMMARY ####
+
+# Rename Columns to Nicer Names 
 
 #### DATA FILTERING : COMBINE ALL INFO INTO ONE DATAFRAME AND SUMMARY INFO HERE ####
 
@@ -187,28 +200,34 @@ rm(Accessions,Feature_List)
 # 2) dfNCBI - A dataframe holding the untrimmed sequences and version information.
 
 # The number of features can exceed the number of records.
-table(duplicated(dfFeatures$column_label)) # FALSE = 332 "extra" features annotated.
+table(duplicated(dfFeatures$GB_Accession)) # FALSE = 332 "extra" features annotated.
 
 # What type of features have been annotated in the records?
-table(dfFeatures$type)
+table(dfFeatures$Type)
 
 # Several features including coding sequences, mRNA 3' and 5' untranslated regions (UTRs).
 # Filter the data frame to retain features marked "CDS", eliminating UTRs, rRNAs, and other non-coding regions.
 
 dfFeatures.sub <- dfFeatures %>%
-  filter(type == "CDS") # Retain only feature "rows" marked as CDS 
+  filter(Type == "CDS") # Retain only feature "rows" marked as CDS 
 
 # Subsetting dfData by the column names in dfFeatures. This will retain only records marked as "CDS"
   
-dfCombined <- subset(dfNCBI, GenBank_Accession %in% dfFeatures.sub$column_label)
+dfCombined <- subset(dfNCBI, GenBank_Accession %in% dfFeatures.sub$GB_Accession)
 
 # Add the feature columns to the new data frame.
 
-dfData <- cbind(dfCombined, dfFeatures.sub[,1:6])
+dfData <- cbind(dfCombined, dfFeatures.sub[,2:6])
 
 # Append a new column with the length of the CDS.
 
-dfData["GenBank_Length_of_CDS"] <- ((dfData$end - dfData$start) + 1)
+dfData["GenBank_Length_of_CDS"] <- ((dfData$End_of_CDS - dfData$Start_of_CDS) + 1)
+
+# Rearrange column names, for readability.
+
+dfData <- dfData[,c("GenBank_Accession", "NCBI_ID", "Titles", "Type", "Untrimmed_Sequence_Length", "Untrimmed_Sequences", "Start_of_CDS", "End_of_CDS", "GenBank_Length_of_CDS", "Protein_ID", "Product")]
+
+# Remove all objects no longer needed from the environment.
 
 rm(dfNCBI, dfFeatures, dfFeatures.sub, dfCombined)
 
@@ -228,28 +247,19 @@ Filtered_Titles <- dfData$Titles %>%
 
 dfData.sub <- subset(dfData, Titles %in% Filtered_Titles)
 
-# Add back to dataframe.
-
-dfData["Titles1"] <- Filtered_Titles
-  
-# Remove "NA"s from the list.
-
-dfFiltered_IDs_Titles <- na.omit(dfData)
-
 # How many entires (excluding any duplicates)?
 
-dfData <- subset(dfFiltered_IDs_Titles, Titles != "") # Removing any empty rows.
+length(unique(dfData.sub$Titles)) # 374 Entries.
 
-length(unique(dfData$Titles)) # 585 Entries.
+# Remove all objects no longer needed from the environment.
+
+rm(Filtered_Titles, dfData)
 
 #### 07 DATA FILTERING : REMOVE DUPLICATED TITLES ####
 
-# # Because entrez-searches are not case sensetive, many different enties are possible for the same gene.
-# For example, while AGO1b and AGO1B are the same gene, their diffrent spelling leads to 4 entries returned instead of one.
-
 # Find duplicated entries.
 
-Names <- unlist(dfData$Titles)
+Names <- unlist(dfData.sub$Titles)
 
 Duplicate_Names <- Names[ Names %in% Names[duplicated(Names)] ]
 
@@ -267,7 +277,7 @@ unique_duplicates <- unique(dup)
 
 length(unique_duplicates)
 
-# 4 proteins with multiple entries. Can these be filtered further?
+# 2 records with multiple entries. Can these be filtered further?
 # It would be constructive to ensure that these associated sequences and information makes sense.
 
 # Subset duplicates into a separate data frame.
@@ -275,13 +285,12 @@ length(unique_duplicates)
 dfData_Duplicates <- data.frame()
 
 for (i in unique_duplicates) {
-  matching_row <- dfData %>%
+  matching_row <- dfData.sub %>%
     filter(Titles == i)
   dfData_Duplicates <- rbind(dfData_Duplicates, matching_row)
 }
 
 #rm(unique_duplicates, matching_row, i)
-View(dfData_Duplicates)
 
 # Filtering of duplicates. 
 # There are several duplicates for a single gene in dfData_Duplicates.
@@ -314,39 +323,47 @@ rm(dfDataSorted)
 # Add back to original data frame.
 # https://stackoverflow.com/questions/17338411/delete-rows-that-exist-in-another-data-frame
 
-dfNew <- dfData[!(dfData$NCBI_ID %in% dfData_Duplicates$NCBI_ID),] # Remove all the duplicates from the complete data frame.
+dfNew <- dfData.sub[!(dfData.sub$NCBI_ID %in% dfData_Duplicates$NCBI_ID),] # Remove all the duplicates from the complete data frame.
 
 dfFinal <- rbind(dfNew,dfKeep) # Add back only the filtered non-duplicated enties that are in dfKeep
-
-rm(dfData_Duplicates,dfKeep,dfNew)
 
 # Confirm we have unique protein names.
 
 table(duplicated(dfFinal$Titles))
 
+# Remove all objects no longer needed from the environment.
+
+rm(dfData_Duplicates,dfKeep,dfNew)
+
 #### 08 DATA FILTERING : TRIM SEQUENCES ####
 
-# To get rid of flanking non-coding regions in the CDS, need to trim the seqences based on the start, stop, and length columns.
+# To get rid of flanking non-coding regions in the CDS, need to trim the sequences based on the start, stop, and length columns.
 
-start_positions <- dfFinal$Start_of_CDS
-end_positions <- dfFinal$End_of_CDS
+Untrimmed_Sequences <- dfFinal$Untrimmed_Sequences
+Start_Positions <- dfFinal$Start_of_CDS
+End_Positions <- dfFinal$End_of_CDS
 
 # https://stackoverflow.com/questions/6827299/r-apply-function-with-multiple-parameters
-trimmed_seqs <- mapply(str_sub,
-                       string=sequences,
-                       start=start_positions,
-                       end=end_positions)
+Trimmed_Sequences <- mapply(str_sub,
+                       string=Untrimmed_Sequences,
+                       start=Start_Positions,
+                       end=End_Positions)
 
 # Test if this has been done successfully by comparing the lengths of the trimmed sequences with the expected lengths (i.e. the Length.of.CDS column in the data frame.)
 
-trimmed_lengths <- unlist(lapply(trimmed_seqs,nchar))
-dfFinal["Trimmed_Length"] <- trimmed_lengths
-identical(dfFinal$GenBank_Length_of_CDS,dfFinal$Trimmed_Length)
+Trimmed_Lengths <- unlist(lapply(Trimmed_Sequences,nchar))
+dfFinal["Trimmed_Length"] <- Trimmed_Lengths
+
+identical(dfFinal$GenBank_Length_of_CDS,as.numeric(Trimmed_Lengths))
 
 # TRUE. 
 # Can proceed and add the trimmed CDS to the data frame.
 
-dfFinal["Trimmed_CDS"] <- trimmed_seqs
+dfFinal["Trimmed_CDS"] <- Trimmed_Sequences
+
+# Remove all objects no longer needed from the environment.
+
+rm(Untrimmed_Sequences,Start_Positions,End_Positions,Trimmed_Sequences,Trimmed_Lengths)
 
 #### 09 DATA FILTERING : EXAMINE THE CDS LENGTHS ####
 
@@ -385,9 +402,7 @@ stripchart(dfFinal$Trimmed_Length,              # Data
 
 # Retain these outliers since there is no evidence to exclude them at this point.
 
-rm(lab_y,y)
-
-# Minimum of 80 (or more codons) to conduct MILC analysis.
+# A minimum of 80 (or more codons) is required to conduct MILC analysis.
 # Remove sequences less than 80 codons or (80*3 =) 240 bases in sequence length.
 
 dfCodingSeqs <- subset(dfFinal, Trimmed_Length >= 240)
@@ -396,17 +411,21 @@ dfCodingSeqs <- subset(dfFinal, Trimmed_Length >= 240)
   # If sequence lengths are divisible by three, we can continue to retain. 
   # If not, either check the trimming or discard.
 
-#### 10 GENERATE CODON UGAGE TABLES ####
+# Remove all objects no longer needed from the environment.
+
+rm(lab_y,y)
+
+#### 10 GENERATE CODON USAGE TABLES ####
 
 #https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 
 # FIXME Uisng codRon package functions. Add Commenting.
 
-cds <- DNAStringSet(dfFinal$Trimmed_CDS)
+cds <- DNAStringSet(dfCodingSeqs$Trimmed_CDS)
 CUTs <- codonTable(cds)
 CU <- codonCounts(CUTs)
 getlen(CUTs)
-row.names(CU) <- dfFinal$Titles
+row.names(CU) <- dfCodingSeqs$Titles
 
 Average.CU.All.Genes <- colMeans(CU)
 

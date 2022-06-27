@@ -71,6 +71,10 @@ dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue),
                        header=TRUE, 
                        fill=TRUE)
 
+# List of the codon usage from each CDS that makes up Kazuza CUT is available at: http://www.kazusa.or.jp/codon/current/species/4100
+KazuzaCDS <- read.table("/Users/anchitaa/Major_Research_Project_2022/06_Code/KCC_No_Carot.txt",
+                        header = TRUE)
+
 # Finally, calculate the most used codons (1 for each amino acid residue) from the data frame.
 
 #dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
@@ -414,6 +418,11 @@ rm(lab_y,y)
 
 #https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 
+
+# For Kazuza
+
+CUT_Kazuza <- codonTable(KazuzaCDS)
+
 # FIXME Uisng codRon package functions. Add Commenting.
 
 cds <- DNAStringSet(dfCodingSeqs$Trimmed_CDS)
@@ -429,6 +438,8 @@ Average.CU.All.Genes <- colMeans(CU)
 #### 11 STATISTICS ####
 
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
+
+
 
 # Currently in progress.
 
@@ -454,7 +465,19 @@ MILC_Created_CUT <- MILC(CUTs, ribosomal = TRUE)
 Bplot(x = "self", y = "self", data = MILC_Created_CUT) +
   labs(x = xlab, y = ylab)
 
+# Visualization of Codon Usage - Existing vs. Current
 
+# Code Adapted From: https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
+
+# Use the intraBplot() function in the coRdon package and our two codonTable objects to plot a  plot of codon usage distances between existing vs. created codon tables.
+
+intraBplot(x = CUT_Kazuza, 
+           y = CUTs, 
+           names = c("Kazuza", "Current"), 
+           variable = "MILC", 
+           size = 3, 
+           alpha = 1.0) + 
+           ggtitle("B Plot of Existing v.s. Current CU Distances")
 
 #### 11 REFERENCES ####
 

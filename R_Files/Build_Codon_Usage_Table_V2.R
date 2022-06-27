@@ -191,6 +191,7 @@ rm(Accessions,Feature_List)
 #### SUMMARY ####
 
 # Rename Columns to Nicer Names 
+# FIXME Summary Stats here, see previous script work
 
 #### DATA FILTERING : COMBINE ALL INFO INTO ONE DATAFRAME AND SUMMARY INFO HERE ####
 
@@ -233,15 +234,13 @@ rm(dfNCBI, dfFeatures, dfFeatures.sub, dfCombined)
 
 #### 06 DATA FILTERING : FILTER RECORDS ####
 
-# FIXME Summary Stats here, see previous script work
-
 # Next, filter the data frame to ensure that only complete coding sequences are retained.
 # This is done because the empirical codon counts for each entry necessitates complete sequences.
 # If partial sequences are retained, the codon counts for each sequence would skew the 
 
 Filtered_Titles <- dfData$Titles %>%
   str_extract("Nicotiana benthamiana.*") %>% # Ensure that only N. benthamiana entries are retained
-  str_extract(".*complete cds")  # Keep only complete cds (i.e. remove partial cds) 
+  str_extract(".*complete cds.*")  # Keep only complete cds (i.e. remove partial cds) 
 
 # Subsetting dfData by the column names in dfFeatures. This will retain only records marked as "CDS"
 
@@ -434,6 +433,13 @@ Average.CU.All.Genes <- colMeans(CU)
 milc <- MILC(CUTs)
 head(milc)
 
+# "Other CU statistics can be calculated in the same way as MILC(), using one of the functions: B(), MCB(), ENCprime(), ENC() or SCUO(). Note however, that when calculating ENC and SCUO, one doesn’t need to provide a subset of refe"
+
+SCUO(CUTs)
+ENC(CUTs)
+B(CUTs)
+MCB(CUTs)
+ENCprime(CUTs)
 
 #### 11 REFERENCES ####
 

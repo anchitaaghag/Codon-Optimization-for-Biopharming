@@ -339,15 +339,11 @@ rm(dfData_Duplicates,dfKeep,dfNew)
 
 # To get rid of flanking non-coding regions in the CDS, need to trim the sequences based on the start, stop, and length columns.
 
-Untrimmed_Sequences <- dfFinal$Untrimmed_Sequences
-Start_Positions <- dfFinal$Start_of_CDS
-End_Positions <- dfFinal$End_of_CDS
-
 # https://stackoverflow.com/questions/6827299/r-apply-function-with-multiple-parameters
 Trimmed_Sequences <- mapply(str_sub,
-                       string=Untrimmed_Sequences,
-                       start=Start_Positions,
-                       end=End_Positions)
+                       string=dfFinal$Untrimmed_Sequences,
+                       start=dfFinal$Start_of_CDS,
+                       end=dfFinal$End_of_CDS)
 
 # Test if this has been done successfully by comparing the lengths of the trimmed sequences with the expected lengths (i.e. the Length.of.CDS column in the data frame.)
 

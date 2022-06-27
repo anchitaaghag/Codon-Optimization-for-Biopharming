@@ -428,6 +428,8 @@ Average.CU.All.Genes <- colMeans(CU)
 
 #### 11 STATISTICS ####
 
+# https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
+
 # Currently in progress.
 
 milc <- MILC(CUTs)
@@ -440,6 +442,19 @@ ENC(CUTs)
 B(CUTs)
 MCB(CUTs)
 ENCprime(CUTs)
+
+# Next, compare the CU bias for every coding sequence between the created CUT and Kazuza through visualizations.
+# 
+
+library(ggplot2)
+xlab <- "MILC distance from sample centroid"
+ylab <- "MILC distance from ribosomal genes"
+
+MILC_Created_CUT <- MILC(CUTs, ribosomal = TRUE)
+Bplot(x = "self", y = "self", data = MILC_Created_CUT) +
+  labs(x = xlab, y = ylab)
+
+
 
 #### 11 REFERENCES ####
 

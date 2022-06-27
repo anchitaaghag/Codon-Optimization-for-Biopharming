@@ -156,32 +156,28 @@ rm(fastaFile, nico_search, nico_summs, nico_retrive, sequences)
 #### 04 DATA AQUISITION : OBTAIN ANNOTATIONS ####
 
 # Convert the GenBank accession numbers to a list.
-gba_acc <- unlist(dfNCBI$GenBank_Accession) 
+Accessions <- unlist(dfNCBI$GenBank_Accession) 
 
 # Check class. Ensure that the class is a character vector.
-class(gba_acc) 
+class(Accessions) 
 
 # Using the getAnnotationsGenBank() function from the ape package to get the annotations for each sequence from GenBank.
 
-#install.packages("tictoc")
-library(tictoc)
-tic("getannotation")
-#FIXME Rename to Annotation_List
-newlist <- getAnnotationsGenBank(gba_acc, quiet = FALSE) # system time  = 7.713
-toc()
-# 9.05445 minutes
-# 9.237766667
+Feature_List <- getAnnotationsGenBank(Accessions, quiet = FALSE) 
+
+# FIXME Add an option to use the feature file for faster script running
+# This function takes approximately 9.082817 minutes to run. For a faster script time, the feature list can also be loaded into R from the file using the following lines of code:
 
 # Other options include the biofiles package and the genbankr package functions. However, the ape package function is the fastest function (it takes 7.5 minutes compared to 9-11 + minutes) that can also handle large amounts of queries. It also does not require parsing of GenBank files (which may be tedious when dealing with a large number of records).
-# Can aslo be downloaded from NCBI: search "Nicotiana benthamiana"[Organism] AND "CDS"[FKEY] 
+# Can also be downloaded from NCBI: search "Nicotiana benthamiana"[Organism] AND "CDS"[FKEY] 
 # Send to: -> Complete record -> File -> Format: Feature table -> Default order -> Create file
 
 # Convert the list of dataframes to a data frame. 
 #https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
 
-dfFeatures <- bind_rows(newlist, .id = "column_label") # Error length is 1415 instead of 1084
+dfFeatures <- bind_rows(Feature_List, .id = "column_label")
 
-rm(gba_acc,newlist)
+rm(Accessions,Feature_List)
 
 #### DATA FILTERING : COMBINE ALL INFO INTO ONE DATAFRAME AND SUMMARY INFO HERE ####
 
@@ -220,29 +216,31 @@ rm(dfNCBI, dfFeatures, dfFeatures.sub, dfCombined)
 
 # FIXME Summary Stats here, see previous script work
 
-# Filter the data by information in the title.
+# Next, filter the data frame to ensure that only complete coding sequences are retained.
+# This is done because the empirical codon counts for each entry necessitates complete sequences.
+# If partial sequences are retained, the codon counts for each sequence would skew the 
 
-T_Filtered <- dfIDs_and_Titles$Titles %>%
+Filtered_Titles <- dfData$Titles %>%
   str_extract("Nicotiana benthamiana.*") %>% # Ensure that only N. benthamiana entries are retained
-  str_extract(".*complete cds") %>% # Keep only complete cds (i.e. remove partial cds) 
-  str_extract(".*mRNA.*") %>% # Keep only mRNA records (i.e. remove any gene or unknown records) 
-  str_replace("Nicotiana benthamiana mRNA for hypothetical protein.*", "") %>% # Remove records for hypothetical proteins
-  str_replace("Nicotiana benthamiana clone.*", "") # Remove records for any N. benthamiana clones
+  str_extract(".*complete cds")  # Keep only complete cds (i.e. remove partial cds) 
+
+# Subsetting dfData by the column names in dfFeatures. This will retain only records marked as "CDS"
+
+dfData.sub <- subset(dfData, Titles %in% Filtered_Titles)
 
 # Add back to dataframe.
 
-dfIDs_and_Titles["Titles"] <- T_Filtered
+dfData["Titles1"] <- Filtered_Titles
   
 # Remove "NA"s from the list.
 
-dfFiltered_IDs_Titles <- na.omit(dfIDs_and_Titles)
+dfFiltered_IDs_Titles <- na.omit(dfData)
 
 # How many entires (excluding any duplicates)?
 
 dfData <- subset(dfFiltered_IDs_Titles, Titles != "") # Removing any empty rows.
 
 length(unique(dfData$Titles)) # 585 Entries.
-
 
 #### 07 DATA FILTERING : REMOVE DUPLICATED TITLES ####
 

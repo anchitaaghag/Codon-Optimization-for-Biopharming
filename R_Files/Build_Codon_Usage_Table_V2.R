@@ -65,9 +65,15 @@ source("https://raw.githubusercontent.com/talgalili/R-code-snippets/master/boxpl
 
 Kazuza <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG')
 
+KazuzaTabacum <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4097&aa=1&style=GCG')
+
 # Next, read this object and convert to a dataframe.
 
 dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue), 
+                       header=TRUE, 
+                       fill=TRUE)
+
+dfNTabacum <- read.table(text=xpathSApply(KazuzaTabacum, "//pre", xmlValue), 
                        header=TRUE, 
                        fill=TRUE)
 
@@ -243,16 +249,19 @@ rm(dfNCBI, dfFeatures, dfFeatures.sub, dfCombined)
 # If partial sequences are retained, the codon counts for each sequence would skew the 
 
 Filtered_Titles <- dfData$Titles %>%
+  str_replace("Nicotiana benthamiana mRNA for hypothetical protein.*", "") %>% # Remove records for hypothetical proteins
+  str_replace("Nicotiana benthamiana clone.*", "") %>% # Remove records for any N. benthamiana clones
   str_extract("Nicotiana benthamiana.*") %>% # Ensure that only N. benthamiana entries are retained
-  str_extract(".*complete cds.*")  # Keep only complete cds (i.e. remove partial cds) 
+  str_extract(".*mRNA, complete cds.*")  # Keep only complete cds (i.e. remove partial cds) 
 
+# Remove any coding sequences for hypothetical proteins.
 # Subsetting dfData by the column names in dfFeatures. This will retain only records marked as "CDS"
 
 dfData.sub <- subset(dfData, Titles %in% Filtered_Titles)
 
 # How many entires (excluding any duplicates)?
 
-length(unique(dfData.sub$Titles)) # 374 Entries.
+length(unique(dfData.sub$Titles)) # 281 Entries.
 
 # Remove all objects no longer needed from the environment.
 
@@ -364,6 +373,19 @@ dfFinal["Trimmed_CDS"] <- Trimmed_Sequences
 
 rm(Untrimmed_Sequences,Start_Positions,End_Positions,Trimmed_Sequences,Trimmed_Lengths)
 
+#### GET GENE NAMES ###
+
+Gene_Names <- dfFinal$Protein_ID %>%
+  str_match("prot_desc:\\s*(.*?)\\s*;") %>%
+  str_replace("prot_desc:","") %>%
+  str_replace("Nb","") %>%
+  str_replace("\\;","") %>%
+  str_trim()
+Gene_Names[5] <- "GRP7"
+
+GenBank_Protein_ID <- dfFinal$Protein_ID %>%
+  str_match(".*gb\\|([^|]+)")
+
 #### 09 DATA FILTERING : EXAMINE THE CDS LENGTHS ####
 
 # https://r-charts.com/distribution/add-points-boxplot/
@@ -418,7 +440,6 @@ rm(lab_y,y)
 
 #https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 
-
 # For Kazuza
 
 CUT_Kazuza <- codonTable(KazuzaCDS)
@@ -435,11 +456,13 @@ Average.CU.All.Genes <- colMeans(CU)
 
 #(colMeans(CU)/colSums(CU))*1000
 
+write.csv(x=dfCodingSeqs, file="dfCodingSeqs.csv")
+write.csv(x=dfKazuza, file="dfKazuza.csv")
+write.csv(x=dfNTabacum, file="dfNTabacum.csv")
+
 #### 11 STATISTICS ####
 
 # https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
-
-
 
 # Currently in progress.
 
@@ -470,6 +493,7 @@ Bplot(x = "self", y = "self", data = MILC_Created_CUT) +
 # Code Adapted From: https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
 
 # Use the intraBplot() function in the coRdon package and our two codonTable objects to plot a  plot of codon usage distances between existing vs. created codon tables.
+#Intra-samples Karlin B plot
 
 intraBplot(x = CUT_Kazuza, 
            y = CUTs, 
@@ -478,6 +502,31 @@ intraBplot(x = CUT_Kazuza,
            size = 3, 
            alpha = 1.0) + 
            ggtitle("B Plot of Existing v.s. Current CU Distances")
+
+#hi <- lapply(list, function)
+
+formatted_cds <- s2c((unlist(dfCodingSeqs$Trimmed_CDS[1])))
+s2c("hi")
+uco(seq=formatted_cds,
+    frame = 0,
+    index = "rscu",
+    #as.data.frame = TRUE,
+    NA.rscu = NA)
+
+## Make a coding sequence from this:
+(cds <- s2c(paste(words(), collapse = "")))
+uco(cds, index = "rscu")
+
+
+rcds <- read.fasta(file = system.file("sequences/malM.fasta", package = "seqinr"))[[1]]
+uco( rcds, index = "freq")
+uco( rcds, index = "eff")
+uco( rcds, index = "rscu")
+uco( rcds, as.data.frame = TRUE)
+
+
+#### Comparison of all 3 per amino acid ####3
+
 
 #### 11 REFERENCES ####
 

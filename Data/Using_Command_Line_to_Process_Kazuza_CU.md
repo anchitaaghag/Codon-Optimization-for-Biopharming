@@ -10,8 +10,12 @@ The following commands were run using GNU bash, version 3.2.57(1)-release on mac
 
 ## Getting Started: Files you will need
 
-You will need your data
-This script uses the and
+For any given species on the Kazuza database, a list of codon usages for each CDS used to build the overall codon usage table is available at the bottom of the record. For example, for the N. benthamiana record:
+
+<img width="575" alt="Screen Shot 2022-06-29 at 9 08 51 PM" src="https://user-images.githubusercontent.com/92746188/176571755-2616124e-3fbc-472f-851f-9d0bc544822a.png">
+
+For this R script, this data for _N. benthamiana_ and _N. tabacum_ was copied and pasted in a .txt file format. This data can be found [here](http://www.kazusa.or.jp/codon/current/species/4100) for _N. benthamiana_ and [here](http://www.kazusa.or.jp/codon/current/species/4097) for _N. tabacum_.
+Both .txt files are availabile in the Data folder.
 
 You may also need the file
 

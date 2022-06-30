@@ -14,7 +14,7 @@ For any given species on [the Kazuza database](https://www.kazusa.or.jp/codon/),
 
 <img width="575" alt="Screen Shot 2022-06-29 at 9 08 51 PM" src="https://user-images.githubusercontent.com/92746188/176571755-2616124e-3fbc-472f-851f-9d0bc544822a.png">
 
-The resulting screen will display each entry with a ">" symbol and descriptive information. This is followed by the codon counts in a specific order.
+The resulting screen will display each entry with a ">" symbol and descriptive information. This is followed by another line listing the codon counts in a specific order.
 
 <img width="1434" alt="Screen Shot 2022-06-29 at 9 29 19 PM" src="https://user-images.githubusercontent.com/92746188/176573573-0f477cad-448d-4ede-bbaf-e95b99c52a4e.png">
 
@@ -42,20 +42,22 @@ cd Major_Research_Project_2022/06_Code/08_Statistical_Analysis
 ls
 ```
 
-View the contents of the file using the **cat** command.
+(Optional) View the contents of the file using the **cat** command.
 
 ```
 cat Kazuza_CU_for_each_CDS_Format.txt 
 ```
 
-The output:
+(Optinal) The output of the command above:
 
 ```
 >LOCUS#CDS---ACCESSION---nt---nt---PID(length)---organism---title---descriptions for the CDS
 CGA CGC CGG CGU AGA AGG CUA CUC CUG CUU UUA UUG UCA UCC UCG UCU AGC AGU ACA ACC ACG ACU CCA CCC CCG CCU GCA GCC GCG GCU GGA GGC GGG GGU GUA GUC GUG GUU AAA AAG AAC AAU CAA CAG CAC CAU GAA GAG GAC GAU UAC UAU UGC UGU UUC UUU AUA AUC AUU AUG UGG UAA UAG UGA% 
 ```
 
-Use the **sed** command to insert this format line as the first line in both the files. This will be eventually be our file's headers.
+Copy and paste the lines in the following command. Ensure that the "\n" newline character is added to the string. 
+
+Use the **sed** command to insert these lines at the beginning of both the files. This will be eventually be our file's headers. 
 
 ```
 sed -i '' "1s/^/>LOCUS#CDS---ACCESSION---nt---nt---PID(length)---organism---title---descriptions for the CDS \nCGA CGC CGG CGU AGA AGG CUA CUC CUG CUU UUA UUG UCA UCC UCG UCU AGC AGU ACA ACC ACG ACU CCA CCC CCG CCU GCA GCC GCG GCU GGA GGC GGG GGU GUA GUC GUG GUU AAA AAG AAC AAU CAA CAG CAC CAU GAA GAG GAC GAU UAC UAU UGC UGU UUC UUU AUA AUC AUU AUG UGG UAA UAG UGA\n/" Kazuza_CU_for_each_CDS_in_N_benthamiana.txt
@@ -73,7 +75,7 @@ awk 'NR % 2 == 0' Kazuza_CU_for_each_CDS_in_N_tabacum.txt > N_tabacum_Codon_Coun
 
 ## References
 
-# The sed and awk commands have been adapted from the code found here:
+* The sed and awk commands have been adapted from the code found here:
 * https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
 * https://unix.stackexchange.com/questions/369181/printing-every-nth-line-out-of-a-large-file-into-a-new-file
 

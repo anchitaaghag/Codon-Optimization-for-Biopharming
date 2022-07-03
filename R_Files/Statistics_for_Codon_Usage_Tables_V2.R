@@ -10,6 +10,8 @@ library("tidyverse")
 library("XML") # Using this to parse HTML Kazuza's codon usage table
 #install.packages("gridExtra")
 library("gridExtra")
+#install.packages("viridis")
+library(viridis)
 
 # Statistical Tests
 # 27 June 2022
@@ -406,7 +408,9 @@ Plot <- ggplot(data=dfAmAcid,
   xlab("Codon") +
   ylab("Average Codon Count") +
   scale_fill_discrete(name = "Species", labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana ", "N.tabacum (Kazuza)"))+
-  geom_errorbar(aes(ymin=Avrgs-SD, ymax=Avrgs+SD), width=.2, position=position_dodge(.9))
+  geom_errorbar(aes(ymin=Avrgs-SD, ymax=Avrgs+SD), width=.2, position=position_dodge(.9)) +
+  ylim(NA,55) +
+  scale_fill_viridis(discrete = TRUE, option = "magma")
 
 return(Plot)
 

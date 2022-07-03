@@ -182,24 +182,26 @@ colnames(dfTabacum_MeanSD) <- c("Average_Codon_Count","Std_Deviation","Sum of Co
 #dfMeanSD <-
 
 AmAcid <- rep(rownames(dfOld_MeanSD),3)
-Sample <- c((rep("Old",64)), (rep("New",64)), (rep("Tabacum",64)))
+Species <- c((rep("Old N. benthamiana (Kazuza)",64)), (rep("New N. benthamiana",64)), (rep("N. tabacum (Kazuza)",64)))
 Freq <- c(dfOld_MeanSD$`Frequency (Per 1000 Codons)`, dfNew_MeanSD$`Frequency (Per 1000 Codons)`, dfTabacum_MeanSD$`Frequency (Per 1000 Codons)`)
-dfMeanSD <- data.frame(AmAcid,Sample,Freq)
-
+dfMeanSD <- data.frame(AmAcid,Species,Freq)
 
 # Compare the codon usage frequency using a histogram.
 
 ggplot(data=dfMeanSD, 
-      aes(x=AmAcid, y=Freq, fill=Sample)) +
+      aes(x=AmAcid, y=Freq, fill=Species)) +
   geom_bar(stat="identity", position=position_dodge(), show.legend = TRUE) +
   ggtitle("Histogram of Codon Usage Frequency") +
-  theme_minimal() +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  theme(plot.title = element_text(hjust = 0.5)) +
   xlab("Codons") +
   ylab("Frequency (Per 1000 Codons)") +
   scale_x_discrete(guide = guide_axis(angle = 90)) + #https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2
-  scale_fill_discrete(name = "Species", labels = c("Old N. benthamiana (Kazuza)", "New N. benthamiana", "N. tabacum (Kazuza)")) +
   theme(legend.position = c(0.93, 0.93),
-        legend.background = element_rect(fill = "white", color = "black")) #https://datavizpyr.com/how-to-place-legend-inside-the-plot-with-ggplot2/
+        legend.background = element_rect(fill = "white", color = "black")) + #https://datavizpyr.com/how-to-place-legend-inside-the-plot-with-ggplot2/ 
+  ylim(NA,40) +
+  scale_fill_viridis(discrete = TRUE, option = "viridis") 
 
 #### CHI SQUARE TEST ####
 
@@ -402,19 +404,24 @@ dfAmAcid <- (subset(df, AmAcid == Three_Letter_Form))[,c(1,3,4,5)]
 
 Plot <- ggplot(data=dfAmAcid, 
        aes(x=Codon, y=Avrgs, fill=Sample)) +
-  geom_bar(stat="identity", position=position_dodge()) +
+  geom_bar(stat="identity", position=position_dodge(),alpha = 0.8) +
   ggtitle(amino_acid) +
-  theme_minimal() +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  theme(plot.title = element_text(hjust = 0.5), legend.position = "none") +
   xlab("Codon") +
   ylab("Average Codon Count") +
-  scale_fill_discrete(name = "Species", labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana ", "N.tabacum (Kazuza)"))+
+  #scale_fill_discrete(name = "Species", labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana ", "N.tabacum (Kazuza)"))+
   geom_errorbar(aes(ymin=Avrgs-SD, ymax=Avrgs+SD), width=.2, position=position_dodge(.9)) +
   ylim(NA,55) +
-  scale_fill_viridis(discrete = TRUE, option = "magma")
-
+  scale_fill_viridis(discrete = TRUE, option = "viridis") +
+  scale_color_manual(name= "Species",
+                   labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana ", "N.tabacum (Kazuza)"))
+                   
 return(Plot)
 
 }
+                  
 
 
 # Alanine - Ala
@@ -547,10 +554,11 @@ grid.arrange( p9, p10, p11, p12, nrow = 2)
 grid.arrange( p13, p14, p15, p16, nrow = 2)
 grid.arrange( p17, p18, p19, p20, nrow = 2)
 
+
 # Still to do/ Personal Notes
 
-# Make the axis consistent 0 -> 55
-# change colors to a color-blind friendly palette like viridis
+# Make the axis consistent 0 -> 55  Done. Need to ensure it displays well for AmAcid plots.
+# change colors to a color-blind friendly palette like viridis Done. Added transparancy as well to ensure error bars can still be seen.
 # Clean up this script, ensure commented throughout
 # Email Mr. Muselius & Dr. JGM about the updated Intra B Plot
 # Also update Dr. AHW!

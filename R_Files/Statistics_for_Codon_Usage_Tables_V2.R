@@ -394,27 +394,27 @@ if (amino_acid == "Alanine") {
 }
 
 # Creates a data frame containing the codon count averages and std dev from original data frame.
-dfAmAcid <- (subset(df, AmAcid == Three_Letter_Form))[,c(1,3,4,5)]
+
+ dfAmAcid <- (subset(df, AmAcid == Three_Letter_Form))[,c(1,3,4,5)]
 
 # Generate the plot using ggplot package functions.
 
-Plot <- ggplot(data=dfAmAcid, 
+ Plot <- ggplot(data=dfAmAcid, 
        aes(x=Codon, y=Avrgs, fill=Sample)) +
-  geom_bar(stat="identity", position=position_dodge(),alpha = 0.8) +
+  geom_bar(stat="identity", position=position_dodge(), alpha = 0.8) +
   ggtitle(amino_acid) +
   theme_bw() +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   theme(plot.title = element_text(hjust = 0.5), legend.position = "none") +
   xlab("Codon") +
   ylab("Average Codon Count") +
-  #scale_fill_discrete(name = "Species", labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana ", "N.tabacum (Kazuza)"))+
   geom_errorbar(aes(ymin=Avrgs-SD, ymax=Avrgs+SD), width=.2, position=position_dodge(.9)) +
   ylim(NA,55) +
   scale_fill_viridis(discrete = TRUE, option = "viridis") +
   scale_color_manual(name= "Species",
                    labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana ", "N.tabacum (Kazuza)"))
                    
-return(Plot)
+ return(Plot)
 
 }
                   

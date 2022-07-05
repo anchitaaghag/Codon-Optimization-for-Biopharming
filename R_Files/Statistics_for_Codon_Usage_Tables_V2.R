@@ -27,8 +27,9 @@ setwd("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analys
 #BiocManager::install("Biostrings")
 #install.packages("coRdon")
 #install.packages("ggplot2")
-#install.packages("ggpubr")
+#install.packages("ggpubr") # This package is being used for Q-Q Plots, Is there a simpler base R function that can do this?
 #install.packages("gridExtra")
+#install.packages("seqinr")
 #install.packages("tidyverse")
 #install.packages("viridis")
 
@@ -37,6 +38,7 @@ library("coRdon")
 library("ggplot2")
 library("ggpubr")
 library("gridExtra")
+library("seqinr")
 library("tidyverse")
 library("viridis")
 
@@ -210,7 +212,7 @@ chisq.test(x = dfOld_MeanSD$`Frequency (Per 1000 Codons)`,
 # "Other CU statistics can be calculated in the same way as MILC(), using one of the functions: B(), MCB(), ENCprime(), ENC() or SCUO(). Note however, that when calculating ENC and SCUO, one doesn’t need to provide a subset of refe"
 # Next, compare the CU bias for every coding sequence between the created CUT and Kazuza through visualizations.
 
-#### 08 INTRA KARLIN B PLOT ####
+#### 08 INTRA-SAMPLES KARLIN B PLOT ####
 
 # Code Adapted From: https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
 
@@ -239,13 +241,10 @@ intraBplot(x = Old_CU,
         legend.background = element_rect(fill = "white", color = "black")) +  #https://datavizpyr.com/how-to-place-legend-inside-the-plot-with-ggplot2/ 
   labs(color="Codon Usage") # https://stackoverflow.com/questions/14622421/how-to-change-legend-title-in-ggplot
   #geom_jitter(width  = 0.05) + # Add noise since the dataset in small to avoid overplotting.
-  #geom_smooth(method = "lm", formula = y ~ x, fullrange = FALSE, level = 0.95) # 95% confidence interval
-  #geom_smooth(aes(group = 1), formula = y ~ poly(x,2), method = "lm", fullrange = TRUE, level = 0.95) 
-  #geom_curve()
+
 
 # The example dataset in the vignette has ~ 19, 000 + "points". There may just be undersampling/ less data points
 # This makes sense, since it is the same species, the codon usage should not differ greatly from the Old CU data set available.
-
 
 
 # Compare with N.tabacum 
@@ -261,7 +260,7 @@ intraBplot(x = New_CU,
            alpha = 1.0) + 
   ggtitle("Karlin B Plot of Existing (Kazuza) v.s. Consensus CU Distances")+
   xlab("MILC Distance from Existing CU") +
-  ylab("MILC Distance from Consensus CU") + 
+  ylab("MILC Distance from Consensus CU") 
 #geom_jitter(width  = 0.05) + # Add noise since the dataset in small to avoid overplotting.
 #geom_smooth(method = "lm", formula = y ~ x, fullrange = FALSE, level = 0.95) # 95% confidence interval
 #geom_smooth(aes(group = 1), formula = y ~ poly(x,2), method = "lm", fullrange = TRUE, level = 0.95) 
@@ -269,38 +268,45 @@ intraBplot(x = New_CU,
 
 # Again, not a lot of difference. As expected.
   
-#### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT) ####
+#### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT ####
 
-#### 10 RSCU ####
+# Check if the B() values are normally distributed.
 
-formatted_cds <- s2c((unlist(dfNew$Trimmed_CDS[1])))
+# Hypothesis: Data is normally distributed.
+# If the p-value =< 0.05, hypothesis rejected, data is not normally distributed.
 
-New_RSCU <- uco(seq=formatted_cds,
-    frame = 0,
-    index = "rscu",
-    as.data.frame = TRUE,
-    NA.rscu = NA)
+ggqqplot(B(New_CU)[,1])
+shapiro.test(B(New_CU)) #  p-value = 6.007e-10 # Not normal.
 
+ggqqplot(B(Old_CU)[,1])
+shapiro.test(B(Old_CU)) #  p-value = 0.0001391 # Not normal.
 
-table(New_RSCU$RSCU == 1) # RSCU = 1 codon is used as expected by random usage 
-table(New_RSCU$RSCU > 1) # RSCU > 1 codon used more frequently than random
-table(New_RSCU$RSCU < 1) # RSCU < 1 codon used less frequently than random 
+ggqqplot(B(Tabacum_CU)[,1])
+shapiro.test(B(Tabacum_CU)) #  p-value < 2.2e-16 # Not normal.
 
-# Are these different from the RSCU for Old N.benthamiana CU?
-# Don't have the sequences for Old N.benthamiana CU. May have to import that (if time permits).
-# Can report the RSCU measures in a table (perhaps supplementary results?)
+# Since, the data is not normally distributed, will conduct a non-parametric test to verify.
+# A non-parametric alternative to ANOVA (which is parametic) is the Kruskal-Wallis Test.
+
+kruskal.test(list(B(Old_CU),B(New_CU),B(Tabacum_CU)))
+
+kruskal.test(list(B(Old_CU),B(Tabacum_CU)))
+
+# Kruskal-Wallis rank sum test
+
+#data:  list(B(Old_CU), B(New_CU), B(Tabacum_CU))
+#Kruskal-Wallis chi-squared = 17.719, df = 2, p-value = 0.0001421
 
 #### 11 ENC & MANN WHITNEY U TEST ####
 
-enc <- ENC(New_CU)
+New_ENC <- ENC(New_CU)
 Old_ENC <- ENC(Old_CU)
 
 # Check if the values are normally distributed using a Q-Q plot from the ggpubr package.
 
-ggqqplot(enc)
+ggqqplot(New_ENC)
 ggqqplot(Old_ENC)
 
-shapiro.test(enc) # W = 0.98266, p-value = 8.508e-05
+shapiro.test(New_ENC) # W = 0.98266, p-value = 8.508e-05
 # p-value < 0.05 
 # distribution of data ist significantly different from normal distribution
 # not normal
@@ -311,7 +317,7 @@ shapiro.test(Old_ENC) #W = 0.97915, p-value = 0.114
 # distribution of data not significantly different from normal distribution
 
 # A non-parametric alternative to the t-test is Mann Whitney U test
-wilcox.test(x = enc, 
+wilcox.test(x = New_ENC, 
        y = Old_ENC,
        alternative = "two.sided")
 
@@ -335,7 +341,7 @@ table(enc == 20) # ENC = 20 codon is used as expected by random usage
 table(enc == 61) # ENC = 61 codon used more frequently than random
 table(enc < 40) # ENC < 40 low codon usage bias
 
-#### 12 CREATE AVRAGES & STD DEV DATA FRAME ####
+#### 12 CREATE AVERAGES & STD DEV DATA FRAME ####
 
 Codon <- rep(rownames(dfOld_MeanSD),3)
 AmAcid <- as.list((dfOld[order(dfOld$Codon),])[,1])
@@ -344,6 +350,23 @@ Avrgs <- c(dfOld_MeanSD$`Frequency (Per 1000 Codons)`, dfNew_MeanSD$`Frequency (
 SD <- c(dfOld_MeanSD$Std_Deviation, dfNew_MeanSD$Std_Deviation, dfTabacum_MeanSD$Std_Deviation)
 
 dfCodon_Mean_SD <- data.frame(Codon,AmAcid,Sample,Avrgs, SD)
+
+#### ANOVA/ KRUSKAL WALLIS #####
+
+shapiro.test(dfCodon_Mean_SD$Avrgs)
+shapiro.test(dfOld_MeanSD$Average_Codon_Count)
+shapiro.test(dfNew_MeanSD$Average_Codon_Count)
+shapiro.test(dfTabacum_MeanSD$Average_Codon_Count)
+
+# Data follows a normal distribution?
+
+anova <- aov(Avrgs ~ as.factor(Sample), data = dfCodon_Mean_SD)
+
+boxplot(Avrgs ~ Codon, data = dfCodon_Mean_SD)
+kwtest <- kruskal.test(Avrgs ~ Sample, data = dfCodon_Mean_SD)
+
+TukeyHSD(x = anova)
+
 
 #### 13 PLOT AVERAGE COUNTS PER AMINO ACID #####
 
@@ -526,5 +549,29 @@ grid.arrange( p5, p6, p7, p8, nrow = 2)
 grid.arrange( p9, p10, p11, p12, nrow = 2)
 grid.arrange( p13, p14, p15, p16, nrow = 2)
 grid.arrange( p17, p18, p19, p20, nrow = 2)
+
+#### SUPPLEMENTARY TABLE: RSCU VALUES FOR NEW CU ####
+
+# In addition to the ENC, we can also calculate the RSCU for the coding sequences in the new codon usage table.
+# First format the coding sequences to a style easily read in to the uco() function in the seqinR package.
+
+Formatted_CDS <- s2c((unlist(dfNew$Trimmed_CDS[1])))
+
+# Calculate the RSCU values for each codon in the coding sequences.
+
+New_RSCU <- uco(seq=Formatted_CDS,
+                frame = 0,
+                index = "rscu",
+                as.data.frame = TRUE,
+                NA.rscu = NA)
+
+# View how many codons are used as expected, more than expected, and less than expected.
+
+table(New_RSCU$RSCU == 1) # RSCU = 1 codon is used as expected by random usage 
+table(New_RSCU$RSCU > 1) # RSCU > 1 codon used more frequently than random
+table(New_RSCU$RSCU < 1) # RSCU < 1 codon used less frequently than random 
+
+# Are these different from the RSCU for Old N.benthamiana CU? At the moment do not have the sequences for Old N.benthamiana CU. May have to import that (if time permits) and calculate the RSCU values.
+# For now, can report the RSCU measures in a table (perhaps supplementary results?)
 
 #### 15 REFERENCES ####

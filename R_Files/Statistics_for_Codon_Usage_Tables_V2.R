@@ -171,8 +171,6 @@ colnames(dfTabacum_MeanSD) <- c("Average_Codon_Count","Std_Deviation","Sum of Co
 
 #### 06 HISTOGRAM OF CODON USAGE FREQUENCIES #####
 
-#dfMeanSD <-
-
 AmAcid <- rep(rownames(dfOld_MeanSD),3)
 Species <- c((rep("Old N. benthamiana (Kazuza)",64)), (rep("New N. benthamiana",64)), (rep("N. tabacum (Kazuza)",64)))
 Freq <- c(dfOld_MeanSD$`Frequency (Per 1000 Codons)`, dfNew_MeanSD$`Frequency (Per 1000 Codons)`, dfTabacum_MeanSD$`Frequency (Per 1000 Codons)`)
@@ -529,20 +527,4 @@ grid.arrange( p9, p10, p11, p12, nrow = 2)
 grid.arrange( p13, p14, p15, p16, nrow = 2)
 grid.arrange( p17, p18, p19, p20, nrow = 2)
 
-#### 15 ADITIONAL WORK ####
-
-# Finally, calculate the most used codons (1 for each amino acid residue) from the data frame.
-
-# dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
-#  filter(Number==max(Number)) %>% 
-#  select(AmAcid, Codon)
-
-
-
-#getlen(Current_CU)
-#row.names(CU) <- dfCodingSeqs$Titles
-#(colMeans(CU)/colSums(CU))*1000
-
-
-#
-#### 16 REFERENCES ####
+#### 15 REFERENCES ####

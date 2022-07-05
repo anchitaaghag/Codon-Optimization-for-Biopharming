@@ -28,7 +28,6 @@ setwd("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analys
 #install.packages("coRdon")
 #install.packages("ggplot2")
 #install.packages("gridExtra")
-#install.packages("stringr")
 #install.packages("tidyverse")
 #install.packages("viridis")
 
@@ -36,7 +35,6 @@ library("Biostrings")
 library("coRdon")
 library("ggplot2")
 library("gridExtra")
-library("stringr")
 library("tidyverse")
 library("viridis")
 

@@ -27,6 +27,7 @@ setwd("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analys
 #BiocManager::install("Biostrings")
 #install.packages("coRdon")
 #install.packages("ggplot2")
+#install.packages("ggpubr")
 #install.packages("gridExtra")
 #install.packages("tidyverse")
 #install.packages("viridis")
@@ -34,6 +35,7 @@ setwd("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analys
 library("Biostrings")
 library("coRdon")
 library("ggplot2")
+library("ggpubr")
 library("gridExtra")
 library("tidyverse")
 library("viridis")
@@ -285,7 +287,6 @@ table(New_RSCU$RSCU > 1) # RSCU > 1 codon used more frequently than random
 table(New_RSCU$RSCU < 1) # RSCU < 1 codon used less frequently than random 
 
 # Are these different from the RSCU for Old N.benthamiana CU?
-
 # Don't have the sequences for Old N.benthamiana CU. May have to import that (if time permits).
 # Can report the RSCU measures in a table (perhaps supplementary results?)
 
@@ -294,7 +295,8 @@ table(New_RSCU$RSCU < 1) # RSCU < 1 codon used less frequently than random
 enc <- ENC(New_CU)
 Old_ENC <- ENC(Old_CU)
 
-library(ggpubr)
+# Check if the values are normally distributed using a Q-Q plot from the ggpubr package.
+
 ggqqplot(enc)
 ggqqplot(Old_ENC)
 

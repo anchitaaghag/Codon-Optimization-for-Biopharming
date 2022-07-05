@@ -356,15 +356,42 @@ if (amino_acid == "Alanine") {
 } else if (amino_acid == "Arginine") {
   Three_Letter_Form <- "Arg"
 } else if  (amino_acid == "Asparagine") {
+  Three_Letter_Form <- "Asn"
+} else if  (amino_acid == "Aspartic acid") {
   Three_Letter_Form <- "Asp"
+} else if  (amino_acid == "Cysteine") {
+  Three_Letter_Form <- "Cys"
+} else if  (amino_acid == "Glutamine") {
+  Three_Letter_Form <- "Gln"
+} else if  (amino_acid == "Glutamic acid") {
+  Three_Letter_Form <- "Glu"
+} else if  (amino_acid == "Glycine") {
+  Three_Letter_Form <- "Gly"
+} else if  (amino_acid == "Histidine") {
+  Three_Letter_Form <- "His"
+} else if  (amino_acid == "Isoleucine") {
+  Three_Letter_Form <- "Ile"
+} else if  (amino_acid == "Leucine") {
+  Three_Letter_Form <- "Leu"
+} else if  (amino_acid == "Lysine") {
+  Three_Letter_Form <- "Lys"
+} else if  (amino_acid == "Methionine") {
+  Three_Letter_Form <- "Met"
+} else if  (amino_acid == "Phenylalanine") {
+  Three_Letter_Form <- "Phe"
+} else if  (amino_acid == "Proline") {
+  Three_Letter_Form <- "Pro"
+} else if  (amino_acid == "Serine") {
+  Three_Letter_Form <- "Ser"
+} else if  (amino_acid == "Threonine") {
+  Three_Letter_Form <- "Thr"
+} else if  (amino_acid == "Tryptophan") {
+  Three_Letter_Form <- "Trp"
+} else if  (amino_acid == "Tyrosine") {
+  Three_Letter_Form <- "Tyr"
 } else {
   Three_Letter_Form <- "Val"
 }
-
-
-# Counts the number of times to repeat the character string.
-
-#Times_To_Repeat <- as.numeric(table(df1$AmAcid == Three_Letter_Form)["TRUE"])
 
 # Creates a data frame containing the codon count averages and std dev from original data frame.
 dfAmAcid <- (subset(df, AmAcid == Three_Letter_Form))[,c(1,3,4,5)]
@@ -391,7 +418,6 @@ return(Plot)
 
 }
                   
-
 
 # Alanine - Ala
 

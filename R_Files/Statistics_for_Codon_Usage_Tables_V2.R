@@ -1,3 +1,29 @@
+# Statistical Anaylsis of Update Codon Usage in Nicotiana benthaminana
+# 27 June 2022
+# Anchitaa Ghag
+
+#### PERSONAL NOTES ####
+
+setwd("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analysis/")
+
+# Still to do:
+
+# Make the axis consistent 0 -> 55  Done. Need to ensure it displays well for AmAcid plots.
+# change colors to a color-blind friendly palette like viridis Done. Added transparancy as well to ensure error bars can still be seen.
+# Clean up this script, ensure commented throughout
+# Email Mr. Muselius & Dr. JGM about the updated Intra B Plot
+# Also update Dr. AHW!
+# Add another figure perhaps a colored table with the RSCU and ENC values? How to visualize that?
+
+#### 01 INSTALL PACKAGES & DOWNLOAD LIBRARIES ####
+
+# First, set the working directory by running the following lines.
+# setwd()
+# getwd()
+
+# This script requires the following packages and libraries.
+# If these packages have not yet been installed please remove the "#" and run the following lines.
+
 library("ape")
 library("Biostrings")
 library("coRdon")
@@ -13,14 +39,11 @@ library("gridExtra")
 #install.packages("viridis")
 library(viridis)
 
-# Statistical Tests
-# 27 June 2022
-# Anchitaa Ghag
+#### 02 DATA AQUISITION : IMPORT CU FROM PREVIOUS SCRIPT ####
 
-#### IMPORT DATA ####
-dfNew <- read_csv("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analysis/dfCodingSeqs.csv")[,2:14]
-dfOld <- read_csv("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analysis/dfKazuza.csv")[,2:5]
-dfN.Tabacum <- read_csv("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analysis/dfNTabacum.csv")[,2:5]
+dfNew <- read_csv("dfCodingSeqs.csv")[,2:14]
+dfOld <- read_csv("dfKazuza.csv")[,2:5]
+dfN.Tabacum <- read_csv("dfNTabacum.csv")[,2:5]
 
 # Finally, calculate the most used codons (1 for each amino acid residue) from the data frame.
 
@@ -46,10 +69,10 @@ sum(dfN.Tabacum$X.1000) # Kazuza CU for N. tabacum reports 1000.04 instead of 10
 
 # For easier loading into R, i will be loading previously formatted files (using command line).
 
-Old_CDS <- read.table("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analysis/N_benthamiana_Codon_Counts_Only.txt",
+Old_CDS <- read.table("N_benthamiana_Codon_Counts_Only.txt",
                         header = TRUE)
 
-N.tabacum_CDS <- read.table("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analysis/N_tabacum_Codon_Counts_Only.txt",
+N.tabacum_CDS <- read.table("N_tabacum_Codon_Counts_Only.txt",
                             header = TRUE)
 
 #### GENERATE CODON USAGE TABLES ####
@@ -232,17 +255,26 @@ library(ggplot2)
 #Intra-samples Karlin B plot
 
 set.seed(1111)
-Sample_CU <- sample(New_CU,100)
+
+# Randomly sample the same number of "points" (i.e. coding sequences) as the old/exisitng codon usage.
+
+Sample_CU <- sample(New_CU,length(Old_CU)) 
 
 intraBplot(x = Old_CU, 
            y = Sample_CU, 
-           names = c("Existing", "Consensus"), 
+          names = c("Old", "New"), 
            variable = "MILC", 
            size = 3, 
-           alpha = 1.0) + 
-  ggtitle("Karlin B Plot of Existing (Kazuza) v.s. Consensus CU Distances")+
+           alpha = 0.8) + 
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5), legend.position = "none") +
+  ggtitle("Karlin B Plot of Existing (Kazuza) v.s.New CU Distances")+
   xlab("MILC Distance from Existing CU") +
-  ylab("MILC Distance from Consensus CU") #+ 
+  ylab("MILC Distance from Consensus CU") + 
+ # scale_fill_manual(name = "Species", labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana")) +
+  theme(legend.position = c(0.93, 0.10),
+        legend.background = element_rect(fill = "white", color = "black")) +  #https://datavizpyr.com/how-to-place-legend-inside-the-plot-with-ggplot2/ 
+  labs(color="Codon Usage")
   #geom_jitter(width  = 0.05) + # Add noise since the dataset in small to avoid overplotting.
   #geom_smooth(method = "lm", formula = y ~ x, fullrange = FALSE, level = 0.95) # 95% confidence interval
   #geom_smooth(aes(group = 1), formula = y ~ poly(x,2), method = "lm", fullrange = TRUE, level = 0.95) 
@@ -252,6 +284,9 @@ intraBplot(x = Old_CU,
 
 
 # This makes sense, since it is the same species, the codon usage should not differ greatly from the Old CU data set available.
+
+### ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT) ####
+
 
 # Compare with N.tabacum 
 
@@ -553,13 +588,3 @@ grid.arrange( p5, p6, p7, p8, nrow = 2)
 grid.arrange( p9, p10, p11, p12, nrow = 2)
 grid.arrange( p13, p14, p15, p16, nrow = 2)
 grid.arrange( p17, p18, p19, p20, nrow = 2)
-
-
-# Still to do/ Personal Notes
-
-# Make the axis consistent 0 -> 55  Done. Need to ensure it displays well for AmAcid plots.
-# change colors to a color-blind friendly palette like viridis Done. Added transparancy as well to ensure error bars can still be seen.
-# Clean up this script, ensure commented throughout
-# Email Mr. Muselius & Dr. JGM about the updated Intra B Plot
-# Also update Dr. AHW!
-# Add another figure perhaps a colored table with the RSCU and ENC values? How to visualize that?

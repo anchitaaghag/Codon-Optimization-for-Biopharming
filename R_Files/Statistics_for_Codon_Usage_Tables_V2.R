@@ -2,7 +2,7 @@
 # 27 June 2022
 # Anchitaa Ghag
 
-#### PERSONAL NOTES ####
+#### 00 PERSONAL NOTES ####
 
 setwd("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analysis/")
 
@@ -46,7 +46,7 @@ dfNew <- read_csv("dfCodingSeqs.csv")[,2:14]
 dfOld <- read_csv("dfKazuza.csv")[,2:5]
 dfTabacum <- read_csv("dfNTabacum.csv")[,2:5]
 
-#### MINOR NOTE ON AVERAGE CODON COUNTS REPORTED BY KAZUZA ####
+#### 03 MINOR NOTE ON AVERAGE CODON COUNTS REPORTED BY KAZUZA ####
 
 # Note that the average number of codon counts per 1000 codons reported by the Kazuza database can differ slightly.
 # For example, check the total number of codons (should be 1000) in Kazuza CU for N. benthamiana and N. tabacum.
@@ -70,7 +70,7 @@ Old_CDS <- read.table("N_benthamiana_Codon_Counts_Only.txt",
 Tabacum_CDS <- read.table("N_tabacum_Codon_Counts_Only.txt",
                             header = TRUE)
 
-#### GENERATE CODON USAGE TABLES ####
+#### 04 GENERATE CODON USAGE TABLES ####
 
 #https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 
@@ -106,7 +106,7 @@ Old_Matrix <- codonCounts(Old_CU)
 New_Matrix <- codonCounts(New_CU)
 Tabacum_Matrix <- codonCounts(Tabacum_CU)
 
-#### MEAN & STANDARD DEVIATIONS ####
+#### 05 MEAN & STANDARD DEVIATIONS ####
 
 # In this section, we will calculate the average (i.e. mean) codon counts per codon and the standard deviation.
 # This step will be performed for each of the 64 amino acids across the three samples (i.e. data frames).
@@ -169,7 +169,7 @@ Frequencies <- as.data.frame((Sums/sum(Tabacum_Matrix))*1000) # (Sum of counts o
 dfTabacum_MeanSD <- cbind(Averages, StdDevs, Sums, Frequencies)
 colnames(dfTabacum_MeanSD) <- c("Average_Codon_Count","Std_Deviation","Sum of Counts Per Codon","Frequency (Per 1000 Codons)")
 
-##### Histogram #####
+#### 06 Histogram #####
 
 #dfMeanSD <-
 
@@ -195,7 +195,7 @@ ggplot(data=dfMeanSD,
   ylim(NA,40) +
   scale_fill_viridis(discrete = TRUE, option = "viridis") 
 
-#### CHI SQUARE TEST ####
+#### 07 CHI SQUARE TEST ####
 
 # Perform a chi-squared test to evaluate if there is a difference between the frequencies of both CU.
 
@@ -212,7 +212,7 @@ chisq.test(x = dfOld_MeanSD$`Frequency (Per 1000 Codons)`,
 # "Other CU statistics can be calculated in the same way as MILC(), using one of the functions: B(), MCB(), ENCprime(), ENC() or SCUO(). Note however, that when calculating ENC and SCUO, one doesn’t need to provide a subset of refe"
 # Next, compare the CU bias for every coding sequence between the created CUT and Kazuza through visualizations.
 
-# Visualization of Codon Usage - Existing vs. Current Karlin B plot ####
+#### 08 Visualization of Codon Usage - Existing vs. Current Karlin B plot ####
 
 # Code Adapted From: https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
 
@@ -248,7 +248,7 @@ intraBplot(x = Old_CU,
 # The example dataset in the vignette has ~ 19, 000 + "points". There may just be undersampling/ less data points
 # This makes sense, since it is the same species, the codon usage should not differ greatly from the Old CU data set available.
 
-### ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT) ####
+
 
 # Compare with N.tabacum 
 
@@ -270,8 +270,10 @@ intraBplot(x = New_CU,
 #geom_curve()
 
 # Again, not a lot of difference. As expected.
+  
+#### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT) ####
 
-#### RSCU ####
+#### 10 RSCU ####
 
 formatted_cds <- s2c((unlist(dfNew$Trimmed_CDS[1])))
 
@@ -291,7 +293,7 @@ table(New_RSCU$RSCU < 1) # RSCU < 1 codon used less frequently than random
 # Don't have the sequences for Old N.benthamiana CU. May have to import that (if time permits).
 # Can report the RSCU measures in a table (perhaps supplementary results?)
 
-#### ENC & Mann Whitney U Test ####
+#### 11 ENC & Mann Whitney U Test ####
 
 enc <- ENC(New_CU)
 Old_ENC <- ENC(Old_CU)
@@ -335,7 +337,7 @@ table(enc == 20) # ENC = 20 codon is used as expected by random usage
 table(enc == 61) # ENC = 61 codon used more frequently than random
 table(enc < 40) # ENC < 40 low codon usage bias
 
-#### The Twenty Amino Acid Distributions ####
+#### 12 CREATE AVRAGES & STD DEV DATA FRAME ####
 
 Codon <- rep(rownames(dfOld_MeanSD),3)
 AmAcid <- as.list((dfOld[order(dfOld$Codon),])[,1])
@@ -345,7 +347,7 @@ SD <- c(dfOld_MeanSD$Std_Deviation, dfNew_MeanSD$Std_Deviation, dfTabacum_MeanSD
 
 dfCodon_Mean_SD <- data.frame(Codon,AmAcid,Sample,Avrgs, SD)
 
-##### Plotting Function #####
+#### 13 PLOT AVERAGE COUNTS PER AMINO ACID #####
 
 # Takes an argument "amino_acid" which is the name of the amino acid. A data frame containing average and stand daeviation information.
 
@@ -517,7 +519,7 @@ p19 <- Plot_AmAcid(amino_acid = "Tyrosine",
 p20 <- Plot_AmAcid(amino_acid = "Valine", 
                   df = dfCodon_Mean_SD)
 
-#### grid ####
+#### 14 ARRANGE PLOTS IN A GRID ####
 
 # https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html
 
@@ -527,7 +529,7 @@ grid.arrange( p9, p10, p11, p12, nrow = 2)
 grid.arrange( p13, p14, p15, p16, nrow = 2)
 grid.arrange( p17, p18, p19, p20, nrow = 2)
 
-### Adittional ####
+#### 15 ADITIONAL WORK ####
 
 # Finally, calculate the most used codons (1 for each amino acid residue) from the data frame.
 
@@ -543,3 +545,4 @@ grid.arrange( p17, p18, p19, p20, nrow = 2)
 
 
 #
+#### 16 REFERENCES ####

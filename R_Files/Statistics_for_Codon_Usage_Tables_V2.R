@@ -169,7 +169,7 @@ Frequencies <- as.data.frame((Sums/sum(Tabacum_Matrix))*1000) # (Sum of counts o
 dfTabacum_MeanSD <- cbind(Averages, StdDevs, Sums, Frequencies)
 colnames(dfTabacum_MeanSD) <- c("Average_Codon_Count","Std_Deviation","Sum of Counts Per Codon","Frequency (Per 1000 Codons)")
 
-#### 06 Histogram #####
+#### 06 HISTOGRAM OF CODON USAGE FREQUENCIES #####
 
 #dfMeanSD <-
 
@@ -212,7 +212,7 @@ chisq.test(x = dfOld_MeanSD$`Frequency (Per 1000 Codons)`,
 # "Other CU statistics can be calculated in the same way as MILC(), using one of the functions: B(), MCB(), ENCprime(), ENC() or SCUO(). Note however, that when calculating ENC and SCUO, one doesn’t need to provide a subset of refe"
 # Next, compare the CU bias for every coding sequence between the created CUT and Kazuza through visualizations.
 
-#### 08 Visualization of Codon Usage - Existing vs. Current Karlin B plot ####
+#### 08 INTRA KARLIN B PLOT ####
 
 # Code Adapted From: https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
 
@@ -293,7 +293,7 @@ table(New_RSCU$RSCU < 1) # RSCU < 1 codon used less frequently than random
 # Don't have the sequences for Old N.benthamiana CU. May have to import that (if time permits).
 # Can report the RSCU measures in a table (perhaps supplementary results?)
 
-#### 11 ENC & Mann Whitney U Test ####
+#### 11 ENC & MANN WHITNEY U TEST ####
 
 enc <- ENC(New_CU)
 Old_ENC <- ENC(Old_CU)

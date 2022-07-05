@@ -239,7 +239,7 @@ intraBplot(x = Old_CU,
  # scale_fill_manual(name = "Species", labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana")) +
   theme(legend.position = c(0.93, 0.10),
         legend.background = element_rect(fill = "white", color = "black")) +  #https://datavizpyr.com/how-to-place-legend-inside-the-plot-with-ggplot2/ 
-  labs(color="Codon Usage")
+  labs(color="Codon Usage") # https://stackoverflow.com/questions/14622421/how-to-change-legend-title-in-ggplot
   #geom_jitter(width  = 0.05) + # Add noise since the dataset in small to avoid overplotting.
   #geom_smooth(method = "lm", formula = y ~ x, fullrange = FALSE, level = 0.95) # 95% confidence interval
   #geom_smooth(aes(group = 1), formula = y ~ poly(x,2), method = "lm", fullrange = TRUE, level = 0.95) 
@@ -250,28 +250,26 @@ intraBplot(x = Old_CU,
 
 ### ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT) ####
 
-
 # Compare with N.tabacum 
 
-set.seed(1111)
+set.seed(1234)
 Sample_CU <- sample(Tabacum_CU,407)
 
 intraBplot(x = New_CU, 
            y = Sample_CU, 
            names = c("Existing", "Consensus"), 
            variable = "MILC", 
-           size = 3, 
+           size = 1, 
            alpha = 1.0) + 
   ggtitle("Karlin B Plot of Existing (Kazuza) v.s. Consensus CU Distances")+
   xlab("MILC Distance from Existing CU") +
-  ylab("MILC Distance from Consensus CU") #+ 
+  ylab("MILC Distance from Consensus CU") + 
 #geom_jitter(width  = 0.05) + # Add noise since the dataset in small to avoid overplotting.
 #geom_smooth(method = "lm", formula = y ~ x, fullrange = FALSE, level = 0.95) # 95% confidence interval
 #geom_smooth(aes(group = 1), formula = y ~ poly(x,2), method = "lm", fullrange = TRUE, level = 0.95) 
 #geom_curve()
 
 # Again, not a lot of difference. As expected.
-
 
 #### RSCU ####
 
@@ -331,30 +329,38 @@ wilcox.test(x = enc,
 # The result is not significant at p < .05.
 # H0 Null Hyp not rejected& 
 
-
 #http://www.sthda.com/english/wiki/normality-test-in-r
 
-table(enc == 20) # RSCU = 1 codon is used as expected by random usage 
-table(enc == 61) # RSCU > 1 codon used more frequently than random
-table(enc < 40) # RSCU < 1 codon used less frequently than random 
+table(enc == 20) # ENC = 20 codon is used as expected by random usage 
+table(enc == 61) # ENC = 61 codon used more frequently than random
+table(enc < 40) # ENC < 40 low codon usage bias
 
 #### The Twenty Amino Acid Distributions ####
-
 
 Codon <- rep(rownames(dfOld_MeanSD),3)
 AmAcid <- as.list((dfOld[order(dfOld$Codon),])[,1])
 Sample <- c((rep("Old",64)), (rep("New",64)), (rep("Tabacum",64)))
 Avrgs <- c(dfOld_MeanSD$`Frequency (Per 1000 Codons)`, dfNew_MeanSD$`Frequency (Per 1000 Codons)`, dfTabacum_MeanSD$`Frequency (Per 1000 Codons)`)
 SD <- c(dfOld_MeanSD$Std_Deviation, dfNew_MeanSD$Std_Deviation, dfTabacum_MeanSD$Std_Deviation)
+
 dfCodon_Mean_SD <- data.frame(Codon,AmAcid,Sample,Avrgs, SD)
 
 ##### Plotting Function #####
 
-# Takes an argument "amino_acid" which is the name of the amino acid. Three data frames in the style of the Kazuza data base.
+# Takes an argument "amino_acid" which is the name of the amino acid. A data frame containing average and stand daeviation information.
 
-Plot_AmAcid <- function(amino_acid, three_letter, df) {
-  
-Three_Letter_Form <- three_letter
+Plot_AmAcid <- function(amino_acid, df) {
+
+if (amino_acid == "Alanine") { 
+  Three_Letter_Form <- "Ala"
+} else if (amino_acid == "Arginine") {
+  Three_Letter_Form <- "Arg"
+} else if  (amino_acid == "Asparagine") {
+  Three_Letter_Form <- "Asp"
+} else {
+  Three_Letter_Form <- "Val"
+}
+
 
 # Counts the number of times to repeat the character string.
 
@@ -362,19 +368,6 @@ Three_Letter_Form <- three_letter
 
 # Creates a data frame containing the codon count averages and std dev from original data frame.
 dfAmAcid <- (subset(df, AmAcid == Three_Letter_Form))[,c(1,3,4,5)]
-
-#Sample <- c(rep(x = "Existing", times = Times_To_Repeat),
-            #rep(x = "Current", times = Times_To_Repeat),
-           # rep(x = "N. tabacum", times = Times_To_Repeat))
-
-#str1 <- (subset(df1, AmAcid == Three_Letter_Form))[,4]
-#s1 <-  unlist(str1)
-
-#str2 <- (subset(df2, AmAcid == Three_Letter_Form))[,4]
-#s2 <-  unlist(str2)
-
-#str3 <- (subset(df3, AmAcid == Three_Letter_Form))[,4]
-#s3 <-  unlist(str3)
 
 # Generate the plot using ggplot package functions.
 
@@ -403,13 +396,13 @@ return(Plot)
 # Alanine - Ala
 
 p1 <- Plot_AmAcid(amino_acid = "Alanine", 
-            three_letter = "Ala", 
+            #three_letter = "Ala", 
             df = dfCodon_Mean_SD)
 
 # Arginine - Arg 
 
 p2 <- Plot_AmAcid(amino_acid = "Arginine", 
-            three_letter = "Arg", 
+            #three_letter = "Arg", 
             df = dfCodon_Mean_SD)
 
 # Asparagine - Asn
@@ -421,7 +414,7 @@ p3 <- Plot_AmAcid(amino_acid = "Asparagine",
 # Aspartic acid - Asp 
 
 p4 <- Plot_AmAcid(amino_acid = "Aspartic acid", 
-                  three_letter = "Asp", 
+                  #three_letter = "Asp", 
                   df = dfCodon_Mean_SD)
 
 # Cysteine - Cys
@@ -517,7 +510,7 @@ p19 <- Plot_AmAcid(amino_acid = "Tyrosine",
 # Valine - Val 
 
 p20 <- Plot_AmAcid(amino_acid = "Valine", 
-                  three_letter = "Val", 
+                 # three_letter = "Val", 
                   df = dfCodon_Mean_SD)
 
 #### grid ####
@@ -529,7 +522,6 @@ grid.arrange( p5, p6, p7, p8, nrow = 2)
 grid.arrange( p9, p10, p11, p12, nrow = 2)
 grid.arrange( p13, p14, p15, p16, nrow = 2)
 grid.arrange( p17, p18, p19, p20, nrow = 2)
-
 
 ### Adittional ####
 

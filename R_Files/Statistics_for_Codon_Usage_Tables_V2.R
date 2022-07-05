@@ -421,122 +421,100 @@ return(Plot)
 
 # Alanine - Ala
 
-p1 <- Plot_AmAcid(amino_acid = "Alanine", 
-            #three_letter = "Ala", 
-            df = dfCodon_Mean_SD)
+p1 <- Plot_AmAcid(amino_acid = "Alanine", df = dfCodon_Mean_SD)
 
 # Arginine - Arg 
 
-p2 <- Plot_AmAcid(amino_acid = "Arginine", 
-            #three_letter = "Arg", 
-            df = dfCodon_Mean_SD)
+p2 <- Plot_AmAcid(amino_acid = "Arginine", df = dfCodon_Mean_SD)
 
 # Asparagine - Asn
 
 p3 <- Plot_AmAcid(amino_acid = "Asparagine", 
-                  three_letter = "Asn", 
                   df = dfCodon_Mean_SD)
 
 # Aspartic acid - Asp 
 
 p4 <- Plot_AmAcid(amino_acid = "Aspartic acid", 
-                  #three_letter = "Asp", 
                   df = dfCodon_Mean_SD)
 
 # Cysteine - Cys
 
 p5 <- Plot_AmAcid(amino_acid = "Cysteine", 
-                  three_letter = "Cys", 
                   df = dfCodon_Mean_SD)
 
 # Glutamine - Gln
 
 p6 <- Plot_AmAcid(amino_acid = "Glutamine", 
-                  three_letter = "Gln", 
                   df = dfCodon_Mean_SD)
 
 # Glutamic acid - Glu
 
 p7 <- Plot_AmAcid(amino_acid = "Glutamic acid", 
-                  three_letter = "Glu", 
                   df = dfCodon_Mean_SD)
 
 # Glycine - Gly 
 
 p8 <- Plot_AmAcid(amino_acid = "Glycine", 
-                  three_letter = "Gly", 
                   df = dfCodon_Mean_SD)
 
 # Histidine - His 
 
 p9 <- Plot_AmAcid(amino_acid = "Histidine", 
-                  three_letter = "His", 
                   df = dfCodon_Mean_SD)
 
 # Isoleucine - Ile 
 
 p10 <- Plot_AmAcid(amino_acid = "Isoleucine", 
-                  three_letter = "Ile", 
                   df = dfCodon_Mean_SD)
 
 # Leucine - Leu 
 
 p11 <- Plot_AmAcid(amino_acid = "Leucine", 
-                  three_letter = "Leu", 
                   df = dfCodon_Mean_SD)
 
 # Lysine - Lys 
 
 p12 <- Plot_AmAcid(amino_acid = "Lysine", 
-                  three_letter = "Lys", 
                   df = dfCodon_Mean_SD)
 
 # Methionine - Met
 
 p13 <- Plot_AmAcid(amino_acid = "Methionine", 
-                  three_letter = "Met", 
                   df = dfCodon_Mean_SD)
 
 # Phenylalanine - Phe 
 
 p14 <- Plot_AmAcid(amino_acid = "Phenylalanine", 
-                  three_letter = "Phe", 
                   df = dfCodon_Mean_SD)
 
 # Proline - Pro 
 
 p15 <- Plot_AmAcid(amino_acid = "Proline", 
-                  three_letter = "Pro", 
                   df = dfCodon_Mean_SD)
 
 # Serine - Ser
 
 p16 <- Plot_AmAcid(amino_acid = "Serine", 
-                  three_letter = "Ser", 
                   df = dfCodon_Mean_SD)
 
 # Threonine - Thr 
 
 p17 <- Plot_AmAcid(amino_acid = "Threonine", 
-                  three_letter = "Thr", 
                   df = dfCodon_Mean_SD)
 
 # Tryptophan - Trp 
 
 p18 <- Plot_AmAcid(amino_acid = "Tryptophan", 
-                  three_letter = "Trp", 
                   df = dfCodon_Mean_SD)
 
 # Tyrosine - Tyr 
 
 p19 <- Plot_AmAcid(amino_acid = "Tyrosine", 
-                  three_letter = "Tyr", 
                   df = dfCodon_Mean_SD)
 
 # Valine - Val 
 
 p20 <- Plot_AmAcid(amino_acid = "Valine", 
-                 # three_letter = "Val", 
                   df = dfCodon_Mean_SD)
 
 #### grid ####

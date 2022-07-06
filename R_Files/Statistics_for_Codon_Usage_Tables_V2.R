@@ -111,25 +111,6 @@ Tabacum_Matrix <- codonCounts(Tabacum_CU)
 
 # Code for std dev calculation across columns adapted from : https://www.datasciencemadesimple.com/get-standard-deviation-of-a-column-in-r-2/
 
-# For Kazuza's N. benthamiana coding sequences:
-
-# First, for every column (i.e. triplet), calculate the average.
-Averages <- as.data.frame(colMeans(Old_Matrix))
-# Then, for every column (i.e. triplet), calculate the standard deviation.
-StdDevs <- as.data.frame(Old_Matrix) %>% 
-  summarise_if(is.numeric, sd) %>%
-  t()
-# Finally, transform both the average and the standard deviation.
-# Linearly transforming the mean will ensure that all the average codon counts are reported on the same scale. That is, all the data is on the same scale.
-# This will also include linearly transforming the standard deviation, which will not be affected by the transformation.
-Sums <- as.data.frame(colSums(Old_Matrix))  # Total number of counts per column.
-Frequencies <- as.data.frame((Sums/sum(Old_Matrix))*1000) # (Sum of counts of codons / Total number of codons)*1000
-
-dfOld_MeanSD <- cbind(Averages, StdDevs, Sums, Frequencies)
-colnames(dfOld_MeanSD) <- c("Average_Codon_Count","Std_Deviation","Sum of Counts Per Codon","Frequency (Per 1000 Codons)")
-
-
-
 Calculate_Means_Std_Dev <- function(matrix) {
   
   # First, for every column (i.e. triplet), calculate the average.
@@ -150,42 +131,11 @@ Calculate_Means_Std_Dev <- function(matrix) {
   return(Dataframe)
 }
 
-# For the new  N. benthamiana coding sequences:
+dfOld_MeanSD <- Calculate_Means_Std_Dev(matrix = Old_Matrix)
 
-# First, for every column (i.e. triplet), calculate the average.
-Averages <- as.data.frame(colMeans(New_Matrix))
-# Then, for every column (i.e. triplet), calculate the standard deviation.
-StdDevs <- as.data.frame(New_Matrix) %>% 
-  summarise_if(is.numeric, sd) %>%
-  t()
-# Finally, transform both the average and the standard deviation.
-# Linearly transforming the mean will ensure that all the average codon counts are reported on the same scale. That is, all the data is on the same scale.
-# This will also include linearly transforming the standard deviation, which will not be affected by the transformation.
-Sums <- as.data.frame(colSums(New_Matrix))  # Total number of counts per column.
-Frequencies <- as.data.frame((Sums/sum(New_Matrix))*1000) # (Sum of counts of codons / Total number of codons)*1000
+dfNew_MeanSD <- Calculate_Means_Std_Dev(matrix = New_Matrix)
 
-dfNew_MeanSD <- cbind(Averages, StdDevs, Sums, Frequencies)
-colnames(dfNew_MeanSD) <- c("Average_Codon_Count","Std_Deviation","Sum of Counts Per Codon","Frequency (Per 1000 Codons)")
-
-
-#dfTabacum_MeanSD
-
-# For the Kazuza's  N. tabcum coding sequences:
-
-# First, for every column (i.e. triplet), calculate the average.
-Averages <- as.data.frame(colMeans(Tabacum_Matrix))
-# Then, for every column (i.e. triplet), calculate the standard deviation.
-StdDevs <- as.data.frame(Tabacum_Matrix) %>% 
-  summarise_if(is.numeric, sd) %>%
-  t()
-# Finally, transform both the average and the standard deviation.
-# Linearly transforming the mean will ensure that all the average codon counts are reported on the same scale. That is, all the data is on the same scale.
-# This will also include linearly transforming the standard deviation, which will not be affected by the transformation.
-Sums <- as.data.frame(colSums(Tabacum_Matrix))  # Total number of counts per column.
-Frequencies <- as.data.frame((Sums/sum(Tabacum_Matrix))*1000) # (Sum of counts of codons / Total number of codons)*1000
-
-dfTabacum_MeanSD <- cbind(Averages, StdDevs, Sums, Frequencies)
-colnames(dfTabacum_MeanSD) <- c("Average_Codon_Count","Std_Deviation","Sum of Counts Per Codon","Frequency (Per 1000 Codons)")
+dfTabacum_MeanSD <- Calculate_Means_Std_Dev(matrix = Tabacum_Matrix)
 
 #### 06 HISTOGRAM OF CODON USAGE FREQUENCIES #####
 

@@ -218,7 +218,6 @@ intraBplot(x = Old_CU,
   labs(color="Codon Usage") # https://stackoverflow.com/questions/14622421/how-to-change-legend-title-in-ggplot
   #geom_jitter(width  = 0.05) + # Add noise since the dataset in small to avoid overplotting.
 
-
 # The example dataset in the vignette has ~ 19, 000 + "points". There may just be undersampling/ less data points
 # This makes sense, since it is the same species, the codon usage should not differ greatly from the Old CU data set available.
 
@@ -307,19 +306,17 @@ dfCodon_Mean_SD <- data.frame(Codon,AmAcid,Sample,Avrgs, SD)
 
 #### ANOVA/ KRUSKAL WALLIS #####
 
-shapiro.test(dfCodon_Mean_SD$Avrgs)
-shapiro.test(dfOld_MeanSD$Average_Codon_Count)
-shapiro.test(dfNew_MeanSD$Average_Codon_Count)
-shapiro.test(dfTabacum_MeanSD$Average_Codon_Count)
+shapiro.test(dfCodon_Mean_SD$Avrgs) # Not Normal.
+shapiro.test(dfOld_MeanSD$Average_Codon_Count) # Not Normal
+shapiro.test(dfNew_MeanSD$Average_Codon_Count) # Normal
+shapiro.test(dfTabacum_MeanSD$Average_Codon_Count) # Normal
 
-# Data follows a normal distribution?
-
-anova <- aov(Avrgs ~ as.factor(Sample), data = dfCodon_Mean_SD)
+# Data follows a normal distribution? No. Use non-parametric test.
 
 boxplot(Avrgs ~ Codon, data = dfCodon_Mean_SD)
 kwtest <- kruskal.test(Avrgs ~ Sample, data = dfCodon_Mean_SD)
 
-TukeyHSD(x = anova)
+TukeyHSD(x = anova) # Non parametric post hoc eqivalent?
 
 
 #### 13 PLOT AVERAGE COUNTS PER AMINO ACID #####

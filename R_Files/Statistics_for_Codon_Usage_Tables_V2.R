@@ -72,15 +72,15 @@ Tabacum_CDS <- read.table("N_tabacum_Codon_Counts_Only.txt",
 
 #https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 
-# 1) First, convert the trimmed coding sequences to a DNAStringSet object.
+# First, convert the trimmed coding sequences to a DNAStringSet object.
 
 cds <- DNAStringSet(dfNew$Trimmed_CDS)
 
-# 2) Second, create a codon usage table object for both existing and current codon usage tables.
+# Second, create a codon usage table object for both existing and current codon usage tables.
 # NOTE! The columns in the list of codon counts imported from Kazuza are not sorted alphabetically! 
 # These need to be reordered before inputting into the codonTable function or else counts will be assined to the wrong codon!
 
-# Replace U w T
+# Replace "U" with "T" in the sequences. 
 
 colnames(Old_CDS) <- str_replace_all(colnames(Old_CDS),"U","T") 
 colnames(Tabacum_CDS) <- str_replace_all(colnames(Tabacum_CDS),"U","T") 
@@ -98,7 +98,7 @@ Old_CU <- codonTable(Old_CDS_Ordered)
 New_CU <- codonTable(cds)
 Tabacum_CU <- codonTable(Tabacum_CDS_Ordered)
 
-# 3) Then, using the codonCounts() function from the codRon package create a matrix to view the counts per codon.
+# Then, using the codonCounts() function from the codRon package create a matrix to view the counts per codon.
 
 Old_Matrix <- codonCounts(Old_CU)
 New_Matrix <- codonCounts(New_CU)

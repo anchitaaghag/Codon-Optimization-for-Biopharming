@@ -178,6 +178,16 @@ Species <- c((rep("Old N. benthamiana (Kazuza)",64)), (rep("New N. benthamiana",
 Freq <- c(dfOld_MeanSD$`Frequency (Per 1000 Codons)`, dfNew_MeanSD$`Frequency (Per 1000 Codons)`, dfTabacum_MeanSD$`Frequency (Per 1000 Codons)`)
 dfMeanSD <- data.frame(AmAcid,Species,Freq)
 
+# Check distribution.
+
+ggqqplot(dfOld_MeanSD$`Frequency (Per 1000 Codons)`)  
+ggqqplot(dfNew_MeanSD$`Frequency (Per 1000 Codons)`)
+ggqqplot(dfTabacum_MeanSD$`Frequency (Per 1000 Codons)`)
+
+shapiro.test(dfOld_MeanSD$`Frequency (Per 1000 Codons)`) # p-value = 0.01822 Not normal.
+shapiro.test(dfNew_MeanSD$`Frequency (Per 1000 Codons)`) # p-value = 0.09106 Normal.
+shapiro.test(dfTabacum_MeanSD$`Frequency (Per 1000 Codons)`) # p-value = 0.1056 Normal.
+
 # Compare the codon usage frequency using a histogram.
 
 ggplot(data=dfMeanSD, 
@@ -432,7 +442,7 @@ if (amino_acid == "Alanine") {
   xlab("Codon") +
   ylab("Average Codon Count") +
   geom_errorbar(aes(ymin=Avrgs-SD, ymax=Avrgs+SD), width=.2, position=position_dodge(.9)) +
-  ylim(NA,55) +
+  scale_y_continuous(breaks = seq(0, 55, by = 5), limits = c(0,55)) +
   scale_fill_viridis(discrete = TRUE, option = "viridis") +
   scale_color_manual(name= "Species",
                    labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana ", "N.tabacum (Kazuza)"))

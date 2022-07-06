@@ -222,28 +222,6 @@ intraBplot(x = Old_CU,
 # The example dataset in the vignette has ~ 19, 000 + "points". There may just be undersampling/ less data points
 # This makes sense, since it is the same species, the codon usage should not differ greatly from the Old CU data set available.
 
-
-# Compare with N.tabacum 
-
-set.seed(1234)
-Sample_CU <- sample(Tabacum_CU,407)
-
-intraBplot(x = New_CU, 
-           y = Sample_CU, 
-           names = c("Existing", "Consensus"), 
-           variable = "MILC", 
-           size = 1, 
-           alpha = 1.0) + 
-  ggtitle("Karlin B Plot of Existing (Kazuza) v.s. Consensus CU Distances")+
-  xlab("MILC Distance from Existing CU") +
-  ylab("MILC Distance from Consensus CU") 
-#geom_jitter(width  = 0.05) + # Add noise since the dataset in small to avoid overplotting.
-#geom_smooth(method = "lm", formula = y ~ x, fullrange = FALSE, level = 0.95) # 95% confidence interval
-#geom_smooth(aes(group = 1), formula = y ~ poly(x,2), method = "lm", fullrange = TRUE, level = 0.95) 
-#geom_curve()
-
-# Again, not a lot of difference. As expected.
-  
 #### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT ####
 
 # Check if the B() values are normally distributed.

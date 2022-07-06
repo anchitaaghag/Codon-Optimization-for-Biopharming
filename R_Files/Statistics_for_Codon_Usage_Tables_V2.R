@@ -1,4 +1,4 @@
-# Statistical Anaylsis of Update Codon Usage in Nicotiana benthaminana
+# Statistical Analysis of Update Codon Usage in Nicotiana benthaminana
 # 27 June 2022
 # Anchitaa Ghag
 
@@ -8,11 +8,7 @@ setwd("/Users/anchitaa/Major_Research_Project_2022/06_Code/08_Statistical_Analys
 
 # Still to do:
 
-# Make the axis consistent 0 -> 55  Done. Need to ensure it displays well for AmAcid plots.
-# change colors to a color-blind friendly palette like viridis Done. Added transparancy as well to ensure error bars can still be seen.
 # Clean up this script, ensure commented throughout
-# Email Mr. Muselius & Dr. JGM about the updated Intra B Plot
-# Also update Dr. AHW!
 # Add another figure perhaps a colored table with the RSCU and ENC values? How to visualize that?
 
 #### 01 INSTALL PACKAGES & DOWNLOAD LIBRARIES ####
@@ -132,7 +128,27 @@ Frequencies <- as.data.frame((Sums/sum(Old_Matrix))*1000) # (Sum of counts of co
 dfOld_MeanSD <- cbind(Averages, StdDevs, Sums, Frequencies)
 colnames(dfOld_MeanSD) <- c("Average_Codon_Count","Std_Deviation","Sum of Counts Per Codon","Frequency (Per 1000 Codons)")
 
-#dfNew_MeanSD
+
+
+Calculate_Means_Std_Dev <- function(matrix) {
+  
+  # First, for every column (i.e. triplet), calculate the average.
+  Averages <- as.data.frame(colMeans(matrix))
+  # Then, for every column (i.e. triplet), calculate the standard deviation.
+  StdDevs <- as.data.frame(matrix) %>% 
+    summarise_if(is.numeric, sd) %>%
+    t()
+  # Total number of counts per column.
+  Sums <- as.data.frame(colSums(matrix))  
+  # (Sum of counts of codons / Total number of codons)*1000
+  Frequencies <- as.data.frame((Sums/sum(matrix))*1000) 
+  # Add all the lists into a data frame.
+  Dataframe <- cbind(Averages, StdDevs, Sums, Frequencies)
+  # Rename the columns.
+  colnames(Dataframe) <- c("Average_Codon_Count","Std_Deviation","Sum of Counts Per Codon","Frequency (Per 1000 Codons)")
+  
+  return(Dataframe)
+}
 
 # For the new  N. benthamiana coding sequences:
 
@@ -442,7 +458,7 @@ if (amino_acid == "Alanine") {
   xlab("Codon") +
   ylab("Average Codon Count") +
   geom_errorbar(aes(ymin=Avrgs-SD, ymax=Avrgs+SD), width=.2, position=position_dodge(.9)) +
-  scale_y_continuous(breaks = seq(0, 55, by = 5), limits = c(0,55)) +
+  scale_y_continuous(breaks = seq(0, 55, by = 5), limits = c(0,55)) + # adapted from: https://stackoverflow.com/questions/37950511/r-ggplot2-setting-tick-mark-interval
   scale_fill_viridis(discrete = TRUE, option = "viridis") +
   scale_color_manual(name= "Species",
                    labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana ", "N.tabacum (Kazuza)"))

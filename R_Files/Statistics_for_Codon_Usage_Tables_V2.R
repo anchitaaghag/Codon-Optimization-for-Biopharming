@@ -1,5 +1,4 @@
-# Statistical Analysis of Update Codon Usage in Nicotiana benthaminana
-# 27 June 2022
+# Statistical Analysis of Updated Codon Usage in Nicotiana benthaminana
 # Anchitaa Ghag
 
 #### 00 PERSONAL NOTES ####
@@ -317,7 +316,6 @@ boxplot(Avrgs ~ Codon, data = dfCodon_Mean_SD)
 kwtest <- kruskal.test(Avrgs ~ Sample, data = dfCodon_Mean_SD)
 
 TukeyHSD(x = anova) # Non parametric post hoc eqivalent?
-
 
 #### 13 PLOT AVERAGE COUNTS PER AMINO ACID #####
 

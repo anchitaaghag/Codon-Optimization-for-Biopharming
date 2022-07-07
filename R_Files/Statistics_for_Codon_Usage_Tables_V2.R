@@ -244,6 +244,19 @@ ks.test(logycords, "pnorm")
 
 # The p-value < 2.2e-16 (p < 0.05 )for both indicating that the data is not normally distributed.
 
+# Attempt to try cube root.
+# Compute the cube root of each data point in both directions.
+
+rootxcords <- xcords*(1/3)
+rootycords <- ycords*(1/3)
+
+# Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
+
+ks.test(rootxcords, "pnorm")
+ks.test(rootycords, "pnorm")
+
+# The p-value < 2.2e-16 (p < 0.05 )for both indicating that the data is not normally distributed.
+
 
 
 #### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT ####

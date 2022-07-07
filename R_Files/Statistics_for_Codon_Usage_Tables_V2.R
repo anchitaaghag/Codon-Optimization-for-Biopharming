@@ -272,7 +272,37 @@ ks.test(sqrootycords, "pnorm")
 # Data is very positively skewed (i.e. right skewed distribution of data) for both the x coordinates and the y coordinates. Even after applying log transformations, the data is not sufficiently "normal" to be able to use parametric tests to estimate the degree of separation.
 
 # Are non-parametic tests available and suitable in this case?
-# Not possbile, but : Is it still possible to perform parametric tests to estimate the degree of separation? Are there other "stronger" transformations -> See Duda, Hart & Stork (2001) chapter for more information and general insight.
+# Not possible, but : Is it still possible to perform parametric tests to estimate the degree of separation? Are there other "stronger" transformations -> See Duda, Hart & Stork (2001) chapter for more information and general insight.
+
+# Attempt to try exponential inverse of log (i.e. e^x).
+# Compute the inverse of log of each data point in both directions.
+expxcords <- exp(xcords)
+expycords <- exp(ycords)
+# Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
+ks.test(expxcords, "pnorm")
+ks.test(expycords, "pnorm")
+# The p-value < 2.2e-16 (p < 0.05) for both; data is not normally distributed.
+
+table(xcords %in% MILC(Old_CU))
+table(ycords %in% MILC(Sample_CU))
+
+# Following code adapted from: https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
+
+# Recheck lengths
+
+lengths <- as.data.frame(getlen(Old_CU))
+colnames(lengths) <- "length"
+ggplot(lengths, aes(length)) + 
+  geom_density() +
+  geom_vline(xintercept = 80, colour = "red") +
+  theme_light()
+
+lengths <- as.data.frame(getlen(Tabacum_CU))
+colnames(lengths) <- "length"
+ggplot(lengths, aes(length)) + 
+  geom_density() +
+  geom_vline(xintercept = 80, colour = "red") +
+  theme_light()
 
 #### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT ####
 

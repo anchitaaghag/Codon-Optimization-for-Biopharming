@@ -246,16 +246,33 @@ ks.test(logycords, "pnorm")
 
 # Attempt to try cube root.
 # Compute the cube root of each data point in both directions.
-
 rootxcords <- xcords*(1/3)
 rootycords <- ycords*(1/3)
-
 # Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
-
 ks.test(rootxcords, "pnorm")
 ks.test(rootycords, "pnorm")
-
 # The p-value < 2.2e-16 (p < 0.05 )for both indicating that the data is not normally distributed.
+
+# Attempt to try square root.
+# Compute the square root of each data point in both directions.
+sqrootxcords <- sqrt(xcords)
+sqrootycords <- sqrt(ycords)
+# Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
+ks.test(sqrootxcords, "pnorm")
+ks.test(sqrootycords, "pnorm")
+# The p-value < 2.2e-16 (p < 0.05 )for both indicating that the data is not normally distributed.
+
+hist(xcords)
+hist(logxcords)
+hist(log2(xcords))
+hist(log(xcords, base = exp(3)))
+hist(log(xcords, base = exp(4)))
+hist(log(xcords, base = exp(5)))
+
+# Encountered warning message : 
+# Warning message:
+#In ks.test(logtwoycords, "pnorm") :
+#  ties should not be present for the Kolmogorov-Smirnov test
 
 
 

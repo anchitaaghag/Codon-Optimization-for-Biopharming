@@ -239,8 +239,11 @@ length(logycords)
 
 # Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
 
-ks.test(logxcords, )
-ks.test(logycords)
+ks.test(logxcords, "pnorm")
+ks.test(logycords, "pnorm")
+
+# The p-value < 2.2e-16 (p < 0.05 )for both indicating that the data is not normally distributed.
+
 
 
 #### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT ####

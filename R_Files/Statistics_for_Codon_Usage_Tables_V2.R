@@ -200,7 +200,7 @@ set.seed(1111)
 
 Sample_CU <- sample(New_CU,length(Old_CU)) 
 
-intraBplot(x = Old_CU, 
+bplot <- intraBplot(x = Old_CU, 
            y = Sample_CU, 
           names = c("Old", "New"), 
            variable = "MILC", 
@@ -219,6 +219,15 @@ intraBplot(x = Old_CU,
 
 # The example dataset in the vignette has ~ 19, 000 + "points". There may just be undersampling/ less data points
 # This makes sense, since it is the same species, the codon usage should not differ greatly from the Old CU data set available.
+
+#### STATISTICAL WORK ON B PLOT ####
+
+# Get the coordinates (i.e. x,y ) for each of the data points in the plot.
+
+xcords <- bplot[["data"]][["Old"]]
+ycords <- bplot[["data"]][["New"]]
+
+
 
 #### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT ####
 

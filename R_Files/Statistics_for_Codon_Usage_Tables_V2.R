@@ -222,12 +222,17 @@ bplot <- intraBplot(x = Old_CU,
 
 #### STATISTICAL WORK ON B PLOT ####
 
+# This section is based on discussions with Dr. Hamilton-Wright.
+# The steps followed here and the following links were suggested/provided by Dr. Hamilton-Wright in email communications: 
+# https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6350423/
+# https://www.statology.org/test-for-normality-in-r/
+
 # Get the coordinates (i.e. x,y ) for each of the data points in the plot.
 
 xcords <- bplot[["data"]][["Old"]]
 ycords <- bplot[["data"]][["New"]]
 
-# Compute the log 10 of each data point in both directions.
+# Compute the log 10 of each data point in both axis.
 
 logxcords <- log10(xcords)
 logycords <- log10(ycords)
@@ -242,7 +247,9 @@ length(logycords)
 ks.test(logxcords, "pnorm")
 ks.test(logycords, "pnorm")
 
-# The p-value < 2.2e-16 (p < 0.05 )for both indicating that the data is not normally distributed.
+# The p-value is less than 2.2e-16 (p < 0.05) for both data sets indicating that the data is not normally distributed.
+
+# Try "weaker" transformations just in case.
 
 # Attempt to try cube root.
 # Compute the cube root of each data point in both directions.
@@ -251,7 +258,7 @@ rootycords <- ycords*(1/3)
 # Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
 ks.test(rootxcords, "pnorm")
 ks.test(rootycords, "pnorm")
-# The p-value < 2.2e-16 (p < 0.05 )for both indicating that the data is not normally distributed.
+# The p-value < 2.2e-16 (p < 0.05) for both; data is not normally distributed.
 
 # Attempt to try square root.
 # Compute the square root of each data point in both directions.
@@ -260,14 +267,12 @@ sqrootycords <- sqrt(ycords)
 # Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
 ks.test(sqrootxcords, "pnorm")
 ks.test(sqrootycords, "pnorm")
-# The p-value < 2.2e-16 (p < 0.05 )for both indicating that the data is not normally distributed.
+# The p-value < 2.2e-16 (p < 0.05) for both; data is not normally distributed.
 
-# Encountered warning message : 
-# Warning message:
-# In ks.test(logtwoycords, "pnorm") :
-#  ties should not be present for the Kolmogorov-Smirnov test
+# Data is very positively skewed (i.e. right skewed distribution of data) for both the x coordinates and the y coordinates. Even after applying log transformations, the data is not sufficiently "normal" to be able to use parametric tests to estimate the degree of separation.
 
-
+# Are non-parametic tests available and suitable in this case?
+# Not possbile, but : Is it still possible to perform parametric tests to estimate the degree of separation? Are there other "stronger" transformations -> See Duda, Hart & Stork (2001) chapter for more information and general insight.
 
 #### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT ####
 

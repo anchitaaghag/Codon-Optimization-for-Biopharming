@@ -227,6 +227,20 @@ bplot <- intraBplot(x = Old_CU,
 xcords <- bplot[["data"]][["Old"]]
 ycords <- bplot[["data"]][["New"]]
 
+# Compute the log 10 of each data point in both directions.
+
+logxcords <- log10(xcords)
+logycords <- log10(ycords)
+
+# Check to see the lengths of the points. If points < 50 use a Shapiro-Wilk test. If points > 50 use a Kolgomornov-Smirnov test.
+
+length(logxcords)
+length(logycords)
+
+# Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
+
+ks.test(logxcords, )
+ks.test(logycords)
 
 
 #### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT ####

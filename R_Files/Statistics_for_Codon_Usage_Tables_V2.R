@@ -262,16 +262,9 @@ ks.test(sqrootxcords, "pnorm")
 ks.test(sqrootycords, "pnorm")
 # The p-value < 2.2e-16 (p < 0.05 )for both indicating that the data is not normally distributed.
 
-hist(xcords)
-hist(logxcords)
-hist(log2(xcords))
-hist(log(xcords, base = exp(3)))
-hist(log(xcords, base = exp(4)))
-hist(log(xcords, base = exp(5)))
-
 # Encountered warning message : 
 # Warning message:
-#In ks.test(logtwoycords, "pnorm") :
+# In ks.test(logtwoycords, "pnorm") :
 #  ties should not be present for the Kolmogorov-Smirnov test
 
 

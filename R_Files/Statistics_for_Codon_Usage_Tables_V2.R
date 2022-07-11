@@ -607,4 +607,5 @@ table(New_RSCU$RSCU < 1) # RSCU < 1 codon used less frequently than random
 # Are these different from the RSCU for Old N.benthamiana CU? At the moment do not have the sequences for Old N.benthamiana CU. May have to import that (if time permits) and calculate the RSCU values.
 # For now, can report the RSCU measures in a table (perhaps supplementary results?)
 
+#### EXPORT CODON USAGE TABLE ####
 #### 15 REFERENCES ####

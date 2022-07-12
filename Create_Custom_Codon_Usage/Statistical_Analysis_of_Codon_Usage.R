@@ -61,10 +61,10 @@ sum(dfTabacum$X.1000) # Kazuza CU for N. tabacum reports 1000.04 instead of 1000
 
 # For easier loading into R, I will be loading previously formatted files (using command line).
 
-Old_CDS <- read.table("N_benthamiana_Codon_Counts_Only.txt",
+Old_CDS <- read.table("Kazuza_Codon_Usage_Data/N_benthamiana_Codon_Counts_Only.txt",
                         header = TRUE)
 
-Tabacum_CDS <- read.table("N_tabacum_Codon_Counts_Only.txt",
+Tabacum_CDS <- read.table("Kazuza_Codon_Usage_Data/N_tabacum_Codon_Counts_Only.txt",
                             header = TRUE)
 
 #### 04 GENERATE CODON USAGE TABLES ####
@@ -620,5 +620,21 @@ bplot
 
 hist(Old_Matrix, freq = TRUE)
 hist(MILC(Old_CU), freq = FALSE)
+
+
+
+dfCodon_Usage_Table <- data.frame(rownames(dfNew_MeanSD),dfNew_MeanSD$`Sum of Counts Per Codon`)
+
+# Note that, since the proportions of codons per amino acid is being computed downstream, either the empirical codon counts or the frequencies may be used. This will not impact the calculation. 
+
+colnames(dfCodon_Usage_Table) <- c("Codon","Counts")
+ 
+# Write the final codon usage table to a text file.
+# This is the default codon usage in the codon optimization script.
+
+write.table(x = dfCodon_Usage_Table , 
+            file = "Default_Codon_Counts.txt",
+            quote = FALSE,
+            row.names = FALSE)
 
 #### 15 REFERENCES ####

@@ -1,28 +1,37 @@
 # Reverse_Translate Function
 # Anchitaa Ghag
 
-# This function requires three inputs. The name of a file containing the amino acid sequences, a name for the results file, and a logical TRUE/FALSE input for the type of codon usage to use.
+# This function requires three inputs. The name of a file containing the amino acid sequences, a name for the results file, and a logical TRUE/FALSE input for the type of codon "usage" to use.
+# The codon usage (i.e. proportions) will be calculated by the function below. However, the user will need to provide a list of empirical codon counts or frequencies per codon.
 
-Reverse_Translate <- function(sequence_file, output_file_name, default_codon_usage) {
+sequence_file <- "Example_Protein_Sequences.txt"
+output_file_name <- "Example_Results.txt"
+default_codon_usage <- TRUE
+
+#Reverse_Translate <- function(sequence_file, output_file_name, default_codon_usage) {
   
   # Read in the protein sequence file.
-  
+
   SeqFile <- readLines(sequence_file)
   
-  Names <- SeqFile[c(TRUE,FALSE)] # Recursively keep only odd numbered lines i.e., the protein names or headers ">"
+  # Recursively keep only odd numbered lines i.e., the protein names or headers ">"
   
-  AmAcidSeqs <- SeqFile[c(FALSE, TRUE)] # Recursively keep only even numbered lines i.e., the amino acid sequences
+  Names <- SeqFile[c(TRUE,FALSE)] 
+  
+  # Recursively keep only even numbered lines i.e., the amino acid sequences
+  
+  AmAcidSeqs <- SeqFile[c(FALSE, TRUE)] 
   
   # Read in the default codon usage table or provide an option for the user to enter the name of a file with a custom codon usage table.
   
   if (default_codon_usage == TRUE) { 
-    Codon_Usage_Table <- read.table("Default_CU.txt")
+    Codon_Usage_Table <- read.table("Default_Codon_Counts.txt")
   } else if  (default_codon_usage == FALSE) {
-    Custom_Codon_Usage_File <- readline(prompt="Please enter the name of the file with your custom codon usage table: ") # Adapted from: https://stackoverflow.com/questions/60090558/r-language-user-input-if-condition
+    Custom_Codon_Usage_File <- readline(prompt="Please enter the name of the file with your custom counts per codon information: ") # Adapted from: https://stackoverflow.com/questions/60090558/r-language-user-input-if-condition
     Codon_Usage_Table <- read.table(Custom_Codon_Usage_File)
   } else {
-    print("A codon usage table was not indicated. The default codon usage of Nicotiana benthamiana will be used.")
-    Codon_Usage_Table <-  read.table("Default_CU.txt")
+    print("A codon usage was not indicated. The default codon usage of Nicotiana benthamiana will be used.")
+    Codon_Usage_Table <-  read.table("Default_Codon_Counts.txt")
   }
   
   # Create an Amino_Acid_Lookup list that contains the codons and proportions per amino acid. This will be done using the codon usage from above.

@@ -608,4 +608,17 @@ table(New_RSCU$RSCU < 1) # RSCU < 1 codon used less frequently than random
 # For now, can report the RSCU measures in a table (perhaps supplementary results?)
 
 #### EXPORT CODON USAGE TABLE ####
+
+plot(x = MILC(Old_CU), y = MILC(Sample_CU))
+
+plot(
+  y = dfOld_MeanSD$`Frequency (Per 1000 Codons)` - mean(MILC(Old_CU)),
+  
+  x = dfSample_MeanSD$`Frequency (Per 1000 Codons)`
+)
+bplot
+
+hist(Old_Matrix, freq = TRUE)
+hist(MILC(Old_CU), freq = FALSE)
+
 #### 15 REFERENCES ####

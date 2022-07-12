@@ -61,10 +61,10 @@ sum(dfTabacum$X.1000) # Kazuza CU for N. tabacum reports 1000.04 instead of 1000
 
 # For easier loading into R, I will be loading previously formatted files (using command line).
 
-Old_CDS <- read.table("Kazuza_Codon_Usage_Data/N_benthamiana_Codon_Counts_Only.txt",
+Old_CDS <- read.table("N_benthamiana_Codon_Counts_Only.txt",
                         header = TRUE)
 
-Tabacum_CDS <- read.table("Kazuza_Codon_Usage_Data/N_tabacum_Codon_Counts_Only.txt",
+Tabacum_CDS <- read.table("N_tabacum_Codon_Counts_Only.txt",
                             header = TRUE)
 
 #### 04 GENERATE CODON USAGE TABLES ####
@@ -636,5 +636,24 @@ write.table(x = dfCodon_Usage_Table ,
             file = "Default_Codon_Counts.txt",
             quote = FALSE,
             row.names = FALSE)
+
+# Kazuza style CU Table
+
+dfKazuzaStyle <- data.frame(dfOld$Codon,dfOld$AmAcid)
+
+dfCU <- dfKazuzaStyle[order(dfOld$Codon),]
+
+colnames(dfCU) <- c("Codon","AmAcid")
+
+dfCU["Counts"] <- dfNew_MeanSD$`Sum of Counts Per Codon`
+dfCU["Frequency_(Per_1000_Codons)"] <- dfNew_MeanSD$`Frequency (Per 1000 Codons)`
+
+write.table(x = dfCU , 
+            file = "Updated_Codon_Usage.txt",
+            quote = FALSE,
+            row.names = FALSE)
+
+write_csv(x = dfCU , 
+          file = "Updated_Codon_Usage.csv")
 
 #### 15 REFERENCES ####

@@ -35,7 +35,6 @@ source("Reverse_Translate_Function.R")
 # Reverse translate the amino acid sequences to DNA sequences based on the user input defined above.
 
 DNA_Sequences <- Reverse_Translate(sequence_file = Protein_Sequence_File, 
-                                   output_file_name = Results_File_Name, 
                                    default_codon_usage = Chosen_Option)
 
 #### 04 VIEW THE RESULTS ####
@@ -43,3 +42,8 @@ DNA_Sequences <- Reverse_Translate(sequence_file = Protein_Sequence_File,
 # View the first sequence that has been translated.
 
 head(DNA_Sequences, 1)
+
+#### 05 OUTPUT RESULTS TO FILE ####
+
+writeLines(text = DNA_Sequences, 
+           con = Result_File_Name)

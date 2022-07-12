@@ -627,7 +627,7 @@ dfCodon_Usage_Table <- data.frame(rownames(dfNew_MeanSD),dfNew_MeanSD$`Sum of Co
 
 # Note that, since the proportions of codons per amino acid is being computed downstream, either the empirical codon counts or the frequencies may be used. This will not impact the calculation. 
 
-colnames(dfCodon_Usage_Table) <- c("Codon","Counts")
+colnames(dfCodon_Usage_Table) <- c("Codons","Counts")
  
 # Write the final codon usage table to a text file.
 # This is the default codon usage in the codon optimization script.

@@ -1,6 +1,4 @@
-# Codon Optimization for Biopharming: Building a Codon Usage Table
-# Version 2 - Using NCBI Only
-# 22 June 2022
+# Codon Optimization for Biopharming: Building a Codon Usage Table using Coding Sequences
 # Anchitaa Ghag
 
 #### PERSONAL NOTE: FIXES NEEDED ####

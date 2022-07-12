@@ -1,4 +1,4 @@
-Codon Counts
+Codons Counts
 AAA 5988
 AAC 3229
 AAG 6129

@@ -1,9 +1,19 @@
 # Reverse_Translate Function
 # Anchitaa Ghag
 
+# This function requires three inputs. The name of a file containing the amino acid sequences, a name for the results file, and a logical TRUE/FALSE input for the type of codon usage to use.
+
 Reverse_Translate <- function(sequence_file, output_file_name, default_codon_usage) {
   
-  # Read in the default codon usage table or a custom codon usage table.
+  # Read in the protein sequence file.
+  
+  SeqFile <- readLines(sequence_file)
+  
+  Names <- SeqFile[c(TRUE,FALSE)] # Recursively keep only odd numbered lines i.e., the protein names or headers ">"
+  
+  AmAcidSeqs <- SeqFile[c(FALSE, TRUE)] # Recursively keep only even numbered lines i.e., the amino acid sequences
+  
+  # Read in the default codon usage table or provide an option for the user to enter the name of a file with a custom codon usage table.
   
   if (default_codon_usage == TRUE) { 
     Codon_Usage_Table <- read.table("Default_CU.txt")
@@ -15,63 +25,48 @@ Reverse_Translate <- function(sequence_file, output_file_name, default_codon_usa
     Codon_Usage_Table <-  read.table("Default_CU.txt")
   }
   
-  # Create an Amino_Acid_Lookup after reading in the codon usage.
+  # Create an Amino_Acid_Lookup list that contains the codons and proportions per amino acid. This will be done using the codon usage from above.
   
-  # Note this is based on an alphabetical order ranging from AAA to TTT.
+  order()
+  
+  # Assign the single letter abbreviation for all amino acids. This is assuming that codons are listed in an alphabetical order ranging from AAA to TTT (as done in the previous step).
   
   Single_Letter_Abbreviation <- c("K","N","K","N","T","T","T","T","R","S","R","S","I","I","M","I","Q","H","Q","H","P","P","P","P","R","R","R","R","L","L","L","L","E","D","E","D","A","A","A","A","G","G","G","G","V","V","V","V","X","Y","X","Y","S","S","S","S","X","C","W","C","L","F","L","F")
-  
   
   dfAmAcid_Prob <- data.frame(dfNew_MeanSD$`Sum of Counts Per Codon`,rownames(dfNew_MeanSD), Single_Letter_Abbreviation)
   colnames(dfAmAcid_Prob) <- c("Counts_Per_Codon", "Codons", "Single_Letter_Abbreviation")
   
-  
   # "X" for the three stop codons
-  
-  
   
   Amino_Acids <- list("A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","X","Y")
   
   
-  Amino_Acid_Chart <- list()
+  Amino_Acid_Lookup <- list()
   
-  for (i in Amino_Acids){
+  for (i in Amino_Acids) {
     
-    Codon_Names <- dfAmAcid_Prob %>% filter(Single_Letter_Abbreviation == i) %>%
+    Codon_Names <- dfAmAcid_Prob %>% 
+      filter(Single_Letter_Abbreviation == i) %>%
       select(Codons)
     
-    Total <- dfAmAcid_Prob %>% filter(Single_Letter_Abbreviation == i) %>%
+    Total <- dfAmAcid_Prob %>% 
+      filter(Single_Letter_Abbreviation == i) %>%
       select(Counts_Per_Codon) %>%
       colSums() 
     
-    Prop <- dfAmAcid_Prob %>% filter(Single_Letter_Abbreviation == i) %>%
+    Prop <- dfAmAcid_Prob %>% 
+      filter(Single_Letter_Abbreviation == i) %>%
       select(Counts_Per_Codon) %>%
       summarise(Proportions = (Counts_Per_Codon/Total)*1) 
     
     Info <- c(Prop,Codon_Names)
     
-    Amino_Acid_Chart <- append(Amino_Acid_Chart, list(Info))
-    
-    
+    Amino_Acid_Lookup <- append(Amino_Acid_Lookup, list(Info))
     
   }
   
-  names(Amino_Acid_Chart) <- c("A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","X","Y")
-  
-  
-  
-  # Check the sequence file format to ensure the file is in a .txt or .fasta format.
-  
-  File_Format <- sub(".*\\.", "", Protein_Sequence_File) # https://stackoverflow.com/questions/31774086/extracting-text-after-last-period-in-string
-  
-  if (File_Format == ".txt") { 
-    #  dfNames_Sequences <-
-    #} else if  (File_Format == ".fasta") {
-    dfNames_Sequences <-
-      #} else {
-      print("The protein sequence file format is not currently supported. Please provide a text or fasta file.")
-  }
-  
+  names(Amino_Acid_Lookup) <- c("A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","X","Y")
+
   
   All_Sequences <- as.list(dfNames_Sequences$Sequences)
   
@@ -287,7 +282,16 @@ Reverse_Translate <- function(sequence_file, output_file_name, default_codon_usa
     print(paste((unlist(DNA_Sequence)), collapse = ""))
     
     print(c("Your results have been written to:", Output_File_Name))
+    
+    Names
+    output_file_name
+    
+    writeLines()
+    
+    
     return()
+    
+
     
   }
 }

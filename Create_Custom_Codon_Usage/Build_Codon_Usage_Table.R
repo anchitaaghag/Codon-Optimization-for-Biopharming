@@ -211,7 +211,6 @@ Gene_Name_List_2 <- dfFeatures$Protein_ID %>%
 
 Gene_Name_List_3 <- dfFeatures$Protein_ID %>%
   str_extract("note.*") %>%
-  #str_extract(".*;") %>%
   str_replace("note:", "") %>%
   str_replace(";.*", "") %>%
   str_squish()

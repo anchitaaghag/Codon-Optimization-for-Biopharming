@@ -219,12 +219,15 @@ Gene_Name_List_3 <- dfFeatures$Protein_ID %>%
 
 Gene_Name_List_4 <- dfFeatures$Product
 
+# Lastly, extract names from the entry titles.
+
+df
+
 # Condense these four lists, by order of importance (i.e. as aforementioned above)
   
 dfGeneNames["All_Gene_Names"] <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
-coalesce(y = Gene_Name_List_3) %>%
-coalesce(y = Gene_Name_List_4)
-
+  coalesce(y = Gene_Name_List_3) %>%
+  coalesce(y = Gene_Name_List_4)
 
 #### SUMMARY ####
 
@@ -274,7 +277,7 @@ rm(dfNCBI, dfFeatures, dfFeatures.sub, dfCombined)
 
 # Next, filter the data frame to ensure that only complete coding sequences are retained.
 # This is done because the empirical codon counts for each entry necessitates complete sequences.
-# If partial sequences are retained, the codon counts for each sequence would skew the 
+# If partial sequences are retained, the incomplete codon counts for each sequence would skew the overall frequencies per codon.
 
 Filtered_Titles <- dfData$Titles %>%
   str_replace("Nicotiana benthamiana mRNA for hypothetical protein.*", "") %>% # Remove records for hypothetical proteins
@@ -287,7 +290,7 @@ Filtered_Titles <- dfData$Titles %>%
 
 dfData.sub <- subset(dfData, Titles %in% Filtered_Titles)
 
-# How many entires (excluding any duplicates)?
+# How many entries (excluding any duplicates)?
 
 length(unique(dfData.sub$Titles)) # 281 Entries.
 

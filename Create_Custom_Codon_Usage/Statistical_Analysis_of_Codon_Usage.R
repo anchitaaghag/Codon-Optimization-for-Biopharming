@@ -43,7 +43,7 @@ dfNew <- read_csv("dfCodingSeqs.csv")[,2:14]
 dfOld <- read_csv("dfKazuza.csv")[,2:5]
 dfTabacum <- read_csv("dfNTabacum.csv")[,2:5]
 
-#### 03 MINOR NOTE ON AVERAGE CODON COUNTS REPORTED BY KAZUZA ####
+#### 03 CHECK AVERAGE CODON COUNTS REPORTED BY KAZUZA ####
 
 # Note that the average number of codon counts per 1000 codons reported by the Kazuza database can differ slightly.
 # For example, check the total number of codons (should be 1000) in Kazuza CU for N. benthamiana and N. tabacum.

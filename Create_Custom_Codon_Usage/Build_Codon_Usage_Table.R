@@ -53,23 +53,23 @@ source("https://raw.githubusercontent.com/talgalili/R-code-snippets/master/boxpl
 
 # Using the XML package's htmlParse() function to "read" an HTML file and generate an HTML/XMLInternalDocument class object.
 
-Kazuza <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG')
+#Kazuza <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG')
 
-KazuzaTabacum <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4097&aa=1&style=GCG')
+#KazuzaTabacum <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4097&aa=1&style=GCG')
 
 # Next, read this object and convert to a dataframe.
 
-dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue), 
-                       header=TRUE, 
-                       fill=TRUE)
+#dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue), 
+                      # header=TRUE, 
+                      # fill=TRUE)
 
-dfNTabacum <- read.table(text=xpathSApply(KazuzaTabacum, "//pre", xmlValue), 
-                       header=TRUE, 
-                       fill=TRUE)
+#dfNTabacum <- read.table(text=xpathSApply(KazuzaTabacum, "//pre", xmlValue), 
+                      # header=TRUE, 
+                      # fill=TRUE)
 
 # List of the codon usage from each CDS that makes up Kazuza CUT is available at: http://www.kazusa.or.jp/codon/current/species/4100
-KazuzaCDS <- read.table("/Users/anchitaa/Major_Research_Project_2022/06_Code/KCC_No_Carot.txt",
-                        header = TRUE)
+#KazuzaCDS <- read.table("/Users/anchitaa/Major_Research_Project_2022/06_Code/KCC_No_Carot.txt",
+                       # header = TRUE)
 
 # Finally, calculate the most used codons (1 for each amino acid residue) from the data frame.
 
@@ -79,7 +79,7 @@ KazuzaCDS <- read.table("/Users/anchitaa/Major_Research_Project_2022/06_Code/KCC
 
 # Remove all objects no longer needed from the environment.
 
-rm(Kazuza)
+#rm(Kazuza)
 
 #### 03 DATA AQUISITION : OBTAIN IDS FROM NCBI ####
 
@@ -171,14 +171,16 @@ Feature_List <- getAnnotationsGenBank(Accessions, quiet = FALSE)
 # FIXME Add an option to use the feature file for faster script running
 # This function takes approximately 9.082817 minutes to run. For a faster script time, the feature list can also be loaded into R from the file using the following lines of code:
 
-# Other options include the biofiles package and the genbankr package functions. However, the ape package function is the fastest function (it takes 7.5 minutes compared to 9-11 + minutes) that can also handle large amounts of queries. It also does not require parsing of GenBank files (which may be tedious when dealing with a large number of records).
+# Other options include the biofiles package and the genbankr package functions. However, the ape package function has a faster run time that can also handle large amounts of queries. It also does not require parsing of GenBank files (which may be tedious when dealing with a large number of records).
 # Can also be downloaded from NCBI: search "Nicotiana benthamiana"[Organism] AND "CDS"[FKEY] 
 # Send to: -> Complete record -> File -> Format: Feature table -> Default order -> Create file
 
 # Convert the list of dataframes to a data frame. 
-#https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
+# https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
 
 dfFeatures <- bind_rows(Feature_List, .id = "GB_Accession")
+
+# write.table(x = dfFeatures, file = "Features_Data_Frame")
 
 # Change the column names to be more descriptive.
 
@@ -187,6 +189,10 @@ colnames(dfFeatures) <- c("GB_Accession","Start_of_CDS","End_of_CDS","Type","Pro
 # Remove all objects no longer needed from the environment.
 
 rm(Accessions,Feature_List)
+
+#### ADD GENE INFORMATION ####
+
+dfFeatures$Protein_ID
 
 #### SUMMARY ####
 

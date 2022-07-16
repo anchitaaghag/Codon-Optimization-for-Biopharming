@@ -221,13 +221,10 @@ Gene_Name_List_4 <- dfFeatures$Product
 
 # Condense these four lists, by order of importance (i.e. as aforementioned above)
   
-dfGeneNames <- data.frame(Gene_Name_List_1,Gene_Name_List_2,Gene_Name_List_3,Gene_Name_List_4)
-  
-a <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
+dfGeneNames["All_Gene_Names"] <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
 coalesce(y = Gene_Name_List_3) %>%
 coalesce(y = Gene_Name_List_4)
 
-dfGeneNames["All_Gene_Names"] <- a
 
 #### SUMMARY ####
 

@@ -5,14 +5,6 @@
 
 # At the very beginning, include a section or a way for the user to input ALL search parameters or thresholds (to ensure reproducible code).
 
-#### 00 OVERVIEW - WHY A VERSION 2? ####
-
-# Version 2 of the script features a much faster run time, more easily reproducible code (i.e. less hardcoding of URLs/Files), and a more simple and straightforward approach.
-# Compared to the previous version, Version 2 is more efficient because it queries a single database - NCBI, rather than two databases. The overall number of coding sequences is not impacted.
-# By omitting the back-and-forth between two databases, a considerable amount of time is saved.
-# In addition, this script bypasses the need to run multiple entrez searches and BLAST, since all of the information directly comes from Entrez Programming Utilities (E-utilities).
-# One dependency of prior installation of BLAST+ is omitted, as well as a few R packages.
-
 #### 01 INSTALL PACKAGES & DOWNLOAD LIBRARIES ####
 
 # First, set the working directory by running the following lines.

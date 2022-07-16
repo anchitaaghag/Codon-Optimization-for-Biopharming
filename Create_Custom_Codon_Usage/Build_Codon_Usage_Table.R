@@ -192,7 +192,43 @@ rm(Accessions,Feature_List)
 
 #### ADD GENE INFORMATION ####
 
-dfFeatures$Protein_ID
+# The gene name for each entry is distributed over three columns: Product, Protein_ID, and Gene. To ensure that these are formatted correctly, extract the relevant information from each of the columns and merge.
+
+# First, for entries that have a listed gene name, extract the gene names into a character vector.
+
+Gene_Name_List_1 <- dfFeatures$Gene 
+
+# Second, for entries that have a listed gene name in the protein description, extract the gene names into a character vector.
+
+Gene_Name_List_2 <- dfFeatures$Protein_ID %>%
+  str_extract("prot_desc.*") %>%
+  str_extract(".*;") %>%
+  str_replace("prot_desc:", "") %>%
+  str_replace(";.*", "") %>%
+  str_squish()
+    
+# Third, for entries that have a listed gene name in the notes, extract the gene names into a character vector.
+
+Gene_Name_List_3 <- dfFeatures$Protein_ID %>%
+  str_extract("note.*") %>%
+  #str_extract(".*;") %>%
+  str_replace("note:", "") %>%
+  str_replace(";.*", "") %>%
+  str_squish()
+
+# Lastly, for entries that have listed a gene name instead of a protein name, extract the gene names into a character vector.
+
+Gene_Name_List_4 <- dfFeatures$Product
+
+# Condense these four lists, by order of importance (i.e. as aforementioned above)
+  
+dfGeneNames <- data.frame(Gene_Name_List_1,Gene_Name_List_2,Gene_Name_List_3,Gene_Name_List_4)
+  
+a <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
+coalesce(y = Gene_Name_List_3) %>%
+coalesce(y = Gene_Name_List_4)
+
+dfGeneNames["All_Gene_Names"] <- a
 
 #### SUMMARY ####
 

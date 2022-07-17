@@ -40,8 +40,8 @@ library("viridis")
 #### 02 DATA AQUISITION : IMPORT CU FROM PREVIOUS SCRIPT ####
 
 dfNew <- read_csv("dfCodingSeqs.csv")[,2:14]
-dfOld <- read_csv("dfKazuza.csv")[,2:5]
-dfTabacum <- read_csv("dfNTabacum.csv")[,2:5]
+#dfOld <- read_csv("dfKazuza.csv")[,2:5]
+#dfTabacum <- read_csv("dfNTabacum.csv")[,2:5]
 
 #### 03 CHECK AVERAGE CODON COUNTS REPORTED BY KAZUZA ####
 
@@ -631,20 +631,6 @@ table(New_RSCU$RSCU < 1) # RSCU < 1 codon used less frequently than random
 # For now, can report the RSCU measures in a table (perhaps supplementary results?)
 
 #### EXPORT CODON USAGE TABLE ####
-
-plot(x = MILC(Old_CU), y = MILC(Sample_CU))
-
-plot(
-  y = dfOld_MeanSD$`Frequency (Per 1000 Codons)` - mean(MILC(Old_CU)),
-  
-  x = dfSample_MeanSD$`Frequency (Per 1000 Codons)`
-)
-bplot
-
-hist(Old_Matrix, freq = TRUE)
-hist(MILC(Old_CU), freq = FALSE)
-
-
 
 dfCodon_Usage_Table <- data.frame(rownames(dfNew_MeanSD),dfNew_MeanSD$`Sum of Counts Per Codon`)
 

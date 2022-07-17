@@ -205,6 +205,7 @@ Gene_Name_List_2 <- dfFeatures$Protein_ID %>%
   str_extract(".*;") %>%
   str_replace("prot_desc:", "") %>%
   str_replace(";.*", "") %>%
+  str_replace("autophagy", "") %>%
   str_squish()
     
 # Third, for entries that have a listed gene name in the notes, extract the gene names into a character vector.
@@ -215,26 +216,20 @@ Gene_Name_List_3 <- dfFeatures$Protein_ID %>%
   str_replace(";.*", "") %>%
   str_squish()
 
-# Lastly, for entries that have listed a gene name instead of a protein name, extract the gene names into a character vector.
-
-Gene_Name_List_4 <- dfFeatures$Product
-
-# Lastly, extract names from the entry titles.
-
-df
-
 # Condense these four lists, by order of importance (i.e. as aforementioned above)
   
-dfGeneNames["All_Gene_Names"] <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
-  coalesce(y = Gene_Name_List_3) %>%
-  coalesce(y = Gene_Name_List_4)
+All_Gene_Names <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
+  coalesce(y = Gene_Name_List_3) 
+
 
 #### SUMMARY ####
 
 # Rename Columns to Nicer Names 
 # FIXME Summary Stats here, see previous script work
 
-#### DATA FILTERING : COMBINE ALL INFO INTO ONE DATAFRAME AND SUMMARY INFO HERE ####
+dfFeatures["Gene"] <- All_Gene_Names
+
+#### 00 DATA FILTERING : COMBINE INTO ONE DATAFRAME ####
 
 # The script now has two data frames as follows:
 

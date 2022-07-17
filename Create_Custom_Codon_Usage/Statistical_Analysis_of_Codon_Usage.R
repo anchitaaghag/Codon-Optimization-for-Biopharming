@@ -170,7 +170,7 @@ ggplot(data=dfMeanSD,
   ylim(NA,40) +
   scale_fill_viridis(discrete = TRUE, option = "viridis") 
 
-##### FIXME MAYBE ADD THIS #####
+#### 00 FIXME MAYBE ADD THIS #####
 
 # https://coolbutuseless.github.io/2020/04/01/introducing-ggpattern-pattern-fills-for-ggplot/
 # To improve accessibility of the bar plots, may want to incorporate this.
@@ -243,7 +243,7 @@ bplot +
 # The example dataset in the vignette has ~ 19, 000 + "points". There may just be undersampling/ less data points
 # This makes sense, since it is the same species, the codon usage should not differ greatly from the Old CU data set available.
 
-#### STATISTICAL WORK ON B PLOT ####
+#### 00 STATISTICAL WORK ON B PLOT ####
 
 # This section is based on discussions with Dr. Hamilton-Wright.
 # The steps followed here and the following links were suggested/provided by Dr. Hamilton-Wright in email communications: 
@@ -410,7 +410,7 @@ SD <- c(dfOld_MeanSD$Std_Deviation, dfNew_MeanSD$Std_Deviation, dfTabacum_MeanSD
 
 dfCodon_Mean_SD <- data.frame(Codon,AmAcid,Sample,Avrgs, SD)
 
-#### ANOVA/ KRUSKAL WALLIS #####
+#### 00 ANOVA/ KRUSKAL WALLIS #####
 
 shapiro.test(dfCodon_Mean_SD$Avrgs) # Not Normal.
 shapiro.test(dfOld_MeanSD$Average_Codon_Count) # Not Normal
@@ -606,7 +606,7 @@ grid.arrange( p9, p10, p11, p12, nrow = 2)
 grid.arrange( p13, p14, p15, p16, nrow = 2)
 grid.arrange( p17, p18, p19, p20, nrow = 2)
 
-#### SUPPLEMENTARY TABLE: RSCU VALUES FOR NEW CU ####
+#### 00 SUPPLEMENTARY TABLE: RSCU VALUES FOR NEW CU ####
 
 # In addition to the ENC, we can also calculate the RSCU for the coding sequences in the new codon usage table.
 # First format the coding sequences to a style easily read in to the uco() function in the seqinR package.
@@ -630,7 +630,7 @@ table(New_RSCU$RSCU < 1) # RSCU < 1 codon used less frequently than random
 # Are these different from the RSCU for Old N.benthamiana CU? At the moment do not have the sequences for Old N.benthamiana CU. May have to import that (if time permits) and calculate the RSCU values.
 # For now, can report the RSCU measures in a table (perhaps supplementary results?)
 
-#### EXPORT CODON USAGE TABLE ####
+#### 00 EXPORT CODON USAGE TABLE ####
 
 dfCodon_Usage_Table <- data.frame(rownames(dfNew_MeanSD),dfNew_MeanSD$`Sum of Counts Per Codon`)
 

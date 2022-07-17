@@ -1,18 +1,5 @@
-# Codon Optimization for Biopharming: Building a Codon Usage Table using Coding Sequences
+# Codon Optimization for Biopharming: Building an Updated Codon Usage Table for Nicotiana benthaminana
 # Anchitaa Ghag
-
-#### 00 INPUT PARAMETERS/THRESHOLDS ####
-
-# This script can also be run for a different organism by changing the following search parameters or thresholds.
-
-# All coding sequences "CDS" will be searched for the species of interest Nicotiana benthamiana. 
-
-Entrez_Search_Term <- "Nicotiana benthamiana[Organism] AND CDS[FKEY]"
-
-# The maximum retmax has changed from the default 20 to 5000, this can be increased if it is anticipated that more records will be retrived.
-# Currently, for N. benthamiana, the total number of hits found are 1084.
-
-Maximum_Sequences_To_Retrieve <- 5000
 
 #### 01 INSTALL PACKAGES & DOWNLOAD LIBRARIES ####
 
@@ -49,60 +36,32 @@ library("XML") # Using this to parse HTML Kazuza's codon usage table
 
 source("https://raw.githubusercontent.com/talgalili/R-code-snippets/master/boxplot.with.outlier.label.r")
 
-#### 02 DATA AQUISITION : IMPORT EXISTING CU FROM KAZUZA ####
+#### 00 INPUT PARAMETERS/THRESHOLDS ####
 
-# code adapted from: https://stackoverflow.com/questions/24546312/vector-of-most-used-codons-from-table-of-codon-usage-in-r
+# This script can also be run for a different organism by changing the following search parameters or thresholds.
 
-# The existing codon usage table from Kazuza can be imported from: 
-# https://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG
+# First, specify the species of interest. All coding sequences "CDS" will be searched for the species of interest Nicotiana benthamiana. 
 
-# It can also be imported from the "Kazuza_Codon_Usage.txt" file using the following lines of code. File originally created on 24 June 2022.
+Entrez_Search_Term <- "Nicotiana benthamiana[Organism] AND CDS[FKEY]"
 
-# Kazuza <- read_table("Kazuza_Codon_Usage.txt")
+# The maximum retmax has changed from the default 20 to 5000, this can be increased if it is anticipated that more records will be retrieved (i.e with a more well-studied species such as Nicotiana tabacum).
+# Currently, for N. benthamiana, the total number of hits found are 1084. Therefore, this threshold has been set to 5000 (i.e. well above 1084).
 
-# Using the XML package's htmlParse() function to "read" an HTML file and generate an HTML/XMLInternalDocument class object.
-
-#Kazuza <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG')
-
-#KazuzaTabacum <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4097&aa=1&style=GCG')
-
-# Next, read this object and convert to a dataframe.
-
-#dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue), 
-                      # header=TRUE, 
-                      # fill=TRUE)
-
-#dfNTabacum <- read.table(text=xpathSApply(KazuzaTabacum, "//pre", xmlValue), 
-                      # header=TRUE, 
-                      # fill=TRUE)
-
-# List of the codon usage from each CDS that makes up Kazuza CUT is available at: http://www.kazusa.or.jp/codon/current/species/4100
-#KazuzaCDS <- read.table("/Users/anchitaa/Major_Research_Project_2022/06_Code/KCC_No_Carot.txt",
-                       # header = TRUE)
-
-# Finally, calculate the most used codons (1 for each amino acid residue) from the data frame.
-
-#dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
-#  filter(Number==max(Number)) %>% 
-#  select(AmAcid, Codon)
-
-# Remove all objects no longer needed from the environment.
-
-#rm(Kazuza)
+Maximum_Sequences_To_Retrieve <- 5000
 
 #### 03 DATA AQUISITION : OBTAIN IDS FROM NCBI ####
 
 # A list of the all complete coding sequences in Nicotiana benthamiana and corresponding information can be obtained from the NCBI database.
 
-# List of databases available to search using EUtils API. This script is using the "nucleotide" database.
+# The full list of databases available to search using EUtils API can be found using the entrez_dbs() function. This script is using the "nucleotide" database.
 
 entrez_dbs()
 
-# Once, a database has been chosen define the search field. This script is using the [FKEY] parameter to return only coding sequences.
+# Once a database has been chosen,the search field needs to be defined. This has been completed above in the user input section. This script is using the [FKEY] parameter to return only coding sequences.
 
 entrez_db_searchable(db="nucleotide")
 
-# Using a web history object. 
+# Search the NCBI database and store the resulting hits as a web history object. 
 
 nico_search <- entrez_search(db="nucleotide", 
                              term= Entrez_Search_Term, 
@@ -110,7 +69,7 @@ nico_search <- entrez_search(db="nucleotide",
                              retmax = Maximum_Sequences_To_Retrieve)
 
 # Create the summary information for each title from the entrez search result.
-# This script will use version 1.0 or XML (as opposed to the more extensive version 2.0 or JSON). This is because the maximum number of UIDs is 500 for a JSON format output. For longer secuence requests (more than 500), even with a web history object, using a single entrez_summary search will result in a "Too many UIDs in request." error. To ensure that all records can be fetched in one order, regardless of request size, the more limeted summaries of a database record in version 1.0 is being used. This can be changed to version 2.0 and submitted in batches.
+# This script will use version 1.0 or XML (as opposed to the more extensive version 2.0 or JSON). This is because the maximum number of UIDs is 500 for a JSON format output. For longer sequence requests (more than 500), even with a web history object, using a single entrez_summary search will result in a "Too many UIDs in request." error. To ensure that all records can be fetched in one order, regardless of request size, the more limited summaries of a database record in version 1.0 is being used. This can be changed to version 2.0 and submitted in batches.
 
 nico_summs <- entrez_summary(db="nucleotide", 
                              web_history=nico_search$web_history, 
@@ -197,7 +156,7 @@ colnames(dfFeatures) <- c("GB_Accession","Start_of_CDS","End_of_CDS","Type","Pro
 
 rm(Accessions,Feature_List)
 
-#### 00 DATA AQUISITION : GENE INFORMATION ####
+#### 00 DATA AQUISITION : OBTAIN GENE INFORMATION ####
 
 # The gene name for each entry is distributed over three columns: Product, Protein_ID, and Gene. To ensure that these are formatted correctly, extract the relevant information from each of the columns and merge.
 
@@ -427,41 +386,6 @@ rm(Trimmed_Sequences,Trimmed_Lengths)
 
 #### 09 DATA FILTERING : EXAMINE THE CDS LENGTHS ####
 
-# https://r-charts.com/distribution/add-points-boxplot/
-
-# Are the coding sequence lengths normally distributed?
-# Alternatively, Are there any abnormalities in lengths?
-
-hist(dfFinal$Trimmed_Length)
-shapiro.test(dfFinal$Trimmed_Length)
-
-# W = 0.84524, p-value < 2.2e-16
-# Data is not normally distributed.
-
-boxplot(dfFinal$Trimmed_Length,
-        col = "white",
-        ylab = "Length of Sequence (# of amino acids)", 
-        xlab = "Protein Sequences from Uniprot", 
-        main = "Boxplot of Protein Sequence Length (no gene information)")
-
-length(boxplot(dfFinal$Trimmed_Length)$out) # 38 Outliers.
-
-#https://www.r-statistics.com/2011/01/how-to-label-all-the-outliers-in-a-boxplot/
-
-y <- dfFinal$Trimmed_Length
-lab_y <- dfFinal$Titles
-
-boxplot.with.outlier.label(y, lab_y, spread_text = F)
-set.seed(1212)
-stripchart(dfFinal$Trimmed_Length,              # Data
-           method = "jitter", # Random noise
-           pch = 19,          # Pch symbols
-           col = 4,           # Color of the symbol
-           vertical = TRUE,   # Vertical mode
-           add = TRUE)        # Add it over
-
-# Retain these outliers since there is no evidence to exclude them at this point.
-
 # A minimum of 80 (or more codons) is required to conduct MILC analysis.
 # Remove sequences less than 80 codons or (80*3 =) 240 bases in sequence length.
 
@@ -476,6 +400,10 @@ dfCodingSeqs <- subset(dfFinal, Trimmed_Length >= 240)
 rm(lab_y,y)
 
 #### 10 GENERATE CODON USAGE TABLES ####
+
+#AmAcid, Codon, Number, X.1000
+
+
 #### 00 GENERATE CODON COUNTS MATRIX/TABLE ####
 #https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 

@@ -170,6 +170,21 @@ ggplot(data=dfMeanSD,
   ylim(NA,40) +
   scale_fill_viridis(discrete = TRUE, option = "viridis") 
 
+##### FIXME MAYBE ADD THIS #####
+
+# https://coolbutuseless.github.io/2020/04/01/introducing-ggpattern-pattern-fills-for-ggplot/
+# To improve accessibility of the bar plots, may want to incorporate this.
+
+remotes::install_github("coolbutuseless/ggpattern")
+library("ggpattern")
+
+geom_col_pattern(
+  aes(level, outcome, pattern_fill = level), 
+  pattern = 'stripe',
+  fill    = 'white',
+  colour  = 'black'
+) 
+
 #### 07 CHI SQUARE TEST ####
 
 # Perform a chi-squared test to evaluate if there is a difference between the frequencies of both CU.
@@ -194,28 +209,36 @@ chisq.test(x = dfOld_MeanSD$`Frequency (Per 1000 Codons)`,
 # Use the intraBplot() function in the coRdon package and our two codonTable objects to plot a  plot of codon usage distances between existing vs. created codon tables.
 # Intra-samples Karlin B plot
 
-set.seed(1111)
-
 # Randomly sample the same number of "points" (i.e. coding sequences) as the old/exisitng codon usage.
 
-Sample_CU <- sample(New_CU,length(Old_CU)) 
-
 bplot <- intraBplot(x = Old_CU, 
-           y = Sample_CU, 
+           y = New_CU, 
           names = c("Old", "New"), 
            variable = "MILC", 
-           size = 3, 
+           size = 2, 
            alpha = 0.8) + 
+
+# Get the coordinates (i.e. x,y ) for each of the data points in the plot.
+  
+xcords <- bplot[["data"]][["Old"]]
+ycords <- bplot[["data"]][["New"]]
+
+# Create a data frame of the MILC distance points.
+
+dfMILC <- data.frame(bplot[["data"]][["Old"]],bplot[["data"]][["New"]],bplot[["data"]][["sample"]])
+  
+bplot +
   theme_bw() +
   theme(plot.title = element_text(hjust = 0.5), legend.position = "none") +
   ggtitle("Karlin B Plot of Existing (Kazuza) v.s.New CU Distances")+
   xlab("MILC Distance from Existing CU") +
   ylab("MILC Distance from Consensus CU") + 
- # scale_fill_manual(name = "Species", labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana")) +
+  #scale_fill_manual(name = "Species", labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana")) +
   theme(legend.position = c(0.93, 0.10),
         legend.background = element_rect(fill = "white", color = "black")) +  #https://datavizpyr.com/how-to-place-legend-inside-the-plot-with-ggplot2/ 
-  labs(color="Codon Usage") # https://stackoverflow.com/questions/14622421/how-to-change-legend-title-in-ggplot
-  #geom_jitter(width  = 0.05) + # Add noise since the dataset in small to avoid overplotting.
+  labs(color="Codon Usage") #+
+ # geom_point(aes(shape=sample, color=sample)) # https://stackoverflow.com/questions/14622421/how-to-change-legend-title-in-ggplot
+  #geom_jitter(width  = 0.05)  # Add noise since the dataset in small to avoid overplotting.
 
 # The example dataset in the vignette has ~ 19, 000 + "points". There may just be undersampling/ less data points
 # This makes sense, since it is the same species, the codon usage should not differ greatly from the Old CU data set available.

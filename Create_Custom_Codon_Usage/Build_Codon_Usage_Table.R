@@ -15,7 +15,6 @@
 # install.packages("rentrez")
 # install.packages("seqinr")
 # install.packages("stringr")
-# install.packages("TeachingDemos")
 # install.packages("tidyverse")
 # install.packages("XML")
 
@@ -28,15 +27,10 @@ library("coRdon")
 library("rentrez")
 library("seqinr")
 library("stringr")
-library("TeachingDemos") # Using this to label all the outliers in a boxplot.
 library("tidyverse")
-library("XML") # Using this to parse HTML Kazuza's codon usage table
+library("XML")
 
-# Load additional functions that are used in this script.
-
-source("https://raw.githubusercontent.com/talgalili/R-code-snippets/master/boxplot.with.outlier.label.r")
-
-#### 02 INPUT PARAMETERS/THRESHOLDS ####
+#### 02 INPUT PARAMETERS AND THRESHOLDS ####
 
 # This script can also be run for a different organism by changing the following search parameters or thresholds.
 # First, specify the species of interest. All coding sequences "CDS" will be searched for the species of interest Nicotiana benthamiana. 

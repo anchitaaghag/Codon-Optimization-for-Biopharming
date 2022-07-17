@@ -1,7 +1,7 @@
 # Codon Optimization for Biopharming: Building a Codon Usage Table using Coding Sequences
 # Anchitaa Ghag
 
-#### PERSONAL NOTE: FIXES NEEDED ####
+#### 00 INPUT PARAMETERS/THRESHOLDS ####
 
 # At the very beginning, include a section or a way for the user to input ALL search parameters or thresholds (to ensure reproducible code).
 
@@ -190,7 +190,7 @@ colnames(dfFeatures) <- c("GB_Accession","Start_of_CDS","End_of_CDS","Type","Pro
 
 rm(Accessions,Feature_List)
 
-#### 00 ADD GENE INFORMATION ####
+#### 00 DATA AQUISITION : GENE INFORMATION ####
 
 # The gene name for each entry is distributed over three columns: Product, Protein_ID, and Gene. To ensure that these are formatted correctly, extract the relevant information from each of the columns and merge.
 
@@ -222,7 +222,7 @@ All_Gene_Names <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
   coalesce(y = Gene_Name_List_3) 
 
 
-#### 00 SUMMARY ####
+#### 00 DATA SUMMARY : VIEW COLLECTED NCBI INFORMATION ####
 
 # Rename Columns to Nicer Names 
 # FIXME Summary Stats here, see previous script work

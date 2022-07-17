@@ -463,12 +463,12 @@ dfCodingSeqs <- subset(dfFinal, Trimmed_Length >= 240)
 rm(lab_y,y)
 
 #### 10 GENERATE CODON USAGE TABLES ####
-
+#### GENERATE CODON COUNTS MATRIX/TABLE ####
 #https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 
 # For Kazuza
 
-CUT_Kazuza <- codonTable(KazuzaCDS)
+ #CUT_Kazuza <- codonTable(KazuzaCDS)
 
 # FIXME Uisng codRon package functions. Add Commenting.
 
@@ -483,7 +483,9 @@ Average.CU.All.Genes <- colMeans(CU)
 #(colMeans(CU)/colSums(CU))*1000
 
 write.csv(x=dfCodingSeqs, file="dfCodingSeqs.csv")
-write.csv(x=dfKazuza, file="dfKazuza.csv")
-write.csv(x=dfNTabacum, file="dfNTabacum.csv")
+#write.csv(x=dfKazuza, file="dfKazuza.csv")
+#write.csv(x=dfNTabacum, file="dfNTabacum.csv")
+
+
 
 #### 11 REFERENCES ####

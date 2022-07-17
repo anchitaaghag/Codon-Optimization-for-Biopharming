@@ -190,7 +190,7 @@ colnames(dfFeatures) <- c("GB_Accession","Start_of_CDS","End_of_CDS","Type","Pro
 
 rm(Accessions,Feature_List)
 
-#### ADD GENE INFORMATION ####
+#### 00 ADD GENE INFORMATION ####
 
 # The gene name for each entry is distributed over three columns: Product, Protein_ID, and Gene. To ensure that these are formatted correctly, extract the relevant information from each of the columns and merge.
 
@@ -222,7 +222,7 @@ All_Gene_Names <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
   coalesce(y = Gene_Name_List_3) 
 
 
-#### SUMMARY ####
+#### 00 SUMMARY ####
 
 # Rename Columns to Nicer Names 
 # FIXME Summary Stats here, see previous script work
@@ -486,74 +486,4 @@ write.csv(x=dfCodingSeqs, file="dfCodingSeqs.csv")
 write.csv(x=dfKazuza, file="dfKazuza.csv")
 write.csv(x=dfNTabacum, file="dfNTabacum.csv")
 
-#### 11 STATISTICS ####
-
-# https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
-
-# Currently in progress.
-
-milc <- MILC(CUTs)
-head(milc)
-
-# "Other CU statistics can be calculated in the same way as MILC(), using one of the functions: B(), MCB(), ENCprime(), ENC() or SCUO(). Note however, that when calculating ENC and SCUO, one doesn’t need to provide a subset of refe"
-
-SCUO(CUTs)
-ENC(CUTs)
-B(CUTs)
-MCB(CUTs)
-ENCprime(CUTs)
-
-# Next, compare the CU bias for every coding sequence between the created CUT and Kazuza through visualizations.
-# 
-
-library(ggplot2)
-xlab <- "MILC distance from sample centroid"
-ylab <- "MILC distance from ribosomal genes"
-
-MILC_Created_CUT <- MILC(CUTs, ribosomal = TRUE)
-Bplot(x = "self", y = "self", data = MILC_Created_CUT) +
-  labs(x = xlab, y = ylab)
-
-# Visualization of Codon Usage - Existing vs. Current
-
-# Code Adapted From: https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
-
-# Use the intraBplot() function in the coRdon package and our two codonTable objects to plot a  plot of codon usage distances between existing vs. created codon tables.
-#Intra-samples Karlin B plot
-
-intraBplot(x = CUT_Kazuza, 
-           y = CUTs, 
-           names = c("Kazuza", "Current"), 
-           variable = "MILC", 
-           size = 3, 
-           alpha = 1.0) + 
-           ggtitle("B Plot of Existing v.s. Current CU Distances")
-
-#hi <- lapply(list, function)
-
-formatted_cds <- s2c((unlist(dfCodingSeqs$Trimmed_CDS[1])))
-s2c("hi")
-uco(seq=formatted_cds,
-    frame = 0,
-    index = "rscu",
-    #as.data.frame = TRUE,
-    NA.rscu = NA)
-
-## Make a coding sequence from this:
-(cds <- s2c(paste(words(), collapse = "")))
-uco(cds, index = "rscu")
-
-
-rcds <- read.fasta(file = system.file("sequences/malM.fasta", package = "seqinr"))[[1]]
-uco( rcds, index = "freq")
-uco( rcds, index = "eff")
-uco( rcds, index = "rscu")
-uco( rcds, as.data.frame = TRUE)
-
-
-#### Comparison of all 3 per amino acid ####3
-
-
 #### 11 REFERENCES ####
-
-

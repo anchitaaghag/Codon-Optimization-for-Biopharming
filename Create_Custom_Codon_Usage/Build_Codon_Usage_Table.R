@@ -3,7 +3,16 @@
 
 #### 00 INPUT PARAMETERS/THRESHOLDS ####
 
-# At the very beginning, include a section or a way for the user to input ALL search parameters or thresholds (to ensure reproducible code).
+# This script can also be run for a different organism by changing the following search parameters or thresholds.
+
+# All coding sequences "CDS" will be searched for the species of interest Nicotiana benthamiana. 
+
+Entrez_Search_Term <- "Nicotiana benthamiana[Organism] AND CDS[FKEY]"
+
+# The maximum retmax has changed from the default 20 to 5000, this can be increased if it is anticipated that more records will be retrived.
+# Currently, for N. benthamiana, the total number of hits found are 1084.
+
+Maximum_Sequences_To_Retrieve <- 5000
 
 #### 01 INSTALL PACKAGES & DOWNLOAD LIBRARIES ####
 
@@ -85,8 +94,6 @@ source("https://raw.githubusercontent.com/talgalili/R-code-snippets/master/boxpl
 
 # A list of the all complete coding sequences in Nicotiana benthamiana and corresponding information can be obtained from the NCBI database.
 
-# FIXME First, define the organism of interest.
-
 # List of databases available to search using EUtils API. This script is using the "nucleotide" database.
 
 entrez_dbs()
@@ -95,12 +102,12 @@ entrez_dbs()
 
 entrez_db_searchable(db="nucleotide")
 
-# Using a web history object. The maximum retmax chaned from defalut 20 to 5000 , can be increaded if it is anticipated that more records will be retrived.
+# Using a web history object. 
 
 nico_search <- entrez_search(db="nucleotide", 
-                             term="Nicotiana benthamiana[Organism] AND CDS[FKEY]", 
+                             term= Entrez_Search_Term, 
                              use_history=TRUE, 
-                             retmax = 5000)
+                             retmax = Maximum_Sequences_To_Retrieve)
 
 # Create the summary information for each title from the entrez search result.
 # This script will use version 1.0 or XML (as opposed to the more extensive version 2.0 or JSON). This is because the maximum number of UIDs is 500 for a JSON format output. For longer secuence requests (more than 500), even with a web history object, using a single entrez_summary search will result in a "Too many UIDs in request." error. To ensure that all records can be fetched in one order, regardless of request size, the more limeted summaries of a database record in version 1.0 is being used. This can be changed to version 2.0 and submitted in batches.

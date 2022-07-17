@@ -36,10 +36,9 @@ library("XML") # Using this to parse HTML Kazuza's codon usage table
 
 source("https://raw.githubusercontent.com/talgalili/R-code-snippets/master/boxplot.with.outlier.label.r")
 
-#### 00 INPUT PARAMETERS/THRESHOLDS ####
+#### 02 INPUT PARAMETERS/THRESHOLDS ####
 
 # This script can also be run for a different organism by changing the following search parameters or thresholds.
-
 # First, specify the species of interest. All coding sequences "CDS" will be searched for the species of interest Nicotiana benthamiana. 
 
 Entrez_Search_Term <- "Nicotiana benthamiana[Organism] AND CDS[FKEY]"
@@ -49,10 +48,17 @@ Entrez_Search_Term <- "Nicotiana benthamiana[Organism] AND CDS[FKEY]"
 
 Maximum_Sequences_To_Retrieve <- 5000
 
-#### 03 DATA AQUISITION : OBTAIN IDS FROM NCBI ####
+#### 03 DATA AQUISITION ALTERNATIVE: LOAD DATA FROM FILE ####
+
+# If desired, the data can be loaded from a file by running the following lines of code and skipping Sections 04 to 06 below. This may be useful to reproduce the results of the original script. Data originally downloaded on 17 July 2022.
+# 
+
+# If not, the data from NCBI can be obtained by running the following script below. (Sections 04 to 06)
+# The latter may be particularly helpful if additional sequences have been deposited in the GenBank/NCBI database or if an updated codon usage table is required.
+
+#### 04 DATA AQUISITION : OBTAIN IDS FROM NCBI ####
 
 # A list of the all complete coding sequences in Nicotiana benthamiana and corresponding information can be obtained from the NCBI database.
-
 # The full list of databases available to search using EUtils API can be found using the entrez_dbs() function. This script is using the "nucleotide" database.
 
 entrez_dbs()
@@ -98,23 +104,23 @@ dfNCBI <- as.data.frame(lapply(dfTemp, unlist))
 
 # Remove all objects no longer needed from the environment.
 
-rm(InfoTable,dfTemp)
+rm(InfoTable,dfTemp, Entrez_Search_Term, Maximum_Sequences_To_Retrieve)
 
 #### 05 DATA AQUISITION : OBTAIN SEQUENCES ####
 
-# Use web history to obtain fasta file of coding sequences.
+# Use web history created above to coding sequences from the nucleotide database in a fasta format.
 
-# Since the entrez_fetch() function
+nico_retrive <- entrez_fetch(db="nucleotide", 
+                             web_history = nico_search$web_history, 
+                             rettype = "fasta")
 
-nico_retrive <- entrez_fetch(db="nucleotide", web_history = nico_search$web_history, rettype = "fasta")
+# Next, write the fasta sequences to a fasta file.
 
 write(nico_retrive, file="nico_retrive.fasta")
 
-# Obtain the list of CDS and add to the data frame.
+# Obtain the list of coding sequences and add them to the data frame.
 
-fastaFile <- readDNAStringSet("nico_retrive.fasta")
-
-sequences <- paste(fastaFile)
+sequences <- paste(readDNAStringSet("nico_retrive.fasta"))
 
 dfNCBI["Untrimmed_Sequences"] <- sequences
 
@@ -122,31 +128,28 @@ dfNCBI["Untrimmed_Sequences"] <- sequences
 
 rm(fastaFile, nico_search, nico_summs, nico_retrive, sequences)
 
-#### 04 DATA AQUISITION : OBTAIN ANNOTATIONS ####
+#### 06 DATA AQUISITION : OBTAIN ANNOTATIONS ####
 
-# Convert the GenBank accession numbers to a list.
+# Convert the GenBank accession version numbers to a list.
+
 Accessions <- unlist(dfNCBI$GenBank_Accession) 
 
 # Check class. Ensure that the class is a character vector.
+
 class(Accessions) 
 
+# The following feature data can also be downloaded from NCBI by searching "Nicotiana benthamiana"[Organism] AND "CDS"[FKEY]" on https://www.ncbi.nlm.nih.gov and then clicking on the "Send to:" tab -> "Complete record" -> "File" -> "Format: Feature table" -> "Default order" -> "Create file".
 # Using the getAnnotationsGenBank() function from the ape package to get the annotations for each sequence from GenBank.
 
 Feature_List <- getAnnotationsGenBank(Accessions, quiet = FALSE) 
 
-# FIXME Add an option to use the feature file for faster script running
 # This function takes approximately 9.082817 minutes to run. For a faster script time, the feature list can also be loaded into R from the file using the following lines of code:
-
 # Other options include the biofiles package and the genbankr package functions. However, the ape package function has a faster run time that can also handle large amounts of queries. It also does not require parsing of GenBank files (which may be tedious when dealing with a large number of records).
-# Can also be downloaded from NCBI: search "Nicotiana benthamiana"[Organism] AND "CDS"[FKEY] 
-# Send to: -> Complete record -> File -> Format: Feature table -> Default order -> Create file
 
 # Convert the list of dataframes to a data frame. 
 # https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
 
 dfFeatures <- bind_rows(Feature_List, .id = "GB_Accession")
-
-# write.table(x = dfFeatures, file = "Features_Data_Frame")
 
 # Change the column names to be more descriptive.
 
@@ -156,7 +159,7 @@ colnames(dfFeatures) <- c("GB_Accession","Start_of_CDS","End_of_CDS","Type","Pro
 
 rm(Accessions,Feature_List)
 
-#### 00 DATA AQUISITION : OBTAIN GENE INFORMATION ####
+#### 07 DATA AQUISITION : OBTAIN GENE INFORMATION ####
 
 # The gene name for each entry is distributed over three columns: Product, Protein_ID, and Gene. To ensure that these are formatted correctly, extract the relevant information from each of the columns and merge.
 
@@ -206,15 +209,18 @@ Gene_Names[5] <- "GRP7"
 GenBank_Protein_ID <- dfFinal$Protein_ID %>%
   str_match(".*gb\\|([^|]+)")
 
-#### 00 DATA AQUISITION : READ IN CSV FILE WITH INFO !!  [REPRODUCIBILITY]
-#### 00 DATA SUMMARY : VIEW COLLECTED NCBI INFORMATION ####
+# Export these tables to 
+
+# write.table(x = dfFeatures, file = "Features_Data_Frame")
+
+#### 08 DATA SUMMARY : VIEW COLLECTED NCBI INFORMATION ####
 
 # FIXME Summary Stats here, see previous script work
 
 summary(dfFeatures)
 summary(dfNCBI)
 
-#### 00 DATA FILTERING : COMBINE INTO ONE DATAFRAME ####
+#### 09 DATA FILTERING : COMBINE INTO ONE DATAFRAME ####
 
 # The script now has two data frames as follows:
 
@@ -253,7 +259,7 @@ dfData <- dfData[,c("GenBank_Accession", "NCBI_ID", "Titles", "Type", "Untrimmed
 
 rm(dfNCBI, dfFeatures, dfFeatures.sub, dfCombined)
 
-#### 06 DATA FILTERING : FILTER RECORDS ####
+#### 10 DATA FILTERING : FILTER RECORDS ####
 
 # Next, filter the data frame to ensure that only complete coding sequences are retained.
 # This is done because the empirical codon counts for each entry necessitates complete sequences.
@@ -278,7 +284,7 @@ length(unique(dfData.sub$Titles)) # 281 Entries.
 
 rm(Filtered_Titles, dfData)
 
-#### 07 DATA FILTERING : REMOVE DUPLICATED TITLES ####
+#### 11 DATA FILTERING : REMOVE DUPLICATED TITLES ####
 
 # Find duplicated entries.
 
@@ -358,7 +364,7 @@ table(duplicated(dfFinal$Titles))
 
 rm(dfData_Duplicates,dfKeep,dfNew)
 
-#### 08 DATA FILTERING : TRIM SEQUENCES ####
+#### 12 DATA FILTERING : TRIM SEQUENCES ####
 
 # To get rid of flanking non-coding regions in the CDS, need to trim the sequences based on the start, stop, and length columns.
 
@@ -385,7 +391,7 @@ dfFinal["Trimmed_CDS"] <- Trimmed_Sequences
 rm(Trimmed_Sequences,Trimmed_Lengths)
 
 
-#### 10 GENERATE CODON USAGE TABLE ####
+#### 13 GENERATE CODON USAGE TABLE ####
 
 # https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 
@@ -410,11 +416,13 @@ Number <- colSums(Updated_CU)
 
 AmAcid <- c("Lys","Asn","Lys","Asn","Thr","Thr","Thr","Thr","Arg","Ser","Arg","Ser","Ile","Ile","Met","Ile","Gln","His","Gln","His","Pro","Pro","Pro","Pro","Arg","Arg","Arg","Arg","Leu","Leu","Leu","Leu","Glu","Asp","Glu","Asp","Ala","Ala","Ala","Ala","Gly","Gly","Gly","Gly","Val","Val","Val","Val","End","Tyr","End","Tyr","Ser","Ser","Ser","Ser","End","Cys","Trp","Cys","Leu","Phe","Leu","Phe")
 
-Codon <- colnames(Updated_CU)
+Codon <- as.list(colnames(Updated_CU))
 
 # Finally, create a data frame using the four vectors created above.
   
 dfCodon_Usage_Table <- data.frame(AmAcid, Codon, Number, `X.1000`)
+
+#### 14 EXPORT CODON USAGE AND ADDITIONAL DATA ####
 
 # Write the updated codon usage data frame to a text file.
 
@@ -428,4 +436,9 @@ write.table(x = dfCodon_Usage_Table,
 write_csv(x = dfCodon_Usage_Table, 
           file = "Updated_Codon_Usage.csv")
 
-#### 11 REFERENCES ####
+# Write the final data frame to a .csv format file.
+
+write_csv(x = dfFinal, 
+          file = "Updated_Codon_Usage_Information.csv")
+
+#### 15 REFERENCES ####

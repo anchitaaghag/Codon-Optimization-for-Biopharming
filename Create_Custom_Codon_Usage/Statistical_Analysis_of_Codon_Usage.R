@@ -39,6 +39,8 @@ library("viridis")
 
 #### 02 DATA AQUISITION : IMPORT CU FROM PREVIOUS SCRIPT ####
 
+# Import the codon usage (to be compared to Kazuza codon usages) from the previous R file "Build_Codon_Usage_Table.R" or from another source.
+
 dfNew <- read_csv("dfCodingSeqs.csv")[,2:14]
 #dfOld <- read_csv("dfKazuza.csv")[,2:5]
 #dfTabacum <- read_csv("dfNTabacum.csv")[,2:5]
@@ -58,14 +60,18 @@ sum(dfTabacum$X.1000) # Kazuza CU for N. tabacum reports 1000.04 instead of 1000
 
 # For N. benthamiana: http://www.kazusa.or.jp/codon/current/species/4100
 # For N. tabacum: http://www.kazusa.or.jp/codon/current/species/4097
+# For A. thaliana http://www.kazusa.or.jp/codon/current/species/3702
 
-# For easier loading into R, I will be loading previously formatted files (using command line).
+# For faster loading into R, I will be loading previously formatted files (using command line).
 
 Old_CDS <- read.table("N_benthamiana_Codon_Counts_Only.txt",
                         header = TRUE)
 
 Tabacum_CDS <- read.table("N_tabacum_Codon_Counts_Only.txt",
                             header = TRUE)
+
+Thaliana_CDS <- read.table("A_thaliana_Codon_Counts_Only.txt",
+                          header = TRUE)
 
 #### 04 GENERATE CODON USAGE TABLES ####
 

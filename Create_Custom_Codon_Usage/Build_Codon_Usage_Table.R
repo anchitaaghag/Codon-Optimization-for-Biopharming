@@ -228,13 +228,32 @@ Gene_Name_List_3 <- dfFeatures$Protein_ID %>%
 All_Gene_Names <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
   coalesce(y = Gene_Name_List_3) 
 
-
-#### 00 DATA SUMMARY : VIEW COLLECTED NCBI INFORMATION ####
-
-# Rename Columns to Nicer Names 
-# FIXME Summary Stats here, see previous script work
+# Add back to the data frame.
 
 dfFeatures["Gene"] <- All_Gene_Names
+
+rm(Gene_Name_List_1,Gene_Name_List_2,Gene_Name_List_3,All_Gene_Names)
+
+#### GET GENE NAMES ###
+
+Gene_Names <- dfFinal$Protein_ID %>%
+  str_match("prot_desc:\\s*(.*?)\\s*;") %>%
+  str_replace("prot_desc:","") %>%
+  str_replace("Nb","") %>%
+  str_replace("\\;","") %>%
+  str_trim()
+Gene_Names[5] <- "GRP7"
+
+GenBank_Protein_ID <- dfFinal$Protein_ID %>%
+  str_match(".*gb\\|([^|]+)")
+
+#### 00 DATA AQUISITION : READ IN CSV FILE WITH INFO !!  [REPRODUCIBILITY]
+#### 00 DATA SUMMARY : VIEW COLLECTED NCBI INFORMATION ####
+
+# FIXME Summary Stats here, see previous script work
+
+summary(dfFeatures)
+summary(dfNCBI)
 
 #### 00 DATA FILTERING : COMBINE INTO ONE DATAFRAME ####
 
@@ -261,7 +280,7 @@ dfCombined <- subset(dfNCBI, GenBank_Accession %in% dfFeatures.sub$GB_Accession)
 
 # Add the feature columns to the new data frame.
 
-dfData <- cbind(dfCombined, dfFeatures.sub[,2:6])
+dfData <- cbind(dfCombined, dfFeatures.sub[,2:7])
 
 # Append a new column with the length of the CDS.
 
@@ -404,20 +423,7 @@ dfFinal["Trimmed_CDS"] <- Trimmed_Sequences
 
 # Remove all objects no longer needed from the environment.
 
-rm(Untrimmed_Sequences,Start_Positions,End_Positions,Trimmed_Sequences,Trimmed_Lengths)
-
-#### GET GENE NAMES ###
-
-Gene_Names <- dfFinal$Protein_ID %>%
-  str_match("prot_desc:\\s*(.*?)\\s*;") %>%
-  str_replace("prot_desc:","") %>%
-  str_replace("Nb","") %>%
-  str_replace("\\;","") %>%
-  str_trim()
-Gene_Names[5] <- "GRP7"
-
-GenBank_Protein_ID <- dfFinal$Protein_ID %>%
-  str_match(".*gb\\|([^|]+)")
+rm(Trimmed_Sequences,Trimmed_Lengths)
 
 #### 09 DATA FILTERING : EXAMINE THE CDS LENGTHS ####
 
@@ -470,7 +476,7 @@ dfCodingSeqs <- subset(dfFinal, Trimmed_Length >= 240)
 rm(lab_y,y)
 
 #### 10 GENERATE CODON USAGE TABLES ####
-#### GENERATE CODON COUNTS MATRIX/TABLE ####
+#### 00 GENERATE CODON COUNTS MATRIX/TABLE ####
 #https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 
 # For Kazuza

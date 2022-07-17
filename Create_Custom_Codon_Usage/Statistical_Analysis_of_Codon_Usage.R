@@ -1,4 +1,4 @@
-# Statistical Analysis of Updated Codon Usage in Nicotiana benthaminana
+# Codon Optimization for Biopharming: Statistical Analysis of Updated Codon Usage in Nicotiana benthaminana
 # Anchitaa Ghag
 
 #### 00 PERSONAL NOTES ####
@@ -37,6 +37,41 @@ library("seqinr")
 library("tidyverse")
 library("viridis")
 
+#### 02 DATA AQUISITION : IMPORT EXISTING CU FROM KAZUZA ####
+
+# The following code was adapted from: https://stackoverflow.com/questions/24546312/vector-of-most-used-codons-from-table-of-codon-usage-in-r
+
+# The existing codon usage table from the Kazuza database can be imported from: 
+# https://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG
+
+# It can also be imported from the "Kazuza_Codon_Usage.txt" file using the following lines of code. File originally created on 24 June 2022.
+
+# Kazuza <- read_table("Kazuza_Codon_Usage.txt")
+
+# First, use the XML package's htmlParse() function to "read" an HTML file and generate an HTML/XMLInternalDocument class object.
+
+Kazuza <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4100&aa=1&style=GCG')
+
+Tabacum <- htmlParse('http://www.kazusa.or.jp/codon/cgi-bin/showcodon.cgi?species=4097&aa=1&style=GCG')
+
+# Next, read this object and convert to a dataframe.
+
+dfKazuza <- read.table(text=xpathSApply(Kazuza, "//pre", xmlValue), 
+                       header=TRUE, 
+                       fill=TRUE)
+
+dfTabacum <- read.table(text=xpathSApply(Tabacum, "//pre", xmlValue), 
+                        header=TRUE, 
+                        fill=TRUE)
+
+# List of the codon usage from each CDS that makes up Kazuza CUT is available at: http://www.kazusa.or.jp/codon/current/species/4100
+
+#KazuzaCDS <- read.table("/Users/anchitaa/Major_Research_Project_2022/06_Code/KCC_No_Carot.txt",
+# header = TRUE)
+
+# Remove all objects no longer needed from the environment.
+
+#rm(Kazuza)
 #### 02 DATA AQUISITION : IMPORT CU FROM PREVIOUS SCRIPT ####
 
 # Import the codon usage (to be compared to Kazuza codon usages) from the previous R file "Build_Codon_Usage_Table.R" or from another source.
@@ -676,3 +711,9 @@ write_csv(x = dfCU ,
           file = "Updated_Codon_Usage.csv")
 
 #### 15 REFERENCES ####
+
+# Finally, calculate the most used codons (1 for each amino acid residue) from the data frame.
+
+#dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
+#  filter(Number==max(Number)) %>% 
+#  select(AmAcid, Codon)

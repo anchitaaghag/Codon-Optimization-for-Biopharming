@@ -384,49 +384,48 @@ dfFinal["Trimmed_CDS"] <- Trimmed_Sequences
 
 rm(Trimmed_Sequences,Trimmed_Lengths)
 
-#### 09 DATA FILTERING : EXAMINE THE CDS LENGTHS ####
 
-# A minimum of 80 (or more codons) is required to conduct MILC analysis.
-# Remove sequences less than 80 codons or (80*3 =) 240 bases in sequence length.
+#### 10 GENERATE CODON USAGE TABLE ####
 
-dfCodingSeqs <- subset(dfFinal, Trimmed_Length >= 240)
+# https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 
-#Recheck the trimmed sequences. Are these divisible by three?
-  # If sequence lengths are divisible by three, we can continue to retain. 
-  # If not, either check the trimming or discard.
+# First, store all the coding sequences as a DNAStringSet object.
 
-# Remove all objects no longer needed from the environment.
+Coding_Seqs <- DNAStringSet(dfFinal$Trimmed_CDS)
 
-rm(lab_y,y)
+# Then, using the codonCounts() and codonTable() functions from the codRon package create a matrix to view the counts per codon.
 
-#### 10 GENERATE CODON USAGE TABLES ####
+Updated_CU <- codonCounts(codonTable(Coding_Seqs))
 
-#AmAcid, Codon, Number, X.1000
+# Third, calculate the total number of counts per column.
 
+Number <- colSums(Updated_CU)
 
-#### 00 GENERATE CODON COUNTS MATRIX/TABLE ####
-#https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
+# Next, calculate the frequencies of each codon (out of 1000) (i.e. how the Kazuza data base reports the frequencies)
 
-# For Kazuza
+`X.1000` <- round(x = ((Number/sum(Updated_CU))*1000), 
+                  digits = 2)
 
- #CUT_Kazuza <- codonTable(KazuzaCDS)
+# Lastly, create two character vectors for the amino acid and corresponding codons. The amino acids are assigned with the assumtion that the codons are listed from AAA to TTT as defined in the codonTable function.
 
-# FIXME Uisng codRon package functions. Add Commenting.
+AmAcid <- c("Lys","Asn","Lys","Asn","Thr","Thr","Thr","Thr","Arg","Ser","Arg","Ser","Ile","Ile","Met","Ile","Gln","His","Gln","His","Pro","Pro","Pro","Pro","Arg","Arg","Arg","Arg","Leu","Leu","Leu","Leu","Glu","Asp","Glu","Asp","Ala","Ala","Ala","Ala","Gly","Gly","Gly","Gly","Val","Val","Val","Val","End","Tyr","End","Tyr","Ser","Ser","Ser","Ser","End","Cys","Trp","Cys","Leu","Phe","Leu","Phe")
 
-cds <- DNAStringSet(dfCodingSeqs$Trimmed_CDS)
-CUTs <- codonTable(cds)
-CU <- codonCounts(CUTs)
-getlen(CUTs)
-row.names(CU) <- dfCodingSeqs$Titles
+Codon <- colnames(Updated_CU)
 
-Average.CU.All.Genes <- colMeans(CU)
+# Finally, create a data frame using the four vectors created above.
+  
+dfCodon_Usage_Table <- data.frame(AmAcid, Codon, Number, `X.1000`)
 
-#(colMeans(CU)/colSums(CU))*1000
+# Write the updated codon usage data frame to a text file.
 
-write.csv(x=dfCodingSeqs, file="dfCodingSeqs.csv")
-#write.csv(x=dfKazuza, file="dfKazuza.csv")
-#write.csv(x=dfNTabacum, file="dfNTabacum.csv")
+write.table(x = dfCodon_Usage_Table, 
+            file = "Updated_Codon_Usage.txt",
+            quote = FALSE,
+            row.names = FALSE)
 
+# Write the updated codon usage data frame to a .csv format file.
 
+write_csv(x = dfCodon_Usage_Table, 
+          file = "Updated_Codon_Usage.csv")
 
 #### 11 REFERENCES ####

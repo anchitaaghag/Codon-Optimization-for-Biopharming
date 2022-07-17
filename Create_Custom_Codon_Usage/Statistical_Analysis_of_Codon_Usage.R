@@ -657,10 +657,14 @@ colnames(dfCU) <- c("Codon","AmAcid")
 dfCU["Counts"] <- dfNew_MeanSD$`Sum of Counts Per Codon`
 dfCU["Frequency_(Per_1000_Codons)"] <- dfNew_MeanSD$`Frequency (Per 1000 Codons)`
 
+# Write the updated codon usage counts to a text file.
+
 write.table(x = dfCU , 
             file = "Updated_Codon_Usage.txt",
             quote = FALSE,
             row.names = FALSE)
+
+# Write the updated codon usage counts to a .csv format file.
 
 write_csv(x = dfCU , 
           file = "Updated_Codon_Usage.csv")

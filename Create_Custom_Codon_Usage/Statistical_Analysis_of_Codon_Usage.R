@@ -243,131 +243,6 @@ chisq.test(x = dfOld_MeanSD$`Frequency (Per 1000 Codons)`,
 # "Other CU statistics can be calculated in the same way as MILC(), using one of the functions: B(), MCB(), ENCprime(), ENC() or SCUO(). Note however, that when calculating ENC and SCUO, one doesn’t need to provide a subset of refe"
 # Next, compare the CU bias for every coding sequence between the created CUT and Kazuza through visualizations.
 
-#### 08 INTRA-SAMPLES KARLIN B PLOT ####
-
-# Code Adapted From: https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
-
-# Use the intraBplot() function in the coRdon package and our two codonTable objects to plot a  plot of codon usage distances between existing vs. created codon tables.
-# Intra-samples Karlin B plot
-
-# Randomly sample the same number of "points" (i.e. coding sequences) as the old/exisitng codon usage.
-
-bplot <- intraBplot(x = Old_CU, 
-           y = New_CU, 
-          names = c("Old", "New"), 
-           variable = "MILC", 
-           size = 2, 
-           alpha = 0.8) + 
-
-# Get the coordinates (i.e. x,y ) for each of the data points in the plot.
-  
-xcords <- bplot[["data"]][["Old"]]
-ycords <- bplot[["data"]][["New"]]
-
-# Create a data frame of the MILC distance points.
-
-dfMILC <- data.frame(bplot[["data"]][["Old"]],bplot[["data"]][["New"]],bplot[["data"]][["sample"]])
-  
-bplot +
-  theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5), legend.position = "none") +
-  ggtitle("Karlin B Plot of Existing (Kazuza) v.s.New CU Distances")+
-  xlab("MILC Distance from Existing CU") +
-  ylab("MILC Distance from Consensus CU") + 
-  #scale_fill_manual(name = "Species", labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana")) +
-  theme(legend.position = c(0.93, 0.10),
-        legend.background = element_rect(fill = "white", color = "black")) +  #https://datavizpyr.com/how-to-place-legend-inside-the-plot-with-ggplot2/ 
-  labs(color="Codon Usage") #+
- # geom_point(aes(shape=sample, color=sample)) # https://stackoverflow.com/questions/14622421/how-to-change-legend-title-in-ggplot
-  #geom_jitter(width  = 0.05)  # Add noise since the dataset in small to avoid overplotting.
-
-# The example dataset in the vignette has ~ 19, 000 + "points". There may just be undersampling/ less data points
-# This makes sense, since it is the same species, the codon usage should not differ greatly from the Old CU data set available.
-
-#### 00 STATISTICAL WORK ON B PLOT ####
-
-# This section is based on discussions with Dr. Hamilton-Wright.
-# The steps followed here and the following links were suggested/provided by Dr. Hamilton-Wright in email communications: 
-# https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6350423/
-# https://www.statology.org/test-for-normality-in-r/
-
-# Get the coordinates (i.e. x,y ) for each of the data points in the plot.
-
-xcords <- bplot[["data"]][["Old"]]
-ycords <- bplot[["data"]][["New"]]
-
-# Compute the log 10 of each data point in both axis.
-
-logxcords <- log10(xcords)
-logycords <- log10(ycords)
-
-# Check to see the lengths of the points. If points < 50 use a Shapiro-Wilk test. If points > 50 use a Kolgomornov-Smirnov test.
-
-length(logxcords)
-length(logycords)
-
-# Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
-
-ks.test(logxcords, "pnorm")
-ks.test(logycords, "pnorm")
-
-# The p-value is less than 2.2e-16 (p < 0.05) for both data sets indicating that the data is not normally distributed.
-
-# Try "weaker" transformations just in case.
-
-# Attempt to try cube root.
-# Compute the cube root of each data point in both directions.
-rootxcords <- xcords*(1/3)
-rootycords <- ycords*(1/3)
-# Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
-ks.test(rootxcords, "pnorm")
-ks.test(rootycords, "pnorm")
-# The p-value < 2.2e-16 (p < 0.05) for both; data is not normally distributed.
-
-# Attempt to try square root.
-# Compute the square root of each data point in both directions.
-sqrootxcords <- sqrt(xcords)
-sqrootycords <- sqrt(ycords)
-# Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
-ks.test(sqrootxcords, "pnorm")
-ks.test(sqrootycords, "pnorm")
-# The p-value < 2.2e-16 (p < 0.05) for both; data is not normally distributed.
-
-# Data is very positively skewed (i.e. right skewed distribution of data) for both the x coordinates and the y coordinates. Even after applying log transformations, the data is not sufficiently "normal" to be able to use parametric tests to estimate the degree of separation.
-
-# Are non-parametic tests available and suitable in this case?
-# Not possible, but : Is it still possible to perform parametric tests to estimate the degree of separation? Are there other "stronger" transformations -> See Duda, Hart & Stork (2001) chapter for more information and general insight.
-
-# Attempt to try exponential inverse of log (i.e. e^x).
-# Compute the inverse of log of each data point in both directions.
-expxcords <- exp(xcords)
-expycords <- exp(ycords)
-# Use a Kolgomornov-Smirnov test of normality to ensure that the data is normally distributed independently in both axis.
-ks.test(expxcords, "pnorm")
-ks.test(expycords, "pnorm")
-# The p-value < 2.2e-16 (p < 0.05) for both; data is not normally distributed.
-
-table(xcords %in% MILC(Old_CU))
-table(ycords %in% MILC(Sample_CU))
-
-# Following code adapted from: https://www.bioconductor.org/packages/devel/bioc/vignettes/coRdon/inst/doc/coRdon.html#calculate-cu-bias
-
-# Recheck lengths
-
-lengths <- as.data.frame(getlen(Old_CU))
-colnames(lengths) <- "length"
-ggplot(lengths, aes(length)) + 
-  geom_density() +
-  geom_vline(xintercept = 80, colour = "red") +
-  theme_light()
-
-lengths <- as.data.frame(getlen(Tabacum_CU))
-colnames(lengths) <- "length"
-ggplot(lengths, aes(length)) + 
-  geom_density() +
-  geom_vline(xintercept = 80, colour = "red") +
-  theme_light()
-
 #### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT ####
 
 # Check if the B() values are normally distributed.
@@ -717,3 +592,18 @@ write_csv(x = dfCU ,
 #dfKazuza.max <- group_by(dfKazuza, AmAcid) %>% 
 #  filter(Number==max(Number)) %>% 
 #  select(AmAcid, Codon)
+
+#### 09 DATA FILTERING : EXAMINE THE CDS LENGTHS ####
+
+# A minimum of 80 (or more codons) is required to conduct MILC analysis.
+# Remove sequences less than 80 codons or (80*3 =) 240 bases in sequence length.
+
+dfCodingSeqs <- subset(dfFinal, Trimmed_Length >= 240)
+
+#Recheck the trimmed sequences. Are these divisible by three?
+# If sequence lengths are divisible by three, we can continue to retain. 
+# If not, either check the trimming or discard.
+
+# Remove all objects no longer needed from the environment.
+
+rm(lab_y,y)

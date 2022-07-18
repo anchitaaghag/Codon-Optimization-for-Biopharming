@@ -76,9 +76,9 @@ dfTabacum <- read.table(text=xpathSApply(Tabacum, "//pre", xmlValue),
 
 # Import the codon usage (to be compared to Kazuza codon usages) from the previous R file "Build_Codon_Usage_Table.R" or from another source.
 
-dfNew <- read_csv("dfCodingSeqs.csv")[,2:14]
-#dfOld <- read_csv("dfKazuza.csv")[,2:5]
-#dfTabacum <- read_csv("dfNTabacum.csv")[,2:5]
+dfNew <- dfFinal
+dfOld <- read_csv("dfKazuza.csv")[,2:5]
+dfTabacum <- read_csv("dfNTabacum.csv")[,2:5]
 
 #### 03 CHECK AVERAGE CODON COUNTS REPORTED BY KAZUZA ####
 
@@ -95,7 +95,6 @@ sum(dfTabacum$X.1000) # Kazuza CU for N. tabacum reports 1000.04 instead of 1000
 
 # For N. benthamiana: http://www.kazusa.or.jp/codon/current/species/4100
 # For N. tabacum: http://www.kazusa.or.jp/codon/current/species/4097
-# For A. thaliana http://www.kazusa.or.jp/codon/current/species/3702
 
 # For faster loading into R, I will be loading previously formatted files (using command line).
 
@@ -104,9 +103,6 @@ Old_CDS <- read.table("N_benthamiana_Codon_Counts_Only.txt",
 
 Tabacum_CDS <- read.table("N_tabacum_Codon_Counts_Only.txt",
                             header = TRUE)
-
-Thaliana_CDS <- read.table("A_thaliana_Codon_Counts_Only.txt",
-                          header = TRUE)
 
 #### 04 GENERATE CODON USAGE TABLES ####
 
@@ -208,8 +204,10 @@ ggplot(data=dfMeanSD,
   scale_x_discrete(guide = guide_axis(angle = 90)) + #https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2
   theme(legend.position = c(0.93, 0.93),
         legend.background = element_rect(fill = "white", color = "black")) + #https://datavizpyr.com/how-to-place-legend-inside-the-plot-with-ggplot2/ 
-  ylim(NA,40) +
-  scale_fill_viridis(discrete = TRUE, option = "viridis") 
+  ylim(NA,40) 
+  # + scale_fill_viridis(discrete = TRUE, option = "viridis") 
+
+
 
 #### 00 FIXME MAYBE ADD THIS #####
 
@@ -243,7 +241,25 @@ chisq.test(x = dfOld_MeanSD$`Frequency (Per 1000 Codons)`,
 # "Other CU statistics can be calculated in the same way as MILC(), using one of the functions: B(), MCB(), ENCprime(), ENC() or SCUO(). Note however, that when calculating ENC and SCUO, one doesn’t need to provide a subset of refe"
 # Next, compare the CU bias for every coding sequence between the created CUT and Kazuza through visualizations.
 
-#### 09 ADD SECTION THAT COMPARES THE B() TO SUPPLEMENT INTRABPLOT ####
+#### ROUGH WORK #####
+
+Fop(New_CU, subsets = list(),
+    ribosomal = FALSE, id_or_name2 = "1", alt.init = TRUE,
+    stop.rm = FALSE, filtering = "none", len.threshold = 80)
+
+GCB(New_CU, seed = New_CU, ribosomal = FALSE, perc = 0.05,
+    id_or_name2 = "1", alt.init = TRUE, stop.rm = FALSE,
+    filtering = "none", len.threshold = 80)
+
+E(New_CU, subsets = list(), ribosomal = FALSE,
+  id_or_name2 = "1", alt.init = TRUE, stop.rm = FALSE,
+  filtering = "none", len.threshold = 80)
+
+CAI(New_CU, subsets = Old_CU, ribosomal = FALSE, id_or_name2 = "1",
+    alt.init = TRUE, stop.rm = FALSE, filtering = "none",
+    len.threshold = 80)
+
+#### 09 ADD SECTION THAT COMPARES THE B() ####
 
 # Check if the B() values are normally distributed.
 

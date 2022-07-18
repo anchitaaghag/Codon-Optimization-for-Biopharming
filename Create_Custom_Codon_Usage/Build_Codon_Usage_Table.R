@@ -161,17 +161,23 @@ Gene_Name_List_1 <- dfFeatures$Gene
 
 # Second, for entries that have a listed gene name in the protein description, extract the gene names into a character vector.
 
-Gene_Name_List_3 <- dfFeatures$Protein_ID %>%
+Gene_Name_List_2 <- dfFeatures$Protein_ID %>%
   str_extract("prot_desc.*") %>%
   str_extract(".*;") %>%
   str_replace("prot_desc:", "") %>%
   str_replace(";.*", "") %>%
   str_replace("autophagy", "") %>%
   str_squish()
-    
+Gene_Names <- dfFeatures$Protein_ID %>%
+  str_match("prot_desc:\\s*(.*?)\\s*;") %>%
+  str_replace("prot_desc:","") %>%
+  str_replace("Nb","") %>%
+  str_replace("\\;","") %>%
+  str_trim()
+
 # Third, for entries that have a listed gene name in the notes, extract the gene names into a character vector.
 
-Gene_Name_List_2 <- dfFeatures$Protein_ID %>%
+Gene_Name_List_3 <- dfFeatures$Protein_ID %>%
   str_extract("note.*") %>%
   str_replace("note:", "") %>%
   str_replace(";.*", "") %>%
@@ -182,21 +188,13 @@ Gene_Name_List_2 <- dfFeatures$Protein_ID %>%
 All_Gene_Names <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
   coalesce(y = Gene_Name_List_3) 
 
-table(duplicated(All_Gene_Names))
-
 # Add back to the data frame.
 
 dfFeatures["AllGene"] <- All_Gene_Names
 
-Gene_Names <- dfFinal$Protein_ID %>%
-  str_match("prot_desc:\\s*(.*?)\\s*;") %>%
-  str_replace("prot_desc:","") %>%
-  str_replace("Nb","") %>%
-  str_replace("\\;","") %>%
-  str_trim()
-Gene_Names[5] <- "GRP7"
+# Edit the protein id column to neatly display only the GenBank Protein IDs.
 
-GenBank_Protein_ID <- dfFinal$Protein_ID %>%
+dfFeatures["Protein_ID"] <- dfFeatures$Protein_ID %>%
   str_match(".*gb\\|([^|]+)")
 
 # Export these tables to .csv format files (if desired). 

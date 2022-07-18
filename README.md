@@ -82,6 +82,9 @@ Give an example
 
 * This project is part of my major reasearch project (BINF 6999) to fullfill the requirements of the Master of Bioinformatics degree (University of Guelph, ON, Canada). Project Duration: May 2022 - August 2022. 
 * I would like to thank my advisors, Drs. Cossar, Geddes-McAlister, and Hamilton-Wright for their support and advice. See also the "Advisors" section above.
+* Dr. Jason McAlister - for assistance with technical aspects (i.e. viewing GitHub repositories and , 
+* Ben Muselius - for help in interpreting figures and conducting statistical analysis on codon usages
+* JGM Lab Members - for their feedback and advice during practice presentations
 * Hat tip to anyone whose code was used
 * Inspiration
 * etc

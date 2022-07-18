@@ -151,7 +151,7 @@ colnames(dfFeatures) <- c("GB_Accession","Start_of_CDS","End_of_CDS","Type","Pro
 
 rm(Accessions,Feature_List)
 
-#### 07 DATA AQUISITION : OBTAIN GENE INFORMATION ####
+#### 07 DATA AQUISITION : OBTAIN GENE NAME INFORMATION ####
 
 # The gene name for each entry is distributed over three columns: Product, Protein_ID, and Gene. To ensure that these are formatted correctly, extract the relevant information from each of the columns and merge.
 
@@ -168,12 +168,6 @@ Gene_Name_List_2 <- dfFeatures$Protein_ID %>%
   str_replace(";.*", "") %>%
   str_replace("autophagy", "") %>%
   str_squish()
-Gene_Names <- dfFeatures$Protein_ID %>%
-  str_match("prot_desc:\\s*(.*?)\\s*;") %>%
-  str_replace("prot_desc:","") %>%
-  str_replace("Nb","") %>%
-  str_replace("\\;","") %>%
-  str_trim()
 
 # Third, for entries that have a listed gene name in the notes, extract the gene names into a character vector.
 
@@ -190,12 +184,14 @@ All_Gene_Names <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
 
 # Add back to the data frame.
 
-dfFeatures["AllGene"] <- All_Gene_Names
+dfFeatures["Gene"] <- All_Gene_Names
 
 # Edit the protein id column to neatly display only the GenBank Protein IDs.
 
-dfFeatures["Protein_ID"] <- dfFeatures$Protein_ID %>%
+New_Protein_IDs <- dfFeatures$Protein_ID %>%
   str_match(".*gb\\|([^|]+)")
+
+dfFeatures["Protein_ID"] <- New_Protein_IDs
 
 # Export these tables to .csv format files (if desired). 
 
@@ -209,12 +205,35 @@ write.table(x = dfNCBI,
 
 rm(Gene_Name_List_1,Gene_Name_List_2,Gene_Name_List_3,All_Gene_Names)
 
-#### 08 DATA SUMMARY : VIEW COLLECTED NCBI INFORMATION ####
+#### 08 DATA SUMMARY : NCBI INFORMATION ####
 
-# FIXME Summary Stats here, see previous script work
+# Check the type of class and summary information.
+
+class(dfNCBI)
+
+class(dfFeatures)
+
+# All character data except for one column specifiying the protein lengths.
+
+summary(dfNCBI)
 
 summary(dfFeatures)
-summary(dfNCBI)
+
+# Check if all entries are for N. benthamiana.
+
+table(dfData$Organism == "Nicotiana benthamiana") # Yes. All 866 entries are for the study species.
+
+# Any missing sequence entries?
+
+sum(is.na(dfData$Sequence)) # 0
+
+# Any missing gene name entries?
+
+sum(is.na(dfData$Gene.names)) # 304 missing gene names.
+
+# Any missing protein name entries?
+
+sum(is.na(dfData$Protein.names)) # 0 
 
 #### 09 DATA FILTERING : COMBINE INTO ONE DATAFRAME ####
 

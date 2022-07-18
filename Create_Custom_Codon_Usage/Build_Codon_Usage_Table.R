@@ -44,10 +44,11 @@ Maximum_Sequences_To_Retrieve <- 5000
 
 #### 03 DATA AQUISITION ALTERNATIVE: LOAD DATA FROM FILE ####
 
-# If desired, the data can be loaded from a file by running the following lines of code and skipping Sections 04 to 06 below. This may be useful to reproduce the results of the original script. Data originally downloaded on 17 July 2022.
-# 
+# If desired, the data can be loaded from a file by running the following lines of code and skipping Sections 04 to 07 below. This may be useful to reproduce the results of the original script. Data originally downloaded on 17 July 2022.
+# dfNCBI <- 
+# dfFeatures <-
 
-# If not, the data from NCBI can be obtained by running the following script below. (Sections 04 to 06)
+# If not, the data from NCBI can be obtained by running the following script below (Sections 04 to 07).
 # The latter may be particularly helpful if additional sequences have been deposited in the GenBank/NCBI database or if an updated codon usage table is required.
 
 #### 04 DATA AQUISITION : OBTAIN IDS FROM NCBI ####
@@ -151,7 +152,7 @@ colnames(dfFeatures) <- c("GB_Accession","Start_of_CDS","End_of_CDS","Type","Pro
 
 rm(Accessions,Feature_List)
 
-#### 07 DATA AQUISITION : OBTAIN GENE NAME INFORMATION ####
+#### 07 DATA AQUISITION : OBTAIN GENE NAMES ####
 
 # The gene name for each entry is distributed over three columns: Product, Protein_ID, and Gene. To ensure that these are formatted correctly, extract the relevant information from each of the columns and merge.
 
@@ -188,12 +189,11 @@ dfFeatures["Gene"] <- All_Gene_Names
 
 # Edit the protein id column to neatly display only the GenBank Protein IDs.
 
-New_Protein_IDs <- dfFeatures$Protein_ID %>%
-  str_match(".*gb\\|([^|]+)")
+New_Protein_IDs <- str_match(dfFeatures$Protein_ID, ".*gb\\|([^|]+)")
 
-dfFeatures["Protein_ID"] <- New_Protein_IDs
+dfFeatures["Protein_ID"] <- New_Protein_IDs[,2]
 
-# Export these tables to .csv format files (if desired). 
+# Export these two data frames as tables to .csv format files (if desired). 
 
 write.table(x = dfFeatures, 
             file = "Features_Data.csv")
@@ -203,37 +203,42 @@ write.table(x = dfNCBI,
 
 # Remove all objects no longer needed from the environment.
 
-rm(Gene_Name_List_1,Gene_Name_List_2,Gene_Name_List_3,All_Gene_Names)
+rm(Gene_Name_List_1,Gene_Name_List_2,Gene_Name_List_3,All_Gene_Names,New_Protein_IDs)
 
 #### 08 DATA SUMMARY : NCBI INFORMATION ####
 
 # Check the type of class and summary information.
 
 class(dfNCBI)
-
 class(dfFeatures)
 
-# All character data except for one column specifiying the protein lengths.
+# Both of these are data frames.
+
+# Check the type of information in each data frame.
 
 summary(dfNCBI)
-
 summary(dfFeatures)
 
-# Check if all entries are for N. benthamiana.
-
-table(dfData$Organism == "Nicotiana benthamiana") # Yes. All 866 entries are for the study species.
+# For the dfNCBI, all are character data except for one column specifiying the sequence lengths.
+# For the dfFeatures, all are character data except for two columns specifiying the sequence start and stop positions.
 
 # Any missing sequence entries?
 
-sum(is.na(dfData$Sequence)) # 0
+sum(is.na(dfNCBI$Untrimmed_Sequences)) # 0
 
 # Any missing gene name entries?
 
-sum(is.na(dfData$Gene.names)) # 304 missing gene names.
+sum(is.na(dfFeatures$Gene)) # 535 missing gene names.
 
 # Any missing protein name entries?
 
-sum(is.na(dfData$Protein.names)) # 0 
+sum(is.na(dfNCBI$Titles)) # 0 
+
+# Check if the number of entries are the same.
+
+length(unique(dfNCBI$GenBank_Accession)) == length(unique(dfFeatures$GB_Accession))
+
+# TRUE. Yes, these are the same.
 
 #### 09 DATA FILTERING : COMBINE INTO ONE DATAFRAME ####
 
@@ -250,30 +255,27 @@ table(dfFeatures$Type)
 
 # Several features including coding sequences, mRNA 3' and 5' untranslated regions (UTRs).
 # Filter the data frame to retain features marked "CDS", eliminating UTRs, rRNAs, and other non-coding regions.
+# Retain only feature "rows" marked as CDS.
 
-dfFeatures.sub1 <- dfFeatures %>%
-  filter(Type == "gene") # Retain only feature "rows" marked as CDS or gene
-
-dfFeatures.sub2 <- dfFeatures %>%
+dfFeatures.CDS <- dfFeatures %>%
   filter(Type == "CDS")
 
-dfFeatures.sub <- rbind(dfFeatures.sub1,dfFeatures.sub2)
-
-# Subsetting dfData by the column names in dfFeatures. This will retain only records marked as "CDS"
+# Subsetting dfData by the column names in dfFeatures. This will retain only records marked as "CDS".
   
-dfCombined <- subset(dfNCBI, GenBank_Accession %in% dfFeatures.sub$GB_Accession)
+dfCombined <- subset(dfNCBI, GenBank_Accession %in% dfFeatures.CDS$GB_Accession)
 
 # Add the feature columns to the new data frame.
 
-dfData <- cbind(dfCombined, dfFeatures.sub[,2:7])
+dfData <- cbind(dfCombined, dfFeatures.CDS[,2:7])
 
 # Append a new column with the length of the CDS.
 
 dfData["GenBank_Length_of_CDS"] <- ((dfData$End_of_CDS - dfData$Start_of_CDS) + 1)
 
-# Rearrange column names, for readability.
+# Rearrange column names and edit row names for readability.
 
-dfData <- dfData[,c("GenBank_Accession", "NCBI_ID", "Titles", "Type", "Untrimmed_Sequence_Length", "Untrimmed_Sequences", "Start_of_CDS", "End_of_CDS", "GenBank_Length_of_CDS", "Protein_ID", "Product")]
+dfData <- dfData[,c("GenBank_Accession", "NCBI_ID", "Titles", "Type", "Untrimmed_Sequence_Length", "Untrimmed_Sequences", "Start_of_CDS", "End_of_CDS", "GenBank_Length_of_CDS", "Gene", "Protein_ID", "Product")]
+rownames(dfData) <- NULL
 
 # Remove all objects no longer needed from the environment.
 
@@ -292,7 +294,7 @@ Filtered_Titles <- dfData$Titles %>%
   str_extract(".*mRNA, complete cds.*")  # Keep only complete cds (i.e. remove partial cds) 
 
 # Remove any coding sequences for hypothetical proteins.
-# Subsetting dfData by the column names in dfFeatures. This will retain only records marked as "CDS"
+# Subsetting dfData by the filtered protein names in Filtered_Titles.
 
 dfData.sub <- subset(dfData, Titles %in% Filtered_Titles)
 
@@ -315,16 +317,17 @@ Duplicate_Names <- Names[ Names %in% Names[duplicated(Names)] ]
 # https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
 
 NAs <- is.na(Duplicate_Names) 
-dup <- Duplicate_Names[!NAs] 
+All_Duplicates <- Duplicate_Names[!NAs] 
+
 # https://stackoverflow.com/questions/57832161/how-to-remove-na-in-character-vector-in-r
 
 # Final list of gene names that have multiple entries.
 
-unique_duplicates <- unique(dup)
+Unique_Duplicates <- unique(All_Duplicates)
 
 #rm(Duplicate_Names,NAs, dup)
 
-length(unique_duplicates)
+length(Unique_Duplicates)
 
 # 2 records with multiple entries. Can these be filtered further?
 # It would be constructive to ensure that these associated sequences and information makes sense.
@@ -333,7 +336,7 @@ length(unique_duplicates)
 
 dfData_Duplicates <- data.frame()
 
-for (i in unique_duplicates) {
+for (i in Unique_Duplicates) {
   matching_row <- dfData.sub %>%
     filter(Titles == i)
   dfData_Duplicates <- rbind(dfData_Duplicates, matching_row)
@@ -436,11 +439,12 @@ Number <- colSums(Updated_CU)
 
 AmAcid <- c("Lys","Asn","Lys","Asn","Thr","Thr","Thr","Thr","Arg","Ser","Arg","Ser","Ile","Ile","Met","Ile","Gln","His","Gln","His","Pro","Pro","Pro","Pro","Arg","Arg","Arg","Arg","Leu","Leu","Leu","Leu","Glu","Asp","Glu","Asp","Ala","Ala","Ala","Ala","Gly","Gly","Gly","Gly","Val","Val","Val","Val","End","Tyr","End","Tyr","Ser","Ser","Ser","Ser","End","Cys","Trp","Cys","Leu","Phe","Leu","Phe")
 
-Codon <- as.list(colnames(Updated_CU))
+Codon <- colnames(Updated_CU)
 
 # Finally, create a data frame using the four vectors created above.
   
 dfCodon_Usage_Table <- data.frame(AmAcid, Codon, Number, `X.1000`)
+row.names(dfCodon_Usage_Table) <- NULL
 
 #### 14 EXPORT CODON USAGE AND ADDITIONAL DATA ####
 

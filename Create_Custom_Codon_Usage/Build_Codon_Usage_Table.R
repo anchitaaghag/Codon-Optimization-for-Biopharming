@@ -114,13 +114,11 @@ write(nico_retrive, file="nico_retrive.fasta")
 
 # Obtain the list of coding sequences and add them to the data frame.
 
-sequences <- paste(readDNAStringSet("nico_retrive.fasta"))
-
-dfNCBI["Untrimmed_Sequences"] <- sequences
+dfNCBI["Untrimmed_Sequences"] <- paste(readDNAStringSet("nico_retrive.fasta"))
 
 # Remove all objects no longer needed from the environment.
 
-rm(fastaFile, nico_search, nico_summs, nico_retrive, sequences)
+rm(nico_search, nico_summs, nico_retrive, sequences)
 
 #### 06 DATA AQUISITION : OBTAIN ANNOTATIONS ####
 
@@ -163,7 +161,7 @@ Gene_Name_List_1 <- dfFeatures$Gene
 
 # Second, for entries that have a listed gene name in the protein description, extract the gene names into a character vector.
 
-Gene_Name_List_2 <- dfFeatures$Protein_ID %>%
+Gene_Name_List_3 <- dfFeatures$Protein_ID %>%
   str_extract("prot_desc.*") %>%
   str_extract(".*;") %>%
   str_replace("prot_desc:", "") %>%
@@ -173,7 +171,7 @@ Gene_Name_List_2 <- dfFeatures$Protein_ID %>%
     
 # Third, for entries that have a listed gene name in the notes, extract the gene names into a character vector.
 
-Gene_Name_List_3 <- dfFeatures$Protein_ID %>%
+Gene_Name_List_2 <- dfFeatures$Protein_ID %>%
   str_extract("note.*") %>%
   str_replace("note:", "") %>%
   str_replace(";.*", "") %>%
@@ -184,13 +182,11 @@ Gene_Name_List_3 <- dfFeatures$Protein_ID %>%
 All_Gene_Names <- coalesce(x = Gene_Name_List_1, y = Gene_Name_List_2) %>%
   coalesce(y = Gene_Name_List_3) 
 
+table(duplicated(All_Gene_Names))
+
 # Add back to the data frame.
 
-dfFeatures["Gene"] <- All_Gene_Names
-
-rm(Gene_Name_List_1,Gene_Name_List_2,Gene_Name_List_3,All_Gene_Names)
-
-#### GET GENE NAMES ###
+dfFeatures["AllGene"] <- All_Gene_Names
 
 Gene_Names <- dfFinal$Protein_ID %>%
   str_match("prot_desc:\\s*(.*?)\\s*;") %>%
@@ -203,9 +199,17 @@ Gene_Names[5] <- "GRP7"
 GenBank_Protein_ID <- dfFinal$Protein_ID %>%
   str_match(".*gb\\|([^|]+)")
 
-# Export these tables to 
+# Export these tables to .csv format files (if desired). 
 
-# write.table(x = dfFeatures, file = "Features_Data_Frame")
+write.table(x = dfFeatures, 
+            file = "Features_Data.csv")
+
+write.table(x = dfNCBI, 
+            file = "NCBI_Data.csv")
+
+# Remove all objects no longer needed from the environment.
+
+rm(Gene_Name_List_1,Gene_Name_List_2,Gene_Name_List_3,All_Gene_Names)
 
 #### 08 DATA SUMMARY : VIEW COLLECTED NCBI INFORMATION ####
 
@@ -230,8 +234,13 @@ table(dfFeatures$Type)
 # Several features including coding sequences, mRNA 3' and 5' untranslated regions (UTRs).
 # Filter the data frame to retain features marked "CDS", eliminating UTRs, rRNAs, and other non-coding regions.
 
-dfFeatures.sub <- dfFeatures %>%
-  filter(Type == "CDS") # Retain only feature "rows" marked as CDS 
+dfFeatures.sub1 <- dfFeatures %>%
+  filter(Type == "gene") # Retain only feature "rows" marked as CDS or gene
+
+dfFeatures.sub2 <- dfFeatures %>%
+  filter(Type == "CDS")
+
+dfFeatures.sub <- rbind(dfFeatures.sub1,dfFeatures.sub2)
 
 # Subsetting dfData by the column names in dfFeatures. This will retain only records marked as "CDS"
   

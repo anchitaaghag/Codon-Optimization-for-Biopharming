@@ -24,9 +24,18 @@ Protein_Sequence_File <- "Example_Protein_Sequences.txt"
 
 Result_File_Name <- "Example_Results.txt"
 
-#### 02 LOAD FUNCTION ####
+#### 02 LOAD FUNCTIONS ####
 
-# Load the reverse translate function.
+# This script requires the following packages and libraries.
+# If these packages have not yet been installed please remove the "#" and run the following lines.
+
+#install.packages("dplyr") 
+#install.packages("seqinr") 
+
+library("dplyr") 
+library("seqinr")
+
+# Load the reverse translate function from the R file.
 
 source("Reverse_Translate_Function.R")
 

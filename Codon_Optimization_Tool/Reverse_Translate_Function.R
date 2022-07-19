@@ -15,7 +15,7 @@ Reverse_Translate <- function(sequence_file, codon_usage_table) {
   
   # Read in the protein sequence file.
   
-  SeqFile <- readLines(sequence_file)
+  SeqFile <- readLines(con = sequence_file)
   
   # Recursively keep only odd numbered lines i.e., the protein names or headers ">"
   
@@ -29,7 +29,7 @@ Reverse_Translate <- function(sequence_file, codon_usage_table) {
   
   # Read in the codon usage table file.
   
-  CU_Table <- read.table(codon_usage_table,
+  CU_Table <- read.table(file = codon_usage_table,
                          header = TRUE)
   
   # Create an Amino_Acid_Lookup list that contains the codons and proportions per amino acid. This will be done using the codon usage from above.

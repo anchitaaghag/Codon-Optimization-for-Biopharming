@@ -438,12 +438,12 @@ Number <- colSums(Updated_CU)
 # Lastly, create two character vectors for the amino acid and corresponding codons. The amino acids are assigned with the assumtion that the codons are listed from AAA to TTT as defined in the codonTable function.
 
 AmAcid <- c("Lys","Asn","Lys","Asn","Thr","Thr","Thr","Thr","Arg","Ser","Arg","Ser","Ile","Ile","Met","Ile","Gln","His","Gln","His","Pro","Pro","Pro","Pro","Arg","Arg","Arg","Arg","Leu","Leu","Leu","Leu","Glu","Asp","Glu","Asp","Ala","Ala","Ala","Ala","Gly","Gly","Gly","Gly","Val","Val","Val","Val","End","Tyr","End","Tyr","Ser","Ser","Ser","Ser","End","Cys","Trp","Cys","Leu","Phe","Leu","Phe")
-
+Single_Letter_Abbreviation <- c("K","N","K","N","T","T","T","T","R","S","R","S","I","I","M","I","Q","H","Q","H","P","P","P","P","R","R","R","R","L","L","L","L","E","D","E","D","A","A","A","A","G","G","G","G","V","V","V","V","X","Y","X","Y","S","S","S","S","X","C","W","C","L","F","L","F")
 Codon <- colnames(Updated_CU)
 
 # Finally, create a data frame using the four vectors created above.
   
-dfCodon_Usage_Table <- data.frame(AmAcid, Codon, Number, `X.1000`)
+dfCodon_Usage_Table <- data.frame(AmAcid, Single_Letter_Abbreviation, Codon, Number, `X.1000`)
 row.names(dfCodon_Usage_Table) <- NULL
 
 #### 14 EXPORT CODON USAGE AND ADDITIONAL DATA ####

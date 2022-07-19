@@ -9,18 +9,18 @@
 # getwd()
 # setwd()
 
-# Next, please indicate if you would like to used the updated codon usage of N. benthamiana ("TRUE") or if you would like to provide your own codon usage ("FALSE"). You will be prompted to enter the name of the file with your custom codon usage in the console if the "FALSE" option is chosen.
-# If you would like to use the example, leave this as "TRUE".
+# Next, please indicate the name of the file with your codon usage table. 
+# If you would like to use the updated codon usage of N. benthamiana, leave this as "Updated_Codon_Usage.txt".
 
-Chosen_Option <- TRUE
+Chosen_Codon_Usage <- "Updated_Codon_Usage.txt"
 
 # Then, please indicate the name of the file with your protein sequence(s). 
-# If you would like to use the example protein sequences, leave this as "Example_Protein_Sequences.txt"
+# If you would like to use the example protein sequences, leave this as "Example_Protein_Sequences.txt".
 
 Protein_Sequence_File <- "Example_Protein_Sequences.txt"
 
 # Finally, please indicate a name for your output results file.
-# If you would like to use the example, leave this as "Example_Results.txt"
+# If you would like to use the example, leave this as "Example_Results.txt".
 
 Result_File_Name <- "Example_Results.txt"
 
@@ -35,7 +35,7 @@ source("Reverse_Translate_Function.R")
 # Reverse translate the amino acid sequences to DNA sequences based on the user input defined above.
 
 DNA_Sequences <- Reverse_Translate(sequence_file = Protein_Sequence_File, 
-                                   default_codon_usage = Chosen_Option)
+                                   codon_usage_table = Chosen_Codon_Usage)
 
 #### 04 VIEW THE RESULTS ####
 

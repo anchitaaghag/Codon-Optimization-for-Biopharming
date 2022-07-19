@@ -119,7 +119,7 @@ dfNCBI["Untrimmed_Sequences"] <- paste(readDNAStringSet("nico_retrive.fasta"))
 
 # Remove all objects no longer needed from the environment.
 
-rm(nico_search, nico_summs, nico_retrive, sequences)
+rm(nico_search, nico_summs, nico_retrive)
 
 #### 06 DATA AQUISITION : OBTAIN ANNOTATIONS ####
 

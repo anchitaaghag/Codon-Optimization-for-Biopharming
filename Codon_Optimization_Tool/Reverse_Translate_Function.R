@@ -14,7 +14,7 @@ library("seqinr")
 Reverse_Translate <- function(sequence_file, codon_usage_table) {
   
   # Read in the protein sequence file.
-
+  
   SeqFile <- readLines(sequence_file)
   
   # Recursively keep only odd numbered lines i.e., the protein names or headers ">"
@@ -28,10 +28,10 @@ Reverse_Translate <- function(sequence_file, codon_usage_table) {
   rm(SeqFile)
   
   # Read in the codon usage table file.
-
+  
   CU_Table <- read.table(codon_usage_table,
                          header = TRUE)
-    
+  
   # Create an Amino_Acid_Lookup list that contains the codons and proportions per amino acid. This will be done using the codon usage from above.
   # Ensure that the Codon_Usage_Table is listed alphabetically be codon.
   
@@ -71,9 +71,9 @@ Reverse_Translate <- function(sequence_file, codon_usage_table) {
       select(Number) %>%
       summarise(Proportion = (Number/Total)*1) 
     
-    Info <- c(Prop,Codon_Names)
+    # Add this information to the Amino_Acid_Lookup list.
     
-    Amino_Acid_Lookup <- append(Amino_Acid_Lookup, list(Info))
+    Amino_Acid_Lookup <- append(Amino_Acid_Lookup, list(c(Prop,Codon_Names)))
     
   }
   
@@ -82,7 +82,7 @@ Reverse_Translate <- function(sequence_file, codon_usage_table) {
   names(Amino_Acid_Lookup) <- unlist(Amino_Acids)
   
   rm(dfAmAcid_Prob, Codon_Names, Total, Prop, Info, Amino_Acids, Each_Amino)
-
+  
   # Create an empty list to store all the corresponding DNA sequences.
   
   All_DNA_Seqs <- list()

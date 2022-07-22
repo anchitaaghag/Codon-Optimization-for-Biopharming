@@ -251,9 +251,11 @@ length(unique(dfNCBI$GenBank_Accession)) == length(unique(dfFeatures$GB_Accessio
 # 2) dfNCBI - A dataframe holding the untrimmed sequences and version information.
 
 # The number of features can exceed the number of records.
+
 table(duplicated(dfFeatures$GB_Accession)) # FALSE = 332 "extra" features annotated.
 
 # What type of features have been annotated in the records?
+
 table(dfFeatures$Type)
 
 # Several features including coding sequences, mRNA 3' and 5' untranslated regions (UTRs).
@@ -278,6 +280,7 @@ dfData["GenBank_Length_of_CDS"] <- ((dfData$End_of_CDS - dfData$Start_of_CDS) + 
 # Rearrange column names and edit row names for readability.
 
 dfData <- dfData[,c("GenBank_Accession", "NCBI_ID", "Titles", "Type", "Untrimmed_Sequence_Length", "Untrimmed_Sequences", "Start_of_CDS", "End_of_CDS", "GenBank_Length_of_CDS", "Gene", "Protein_ID", "Product")]
+
 rownames(dfData) <- NULL
 
 # Remove all objects no longer needed from the environment.
@@ -315,14 +318,15 @@ rm(Filtered_Titles, dfData)
 
 Names <- unlist(dfData.sub$Titles)
 
+# The following line of code was adapted from: https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r. (David, 2016).
+
 Duplicate_Names <- Names[ Names %in% Names[duplicated(Names)] ]
 
-# https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
+# The following lines of code were adapted from: https://stackoverflow.com/questions/57832161/how-to-remove-na-in-character-vector-in-r. (Laurent, 2019).
 
 NAs <- is.na(Duplicate_Names) 
-All_Duplicates <- Duplicate_Names[!NAs] 
 
-# https://stackoverflow.com/questions/57832161/how-to-remove-na-in-character-vector-in-r
+All_Duplicates <- Duplicate_Names[!NAs] 
 
 # Final list of gene names that have multiple entries.
 
@@ -345,13 +349,12 @@ for (i in Unique_Duplicates) {
   dfData_Duplicates <- rbind(dfData_Duplicates, matching_row)
 }
 
-#rm(unique_duplicates, matching_row, i)
-
 # Filtering of duplicates. 
 # There are several duplicates for a single gene in dfData_Duplicates.
 # Retain the longest sequence. If there are flanking non-coding regions in the sequence, it can be trimmed below.
 # In this case, only the longest sequence will be retained since there may be more information present that is valuable to downstream analysis. 
-#Steps:
+
+# Steps:
 # 1. Subset the duplicates from dfData
 # 2. Remove these duplicated entries from dfData
 # 3. Sort the duplicated entries by sequence length.
@@ -361,7 +364,7 @@ for (i in Unique_Duplicates) {
 
 dfDataSorted <- dfData_Duplicates[order(dfData_Duplicates$Untrimmed_Sequence_Length, decreasing = TRUE),] 
 
-#https://stackoverflow.com/questions/62075537/r-pipe-in-does-not-work-with-stringrs-str-extract-all
+# The following lines of code were fixed using the advice from: https://stackoverflow.com/questions/62075537/r-pipe-in-does-not-work-with-stringrs-str-extract-all. (Kirshna, A. "Akrun" 2020).
 
 terms <- duplicated(dfDataSorted$Titles) %>%
   {str_replace(.,"FALSE","No") %>%
@@ -370,8 +373,13 @@ terms <- duplicated(dfDataSorted$Titles) %>%
 dfDataSorted["Is.A.Duplicate"] <- terms
 rm(terms)
 
-dfKeep <- subset(dfDataSorted, Is.A.Duplicate == "No") # Subset the column for unique entries.
-dfKeep <- dfKeep[1:(length(dfKeep)-1)] # Remove the last column indication is the entry is a duplicate or not.
+# Subset the column for unique entries.
+
+dfKeep <- subset(dfDataSorted, Is.A.Duplicate == "No") 
+
+# Remove the last column indication is the entry is a duplicate or not.
+
+dfKeep <- dfKeep[1:(length(dfKeep)-1)] 
 
 rm(dfDataSorted)
 
@@ -477,6 +485,9 @@ write_csv(x = dfFinal,
 # Winter, D. (2020, November 11). Rentrez Tutorial. https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html
 # Klieg, J. (2018, February 27). Combine a list of data frames into one data frame by row. Stack Overflow. https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
 # Paradis, E. (2022, March 2). Package ‘ape’. Comprehensive R Archive Network (CRAN). https://cran.r-project.org/web/packages/ape/ape.pdf
+# David, C. (2016, October 1). Find duplicate values in R [duplicate]. Stack Overflow. https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
+# Laurent, S. (2019, September 7). How to remove NA in character vector in R [duplicate]. Stack Overflow. https://stackoverflow.com/questions/57832161/how-to-remove-na-in-character-vector-in-r
+# Kirshna, A. "Akrun" (2020, May 28). R pipe in does not work with stringR’s str_extract_all(). Stack Overflow. https://stackoverflow.com/questions/62075537/r-pipe-in-does-not-work-with-stringrs-str-extract-all
 
 
 

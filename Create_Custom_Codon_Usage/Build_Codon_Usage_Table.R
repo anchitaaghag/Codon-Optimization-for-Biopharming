@@ -483,14 +483,12 @@ write_csv(x = dfFinal,
 
 #### 15 REFERENCES ####
 
-# Winter, D. (2020, November 11). Rentrez Tutorial. https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html
-# Klieg, J. (2018, February 27). Combine a list of data frames into one data frame by row. Stack Overflow. https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
-# Paradis, E. (2022, March 2). Package ‘ape’. Comprehensive R Archive Network (CRAN). https://cran.r-project.org/web/packages/ape/ape.pdf
-# David, C. (2016, October 1). Find duplicate values in R [duplicate]. Stack Overflow. https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
-# Laurent, S. (2019, September 7). How to remove NA in character vector in R [duplicate]. Stack Overflow. https://stackoverflow.com/questions/57832161/how-to-remove-na-in-character-vector-in-r
-# Kirshna, A. "Akrun" (2020, May 28). R pipe in does not work with stringR’s str_extract_all(). Stack Overflow. https://stackoverflow.com/questions/62075537/r-pipe-in-does-not-work-with-stringrs-str-extract-all
-# Gillespie, C. S. (2013, June 27). Delete rows that exist in another data frame? [duplicate]. Stack Overflow. https://stackoverflow.com/questions/17338411/delete-rows-that-exist-in-another-data-frame
 # Borochkin, A. A. "Alexander" (2016, November 1). R apply function with multiple parameters. Stack Overflow. https://stackoverflow.com/questions/6827299/r-apply-function-with-multiple-parameters
+# David, C. (2016, October 1). Find duplicate values in R [duplicate]. Stack Overflow. https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
 # Elek, A. (2019, January 2). Codon usage (CU) analysis in R. Bioconductor.riken.jp. https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
-
-#
+# Gillespie, C. S. (2013, June 27). Delete rows that exist in another data frame? [duplicate]. Stack Overflow. https://stackoverflow.com/questions/17338411/delete-rows-that-exist-in-another-data-frame
+# Kirshna, A. "Akrun" (2020, May 28). R pipe in does not work with stringR’s str_extract_all(). Stack Overflow. https://stackoverflow.com/questions/62075537/r-pipe-in-does-not-work-with-stringrs-str-extract-all
+# Klieg, J. (2018, February 27). Combine a list of data frames into one data frame by row. Stack Overflow. https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
+# Laurent, S. (2019, September 7). How to remove NA in character vector in R [duplicate]. Stack Overflow. https://stackoverflow.com/questions/57832161/how-to-remove-na-in-character-vector-in-r
+# Paradis, E. (2022, March 2). Package ‘ape’. Comprehensive R Archive Network (CRAN). https://cran.r-project.org/web/packages/ape/ape.pdf
+# Winter, D. (2020, November 11). Rentrez Tutorial. https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html

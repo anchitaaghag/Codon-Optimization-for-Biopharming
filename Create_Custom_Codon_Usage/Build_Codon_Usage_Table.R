@@ -59,25 +59,25 @@ Maximum_Sequences_To_Retrieve <- 5000
 
 entrez_dbs()
 
-# Once a database has been chosen,the search field needs to be defined. This has been completed above in the user input section. This script is using the [FKEY] parameter to return only coding sequences.
+# Once a database has been chosen,the search field needs to be defined. This has been completed above in the user input section. This script is using the [FKEY] parameter to return only coding sequences. (Winter, 2020).
 
 entrez_db_searchable(db="nucleotide")
 
-# Search the NCBI database and store the resulting hits as a web history object. 
+# Search the NCBI database and store the resulting hits as a web history object. (Winter, 2020).
 
 nico_search <- entrez_search(db="nucleotide", 
                              term= Entrez_Search_Term, 
                              use_history=TRUE, 
                              retmax = Maximum_Sequences_To_Retrieve)
 
-# Create the summary information for each title from the entrez search result.
+# Create the summary information for each title from the entrez search result. (Winter, 2020).
 # This script will use version 1.0 or XML (as opposed to the more extensive version 2.0 or JSON). This is because the maximum number of UIDs is 500 for a JSON format output. For longer sequence requests (more than 500), even with a web history object, using a single entrez_summary search will result in a "Too many UIDs in request." error. To ensure that all records can be fetched in one order, regardless of request size, the more limited summaries of a database record in version 1.0 is being used. This can be changed to version 2.0 and submitted in batches.
 
 nico_summs <- entrez_summary(db="nucleotide", 
                              web_history=nico_search$web_history, 
                              version = "1.0")
 
-# Extract all the titles, NCBI ids, GenBank accession versions, and untrimmed sequence lengths from the esummary as a matrix.
+# Extract all the titles, NCBI ids, GenBank accession versions, and untrimmed sequence lengths from the esummary as a matrix. (Winter, 2020).
 
 InfoTable <- extract_from_esummary(nico_summs, c("Title","Length","AccessionVersion"))
 
@@ -134,7 +134,8 @@ Accessions <- unlist(dfNCBI$GenBank_Accession)
 class(Accessions) 
 
 # The following feature data can also be downloaded from NCBI by searching "Nicotiana benthamiana"[Organism] AND "CDS"[FKEY]" on https://www.ncbi.nlm.nih.gov and then clicking on the "Send to:" tab -> "Complete record" -> "File" -> "Format: Feature table" -> "Default order" -> "Create file".
-# Using the getAnnotationsGenBank() function from the ape package to get the annotations for each sequence from GenBank.
+# Using the getAnnotationsGenBank() function from the ape package to get the annotations for each sequence from GenBank. 
+# The following line of code was adapted from the APE package documentation available from: https://cran.r-project.org/web/packages/ape/ape.pdf. (Paradis, 2022).
 
 Feature_List <- getAnnotationsGenBank(Accessions, quiet = FALSE) 
 
@@ -142,9 +143,9 @@ Feature_List <- getAnnotationsGenBank(Accessions, quiet = FALSE)
 # Other options include the biofiles package and the genbankr package functions. However, the ape package function has a faster run time that can also handle large amounts of queries. It also does not require parsing of GenBank files (which may be tedious when dealing with a large number of records).
 
 # Convert the list of dataframes to a data frame. 
-# https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
+# The following line of code was adapted from: https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row. (Klieg, 2018).
 
-dfFeatures <- bind_rows(Feature_List, .id = "GB_Accession")
+dfFeatures <- bind_rows(Feature_List, .id = "GB_Accession") 
 
 # Change the column names to be more descriptive.
 
@@ -474,4 +475,10 @@ write_csv(x = dfFinal,
 #### 15 REFERENCES ####
 
 # Winter, D. (2020, November 11). Rentrez Tutorial. https://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html
-# 
+# Klieg, J. (2018, February 27). Combine a list of data frames into one data frame by row. Stack Overflow. https://stackoverflow.com/questions/2851327/combine-a-list-of-data-frames-into-one-data-frame-by-row
+# Paradis, E. (2022, March 2). Package ‘ape’. Comprehensive R Archive Network (CRAN). https://cran.r-project.org/web/packages/ape/ape.pdf
+
+
+
+
+#

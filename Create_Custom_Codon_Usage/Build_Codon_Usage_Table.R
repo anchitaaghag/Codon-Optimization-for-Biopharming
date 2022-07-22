@@ -45,8 +45,8 @@ Maximum_Sequences_To_Retrieve <- 5000
 #### 03 DATA AQUISITION ALTERNATIVE: LOAD DATA FROM FILE ####
 
 # If desired, the data can be loaded from a file by running the following lines of code and skipping Sections 04 to 07 below. This may be useful to reproduce the results of the original script. Data originally downloaded on 17 July 2022.
-# dfNCBI <- 
-# dfFeatures <-
+# dfNCBI <- read.csv(file = "NCBI_Data.csv")
+# dfFeatures <- read.csv(file = "Features_Data.csv")
 
 # If not, the data from NCBI can be obtained by running the following script below (Sections 04 to 07).
 # The latter may be particularly helpful if additional sequences have been deposited in the GenBank/NCBI database or if an updated codon usage table is required.
@@ -198,11 +198,11 @@ dfFeatures["Protein_ID"] <- New_Protein_IDs[,2]
 
 # Export these two data frames as tables to .csv format files (if desired). 
 
-write.table(x = dfFeatures, 
-            file = "Features_Data.csv")
+#write.table(x = dfFeatures, 
+            #file = "Features_Data.csv")
 
-write.table(x = dfNCBI, 
-            file = "NCBI_Data.csv")
+#write.table(x = dfNCBI, 
+            #file = "NCBI_Data.csv")
 
 # Remove all objects no longer needed from the environment.
 

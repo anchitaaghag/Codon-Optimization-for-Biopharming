@@ -429,13 +429,13 @@ rm(Trimmed_Sequences,Trimmed_Lengths)
 
 #### 13 GENERATE CODON USAGE TABLE ####
 
-# https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
+# The following code was adapted from the coRdon package vignette available from: https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html. (Elek, 2019).
 
-# First, store all the coding sequences as a DNAStringSet object.
+# First, store all the coding sequences as a DNAStringSet object. (Elek, 2019).
 
 Coding_Seqs <- DNAStringSet(dfFinal$Trimmed_CDS)
 
-# Then, using the codonCounts() and codonTable() functions from the codRon package create a matrix to view the counts per codon.
+# Then, using the codonCounts() and codonTable() functions from the codRon package create a matrix to view the counts per codon. (Elek, 2019).
 
 Updated_CU <- codonCounts(codonTable(Coding_Seqs))
 
@@ -491,6 +491,6 @@ write_csv(x = dfFinal,
 # Kirshna, A. "Akrun" (2020, May 28). R pipe in does not work with stringR’s str_extract_all(). Stack Overflow. https://stackoverflow.com/questions/62075537/r-pipe-in-does-not-work-with-stringrs-str-extract-all
 # Gillespie, C. S. (2013, June 27). Delete rows that exist in another data frame? [duplicate]. Stack Overflow. https://stackoverflow.com/questions/17338411/delete-rows-that-exist-in-another-data-frame
 # Borochkin, A. A. "Alexander" (2016, November 1). R apply function with multiple parameters. Stack Overflow. https://stackoverflow.com/questions/6827299/r-apply-function-with-multiple-parameters
-
+# Elek, A. (2019, January 2). Codon usage (CU) analysis in R. Bioconductor.riken.jp. https://bioconductor.riken.jp/packages/3.8/bioc/vignettes/coRdon/inst/doc/coRdon.html
 
 #

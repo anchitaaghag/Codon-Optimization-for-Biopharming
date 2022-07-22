@@ -383,12 +383,14 @@ dfKeep <- dfKeep[1:(length(dfKeep)-1)]
 
 rm(dfDataSorted)
 
-# Add back to original data frame.
-# https://stackoverflow.com/questions/17338411/delete-rows-that-exist-in-another-data-frame
+# The following line of code was adapted from: https://stackoverflow.com/questions/17338411/delete-rows-that-exist-in-another-data-frame. (Gillespie, 2013).
+# Remove all the duplicates from the complete data frame.
 
-dfNew <- dfData.sub[!(dfData.sub$NCBI_ID %in% dfData_Duplicates$NCBI_ID),] # Remove all the duplicates from the complete data frame.
+dfNew <- dfData.sub[!(dfData.sub$NCBI_ID %in% dfData_Duplicates$NCBI_ID),] 
 
-dfFinal <- rbind(dfNew,dfKeep) # Add back only the filtered non-duplicated enties that are in dfKeep
+# Add back only the filtered non-duplicated enties that are in dfKeep
+
+dfFinal <- rbind(dfNew,dfKeep) 
 
 # Confirm we have unique protein names.
 
@@ -401,8 +403,7 @@ rm(dfData_Duplicates,dfKeep,dfNew)
 #### 12 DATA FILTERING : TRIM SEQUENCES ####
 
 # To get rid of flanking non-coding regions in the CDS, need to trim the sequences based on the start, stop, and length columns.
-
-# https://stackoverflow.com/questions/6827299/r-apply-function-with-multiple-parameters
+# The idea to use mapply function came from: https://stackoverflow.com/questions/6827299/r-apply-function-with-multiple-parameters. (Borochkin, A. A. "Alexander" 2016).
 
 Trimmed_Sequences <- mapply(str_sub,
                        string=dfFinal$Untrimmed_Sequences,
@@ -488,8 +489,8 @@ write_csv(x = dfFinal,
 # David, C. (2016, October 1). Find duplicate values in R [duplicate]. Stack Overflow. https://stackoverflow.com/questions/16905425/find-duplicate-values-in-r
 # Laurent, S. (2019, September 7). How to remove NA in character vector in R [duplicate]. Stack Overflow. https://stackoverflow.com/questions/57832161/how-to-remove-na-in-character-vector-in-r
 # Kirshna, A. "Akrun" (2020, May 28). R pipe in does not work with stringR’s str_extract_all(). Stack Overflow. https://stackoverflow.com/questions/62075537/r-pipe-in-does-not-work-with-stringrs-str-extract-all
-
-
+# Gillespie, C. S. (2013, June 27). Delete rows that exist in another data frame? [duplicate]. Stack Overflow. https://stackoverflow.com/questions/17338411/delete-rows-that-exist-in-another-data-frame
+# Borochkin, A. A. "Alexander" (2016, November 1). R apply function with multiple parameters. Stack Overflow. https://stackoverflow.com/questions/6827299/r-apply-function-with-multiple-parameters
 
 
 #

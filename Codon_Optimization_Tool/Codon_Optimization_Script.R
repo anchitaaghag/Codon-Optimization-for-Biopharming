@@ -2,7 +2,7 @@
 # Anchitaa Ghag
 
 # This R code will require three user inputs in section 01 and will then run the Reverse_Translate() function to optimize codons in a chosen organism.
-# If running this script for the first time, ensure that the two neccessary packages have been installed by uncommenting (i.e. removing the "#") and running lines 33 & 34.
+# If running this script for the first time, ensure that the two necessary packages have been installed by uncommenting (i.e. removing the "#") and running lines 33 & 34.
 
 #### 01 USER INPUT ####
 

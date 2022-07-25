@@ -14,9 +14,13 @@ The code in this project can be used
 
 For example by 
 
-### 2) Usage of the script to translate a given protein sequence into correspondign DNA sequence.
+### 2) Usage of the Reverse_Translate() function to translate given protein sequence(s) into corresponding DNA sequence(s).
 
-### 3) 
+For example by loading the Reverse_Translate.R file.
+
+### 3) Script to create a codon usage table from coding sequencies in NCBI database.
+
+For example by using the Build_Codon_Usage_Table.R file.
 
 ## Getting Started
 
@@ -24,7 +28,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites/Dependencies
 
-What things you need to install the software and how to install them
+Prior to running the  things you need to install the software and how to install them
 
 ```
 Give examples BLAST+ needs to be installed (what version?)
@@ -48,19 +52,15 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Example Usage
+## Example Usage of the Codon Optimization Tool
 
 Explain how to run the automated tests for this system
-
-### Example 1 - Using CDS Functions
 
 Explain what these tests test and why
 
 ```
 Give an example
 ```
-
-### Example 2
 
 Explain what these tests test and why
 

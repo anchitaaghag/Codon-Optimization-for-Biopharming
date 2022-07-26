@@ -252,8 +252,9 @@ length(unique(dfNCBI$GenBank_Accession)) == length(unique(dfFeatures$GB_Accessio
 
 # The number of features can exceed the number of records.
 
-table(duplicated(dfFeatures$GB_Accession)) # FALSE = 332 "extra" features annotated.
+table(duplicated(dfFeatures$GB_Accession)) 
 
+# FALSE = 332 "extra" features annotated.
 # What type of features have been annotated in the records?
 
 table(dfFeatures$Type)

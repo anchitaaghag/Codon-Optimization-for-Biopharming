@@ -486,6 +486,43 @@ grid.arrange( p17, p18, p19, p20, nrow = 2)
 
 # The most used codons (one for each amino acid residue) from the three groups appears to be the same.
 
+# Small Multiples Plot
+
+library("gridExtra")
+
+blankPlot <- ggplot()+geom_blank(aes(1,1))+
+  theme(
+    plot.background = element_blank(), 
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(), 
+    panel.border = element_blank(),
+    panel.background = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.x = element_blank(), 
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    axis.line = element_blank()
+  )
+
+
+grid.arrange(p13,p3,p10,p1,p2,
+             p18,p4,blankPlot,p8,p11,
+             blankPlot,p5,blankPlot,p15,p16,
+             blankPlot,p6,blankPlot,p17,blankPlot,
+             blankPlot,p7,blankPlot,p20,blankPlot,
+             blankPlot,p9,blankPlot,blankPlot,blankPlot,
+             blankPlot,p12,blankPlot,blankPlot,blankPlot,
+             blankPlot,p14,blankPlot,blankPlot,blankPlot,
+             blankPlot,p19,blankPlot,blankPlot,blankPlot,
+             nrow=9,ncol=5)
+
+grid.arrange(p1, p2, p3, p4, p5,
+             p6, p7, p8, p9, p10,
+             p11, p12,p13,p14,p15,
+             p16,p17,p18,p19,p20,
+             nrow=4,ncol=5)
+
 rm (p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20)
 
 #### 14 GC% CONTENT ####

@@ -203,8 +203,8 @@ dfMeanSD <- data.frame(AmAcid,Species,Freq)
 
 ggplot(data=dfMeanSD, 
       aes(x=AmAcid, y=Freq, fill=Species)) +
-  geom_bar(stat="identity", position=position_dodge(), show.legend = TRUE) +
-  ggtitle("Histogram of Codon Usage Frequency") +
+  geom_bar(stat="identity", width=0.7, position=position_dodge(width=0.8), show.legend = TRUE) + # https://www.learnbyexample.org/r-bar-plot-ggplot2/
+  ggtitle("Codon Usage Frequency Among 3 Nicotiana Codon Usages") +
   theme_bw() +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -213,8 +213,10 @@ ggplot(data=dfMeanSD,
   scale_x_discrete(guide = guide_axis(angle = 90)) + #https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2
   theme(legend.position = c(0.89, 0.90),
         legend.background = element_rect(fill = "white", color = "black")) + #https://datavizpyr.com/how-to-place-legend-inside-the-plot-with-ggplot2/ 
-  ylim(NA,40) +
+  scale_y_continuous(limits = c(0,40), expand = c(0, 0)) + # https://stackoverflow.com/questions/22945651/remove-space-between-plotted-data-and-the-axes
   scale_fill_viridis(discrete = TRUE, option = "viridis") 
+  #scale_fill_manual(values=c("#648FFF", "#DC267F", "#FFB000")) +
+  #coord_flip()
 
 rm(AmAcid,Species,Freq)
 

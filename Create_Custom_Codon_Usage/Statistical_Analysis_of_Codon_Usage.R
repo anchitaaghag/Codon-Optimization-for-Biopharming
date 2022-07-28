@@ -488,40 +488,26 @@ grid.arrange( p17, p18, p19, p20, nrow = 2)
 
 # Small Multiples Plot
 
+# http://www.sthda.com/english/wiki/wiki.php?id_contents=7930
 library("gridExtra")
 
-blankPlot <- ggplot()+geom_blank(aes(1,1))+
-  theme(
-    plot.background = element_blank(), 
-    panel.grid.major = element_blank(),
-    panel.grid.minor = element_blank(), 
-    panel.border = element_blank(),
-    panel.background = element_blank(),
-    axis.title.x = element_blank(),
-    axis.title.y = element_blank(),
-    axis.text.x = element_blank(), 
-    axis.text.y = element_blank(),
-    axis.ticks = element_blank(),
-    axis.line = element_blank()
-  )
+install.packages("lemon")
+library("lemon")
+legend <- g_legend(p1 + theme(legend.position='bottom'))
 
+combined_plot <- grid.arrange(p1+theme(legend.position='hidden'), p2+theme(legend.position='hidden'), p3+theme(legend.position='hidden'), p4+theme(legend.position='hidden'), p5+theme(legend.position='hidden'),
+             p6+theme(legend.position='hidden'), p7+theme(legend.position='hidden'), p8+theme(legend.position='hidden'), p9+theme(legend.position='hidden'), p10+theme(legend.position='hidden'),
+             p11+theme(legend.position='hidden'), p12+theme(legend.position='hidden'),p13+theme(legend.position='hidden'),p14+theme(legend.position='hidden'),p15+theme(legend.position='hidden'),
+             p16+theme(legend.position='hidden'),p17+theme(legend.position='hidden'),p18+theme(legend.position='hidden'),p19+theme(legend.position='hidden'),p20+theme(legend.position='hidden'),
+             nrow=4,
+             ncol=5,
+             top = "Average Codon Counts Per Amino Acid",
+             bottom = "Codon",
+             left = "Average Count")
 
-grid.arrange(p13,p3,p10,p1,p2,
-             p18,p4,blankPlot,p8,p11,
-             blankPlot,p5,blankPlot,p15,p16,
-             blankPlot,p6,blankPlot,p17,blankPlot,
-             blankPlot,p7,blankPlot,p20,blankPlot,
-             blankPlot,p9,blankPlot,blankPlot,blankPlot,
-             blankPlot,p12,blankPlot,blankPlot,blankPlot,
-             blankPlot,p14,blankPlot,blankPlot,blankPlot,
-             blankPlot,p19,blankPlot,blankPlot,blankPlot,
-             nrow=9,ncol=5)
+# https://www.geeksforgeeks.org/add-common-legend-to-combined-ggplot2-plots-in-r/
+grid.arrange(combined_plot, legend, nrow = 2, heights = c(10, 1))
 
-grid.arrange(p1, p2, p3, p4, p5,
-             p6, p7, p8, p9, p10,
-             p11, p12,p13,p14,p15,
-             p16,p17,p18,p19,p20,
-             nrow=4,ncol=5)
 
 rm (p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20)
 

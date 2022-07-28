@@ -88,12 +88,12 @@ Plot_AmAcid <- function(amino_acid, df) {
     ggtitle(amino_acid) +
     theme_bw() +
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-    theme(plot.title = element_text(hjust = 0.5, size=10), legend.position = "none") +
+    theme(plot.title = element_text(hjust = 0.5, size=10)) + #, legend.position = "none") +
     xlab("") +
     ylab("") +
     geom_errorbar(aes(ymin=Avrgs-SD, ymax=Avrgs+SD), width=.2, position=position_dodge(.9)) +
     scale_y_continuous(breaks = seq(0, 55, by = 10), limits = c(0,55)) + # adapted from: https://stackoverflow.com/questions/37950511/r-ggplot2-setting-tick-mark-interval
-    scale_fill_viridis(discrete = TRUE, option = "viridis") +
+    scale_fill_manual(values=c("#FDE725", "#21918C", "#440154")) +
     scale_color_manual(name= "Species",
                        labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana ", "N.tabacum (Kazuza)"))
   

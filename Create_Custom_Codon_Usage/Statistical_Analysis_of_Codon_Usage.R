@@ -222,8 +222,6 @@ rm(AmAcid,Species,Freq)
 
 #### 10 ALTERNATIVE PLOT : CODON USAGE FREQUENCIES #####
 
-#### MELT ####
-
 # https://stackoverflow.com/questions/61200151/how-to-adjust-relative-transparency-of-ggplot2-points
 # https://stackoverflow.com/questions/32423167/ggplot-xy-scatter-how-to-change-alpha-transparency-for-select-points
 # https://stackoverflow.com/questions/13035295/overlay-bar-graphs-in-ggplot2
@@ -232,7 +230,6 @@ rm(AmAcid,Species,Freq)
 library(ggplot2)
 library(reshape)
 
-
 x <- rownames(dfOld_MeanSD)
 y1 <- dfOld_MeanSD$`Frequency (Per 1000 Codons)`
 y2 <- dfNew_MeanSD$`Frequency (Per 1000 Codons)`
@@ -240,12 +237,9 @@ y3 <- dfTabacum_MeanSD$`Frequency (Per 1000 Codons)`
 
 to_plot <- data.frame(x=x,y1=y1,y2=y2, y3=y3)
 
-
 melted<-melt(to_plot, id="x")
 
-
-
-#### PLOT 1 ####
+#### PLOT 1
 alpha_vector = rep(0.3, 192)
 alpha_vector[c(1:64)] = 1
 melted$alpha = alpha_vector
@@ -263,7 +257,7 @@ plot1 <- ggplot(melted,aes(x=x,y=value,fill=variable)) +
   annotate(geom = "text", label = "N. benthamiana (Kazusa)", x = 57, y = 38) +
   scale_fill_manual(values=c("#FDE725", "#000000", "#000000")) 
 
-#### PLOT 2 ####
+#### PLOT 2
 alpha_vector = rep(0.3, 192)
 alpha_vector[c(65:128)] = 1
 melted$alpha = alpha_vector
@@ -280,8 +274,7 @@ plot2 <- ggplot(melted,aes(x=x,y=value,fill=variable)) +
   annotate(geom = "text", label = "N. benthamiana (Updated)", x = 57, y = 38) +
   scale_fill_manual(values=c("#000000", "#21918C", "#000000")) 
 
-
-#### PLOT 3 ####
+#### PLOT 3 
 alpha_vector = rep(0.3, 192)
 alpha_vector[c(129:192)] = 1
 melted$alpha = alpha_vector
@@ -298,10 +291,7 @@ plot3 <- ggplot(melted,aes(x=x,y=value,fill=variable)) +
   annotate(geom = "text", label = "N. tabacum (Kazusa)", x = 57, y = 38) +
   scale_fill_manual(values=c("#000000", "#000000", "#440154")) 
 
-
-
 grid.arrange(plot1, plot2, plot3, nrow=3)
-
 
 #### 11 STATISTICAL TEST : CODON USAGE BIAS/MILC & KRUSKAL-WALLIS RANK SUM TEST ####
 

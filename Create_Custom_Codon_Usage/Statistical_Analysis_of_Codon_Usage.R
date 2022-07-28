@@ -220,6 +220,89 @@ ggplot(data=dfMeanSD,
 
 rm(AmAcid,Species,Freq)
 
+#### 10 ALTERNATIVE PLOT : CODON USAGE FREQUENCIES #####
+
+#### MELT ####
+
+# https://stackoverflow.com/questions/61200151/how-to-adjust-relative-transparency-of-ggplot2-points
+# https://stackoverflow.com/questions/32423167/ggplot-xy-scatter-how-to-change-alpha-transparency-for-select-points
+# https://stackoverflow.com/questions/13035295/overlay-bar-graphs-in-ggplot2
+# Inspiration : https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833
+
+library(ggplot2)
+library(reshape)
+
+
+x <- rownames(dfOld_MeanSD)
+y1 <- dfOld_MeanSD$`Frequency (Per 1000 Codons)`
+y2 <- dfNew_MeanSD$`Frequency (Per 1000 Codons)`
+y3 <- dfTabacum_MeanSD$`Frequency (Per 1000 Codons)`
+
+to_plot <- data.frame(x=x,y1=y1,y2=y2, y3=y3)
+
+
+melted<-melt(to_plot, id="x")
+
+
+
+#### PLOT 1 ####
+alpha_vector = rep(0.3, 192)
+alpha_vector[c(1:64)] = 1
+melted$alpha = alpha_vector
+
+plot1 <- ggplot(melted,aes(x=x,y=value,fill=variable)) + 
+  geom_bar(stat="identity", position = "identity", aes(alpha=alpha), show.legend = FALSE) +
+  ggtitle(expression('Codon Usage Frequency Among'~italic("Nicotiana")~'Species')) + #https://stackoverflow.com/questions/32555531/how-to-italicize-part-one-or-two-words-of-an-axis-title
+  scale_alpha_identity(alpha) +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), plot.title = element_text(hjust = 0.5)) +
+  xlab("") + # https://stackoverflow.com/questions/35090883/remove-all-of-x-axis-labels-in-ggplot
+  ylab("Frequency (Per 1000)") +
+  scale_x_discrete(labels = NULL, breaks = NULL) + # https://stackoverflow.com/questions/35090883/remove-all-of-x-axis-labels-in-ggplot
+  scale_y_continuous(limits = c(0,40), expand = c(0, 0)) + # https://stackoverflow.com/questions/22945651/remove-space-between-plotted-data-and-the-axes
+  annotate(geom = "text", label = "N. benthamiana (Kazusa)", x = 57, y = 38) +
+  scale_fill_manual(values=c("#FDE725", "#000000", "#000000")) 
+
+#### PLOT 2 ####
+alpha_vector = rep(0.3, 192)
+alpha_vector[c(65:128)] = 1
+melted$alpha = alpha_vector
+
+plot2 <- ggplot(melted,aes(x=x,y=value,fill=variable)) + 
+  geom_bar(stat="identity", position = "identity", aes(alpha=alpha), show.legend = FALSE) +
+  scale_alpha_identity(alpha) +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), plot.title = element_text(hjust = 0.5)) +
+  xlab("") + # https://stackoverflow.com/questions/35090883/remove-all-of-x-axis-labels-in-ggplot
+  ylab("Frequency (Per 1000)") +
+  scale_x_discrete(labels = NULL, breaks = NULL) + # https://stackoverflow.com/questions/35090883/remove-all-of-x-axis-labels-in-ggplot
+  scale_y_continuous(limits = c(0,40), expand = c(0, 0)) + # https://stackoverflow.com/questions/22945651/remove-space-between-plotted-data-and-the-axes
+  annotate(geom = "text", label = "N. benthamiana (Updated)", x = 57, y = 38) +
+  scale_fill_manual(values=c("#000000", "#21918C", "#000000")) 
+
+
+#### PLOT 3 ####
+alpha_vector = rep(0.3, 192)
+alpha_vector[c(129:192)] = 1
+melted$alpha = alpha_vector
+
+plot3 <- ggplot(melted,aes(x=x,y=value,fill=variable)) + 
+  geom_bar(stat="identity", position = "identity", aes(alpha=alpha), show.legend = FALSE) +
+  scale_alpha_identity(alpha) +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), plot.title = element_text(hjust = 0.5)) +
+  xlab("Codons") +
+  ylab("Frequency (Per 1000)") +
+  scale_x_discrete(guide = guide_axis(angle = 90)) + #https://stackoverflow.com/questions/1330989/rotating-and-spacing-axis-labels-in-ggplot2
+  scale_y_continuous(limits = c(0,40), expand = c(0, 0)) + # https://stackoverflow.com/questions/22945651/remove-space-between-plotted-data-and-the-axes
+  annotate(geom = "text", label = "N. tabacum (Kazusa)", x = 57, y = 38) +
+  scale_fill_manual(values=c("#000000", "#000000", "#440154")) 
+
+
+
+grid.arrange(plot1, plot2, plot3, nrow=3)
+
+
 #### 11 STATISTICAL TEST : CODON USAGE BIAS/MILC & KRUSKAL-WALLIS RANK SUM TEST ####
 
 # COMPARE IF CODON USAGE BIAS IS THE DIFFERENT

@@ -51,7 +51,7 @@ DNA_Sequences <- Reverse_Translate(sequence_file = Protein_Sequence_File,
 
 # View the first sequence that has been translated.
 
-head(DNA_Sequences, 1)
+head(DNA_Sequences, 2)
 
 #### 05 OUTPUT RESULTS TO FILE ####
 

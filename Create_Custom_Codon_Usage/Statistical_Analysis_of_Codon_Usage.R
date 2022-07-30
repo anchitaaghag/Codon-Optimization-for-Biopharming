@@ -478,20 +478,12 @@ p20 <- Plot_AmAcid(amino_acid = "Valine",
 
 # https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html
 
-grid.arrange(p1, p2, p3, p4, nrow = 2)
-grid.arrange( p5, p6, p7, p8, nrow = 2)
-grid.arrange( p9, p10, p11, p12, nrow = 2)
-grid.arrange( p13, p14, p15, p16, nrow = 2)
-grid.arrange( p17, p18, p19, p20, nrow = 2)
-
 # The most used codons (one for each amino acid residue) from the three groups appears to be the same.
-
-# Small Multiples Plot
 
 # http://www.sthda.com/english/wiki/wiki.php?id_contents=7930
 library("gridExtra")
 
-install.packages("lemon")
+#install.packages("lemon")
 library("lemon")
 legend <- g_legend(p1 + theme(legend.position='bottom'))
 

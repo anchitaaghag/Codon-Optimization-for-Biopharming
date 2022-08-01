@@ -89,6 +89,21 @@ Give an example
 * Inspiration
 * etc
 
-## Template Credit
+## Template & License Credit
 
 This file was created by adapting the README.md file template by Billie Thompson [PurpleBooth](https://github.com/PurpleBooth). The template can be found [here](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
+
+The following section is based on the [cc-licenses repository](https://github.com/santisoler/cc-licenses) by Santiago Soler [santisoler](https://github.com/santisoler). The following section is derived from the README.md file [here](https://github.com/santisoler/cc-licenses#cc-attribution-sharealike-40-international). In addition, the corresponding full license text file is also availiable via the cc-licenses repository [here](https://github.com/santisoler/cc-licenses/blob/8887424b2a1f1a78fca7efbcc2cd5fd4b1998812/LICENSE-CC-BY-SA).
+
+## License
+
+Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+
+This work is licensed under a
+[Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
+
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg

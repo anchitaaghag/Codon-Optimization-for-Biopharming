@@ -286,7 +286,7 @@ rownames(dfData) <- NULL
 
 # Remove all objects no longer needed from the environment.
 
-rm(dfNCBI, dfFeatures, dfFeatures.sub, dfCombined)
+rm(dfNCBI, dfFeatures, dfCombined)
 
 #### 10 DATA FILTERING : FILTER RECORDS ####
 

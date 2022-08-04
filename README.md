@@ -1,4 +1,4 @@
-# Codon Optimization for Biopharming
+# Codon Optimization Tool for Biopharming
 
 In recent years, the technique of codon optimization has gained popularity in the biopharmaceutical industry to rapidly create and deploy high-yields of commercially valuable protein products. The tobbaco plant, *Nicotiana benthamiana*, is of particular interest due to the plant's rapid growth rate and ease of genetic manipulation. 
 
@@ -8,65 +8,83 @@ The objective of this project is to create a coding script to translate a given 
 
 ## What Can I Do With This?
 
-The code in this project can be used
+The code in this project can be used ...
 
-### 1) A more efficient way to compare the codon usage of a set of proteins to existing/standard codon usages.
+1) To optimize the codon of input protein sequences by using the codon optimization tool here.
 
-For example by 
-
-### 2) Usage of the Reverse_Translate() function to translate given protein sequence(s) into corresponding DNA sequence(s).
-
-For example by loading the Reverse_Translate.R file.
-
-### 3) Script to create a codon usage table from coding sequencies in NCBI database.
-
-For example by using the Build_Codon_Usage_Table.R file.
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites/Dependencies
-
-Prior to running the  things you need to install the software and how to install them
+2) To translate given protein sequence(s) into corresponding DNA sequence(s) via the the Reverse_Translate() function. For example by loading the Reverse_Translate.R function file using the following line of code:
 
 ```
-Give examples BLAST+ needs to be installed (what version?)
+source("Reverse_Translate_Function.R")
 ```
+3) To create a codon usage table from coding sequencies in NCBI database. For example by adapting the code here to you species of interest. 
 
-### Installation
+## Prerequisites/Dependencies
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Prior to running the codon optimization script, you will need to install the following R packages and download the associated libraries.
 
 ```
-until finished
+install.packages("dplyr") 
+install.packages("seqinr") 
+
+library("dplyr") 
+library("seqinr")
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+### Input File Parameters
+
+You will need to input two files to run the codon optimization tool. First, you will need a text file with the input codon usage table for the species of intreset. If you wish to use an updated codon usage for N. benthamiana please use the this file. Please ensure that there are at least three columns in your codon usage file. Then, you will need a text file with the protein sequences you wish to back-translate into a DNA sequence. Please ensure that your protein sequences file has a header or title followed by the corresponding sequence on the following line. An example of the protein sequence file format can be seen here.
+
+## How to Use the Codon Optimization Tool
+
+A step by step series of examples that show you all the field that require user input in the file.
+
+1) Change (if using the updated codon usage table for N. benthamiana, leave this field as follows:
+
+```
+Chosen_Codon_Usage <- "Updated_Codon_Usage.txt"
+```
+
+2) Change the Your_File_Name_Here to the file containing your 
+
+```
+Chosen_Codon_Usage <- "Your_File_Name_Here"
+
+```
+
+3)
+
+```
+Result_File_Name <- "Your_Desired_Results_File_Name_Here"
+```
+
+4) Run
 
 ## Example Usage of the Codon Optimization Tool
 
-Explain how to run the automated tests for this system
+This is an example of two protein sequences taken from UniProt and the optimized DNA sequences results.
 
-Explain what these tests test and why
+Here is an example of the input codon usage.
 
-```
-Give an example
-```
+Here is an example of the input protein sequences.
 
-Explain what these tests test and why
+These were the user inputs made to the file prior to running.
 
 ```
-Give an example
+Chosen_Codon_Usage <- "Updated_Codon_Usage.txt"
+
+Protein_Sequence_File <- "Example_Protein_Sequences.txt"
+
+Result_File_Name <- "Example_Results.txt"
 ```
+
+And then, the file was run and results were saved in the current working direcotry. 
+
+The output results:
+
+
+
+These output files are also available for viewing here.
 
 ## Authors
 
@@ -82,12 +100,9 @@ Give an example
 
 * This project is part of my major reasearch project (BINF 6999) to fullfill the requirements of the Master of Bioinformatics degree (University of Guelph, ON, Canada). Project Duration: May 2022 - August 2022. 
 * I would like to thank my advisors, Drs. Cossar, Geddes-McAlister, and Hamilton-Wright for their support and advice. See also the "Advisors" section above.
-* Dr. Jason McAlister - for assistance with technical aspects (i.e. viewing GitHub repositories )
+* Dr. Jason McAlister - [jmcalist](https://github.com/jmcalist) for assistance with technical aspects (i.e. viewing GitHub repositories )
 * Ben Muselius - for help in interpreting figures and conducting statistical analysis on codon usages
-* JGM Lab Members - for their feedback and advice during practice presentations
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Geddes-McAlister Lab Members - for their feedback and advice during practice presentations
 
 ## Template & License Credit
 

@@ -57,7 +57,7 @@ CGA CGC CGG CGU AGA AGG CUA CUC CUG CUU UUA UUG UCA UCC UCG UCU AGC AGU ACA ACC 
 
 Copy and paste the lines in the following command. Ensure that the "\n" newline character is added to the string. 
 
-Use the **sed** command to insert these lines at the beginning of both the files. This will be eventually be our file's headers. The following sed command has been adapted from the code found here: https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file. (Chauhan, 2022). 
+Use the **sed** command to insert these lines at the beginning of both the files. This will be eventually be our file's headers. The following sed command has been adapted from the code found [here](https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file) (Chauhan, 2022). 
 
 ```
 sed -i '' "1s/^/>LOCUS#CDS---ACCESSION---nt---nt---PID(length)---organism---title---descriptions for the CDS \nCGA CGC CGG CGU AGA AGG CUA CUC CUG CUU UUA UUG UCA UCC UCG UCU AGC AGU ACA ACC ACG ACU CCA CCC CCG CCU GCA GCC GCG GCU GGA GGC GGG GGU GUA GUC GUG GUU AAA AAG AAC AAU CAA CAG CAC CAU GAA GAG GAC GAU UAC UAU UGC UGU UUC UUU AUA AUC AUU AUG UGG UAA UAG UGA\n/" Kazuza_CU_for_each_CDS_in_N_benthamiana.txt
@@ -65,7 +65,7 @@ sed -i '' "1s/^/>LOCUS#CDS---ACCESSION---nt---nt---PID(length)---organism---titl
 sed -i '' "1s/^/>LOCUS#CDS---ACCESSION---nt---nt---PID(length)---organism---title---descriptions for the CDS \nCGA CGC CGG CGU AGA AGG CUA CUC CUG CUU UUA UUG UCA UCC UCG UCU AGC AGU ACA ACC ACG ACU CCA CCC CCG CCU GCA GCC GCG GCU GGA GGC GGG GGU GUA GUC GUG GUU AAA AAG AAC AAU CAA CAG CAC CAU GAA GAG GAC GAU UAC UAU UGC UGU UUC UUU AUA AUC AUU AUG UGG UAA UAG UGA\n/" Kazuza_CU_for_each_CDS_in_N_tabacum.txt 
 ```
 
-Finally, use the **awk** command to extract every second line from the created file into a new file that contains the codon counts only. The following awk command has been adapted from the code found here: https://unix.stackexchange.com/questions/369181/printing-every-nth-line-out-of-a-large-file-into-a-new-file. (Deathgrip, 2017).
+Finally, use the **awk** command to extract every second line from the created file into a new file that contains the codon counts only. The following awk command has been adapted from the code found [here](https://unix.stackexchange.com/questions/369181/printing-every-nth-line-out-of-a-large-file-into-a-new-file) (Deathgrip, 2017).
 
 ```
 awk 'NR % 2 == 0' Kazuza_CU_for_each_CDS_in_N_benthamiana.txt > N_benthamiana_Codon_Counts_Only.txt
@@ -76,5 +76,7 @@ awk 'NR % 2 == 0' Kazuza_CU_for_each_CDS_in_N_tabacum.txt > N_tabacum_Codon_Coun
 ## References
 
 Chauhan, G. (2022, February 4). How to insert a text at the beginning of a file? Stack Overflow. https://stackoverflow.com/questions/9533679/how-to-insert-a-text-at-the-beginning-of-a-file
+
 Deathgrip. (2017, June 4). Printing every Nth line out of a large file into a new file. Stack Exchange Inc. https://unix.stackexchange.com/questions/369181/printing-every-nth-line-out-of-a-large-file-into-a-new-file
-Nakamura, Y. (2000). Codon usage tabulated from international DNA sequence databases: status for the year 2000. Nucleic Acids Research, 28(1), 292–292. https://doi.org/10.1093/nar/28.1.292<
+
+Nakamura, Y. (2000). Codon usage tabulated from international DNA sequence databases: status for the year 2000. Nucleic Acids Research, 28(1), 292–292. https://doi.org/10.1093/nar/28.1.292

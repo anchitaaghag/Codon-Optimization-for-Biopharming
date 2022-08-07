@@ -10,14 +10,14 @@ The objective of this project is to create a coding script to translate a given 
 
 The code in this project can be used ...
 
-1) To optimize the codon of input protein sequences by using the codon optimization tool here.
+1) To optimize the codon of input protein sequences by using the codon optimization tool [here](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/7642f9d98bfbd7849428a40c6a0da9663a253adf/Codon_Optimization_Tool/Codon_Optimization_Script.R).
 
-2) To translate given protein sequence(s) into corresponding DNA sequence(s) via the the Reverse_Translate() function. For example by loading the Reverse_Translate.R function file using the following line of code:
+2) To translate given protein sequence(s) into corresponding DNA sequence(s) via the the Reverse_Translate() function. For example by loading the [Reverse_Translate.R function file](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/7642f9d98bfbd7849428a40c6a0da9663a253adf/Codon_Optimization_Tool/Reverse_Translate_Function.R) using the following line of code:
 
 ```
 source("Reverse_Translate_Function.R")
 ```
-3) To create a codon usage table from coding sequencies in NCBI database. For example by adapting the code here to you species of interest. 
+3) To create a codon usage table from coding sequences in NCBI database. For example by adapting the code [here](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/7642f9d98bfbd7849428a40c6a0da9663a253adf/Create_Custom_Codon_Usage/Build_Codon_Usage_Table.R) to your species of interest. 
 
 ## Prerequisites/Dependencies
 
@@ -33,7 +33,7 @@ library("seqinr")
 
 ### Input File Parameters
 
-You will need to input two files to run the codon optimization tool. First, you will need a text file with the input codon usage table for the species of intreset. If you wish to use an updated codon usage for *N. benthamiana* please use [this file](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/63c7b9552fed638b1154c84d438cb1eaad6d5a9e/Codon_Optimization_Tool/Updated_Codon_Usage.txt). Please ensure that there are at least three columns in your codon usage file - "Single_Letter_Abbreviation", "Codon", and "Number" - with the single letter abbreviations for each amino acid, the corresponding codons, and the frequencies or empirical codon counts, respectively. 
+You will need to input two files to run the codon optimization tool. First, you will need a text file with the input codon usage table for the species of interest. If you wish to use an updated codon usage for *N. benthamiana* please use [this file](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/63c7b9552fed638b1154c84d438cb1eaad6d5a9e/Codon_Optimization_Tool/Updated_Codon_Usage.txt). Please ensure that there are at least three columns in your codon usage file - "Single_Letter_Abbreviation", "Codon", and "Number" - with the single letter abbreviations for each amino acid, the corresponding codons, and the frequencies or empirical codon counts, respectively. 
 
 Then, you will need a text file with the protein sequences you wish to back-translate into a DNA sequence. Please ensure that your protein sequences file has a header or title followed by the corresponding sequence on the following line. An example of the protein sequence file format can be seen [here](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/b9df43a085aed205f94423bedfe418a9dd3a2dda/Codon_Optimization_Tool/Example_Protein_Sequences.txt).
 
@@ -51,7 +51,6 @@ Chosen_Codon_Usage <- "Updated_Codon_Usage.txt"
 
 ```
 Chosen_Codon_Usage <- "Your_File_Name_Here.txt"
-
 ```
 
 3) Change the *Your_Desired_Results_File_Name_Here* to indicate a name for your output results file.

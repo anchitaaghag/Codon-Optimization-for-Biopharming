@@ -33,42 +33,46 @@ library("seqinr")
 
 ### Input File Parameters
 
-You will need to input two files to run the codon optimization tool. First, you will need a text file with the input codon usage table for the species of intreset. If you wish to use an updated codon usage for N. benthamiana please use the this file. Please ensure that there are at least three columns in your codon usage file. Then, you will need a text file with the protein sequences you wish to back-translate into a DNA sequence. Please ensure that your protein sequences file has a header or title followed by the corresponding sequence on the following line. An example of the protein sequence file format can be seen here.
+You will need to input two files to run the codon optimization tool. First, you will need a text file with the input codon usage table for the species of intreset. If you wish to use an updated codon usage for *N. benthamiana* please use [this file](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/63c7b9552fed638b1154c84d438cb1eaad6d5a9e/Codon_Optimization_Tool/Updated_Codon_Usage.txt). Please ensure that there are at least three columns in your codon usage file - "Single_Letter_Abbreviation", "Codon", and "Number" - with the single letter abbreviations for each amino acid, the corresponding codons, and the frequencies or empirical codon counts, respectively. 
+
+Then, you will need a text file with the protein sequences you wish to back-translate into a DNA sequence. Please ensure that your protein sequences file has a header or title followed by the corresponding sequence on the following line. An example of the protein sequence file format can be seen [here](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/b9df43a085aed205f94423bedfe418a9dd3a2dda/Codon_Optimization_Tool/Example_Protein_Sequences.txt).
 
 ## How to Use the Codon Optimization Tool
 
-A step by step series of examples that show you all the field that require user input in the file.
+A step by step walkthrough that shows you all the fields that require user input & how to use the [codon optimization script](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/63c7b9552fed638b1154c84d438cb1eaad6d5a9e/Codon_Optimization_Tool/Codon_Optimization_Script.R)
 
-1) Change (if using the updated codon usage table for N. benthamiana, leave this field as follows:
+1) Change the name of the file with your codon usage table. If using the [updated codon usage table](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/63c7b9552fed638b1154c84d438cb1eaad6d5a9e/Codon_Optimization_Tool/Updated_Codon_Usage.txt) for *N. benthamiana*, leave this field as follows:
 
 ```
 Chosen_Codon_Usage <- "Updated_Codon_Usage.txt"
 ```
 
-2) Change the Your_File_Name_Here to the file containing your 
+2) Change the *Your_File_Name_Here* to the file containing your protein sequence(s).
 
 ```
-Chosen_Codon_Usage <- "Your_File_Name_Here"
+Chosen_Codon_Usage <- "Your_File_Name_Here.txt"
 
 ```
 
-3)
+3) Change the *Your_Desired_Results_File_Name_Here* to indicate a name for your output results file.
 
 ```
-Result_File_Name <- "Your_Desired_Results_File_Name_Here"
+Result_File_Name <- "Your_Desired_Results_File_Name_Here.txt"
 ```
 
-4) Run
+4) Run the file. The results will be outputted as a file to your current working directory.
 
 ## Example Usage of the Codon Optimization Tool
 
-This is an example of two protein sequences taken from UniProt and the optimized DNA sequences results.
+This is an example of the [input codon usage](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/63c7b9552fed638b1154c84d438cb1eaad6d5a9e/Codon_Optimization_Tool/Updated_Codon_Usage.txt).
 
-Here is an example of the input codon usage.
+<img width="685" alt="Screen Shot 2022-08-07 at 2 28 39 AM" src="https://user-images.githubusercontent.com/92746188/183278301-483b6aa4-817d-4bcd-bb8c-8531a77f83d6.png">
 
-Here is an example of the input protein sequences.
+This is an example of the [input protein sequences](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/b9df43a085aed205f94423bedfe418a9dd3a2dda/Codon_Optimization_Tool/Example_Protein_Sequences.txt). These were two protein sequences taken from [UniProt](https://www.uniprot.org/uniprotkb?query=nicotiana%20benthamiana).
 
-These were the user inputs made to the file prior to running.
+<img width="684" alt="Screen Shot 2022-08-07 at 2 27 46 AM" src="https://user-images.githubusercontent.com/92746188/183278311-759281a7-8855-4712-84db-ad384727ea9e.png">
+
+Next, the following were the user inputs made to the file prior to running.
 
 ```
 Chosen_Codon_Usage <- "Updated_Codon_Usage.txt"
@@ -78,13 +82,14 @@ Protein_Sequence_File <- "Example_Protein_Sequences.txt"
 Result_File_Name <- "Example_Results.txt"
 ```
 
-And then, the file was run and results were saved in the current working direcotry. 
+Then, the file was run to generate the optimized DNA sequences results. 
 
-The output results:
+The output results were as follows: 
+
+<img width="684" alt="Screen Shot 2022-08-07 at 2 27 00 AM" src="https://user-images.githubusercontent.com/92746188/183278317-8c13363a-abd9-4786-970b-db70b67bfb01.png">
 
 
-
-These output files are also available for viewing here.
+These output files are also available for viewing [here](https://github.com/anchitaaghag/Codon-Optimization-for-Biopharming/blob/b9df43a085aed205f94423bedfe418a9dd3a2dda/Codon_Optimization_Tool/Example_Results.txt).
 
 ## Authors
 

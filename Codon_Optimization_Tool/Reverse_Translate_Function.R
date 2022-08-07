@@ -18,10 +18,12 @@ Reverse_Translate <- function(sequence_file, codon_usage_table) {
   SeqFile <- readLines(con = sequence_file)
   
   # Recursively keep only odd numbered lines i.e., the protein names or headers ">"
+  # This idea to use TRUE/FALSE indexing was adapted from (Scriven, 2017) comment on https://stackoverflow.com/questions/25961897/how-to-merge-2-vectors-alternating-indexes
   
   Names <- SeqFile[c(TRUE,FALSE)] 
   
   # Recursively keep only even numbered lines i.e., the amino acid sequences
+  # This idea to use TRUE/FALSE indexing was adapted from (Scriven, 2017) comment on https://stackoverflow.com/questions/25961897/how-to-merge-2-vectors-alternating-indexes
   
   All_Sequences <- SeqFile[c(FALSE, TRUE)] 
   
@@ -81,7 +83,7 @@ Reverse_Translate <- function(sequence_file, codon_usage_table) {
   
   names(Amino_Acid_Lookup) <- unlist(Amino_Acids)
   
-  rm(dfAmAcid_Prob, Codon_Names, Total, Prop, Info, Amino_Acids, Each_Amino)
+  rm(dfAmAcid_Prob, Codon_Names, Total, Prop, Amino_Acids, Each_Amino)
   
   # Create an empty list to store all the corresponding DNA sequences.
   
@@ -90,6 +92,8 @@ Reverse_Translate <- function(sequence_file, codon_usage_table) {
   # Next, reiterate through each sequence in the All_Sequences list and randomly replace each amino acid with a corresponding triplet/codon based on the proportions in the Amino_Acid_Lookup.
   
   for (One_Sequence in All_Sequences) {
+    
+    # The following s2c() function from the seqinr package was learned and adapted from https://cran.r-project.org/web/packages/seqinr/seqinr.pdf (Charif et al.,2022) 
     
     Protein_Sequence <- s2c(toupper(One_Sequence))
     
@@ -307,8 +311,9 @@ Reverse_Translate <- function(sequence_file, codon_usage_table) {
   rm(Amino_Acid_Lookup,DNA_Sequence,All_Sequences,Amino_Acid,Formatted_DNA_Seq,One_Sequence,Protein_Sequence,Triplet)
   
   # Output the results of alternating protein names in the Names list and the DNA sequences in the All_DNA_Seqs list.
-  
-  Results <- unlist(c(rbind(Names, All_DNA_Seqs)))
+  # The following idea to use rbind was learned and adapted from https://stackoverflow.com/questions/25961897/how-to-merge-2-vectors-alternating-indexes (Curley, 2014).
+ 
+   Results <- unlist(c(rbind(Names, All_DNA_Seqs)))
   
   rm(All_DNA_Seqs, Names)
   
@@ -316,3 +321,8 @@ Reverse_Translate <- function(sequence_file, codon_usage_table) {
   
 }
 
+#### REFERENCES ####
+
+# Charif, D., Clerc, O., Frank, C., Lobry, J. R., Necsulea, A., Palmeira, L., Penel, S., &; Perrière, G. (2022, May 19).Package ‘seqinr.’ Comprehensive R Archive Network (CRAN). https://cran.r-project.org/web/packages/seqinr/seqinr.pdf
+# Curley, J. "jalapic" (2014, September 21). How to merge 2 vectors alternating indexes? Stack Overflow. https://stackoverflow.com/questions/25961897/how-to-merge-2-vectors-alternating-indexes
+# Scriven, R. (2017, January 31). How to merge 2 vectors alternating indexes? Stack Overflow. https://stackoverflow.com/questions/25961897/how-to-merge-2-vectors-alternating-indexes

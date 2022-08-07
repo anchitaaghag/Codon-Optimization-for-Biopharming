@@ -344,10 +344,10 @@ length(Unique_Duplicates)
 
 dfData_Duplicates <- data.frame()
 
-for (i in Unique_Duplicates) {
-  matching_row <- dfData.sub %>%
-    filter(Titles == i)
-  dfData_Duplicates <- rbind(dfData_Duplicates, matching_row)
+for (Each_Duplicate in Unique_Duplicates) {
+  Matches_Found <- dfData.sub %>%
+    filter(Titles == Each_Duplicate)
+  dfData_Duplicates <- rbind(dfData_Duplicates, Matches_Found)
 }
 
 # Filtering of duplicates. 

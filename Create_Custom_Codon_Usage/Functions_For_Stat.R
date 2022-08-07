@@ -1,17 +1,17 @@
-# Functions for Statistical Analysis
+# Codon Optimization for Biopharming: Functions for Statistical Analysis
+# Anchitaa Ghag
 
-#### Plotting Function ####
+#### 01 Calculate_Means_Std_Dev() FUNCTION ####
 
-# In this section, we will calculate the average (i.e. mean) codon counts per codon and the standard deviation.
+# In this section, I will calculate the average (i.e. mean) codon counts per codon and the standard deviation.
 # This step will be performed for each of the 64 amino acids across the three samples (i.e. data frames).
-
-# Code for std dev calculation across columns adapted from : https://www.datasciencemadesimple.com/get-standard-deviation-of-a-column-in-r-2/
 
 Calculate_Means_Std_Dev <- function(matrix) {
   
   # First, for every column (i.e. triplet), calculate the average.
   Averages <- as.data.frame(colMeans(matrix))
   # Then, for every column (i.e. triplet), calculate the standard deviation.
+  # The following code for calculation of standard deviation across columns was adapted from: https://www.datasciencemadesimple.com/get-standard-deviation-of-a-column-in-r-2/. (DataScience Made Simple, 2022).
   StdDevs <- as.data.frame(matrix) %>% 
     summarise_if(is.numeric, sd) %>%
     t()
@@ -28,9 +28,9 @@ Calculate_Means_Std_Dev <- function(matrix) {
 }
 
 
-#### Plot_AmAcid() Function ####
+#### 02 Plot_AmAcid() FUNCTION ####
 
-# Takes an argument "amino_acid" which is the name of the amino acid. A data frame containing average and stand daeviation information.
+# This function will take an argument "amino_acid" which is the name of the amino acid. A data frame containing average and standard deviation information.
 
 Plot_AmAcid <- function(amino_acid, df) {
   
@@ -76,29 +76,30 @@ Plot_AmAcid <- function(amino_acid, df) {
     Three_Letter_Form <- "Val"
   }
   
-  # Creates a data frame containing the codon count averages and std dev from original data frame.
+  # Create a data frame containing the codon count averages and std dev from original data frame.
   
   dfAmAcid <- (subset(df, AmAcid == Three_Letter_Form))[,c(1,3,4,5)]
   
   # Generate the plot using ggplot package functions.
   
   Plot <- ggplot(data=dfAmAcid, 
-                 aes(x=Codon, y=Avrgs, fill=Sample)) +
+                 aes(x=Codon, y=Avrgs, fill=Species)) +
     geom_bar(stat="identity", position=position_dodge(), alpha = 0.8) +
     ggtitle(amino_acid) +
     theme_bw() +
-    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-    theme(plot.title = element_text(hjust = 0.5, size=10)) + #, legend.position = "none") +
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank, plot.title = element_text(hjust = 0.5, size=10)) +
     xlab("") +
     ylab("") +
     geom_errorbar(aes(ymin=Avrgs-SD, ymax=Avrgs+SD), width=.2, position=position_dodge(.9)) +
-    scale_y_continuous(breaks = seq(0, 55, by = 10), limits = c(0,55)) + # adapted from: https://stackoverflow.com/questions/37950511/r-ggplot2-setting-tick-mark-interval
-    scale_fill_manual(values=c("#FDE725", "#21918C", "#440154")) +
-    scale_color_manual(name= "Species",
-                       labels = c("Old N.benthamiana (Kazuza)", "New N.benthamiana ", "N.tabacum (Kazuza)"))
+    # The following line of code was adapted from https://stackoverflow.com/questions/37950511/r-ggplot2-setting-tick-mark-interval. (Boxuan, 2016).
+    scale_y_continuous(breaks = seq(0, 55, by = 10), limits = c(0,55)) +
+    scale_fill_manual(values=c("#ed7953","#0d0887", "#9c179e"))
   
   return(Plot)
   
 }
 
-#### REFERENCES ####
+#### 03 REFERENCES ####
+
+# Boxuan. (2016, June 21). R - ggplot2 - setting tick mark interval [duplicate]. Stack Overflow. https://stackoverflow.com/questions/37950511/r-ggplot2-setting-tick-mark-interval</div>
+# DataScience Made Simple. (2022). Get Standard Deviation of a Column in R. DataScience Made Simple. https://www.datasciencemadesimple.com/get-standard-deviation-of-a-column-in-r-2/

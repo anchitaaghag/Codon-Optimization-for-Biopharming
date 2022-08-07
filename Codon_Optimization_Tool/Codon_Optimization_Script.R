@@ -1,4 +1,4 @@
-# Codon Optimization Script
+# Codon Optimization for Biopharming: Codon Optimization Script
 # Anchitaa Ghag
 
 # This R code will require three user inputs in section 01 and will then run the Reverse_Translate() function to optimize codons in a chosen organism.

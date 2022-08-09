@@ -49,7 +49,7 @@ shapiro.test(CAI_Data$Run_8_CAI_Values)
 shapiro.test(CAI_Data$Run_9_CAI_Values) # Not normal.
 shapiro.test(CAI_Data$Run_10_CAI_Values) # Not normal.
 
-# Perform a series of paired t-tests comparing the original CAI with the optimized CAI.
+# Perform a series of Wilcoxon signed rank tests comparing the original CAI with the optimized CAI.
 
 Run_1 <- wilcox.test(x = CAI_Data$Run_1_CAI_Values,
             y = CAI_Data$Original_CAI_Values,

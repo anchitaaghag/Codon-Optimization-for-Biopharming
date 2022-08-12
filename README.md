@@ -110,9 +110,9 @@ These output files are also available for viewing [here](https://github.com/anch
 
 ## Template & License Credit
 
-This file was created by adapting the README.md file template by Billie Thompson [PurpleBooth](https://github.com/PurpleBooth). The template can be found [here](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
+This file was created by adapting the README.md file template by Billie Thompson [PurpleBooth](https://github.com/PurpleBooth). The template can be found [here](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) (Thompson, 2018).
 
-The following section is based on the [cc-licenses repository](https://github.com/santisoler/cc-licenses) by Santiago Soler [santisoler](https://github.com/santisoler). The following section is derived from the README.md file [here](https://github.com/santisoler/cc-licenses#cc-attribution-sharealike-40-international). In addition, the corresponding full license text file is also availiable via the cc-licenses repository [here](https://github.com/santisoler/cc-licenses/blob/8887424b2a1f1a78fca7efbcc2cd5fd4b1998812/LICENSE-CC-BY-SA).
+The following section is based on the [cc-licenses repository](https://github.com/santisoler/cc-licenses) by Santiago Soler [santisoler](https://github.com/santisoler). The following section is derived from the README.md file [here](https://github.com/santisoler/cc-licenses#cc-attribution-sharealike-40-international) (Soler, 2022a). In addition, the corresponding full license text file is also availiable via the cc-licenses repository [here](https://github.com/santisoler/cc-licenses/blob/8887424b2a1f1a78fca7efbcc2cd5fd4b1998812/LICENSE-CC-BY-SA) (Soler, 2022b).
 
 ## License
 
@@ -126,3 +126,11 @@ This work is licensed under a
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
+
+## References
+
+Soler, S. (2022a, July 15). README.md. GitHub.  https://github.com/santisoler/cc-licenses#cc-attribution-sharealike-40-international 
+
+Soler, S. (2022b, July 2). LICENSE-CC-BY-SA. GitHub. https://github.com/santisoler/cc-licenses/blob/8887424b2a1f1a78fca7efbcc2cd5fd4b1998812/LICENSE-CC-BY-SA 
+
+Thompson, B. (2018, May 26). README-Template.md. GitHub. https://gist.github.com/PurpleBooth/109311bb0361f32d87a2 

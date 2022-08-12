@@ -1,0 +1,1417 @@
+"GB_Accession" "Start_of_CDS" "End_of_CDS" "Type" "Product" "Protein_ID" "Gene"
+"1...1" "MZ423212.1" 1 1320 "gene" "m6A demethylase" "QYU76043.1" "ALKB1"
+"1...2" "MT107161.1" 1 1623 "gene" "m6A demethylase" "QPC97718.1" "ALKB2"
+"1...3" "ON392763.1" 1 597 "CDS" "REM1.8" "USE63119.1" "NbREM1.8"
+"1...4" "ON392762.1" 1 528 "CDS" "REM1.5" "USE63118.1" "NbREM1.5"
+"1...5" "ON392761.1" 1 537 "CDS" "REM1.3" "USE63117.1" "NbREM1.3"
+"1...6" "ON392760.1" 1 624 "CDS" "REM1.1" "USE63116.1" "NbREM1.1"
+"1...7" "MW478352.1" 1 504 "CDS" "RNA binding protein 7" "UQM94819.1" "GRP7"
+"1...8" "MW841628.1" 1 2496 "CDS" "expansin responded kinase 1" "UPT50366.1" "NbERK1"
+"1...9" "MW343792.1" 1 2982 "gene" "suppressor with morphogenetic effect on genitalia protein 7" "UOW59891.1" "SMG7"
+"1...10" "MW367443.1" 1 831 "CDS" "voltage dependent anion channel 4" "UKR51182.1" "NbVDAC4"
+"1...11" "MW367442.1" 1 831 "CDS" "voltage dependent anion channel 3" "UKR51181.1" "NbVDAC3"
+"1...12" "MW367441.1" 1 831 "CDS" "voltage dependent anion channel 2" "UKR51180.1" "NbVDAC2"
+"1...13" "MW367440.1" 1 831 "CDS" "voltage dependent anion channel 1" "UKR51179.1" "NbVDAC1"
+"1...14" "MW014353.1" 1 1569 "CDS" "gamma-glutamylcysteine synthetase" "UKF18834.1" NA
+"1...15" "MW014352.1" 1 1668 "CDS" "glutathione synthetase" "UKF18833.1" NA
+"1...16" "MW024828.1" 1 1707 "CDS" "A/T-rich interaction domain containing protein 1" "UKB36438.1" NA
+"1...17" "MT683764.1" 1 345 "CDS" "SmD1c" "QLF98401.1" "small nuclear ribonucleoprotein SmD1"
+"1...18" "MT683763.1" 1 345 "CDS" "SmD1b" "QLF98400.1" "small nuclear ribonucleoprotein SmD1"
+"1...19" "MT683762.1" 1 345 "CDS" "SmD1a" "QLF98399.1" "small nuclear ribonucleoprotein SmD1"
+"1...20" "MT945407.1" 1 1755 "CDS" "UDP-glycosyltransferase" "UHH90566.1" NA
+"1...21" "MT945406.1" 239 1165 "CDS" "UDP-glycosyltransferase" "UHH90565.1" NA
+"1...22" "MT945405.1" 65 1414 "CDS" "UDP-glycosyltransferase" "UHH90564.1" NA
+"1...23" "MT945404.1" 45 1481 "CDS" "UDP-glycosyltransferase" "UHH90563.1" NA
+"1...24" "MT945403.1" 137 1537 "CDS" "UDP-glycosyltransferase" "UHH90562.1" NA
+"1...25" "MT945402.1" 45 1376 "CDS" "UDP-glycosyltransferase" "UHH90561.1" NA
+"1...26" "MT945401.1" 76 1509 "CDS" "UDP-glycosyltransferase" "UHH90560.1" NA
+"1...27" "MT945400.1" 37 1371 "CDS" "UDP-glycosyltransferase" "UHH90559.1" NA
+"1...28" "MT945399.1" 40 1362 "CDS" "UDP-glycosyltransferase" "UHH90558.1" NA
+"1...29" "MT945398.1" 15 1484 "CDS" "UDP-glycosyltransferase" "UHH90557.1" NA
+"1...30" "MT945397.1" 1 1449 "CDS" "UDP-glycosyltransferase" "UHH90556.1" NA
+"1...31" "MT945396.1" 351 1490 "CDS" "UDP-glycosyltransferase" "UHH90555.1" NA
+"1...32" "MT945395.1" 63 1544 "CDS" "UDP-glycosyltransferase" "UHH90554.1" NA
+"1...33" "MT945394.1" 414 1790 "CDS" "UDP-glycosyltransferase" "UHH90553.1" NA
+"1...34" "MT945393.1" 350 1795 "CDS" "UDP-glycosyltransferase" "UHH90552.1" NA
+"1...35" "MT945392.1" 265 1677 "CDS" "UDP-glycosyltransferase" "UHH90551.1" NA
+"1...36" "MT945391.1" 207 1622 "CDS" "UDP-glycosyltransferase" "UHH90550.1" NA
+"1...37" "MT945390.1" 978 1637 "CDS" "UDP-glycosyltransferase" "UHH90549.1" NA
+"1...38" "MT945389.1" 58 1458 "CDS" "UDP-glycosyltransferase" "UHH90548.1" NA
+"1...39" "MT945388.1" 193 1686 "CDS" "UDP-glycosyltransferase" "UHH90547.1" NA
+"1...40" "MT945387.1" 1 1143 "CDS" "UDP-glycosyltransferase" "UHH90546.1" NA
+"1...41" "MT945386.1" 515 1654 "CDS" "UDP-glycosyltransferase" "UHH90545.1" NA
+"1...42" "MT945385.1" 103 1497 "CDS" "UDP-glycosyltransferase" "UHH90544.1" NA
+"1...43" "MT945384.1" 34 1545 "CDS" "UDP-glycosyltransferase" "UHH90543.1" NA
+"1...44" "MT945383.1" 2235 3686 "CDS" "UDP-glycosyltransferase" "UHH90542.1" NA
+"1...45" "MT945382.1" 202 1620 "CDS" "UDP-glycosyltransferase" "UHH90541.1" NA
+"1...46" "MT945381.1" 43 1374 "CDS" "UDP-glycosyltransferase" "UHH90540.1" NA
+"1...47" "MT945380.1" 148 1644 "CDS" "UDP-glycosyltransferase" "UHH90539.1" NA
+"1...48" "MT945379.1" 94 1530 "CDS" "UDP-glycosyltransferase" "UHH90538.1" NA
+"1...49" "MT945378.1" 193 1566 "CDS" "UDP-glycosyltransferase" "UHH90537.1" NA
+"1...50" "MT945377.1" 139 1611 "CDS" "UDP-glycosyltransferase" "UHH90536.1" NA
+"1...51" "MT945376.1" 150 1598 "CDS" "UDP-glycosyltransferase" "UHH90535.1" NA
+"1...52" "MT945375.1" 222 1634 "CDS" "UDP-glycosyltransferase" "UHH90534.1" NA
+"1...53" "MT945374.1" 518 1981 "CDS" "UDP-glycosyltransferase" "UHH90533.1" NA
+"1...54" "MT945373.1" 133 1620 "CDS" "UDP-glycosyltransferase" "UHH90532.1" NA
+"1...55" "MT945372.1" 324 1808 "CDS" "UDP-glycosyltransferase" "UHH90531.1" NA
+"1...56" "MT945371.1" 572 1807 "CDS" "UDP-glycosyltransferase" "UHH90530.1" NA
+"1...57" "MT945370.1" 104 1489 "CDS" "UDP-glycosyltransferase" "UHH90529.1" NA
+"1...58" "MT945369.1" 143 1594 "CDS" "UDP-glycosyltransferase" "UHH90528.1" NA
+"1...59" "MT945368.1" 232 1695 "CDS" "UDP-glycosyltransferase" "UHH90527.1" NA
+"1...60" "MT945367.1" 214 1692 "CDS" "UDP-glycosyltransferase" "UHH90526.1" NA
+"1...61" "MT945366.1" 180 1574 "CDS" "UDP-glycosyltransferase" "UHH90525.1" NA
+"1...62" "MT945365.1" 140 1615 "CDS" "UDP-glycosyltransferase" "UHH90524.1" NA
+"1...63" "MT945364.1" 148 1551 "CDS" "UDP-glycosyltransferase" "UHH90523.1" NA
+"1...64" "MT945363.1" 240 1658 "CDS" "UDP-glycosyltransferase" "UHH90522.1" NA
+"1...65" "MT945362.1" 314 1804 "CDS" "UDP-glycosyltransferase" "UHH90521.1" NA
+"1...66" "MT945361.1" 241 1614 "CDS" "UDP-glycosyltransferase" "UHH90520.1" NA
+"1...67" "MT945360.1" 67 1458 "CDS" "UDP-glycosyltransferase" "UHH90519.1" NA
+"1...68" "MT945359.1" 415 1893 "CDS" "UDP-glycosyltransferase" "UHH90518.1" NA
+"1...69" "MT945358.1" 221 1666 "CDS" "UDP-glycosyltransferase" "UHH90517.1" NA
+"1...70" "MT945357.1" 340 1731 "CDS" "UDP-glycosyltransferase" "UHH90516.1" NA
+"1...71" "MT945356.1" 276 1721 "CDS" "UDP-glycosyltransferase" "UHH90515.1" NA
+"1...72" "MT945355.1" 426 1763 "CDS" "UDP-glycosyltransferase" "UHH90514.1" NA
+"1...73" "MT945354.1" 125 1603 "CDS" "UDP-glycosyltransferase" "UHH90513.1" NA
+"1...74" "MT945353.1" 3 1397 "CDS" "UDP-glycosyltransferase" "UHH90512.1" NA
+"1...75" "MT945352.1" 83 1486 "CDS" "UDP-glycosyltransferase" "UHH90511.1" NA
+"1...76" "MT945351.1" 8 1453 "CDS" "UDP-glycosyltransferase" "UHH90510.1" NA
+"1...77" "MT945350.1" 729 1805 "CDS" "UDP-glycosyltransferase" "UHH90509.1" NA
+"1...78" "MT945349.1" 35 1627 "CDS" "UDP-glycosyltransferase" "UHH90508.1" NA
+"1...79" "MT945348.1" 54 1475 "CDS" "UDP-glycosyltransferase" "UHH90507.1" NA
+"1...80" "MT945347.1" 272 1699 "CDS" "UDP-glycosyltransferase" "UHH90506.1" NA
+"1...81" "MT945346.1" 349 1776 "CDS" "UDP-glycosyltransferase" "UHH90505.1" NA
+"1...82" "MT945345.1" 511 1707 "CDS" "UDP-glycosyltransferase" "UHH90504.1" NA
+"1...83" "MT945344.1" 84 1550 "CDS" "UDP-glycosyltransferase" "UHH90503.1" NA
+"1...84" "MT945343.1" 89 1531 "CDS" "UDP-glycosyltransferase" "UHH90502.1" NA
+"1...85" "MT945342.1" 149 1597 "CDS" "UDP-glycosyltransferase" "UHH90501.1" NA
+"1...86" "MT945341.1" 239 1675 "CDS" "UDP-glycosyltransferase" "UHH90500.1" NA
+"1...87" "MT945340.1" 155 1591 "CDS" "UDP-glycosyltransferase" "UHH90499.1" NA
+"1...88" "MT945339.1" 79 1443 "CDS" "UDP-glycosyltransferase" "UHH90498.1" NA
+"1...89" "MT945338.1" 1479 2213 "CDS" "UDP-glycosyltransferase" "UHH90497.1" NA
+"1...90" "MT945337.1" 94 1497 "CDS" "UDP-glycosyltransferase" "UHH90496.1" NA
+"1...91" "MT945336.1" 105 1592 "CDS" "UDP-glycosyltransferase" "UHH90495.1" NA
+"1...92" "MT945335.1" 367 1782 "CDS" "UDP-glycosyltransferase" "UHH90494.1" NA
+"1...93" "MT945334.1" 98 1474 "CDS" "UDP-glycosyltransferase" "UHH90493.1" NA
+"1...94" "MT945333.1" 359 1816 "CDS" "UDP-glycosyltransferase" "UHH90492.1" NA
+"1...95" "MT945332.1" 37 1398 "CDS" "UDP-glycosyltransferase" "UHH90491.1" NA
+"1...96" "MT945331.1" 33 1520 "CDS" "UDP-glycosyltransferase" "UHH90490.1" NA
+"1...97" "MT945330.1" 407 1852 "CDS" "UDP-glycosyltransferase" "UHH90489.1" NA
+"1...98" "MT945329.1" 76 1500 "CDS" "UDP-glycosyltransferase" "UHH90488.1" NA
+"1...99" "MT945328.1" 94 1551 "CDS" "UDP-glycosyltransferase" "UHH90487.1" NA
+"1...100" "MT945327.1" 328 1758 "CDS" "UDP-glycosyltransferase" "UHH90486.1" NA
+"1...101" "MT945326.1" 436 1866 "CDS" "UDP-glycosyltransferase" "UHH90485.1" NA
+"1...102" "MT945325.1" 156 1526 "CDS" "UDP-glycosyltransferase" "UHH90484.1" NA
+"1...103" "MT945324.1" 59 1486 "CDS" "UDP-glycosyltransferase" "UHH90483.1" NA
+"1...104" "MT945323.1" 71 1453 "CDS" "UDP-glycosyltransferase" "UHH90482.1" NA
+"1...105" "MT945322.1" 132 1502 "CDS" "UDP-glycosyltransferase" "UHH90481.1" NA
+"1...106" "OL598871.1" 1 2439 "gene" "bZIP28B protein" "UGZ04769.1" "bZIP28B"
+"1...107" "OL598870.1" 1 2415 "gene" "bZIP28A protein" "UGZ04768.1" "bZIP28A"
+"1...108" "OL598869.1" 1 2259 "gene" "bZIP17 protein" "UGZ04767.1" "bZIP17"
+"1...109" "MT936564.1" 1 2982 "gene" "poly [ADP-ribose] polymerase 1" "UFI08160.1" "PARP1"
+"1...110" "MT936563.1" 1 1965 "gene" "cyclophilin peptidyl-prolyl cis-trans isomerase" "UFI08159.1" "CYP72"
+"1...111" "LC659235.1" 1 951 "gene" "aminocyclopropanecarboxylate oxidase 2b" NA "NbACO2b"
+"1...112" "MW465315.1" 1 852 "CDS" "tobamovirus multiplication protein 2A" "UDM84120.1" "Nbe555684"
+"1...113" "OK172328.1" 1 498 "gene" "xanthine dehydrogenase" "UBK24969.1" "XDH"
+"1...114" "MW458937.1" 1 624 "CDS" "chloroplast photosystem I reaction center subunit II-like protein" "UBK24966.1" "PsaD"
+"1...115" "MW458936.1" 1 687 "CDS" "chloroplast photosystem I reaction center subunit III-like protein" "UBK24965.1" "PasF"
+"1...116" "MW458935.1" 1 510 "CDS" "chloroplast plastocyanin A" "UBK24964.1" "PetE"
+"1...117" "MT900576.1" 1 714 "gene" "asparagine synthetase B" "UBK24963.1" "AS-B"
+"1...118" "MT799811.1" 1 999 "CDS" "chloroplast PsbO" "UBK24962.1" NA
+"1...119" "MW924094.1" 1 1419 "CDS" "leucine-rich repeat receptor-like protein" "QZL10981.1" "NbRLP1"
+"1...120" "MW924093.1" 1 2910 "CDS" "leucine-rich repeat receptor-like protein" "QZL10980.1" "NbRLP1"
+"1...121" "MZ423213.1" 1 675 "gene" "m6A methyltransferase" "QYD01611.1" "METTL1"
+"1...122" "MW091551.1" 1 1746 "gene" "transport inhibitor response 1" "QWS72489.1" "TIR1"
+"1...123" "MW091550.1" 1 687 "CDS" "auxin-responsive protein IAA29" "QWS72488.1" "AUX/IAA29"
+"1...124" "MN746383.1" 1 3306 "gene" "calmodulin-binding transcription activator 3" "QUW16852.1" "CAMTA3"
+"1...125" "MW600635.1" 1 786 "CDS" "peptidyl-prolyl cis-trans isomerase FKBP17-2" "QUV77541.1" NA
+"1...126" "MN746382.3" 1 975 "gene" "bifunctional nuclease 2" "QRN56054.3" "BN2"
+"1...127" "MN746381.1" 1 450 "gene" "calmodulin" "QNN89062.1" "CaM6"
+"1...128" "MN746380.1" 1 450 "gene" "calmodulin" "QNN89061.1" "CaM1"
+"1...129" "MN746379.1" 1 450 "gene" "calmodulin" "QNN89060.1" "CaM3"
+"1...130" "HG993868.1" 1 1803 "gene" "beta-hexosaminidase" NA "HEXO2"
+"1...131" "LC543535.1" 1 3416 "gene" NA NA "NbPDSb"
+"2...132" "LC543535.1" 1 3322 "misc_feature" NA NA NA
+"3...133" "LC543535.1" 3323 3416 "CDS" "phytoene desaturase" NA NA
+"1...134" "LC543534.1" 1 3348 "gene" NA NA "NbPDSa"
+"2...135" "LC543534.1" 1 3260 "misc_feature" NA NA NA
+"3...136" "LC543534.1" 3261 3348 "CDS" "phytoene desaturase" NA NA
+"1...137" "LC543533.1" 1 1749 "gene" "phytoene desaturase" NA "NbPDSb"
+"1...138" "LC543532.1" 1 1761 "gene" "phytoene desaturase" NA "NbPDSa"
+"1...139" "MT623393.1" 1 3060 "gene" "leucine-rich repeat receptor-like serine/threonine-protein kinase BAM1" "QTT01315.1" "BAM1"
+"1...140" "MW524057.1" 1 1073 "gene" NA NA "P4H10"
+"2...141" "MW524057.1" 114 986 "CDS" "prolyl 4-hydroxylase 10" "QSV12668.1" NA
+"1...142" "MW524056.1" 1 1036 "gene" NA NA "P4H9"
+"2...143" "MW524056.1" 128 997 "CDS" "prolyl 4-hydroxylase 9" "QSV12667.1" NA
+"1...144" "MW524055.1" 1 988 "gene" NA NA "P4H4"
+"2...145" "MW524055.1" 79 963 "CDS" "prolyl 4-hydroxylase 4" "QSV12666.1" NA
+"1...146" "MW524054.1" 1 1054 "gene" NA NA "P4H1"
+"2...147" "MW524054.1" 100 960 "CDS" "prolyl 4-hydroxylase 1" "QSV12665.1" NA
+"1...148" "MW455172.1" 1 1260 "gene" "MIP1.2b" "QSS48599.1" "MIP1.2b"
+"1...149" "MT408913.1" 1 1455 "gene" "sucrose nonfermenting 4-like protein" "QPW18807.1" "AKINbetagamma"
+"1...150" "LR961922.1" 240 1328 "gene" "C1RGP" NA "NbC1RGP"
+"1...151" "MN580548.1" 1 768 "gene" "putative WRKY transcription factor 40" "QPP11403.1" "WRKY40"
+"1...152" "MT107162.1" 1 933 "gene" "m6A methyltransferase" "QPC97719.1" "METTL2"
+"1...153" "MN535003.1" 1 2304 "CDS" "SBT8" "QOQ34361.1" "subtilisin-like serine protease"
+"1...154" "MN535005.1" 1 2454 "CDS" "SBT10" "QOQ34363.1" "subtilisin-like serine protease"
+"1...155" "MN535004.1" 1 2307 "CDS" "SBT9" "QOQ34362.1" "subtilisin-like serine protease"
+"1...156" "MN535002.1" 1 2325 "CDS" "SBT7" "QOQ34360.1" "subtilisin-like serine protease"
+"1...157" "MN535001.1" 1 2235 "CDS" "SBT6" "QOQ34359.1" "subtilisin-like serine protease"
+"1...158" "MN535000.1" 1 2301 "CDS" "SBT5" "QOQ34358.1" "subtilisin-like serine protease"
+"1...159" "MN534999.1" 1 2298 "CDS" "SBT4" "QOQ34357.1" "subtilisin-like serine protease"
+"1...160" "MN534998.1" 1 2295 "CDS" "SBT3" "QOQ34356.1" "subtilisin-like serine protease"
+"1...161" "MN534997.1" 1 2280 "CDS" "SBT2" "QOQ34355.1" "subtilisin-like serine protease"
+"1...162" "MN534996.1" 1 2313 "CDS" "SBT1" "QOQ34354.1" "subtilisin-like serine protease"
+"1...163" "MT701526.1" 1 3333 "gene" "argonaute 1b" "QOP58841.1" "AGO1B"
+"1...164" "MT701525.1" 1 3177 "gene" "argonaute 1a" "QOP58840.1" "AGO1A"
+"1...165" "MT912542.1" 1 1578 "CDS" "AP2" "QOE83971.1" "APET ALA2"
+"1...166" "MK935566.1" 1 3231 "CDS" "XPO1b" "QEL13145.1" "NbXPO1b"
+"1...167" "MK935565.1" 1 3234 "CDS" "XPO1a" "QEL13144.1" "NbXPO1a"
+"1...168" "MT363966.1" 1 1371 "CDS" "casein kinase 1.13" "QLJ57720.1" "NbCK1.13"
+"1...169" "MT363965.1" 1 1269 "CDS" "casein kinase 1.7" "QLJ57719.1" "NbCK1.7"
+"1...170" "MT363964.1" 1 1419 "CDS" "casein kinase 1.4" "QLJ57718.1" "NbCK1.4"
+"1...171" "MT363963.1" 1 1416 "CDS" "casein kinase 1.3" "QLJ57717.1" "NbCK1.3"
+"1...172" "AB201544.1" 1 844 "gene" NA NA "NbNACa1"
+"2...173" "AB201544.1" 64 669 "CDS" "alpha chain of nascent polypeptide associated complex" NA "interacts with Brome mosaic virus movement protein"
+"1...174" "MT134102.1" 1 2475 "gene" "coiled-coil nucleotide-binding leucine-rich repeat protein" "QJW71466.1" "Ptr1a"
+"1...175" "MN594539.1" 1 1995 "CDS" "DNA-binding bromodomain-containing protein" "QJS39940.1" "NbDBCP"
+"1...176" "MN365024.1" 1 1530 "CDS" "ATP synthase F1 subunit 1" "QIS68115.1" NA
+"1...177" "LC422831.1" 1 1698 "gene" "phospholipase C" NA "NbPLC2"
+"1...178" "MK189281.1" 1 363 "CDS" "ATG8h" "QEM21008.1" "NbATG8h"
+"1...179" "MK424843.1" 1 795 "gene" "Proliferating cell nuclear antigen protein" "QDQ36648.1" "PCNA"
+"1...180" "MK424842.1" 1 795 "gene" "Proliferating cell nuclear antigen protein" "QDQ36647.1" "PCNA"
+"1...181" "MK689228.1" 1 1170 "gene" "chalcone synthase 1" "QDJ00495.1" "CHAL1"
+"1...182" "MK689227.1" 1 909 "gene" "isoflavone reductase 1" "QDJ00494.1" "IFR1"
+"1...183" "MK689226.1" 1 2154 "gene" "ammonia-lyase 4" "QDJ00493.1" "PAL4"
+"1...184" "MF996340.1" 1 2265 "gene" NA NA "PP2Aa-2"
+"2...185" "MF996340.1" 96 1841 "CDS" "PP2A scaffolding/structural subunit beta isoform" "AYM94668.1" "NbPP2Aa-2"
+"1...186" "MF996339.1" 1 2267 "gene" NA NA "PP2Aa-1"
+"2...187" "MF996339.1" 1 1764 "CDS" "PP2A scaffolding/structural subunit A alpha isoform" "AYM94667.1" "NbPP2Aa-1"
+"1...188" "LC171418.1" 1 9419 "gene" NA NA "NbEXA1"
+"2...189" "LC171418.1" 1 49 "CDS" NA NA NA
+"3...190" "LC171418.1" 2706 2794 NA NA NA NA
+"4...191" "LC171418.1" 2989 3891 NA NA NA NA
+"5...192" "LC171418.1" 3992 4112 NA NA NA NA
+"6...193" "LC171418.1" 4228 4287 NA NA NA NA
+"7...194" "LC171418.1" 4699 5472 NA NA NA NA
+"8...195" "LC171418.1" 5631 8340 NA NA NA NA
+"9...196" "LC171418.1" 8430 8623 NA NA NA NA
+"10...197" "LC171418.1" 8743 8802 NA NA NA NA
+"11...198" "LC171418.1" 9229 9419 NA "essential for potexvirus accumulation 1" NA NA
+"1...199" "MK903618.1" 1 2409 "CDS" "coilin" "QGT31468.1" "cajal body protein"
+"1...200" "MK101125.1" 1 750 "CDS" "Bax inhibitor 1" "QFI57757.1" "NbBI-1a"
+"1...201" "MK692737.1" 1 2646 "gene" "NLR-required for cell death 4" "QER78241.1" "NRC4"
+"1...202" "MK692736.1" 1 2667 "gene" "NLR-required for cell death 3" "QER78240.1" "NRC3"
+"1...203" "MK780770.1" 100 540 "CDS" "MLP-like protein 43" "QEH62706.1" NA
+"1...204" "MK780769.1" 1 444 "CDS" "MLP-like protein 28" "QEH62705.1" NA
+"1...205" "MK391405.1" 1 957 "CDS" "chorismate mutase 1" "QDZ38304.1" NA
+"1...206" "MK391404.1" 1 1299 "CDS" "prephenate dehydratase" "QDZ38303.1" NA
+"1...207" "MN125606.1" 1 1494 "gene" "small RNA degrading nuclease 1a" "QDM36925.1" "SDN1a"
+"1...208" "MN125605.1" 1 3333 "gene" "argonaute 1b" "QDM36924.1" "AGO1b"
+"1...209" "MN125604.1" 1 3177 "gene" "argonaute 1a" "QDM36923.1" "AGO1a"
+"1...210" "MN125603.1" 1 2967 "gene" "argonaute 10a" "QDM36922.1" "AGO10a"
+"1...211" "MK140810.1" 1 1347 "CDS" "PBS1b" "QCX41836.1" NA
+"1...212" "MK140809.1" 1 1347 "CDS" "PBS1a" "QCX41835.1" NA
+"1...213" "MK070896.1" 1 543 "gene" "ribulose-1,5-bisphosphate carboxylase/oxygenase small subunit" "QCS40508.1" "rbcS"
+"1...214" "MK044797.1" 1 330 "CDS" "Huntingtin-interacting protein K-like protein" "QCI62320.1" NA
+"1...215" "MH898886.1" 1 2460 "gene" "alpha-1,2-L-fucosidase" "QCH41104.1" "XFUC1"
+"1...216" "MF156692.1" 1 639 "gene" "GLOBOSA2" "AWD93715.1" "GLO2"
+"1...217" "MF156691.1" 1 660 "gene" NA NA "GLO1"
+"2...218" "MF156691.1" 28 660 "CDS" "GLOBOSA1" "AWD93714.1" NA
+"1...219" "MH820374.1" 1 714 "gene" "stem-specific protein" "QCC72449.1" "LSP"
+"1...220" "MK472713.1" 1 798 "CDS" "chloroplastic PsbP1" "QCC62342.1" NA
+"1...221" "MH939184.1" 1 1647 "CDS" "5-epi-aristolochene synthase" "QBM78334.1" NA
+"1...222" "MK164281.1" 1 360 "CDS" "lipid transfer protein 1" "QBK46787.1" NA
+"1...223" "MG753987.1" 1 900 "CDS" "bZIP60 transcription factor 60" "QBA30963.1" "NbbZIP60"
+"1...224" "LC369496.1" 1 987 "gene" "receptor for activated C kinase 1" NA "NbRACK1"
+"1...225" "MH511674.1" 1 1086 "CDS" "chloroplast ferredoxin-NADP+ oxidoreductase" "QAV53876.1" "NbFNR"
+"1...226" "MG733108.1" 1 273 "CDS" "ATG8f3" "QAR18130.1" "NbATG8f3"
+"1...227" "MG733107.1" 1 369 "CDS" "ATG8f2" "QAR18129.1" "NbATG8f2"
+"1...228" "MG733106.1" 1 369 "CDS" "ATG8f1" "QAR18128.1" "NbATG8f1"
+"1...229" "MG733105.1" 1 360 "CDS" "ATG8e2" "QAR18127.1" "NbATG8e2"
+"1...230" "MG733104.1" 1 414 "CDS" "ATG8e1" "QAR18126.1" "NbATG8e1"
+"1...231" "MG733103.1" 1 372 "CDS" "ATG8c3" "QAR18125.1" "NbATG8c3"
+"1...232" "MG733102.1" 1 354 "CDS" "ATG8c2" "QAR18124.1" "NbATG8c2"
+"1...233" "MG733101.1" 1 372 "CDS" "ATG8c1" "QAR18123.1" "NbATG8c1"
+"1...234" "MG733100.1" 1 759 "CDS" "TIP1" "QAR18122.1" "NbTIP1"
+"1...235" "MG710800.1" 1 2532 "CDS" "NBR1" "AZZ69449.1" "NbNBR1"
+"1...236" "KY402213.1" 1 2055 "CDS" "PARN" "APX61427.1" "NbPARN"
+"1...237" "KY402212.1" 1 2949 "CDS" "XRN4" "APX61426.1" "NbXRN4"
+"1...238" "KY402211.1" 1 966 "CDS" "DCP2" "APX61425.1" "NbDCP2"
+"1...239" "KY402210.1" 1 1113 "CDS" "DCP1" "APX61424.1" "NbDCP1"
+"1...240" "MH476459.1" 1 2715 "CDS" "argonaute 4" "AZQ24789.1" "AGO4"
+"1...241" "MG637440.1" 1 689 "gene" "APETALA1" "AWD93842.1" "AP1"
+"1...242" "LC434546.1" 1 3231 "gene" "exportin1-2b" NA "NbXpo1-2b"
+"1...243" "LC434545.1" 1 3234 "gene" "exportin1-2a" NA "NbXpo1-2a"
+"1...244" "LC434544.1" 1 3231 "gene" "exportin1-1b" NA "NbXpo1-1b"
+"1...245" "LC434543.1" 1 3231 "gene" "exportin1-1a" NA "NbXpo1-1a"
+"1...246" "LQ979018.1" 1 1536 "CDS" NA NA NA
+"2...247" "LQ979018.1" 910 910 "variation" NA NA NA
+"1...248" "LQ979016.1" 1 1545 "CDS" NA NA NA
+"2...249" "LQ979016.1" 224 224 "variation" NA NA NA
+"1...250" "LQ979013.1" 1 1545 "CDS" NA NA NA
+"1...251" "LQ979010.1" 1 1380 "CDS" NA NA NA
+"1...252" "LQ979007.1" 1 1503 "CDS" NA NA NA
+"1...253" "LC382284.1" 1 1050 "gene" "S-adenosyl-L-Met-dependent C-24 sterol methyltransferase" NA "NbSMT1b"
+"1...254" "LC382283.1" 1 1041 "gene" "S-adenosyl-L-Met-dependent C-24 sterol methyltransferase" NA "NbSMT1a"
+"1...255" "LC382282.1" 1 1710 "gene" "sterol side chain reductase" NA "NbSSR2b"
+"1...256" "LC382281.1" 1 1710 "gene" "sterol side chain reductase" NA "NbSSR2a"
+"1...257" "LC382280.1" 1 2274 "gene" "cycloartenol synthase" NA "NbCAS1b"
+"1...258" "LC382279.1" 1 2274 "gene" "cycloartenol synthase" NA "NbCAS1a"
+"1...259" "LC382278.1" 1 1158 "gene" "mevalonate kinase" NA "NbMVKb"
+"1...260" "LC382277.1" 1 1158 "gene" "mevalonate kinase" NA "NbMVKa"
+"1...261" "LC382276.1" 1 1989 "gene" "3-hydroxy-3-methylglutaryl-CoA reductase" NA "NbHMGR2a"
+"1...262" "LC382275.1" 1 1818 "gene" "3-hydroxy-3-methylglutaryl-CoA reductase" NA "NbHMGR1b"
+"1...263" "LC382274.1" 1 1818 "gene" "3-hydroxy-3-methylglutaryl-CoA reductase" NA "NbHMGR1a"
+"1...264" "LC382273.1" 1 1389 "gene" "3-hydroxy-3-methylglutaryl-CoA synthase" NA "NbHMGSb"
+"1...265" "LC382272.1" 1 1389 "gene" "3-hydroxy-3-methylglutaryl-CoA synthase" NA "NbHMGSa"
+"1...266" "MG729206.1" 1 891 "gene" "SYNV P interacting NAC transcription factor" "AYC63433.1" "SPINTF"
+"1...267" "MH532571.1" 1 1038 "gene" "receptor-like cytoplasmic kinase" "AXY05281.1" "JIM2"
+"1...268" "MH532570.1" 1 2538 "gene" "nucleotide binding leucine rich repeat protein" "AXY05280.1" "ZAR1"
+"1...269" "MH544653.1" 1 1923 "gene" "phosphatidylinositol 4-kinase type 2" "AXU38887.1" "PI4K2"
+"1...270" "MG591461.1" 1 2343 "gene" "CLC-1b" "AXR75223.1" "CLC-1b"
+"1...271" "MG591460.1" 1 2349 "gene" "CLC-1a" "AXR75222.1" "CLC-1a"
+"1...272" "LC422005.1" 1 660 "gene" "small GTPase Ran3" NA "NbRan3"
+"1...273" "LC422004.1" 1 666 "gene" "small GTPase Ran2" NA "NbRan2"
+"1...274" "LC422003.1" 1 666 "gene" "small GTPase Ran1b" NA "NbRan1b"
+"1...275" "LC422002.1" 1 666 "gene" "small GTPase Ran1a" NA "NbRan1a"
+"1...276" "LC422001.1" 1 669 "gene" "Ran binding protein RanBP1-3" NA "NbRanBP1-3"
+"1...277" "LC422000.1" 1 666 "gene" "Ran binding protein RanBP1-2b" NA "NbRanBP1-2b"
+"1...278" "LC421999.1" 1 654 "gene" "Ran binding protein RanBP1-2a" NA "NbRanBP1-2a"
+"1...279" "LC421998.1" 1 663 "gene" "Ran binding protein RanBP1-1b" NA "NbRanBP1-1b"
+"1...280" "LC421997.1" 1 651 "gene" "Ran binding protein RanBP1-1a" NA "NbRanBP1-1a"
+"1...281" "MG333694.1" 1 471 "gene" "ubiquitin extension protein 1" "AXN93983.1" "UEP1"
+"1...282" "LC409261.1" 1 1101 "gene" "geranylgeranyl pyrophosphate synthase 1" NA "NbGGPPS1"
+"1...283" "LC409060.1" 1 1281 "gene" "calreticulin 3" NA "CRT3a2"
+"1...284" "LC409059.1" 1 1272 "gene" "calreticulin 3" NA "CRT3a1"
+"1...285" "MG560271.1" 1 636 "CDS" "chloroplast Rubisco accumulation factor 2" "AXA12010.1" "NbRAF2"
+"1...286" "MF426030.1" 1 711 "gene" "mRNA export-associated protein" "AWM30655.1" "ALY2085"
+"1...287" "MH298320.1" 1 1008 "gene" "NRP1" "AWK67735.1" "nrp1"
+"1...288" "MG010654.1" 1 1737 "gene" "membrane-localized LRR receptor-like protein" "AUT14026.1" "RXEGL2"
+"1...289" "MG010653.1" 1 3099 "gene" "membrane-localized LRR receptor-like protein" "AUT14025.1" "RXEGL1"
+"1...290" "MG010652.1" 1 3072 "gene" "membrane-localized LRR receptor-like protein" "AUT14024.1" "RXEG1"
+"1...291" "MF033266.1" 1 939 "CDS" "NAC1 transcription factor" "ASS36246.1" "NbNAC1"
+"1...292" "KY563646.1" 1 1362 "CDS" "malonyltransferase" "AQQ82604.1" "NbMaT1"
+"1...293" "MF773579.1" 1 3921 "CDS" "Roq1" "ATD14363.1" "NLR protein involved in the perception of the Xanthomonas effector protein XopQ."
+"1...294" "KX923320.1" 1 2580 "CDS" "MAP kinase phosphatase" "ATA66956.1" "dual specificity phosphatase"
+"1...295" "KX452093.1" 1 1173 "gene" "S-adenosylmethionine synthase 3" "ASP44115.1" "SAMs"
+"1...296" "KX452092.1" 1 1173 "gene" "S-adenosylmethionine synthase 2" "ASP44114.1" "SAMs"
+"1...297" "KX452091.1" 1 1173 "gene" "S-adenosylmethionine synthase 1" "ASP44113.1" "SAMs"
+"1...298" "LC222288.1" 1 1773 "gene" "isochorismate synthase" NA "NbICS"
+"1...299" "MF346700.1" 1 717 "CDS" "putative plasma membrane-associated cation-binding protein 1" "ASW15993.1" NA
+"1...300" "MF346699.1" 1 966 "CDS" "plastid carbonic anhydrase" "ASW15992.1" NA
+"1...301" "MF346698.1" 1 2907 "CDS" "elicitor-inducible leucine-rich repeats receptor-like protein" "ASW15991.1" NA
+"1...302" "MF374795.1" 1 471 "gene" "ubiquitin conjugating enzyme 1" "ASU50896.1" "UBC1"
+"1...303" "KU726877.1" 1 480 "CDS" "eukaryotic initination factor 5a" "AOF39400.1" NA
+"1...304" "KU726873.1" 1 444 "CDS" "histone 2b" "AOF39396.1" NA
+"1...305" "KU726872.1" 1 462 "CDS" "ubiquitin conjugating enzyme 2" "AOF39395.1" NA
+"1...306" "KU726871.1" 1 2544 "CDS" "histome monoubiquitnation 1" "AOF39394.1" NA
+"1...307" "LC314308.1" 1 666 "gene" "cysteine and histidine-rich domain-containing protein" NA "RAR1"
+"1...308" "LC314307.1" 1 672 "gene" "cysteine and histidine-rich domain-containing protein" NA "RAR1"
+"1...309" "LC314287.1" 1 1047 "gene" "suppressor of G2 allele of SKP1" NA "SGT1"
+"1...310" "LC314286.1" 1 1113 "gene" "suppressor of G2 allele of SKP1" NA "SGT1"
+"1...311" "LC314285.1" 1 1113 "gene" "suppressor of G2 allele of SKP1" NA "SGT1"
+"1...312" "LC314272.1" 1 2100 "gene" "heat shock protein 90" NA "HSP90"
+"1...313" "LT883170.1" 1 2301 "gene" "RNA" NA "NbPPA1.1"
+"1...314" "LT883169.1" 1 2298 "gene" "RNA" NA "NbPPA1.2"
+"1...315" "KX384606.1" 1 1182 "gene" "S-adenosyl methionine synthase 1" "ARQ79710.1" "SAMs1"
+"1...316" "KY852491.1" 1 1107 "gene" "basic helix-loop-helix" "ARM20192.1" "CHL1"
+"1...317" "KX912913.1" 1 2335 "gene" NA NA "HSP70"
+"2...318" "KX912913.1" 193 2142 "CDS" "HSP70" "ARH56399.1" NA
+"1...319" "LC156099.1" 1 1566 "gene" "calcium dependent protein kinase isoform 2" NA "NbCDPKiso2"
+"1...320" "LC156098.1" 1 2817 "gene" "respiratory burst oxidase homolog protein B" NA "NbRBOHB"
+"1...321" "KX369399.1" 1 2562 "CDS" "autophagy protein ATG9" "APT43519.1" "NbATG9"
+"1...322" "KX369398.1" 1 2142 "CDS" "autophagy protein ATG7" "APT43518.1" "NbATG7"
+"1...323" "KX369397.1" 1 1116 "CDS" "autophagy protein ATG5" "APT43517.1" "NbATG5"
+"1...324" "KX369396.1" 1 960 "CDS" "autophagy protein ATG3" "APT43516.1" "NbATG3"
+"1...325" "KX369401.1" 1 363 "CDS" "autophagy protein ATG8i" "APT43515.1" "NbATG8i"
+"1...326" "KX369400.1" 1 411 "CDS" "autophagy protein ATG8d" "APT43514.1" "NbATG8d"
+"1...327" "LT797576.1" 5 1066 "gene" "10xHistagTEV XIP1;1beta" NA "10xHistagTEV XIP1;1beta"
+"2...328" "LT797576.1" 11 40 "misc_feature" NA NA NA
+"3...329" "LT797576.1" 62 82 "misc_feature" NA NA NA
+"4...330" "LT797576.1" 89 1066 "misc_feature" NA NA NA
+"1...331" "LT797575.1" 5 1063 "gene" "10xHistagTEV XIP1;1alpha" NA "10xHistagTEV XIP1;1alpha"
+"2...332" "LT797575.1" 11 40 "misc_feature" NA NA NA
+"3...333" "LT797575.1" 62 82 "misc_feature" NA NA NA
+"4...334" "LT797575.1" 89 1063 "misc_feature" NA NA NA
+"1...335" "KY464890.1" 1621 1800 "regulatory" NA NA NA
+"2...336" "KY464890.1" 1857 2651 "gene" "NptII" "AQT31662.1" "aph(3')-II (or nptII)"
+"3...337" "KY464890.1" 3041 3293 "regulatory" NA NA NA
+"4...338" "KY464890.1" 3878 3908 "regulatory" NA NA NA
+"5...339" "KY464890.1" 3916 3932 "protein_bind" NA NA NA
+"6...340" "KY464890.1" 4480 4825 "regulatory" NA NA NA
+"7...341" "KY464890.1" 4846 4855 "regulatory" NA NA NA
+"8...342" "KY464890.1" 4856 4859 "misc_feature" NA NA NA
+"9...343" "KY464890.1" 4860 5651 "CDS" "modified green fluorescent protein mGFP5-ER" "AQT31663.1" "containing one nucleotide variation resulting in an H46Y amino acid change"
+"10...344" "KY464890.1" 5668 5920 "regulatory" NA NA NA
+"11...345" "KY464890.1" 6126 9366 "mobile_element" NA NA NA
+"12" "KY464890.1" 6126 6206 "repeat_region" NA NA NA
+"13" "KY464890.1" 9044 6159 "gene" "TnpA" "AQT31664.1" "tnpA"
+"14" "KY464890.1" 9239 9364 "gene" "TnpR" "AQT31665.1" "tnpR"
+"1...349" "KX192074.1" 1 1593 "gene" "beta-hexosaminidase 3" "ANW86205.1" "HEXO3"
+"1...350" "KX192073.1" 1 1626 "gene" "beta-hexosaminidase 1" "ANW86204.1" "HEXO1"
+"1...351" "KX375797.1" 1 1068 "CDS" "papain-like cysteine proteinase 7" "AQQ13386.1" "CysP7"
+"1...352" "KX375796.1" 1 1398 "CDS" "papain-like cysteine proteinase 6" "AQQ13385.1" "CysP6"
+"1...353" "KX990270.1" 1 1364 "gene" NA NA "ORE1"
+"2...354" "KX990270.1" 101 1084 "CDS" "oresara 1-like protein" "AQM49954.1" NA
+"1...355" "KX990269.1" 1 877 "gene" NA NA "SAG12"
+"2...356" "KX990269.1" 42 650 "CDS" "senescence-associated protein 12" "AQM49953.1" NA
+"1...357" "KX990268.1" 1 982 "gene" NA NA "SEN4"
+"2...358" "KX990268.1" 47 856 "CDS" "senescence 4-like protein" "AQM49952.1" NA
+"1...359" "KX272620.1" 1 1566 "CDS" "TOM1-like protein 2" "APY20269.1" NA
+"1...360" "KX272619.1" 1 2805 "gene" "AvrPto-interacting protein 1" "APY20268.1" "API1"
+"1...361" "KX272618.1" 1 2844 "gene" "leucine-rich repeat receptor-like protein kinase 1" "APY20267.1" "RLK1"
+"1...362" "KX272617.1" 1 789 "gene" "RPM1-interacting protein 4" "APY20266.1" "RIN4"
+"1...363" "KX272616.1" 1 1194 "gene" "serine/threonine-protein kinase HT1" "APY20265.1" "HT1"
+"1...364" "AY974606.2" 1 528 "CDS" "chloroplast carbonic anhydrase" "AAY17069.2" NA
+"1...365" "FN687760.1" 1 877 "gene" NA NA "cdm"
+"2...366" "FN687760.1" 1 28 "5'UTR" NA NA NA
+"3...367" "FN687760.1" 28 633 "CDS" "Nb cell deth marker" NA NA
+"4...368" "FN687760.1" 633 877 "3'UTR" NA NA NA
+"1...369" "EU862549.1" 67 829 "CDS" "PB1 domain-containing protein" "ACJ54183.1" "contains InterPro domain octicosapeptide/Phox/Bemp1 (InterPro: IPR000270)"
+"1...370" "EU862548.1" 1 585 "CDS" "PPIase domain-containing protein" "ACJ54182.1" "contains InterPro domain peptidyl-prolyl cis-trans isomerase, cyclophilin-type (InterPro: IPR002130)"
+"1...371" "EU849598.1" 1 576 "CDS" "subtilisin-like protein" "ACJ26761.1" "contains InterPro domain peptidase S8 subtilisin-related IPR015500"
+"1...372" "FJ222442.1" 1 637 "gene" "S-adenosyl homocysteine hydrolase" "ACI31554.1" "SAHH"
+"1...373" "FJ222441.1" 1 682 "gene" "MET1" "ACI31553.1" "MET1"
+"1...374" "EU679344.1" 1 754 "gene" NA NA "TFIIIA"
+"2...375" "EU679344.1" 1 84 "mRNA" NA NA NA
+"3...376" "EU679344.1" 218 395 NA NA NA NA
+"4...377" "EU679344.1" 547 754 NA "TFIIIA protein truncated variant 1" NA NA
+"5...378" "EU679344.1" 218 300 NA "TFIIIA protein truncated variant 2" NA NA
+"6...379" "EU679344.1" 218 232 NA "TFIIIA protein truncated variant 1" "ACG60700.1" "alternatively spliced"
+"7...380" "EU679344.1" 254 383 "rRNA" "5S ribosomal RNA" NA "-"
+"1...381" "EU700053.1" 1 1009 "gene" NA NA "EH1.1"
+"2...382" "EU700053.1" 1 799 "CDS" "epoxide hydrolase" "ACD86402.1" "alpha beta hydrolase"
+"1...383" "AF479624.1" 1 675 "CDS" "Prf-like protein" "AAL85346.1" "required for resistance against Pseudomonas syringae AvrPto"
+"1...384" "AF396697.1" 1 342 "CDS" "s/s2" "AAL82195.1" NA
+"1...385" "JN234775.1" 1 383 "CDS" "cyclin A1" "AEV43294.1" "CYCA1"
+"1...386" "JN234774.1" 1 639 "CDS" "cyclin A2" "AEV43293.1" "CYCA2"
+"1...387" "JN234773.1" 1 276 "CDS" "B2-type cyclin dependent kinase" "AEV43292.1" "CDKB2"
+"1...388" "JF903809.1" 1 421 "gene" "pyrroline-5-carboxylate reductase" "AEP83832.1" "P5CR"
+"1...389" "HQ245097.1" 1 1110 "CDS" "hydroxycinnamoyl transferase" "AEO00530.1" "NbHCT-1"
+"1...390" "JN247448.1" 1 483 "CDS" "pathogenesis-related protein 1" "AEL99925.1" "PR-1"
+"1...391" "HQ844225.1" 1 340 "gene" "sucrose phosphate synthase A" "AEG74025.1" "spsA"
+"1...392" "JF815524.1" 1 596 "gene" "argonaute 2" "AEE81036.1" "AGO2-1"
+"1...393" "HQ005418.1" 1 369 "CDS" "GLO2 MADS-box transcription factor" "ADM88563.1" NA
+"1...394" "HQ005417.1" 1 556 "CDS" "GLO1 MADS-box transcription factor" "ADM88562.1" NA
+"1...395" "EU257505.1" 1 1368 "CDS" "isochorismate synthase" "ABX55938.1" "NbICS"
+"1...396" "EU076714.1" 1 162 "CDS" "flower-specific defensin" "ABU62754.1" NA
+"1...397" "DQ437636.1" 1 210 "CDS" "GLOBOSA" "ABE11656.1" "DNA-binding transcription factor"
+"1...398" "DQ437635.1" 1 450 "CDS" "DEFICIENS" "ABE11655.1" "MADS-domain transcription factor"
+"1...399" "DQ437634.1" 1 401 "CDS" "WUSCHEL" "ABE11654.1" "transcription factor"
+"1...400" "DQ437633.1" 1 404 "CDS" "AGAMOUS" "ABE11653.1" "MADS-domain transcription factor"
+"1...401" "DQ389173.1" 1 972 "CDS" "metacaspase type II" "ABD47740.1" "NbMCA1"
+"1...402" "DQ374449.1" 1 309 "gene" "disease-resistance protein-like" "ABD37669.1" "Pth2"
+"1...403" "DQ374448.1" 1 303 "gene" "disease resistance protein-like" "ABD37668.1" "Pth1"
+"1...404" "DQ226996.1" 1 411 "CDS" "26S proteasome subunit alpha 4" "ABB18117.1" "NBalpha4"
+"1...405" "DQ226995.1" 1 689 "CDS" "RPN8" "ABB18116.1" "NbRPN8"
+"1...406" "DQ226994.1" 1 1078 "CDS" "RPN9" "ABB18115.1" "NbRPN9"
+"1...407" "DQ084024.1" 1 972 "CDS" "metacaspase type II" "AAZ39606.1" "NbMCA1"
+"1...408" "DQ084023.1" 21 1086 "CDS" "cysteine proteinase glycinain type" "AAZ32411.1" "NbCYP2"
+"1...409" "DQ093875.1" 1 516 "CDS" "putative RNA-dependent RNA polymerase SDE1/SGS2/RDR6" "AAZ04410.1" NA
+"1...410" "AY974608.1" 1 537 "CDS" "chloroplast carbonic anhydrase" "AAY17071.1" NA
+"1...411" "AY974607.1" 1 534 "CDS" "chloroplast carbonic anhydrase" "AAY17070.1" NA
+"1...412" "AY905606.1" 1 814 "CDS" "ACC oxidase" "AAX97426.1" "NbACO1"
+"1...413" "AY952374.1" 1 850 "gene" NA NA "psbP"
+"2...414" "AY952374.1" 1 786 "CDS" "chloroplast photosynthetic oxygen-evolving protein 23 kDa subunit" "AAX53162.1" "OEC"
+"1...415" "AY943856.1" 1 1638 "CDS" "non-intrinsic ABC protein" "AAX36074.1" "NbNAP1"
+"1...416" "AY919676.1" 1 664 "gene" "SNF1-related kinase" "AAX12442.1" "SnRK1"
+"1...417" "AY701319.1" 1 1265 "CDS" "autophagy protein ATG7" "AAW80630.1" NA
+"1...418" "AY701318.1" 1 483 "CDS" "autophagy protein ATG3" "AAW80629.1" NA
+"1...419" "AY741533.1" 1 594 "gene" "adenosine kinase" "AAU93700.1" "ADK"
+"1...420" "AY594294.1" 1 431 "CDS" "truncated actin 1" "AAT72827.1" "act1"
+"2...421" "AY594294.1" 427 449 "mobile_element" NA NA NA
+"1...422" "AY547498.1" 1 354 "gene" "WRKY1" "AAT12506.1" "WRKY1"
+"1...423" "AY547496.1" 1 227 "gene" "WRKY3" "AAT12505.1" "WRKY3"
+"1...424" "AY577817.1" 1 551 "CDS" "TM6 protein" "AAS88996.1" NA
+"1...425" "AY497305.1" 1 276 "CDS" "isopentenyl/dimethylallyl diphosphate isomerase" "AAS75819.1" NA
+"1...426" "AY497304.1" 1 500 "CDS" "isopentenyl/dimethylallyl diphosphate synthase" "AAS75818.1" "IspH (LytB) protein"
+"1...427" "AY497303.1" 1 804 "CDS" "(E)-4-hydroxy-3-methylbut-2-enyl diphosphate synthase" "AAS75817.1" "IspG (GcpE) protein"
+"1...428" "AY547497.1" 1 508 "CDS" "CTR1" "AAS55707.1" "NbCTR1"
+"1...429" "AY438026.1" 1 496 "CDS" "RAR1-like protein" "AAR21294.1" NA
+"1...430" "AY206004.1" 1 661 "CDS" "translation elongation factor 1 alpha" "AAP04393.1" "NbEF-1a"
+"1...431" "AY321104.1" 1 726 "CDS" "C-4 sterol methyl oxidase 2" "AAQ83692.1" "sterol 4-alpha-methyl oxidase"
+"1...432" "AY321103.1" 1 732 "CDS" "C-4 sterol methyl oxidase 1" "AAQ83691.1" "sterol 4-alpha-methyl oxidase"
+"1...433" "AY325822.1" 1 573 "gene" NA NA "NPP5-2"
+"2...434" "AY325822.1" 1 213 "5'UTR" NA NA NA
+"3...435" "AY325822.1" 214 573 "CDS" "protein phosphatase 2A catalytic subunit" "AAQ67230.1" "NbNPP5-2"
+"1...436" "AY325821.1" 1 548 "gene" NA NA "NPP5-1"
+"2...437" "AY325821.1" 1 189 "5'UTR" NA NA NA
+"3...438" "AY325821.1" 190 548 "CDS" "protein phosphatase 2A catalytic subunit" "AAQ67229.1" "NbNPP5-1"
+"1...439" "AY325820.1" 1 557 "gene" NA NA "NPP4-2"
+"2...440" "AY325820.1" 1 277 "5'UTR" NA NA NA
+"3...441" "AY325820.1" 278 557 "CDS" "protein phosphatase 2A catalytic subunit" "AAQ67228.1" "NbNPP4-1"
+"1...442" "AY325819.1" 1 634 "gene" NA NA "NPP4-1"
+"2...443" "AY325819.1" 1 307 "5'UTR" NA NA NA
+"3...444" "AY325819.1" 308 634 "CDS" "protein phosphatase 2A catalytic subunit" "AAQ67227.1" "NbNPP4-1"
+"1...445" "HQ438093.1" 1 1162 "gene" NA NA "SERK1"
+"2...446" "HQ438093.1" 1 1055 "CDS" "somatic embryogenesis receptor kinase 1" "ADW65656.1" NA
+"3...447" "HQ438093.1" 1056 1162 "3'UTR" NA NA NA
+"1...448" "HQ450764.1" 52 1497 "CDS" "phosphoglycerate kinase" "ADR71054.1" "PGK"
+"1...449" "GQ495614.1" 1 1386 "gene" "1-hydroxy-2-methyl-butenyl 4-diphosphate reductase" "ADM83430.1" "IspH1"
+"1...450" "GQ477380.1" 1 819 "gene" NA NA "HBP1"
+"2...451" "GQ477380.1" 3 819 "CDS" "harpin binding protein 1" "ADM18295.1" NA
+"1...452" "GQ855284.1" 1 819 "CDS" "CRT1" "ADG03105.1" "compromised recognition of TCV"
+"1...453" "GU968906.1" 1 206 "gene" NA NA "CpEF-TuB"
+"2...454" "GU968906.1" 1 117 "CDS" "chloroplast elongation factor TuB" "ADF43794.1" "elongation factor"
+"3...455" "GU968906.1" 118 206 "3'UTR" NA NA NA
+"1...456" "GU361621.1" 1 2574 "gene" NA NA "NbCA1"
+"2...457" "GU361621.1" 1 603 "regulatory" NA NA NA
+"3...458" "GU361621.1" 1239 1410 "mRNA" NA NA NA
+"4...459" "GU361621.1" 1774 2072 NA NA NA NA
+"5...460" "GU361621.1" 2272 2574 NA "calcium ATPase" "ADD91581.1" "P-type II ATPase"
+"1...461" "GU575116.1" 1 418 "CDS" "HSP70-like protein" "ADD69959.1" NA
+"1...462" "GQ845021.1" 1 2100 "CDS" "molecular chaperone Hsp90-3" "ACX31585.1" "heat shock protein 90"
+"1...463" "GQ354820.1" 1 580 "gene" "phytophthora-inhibited protease 1-like protein" "ACV52591.1" "PIP1"
+"1...464" "GQ354818.1" 1 527 "gene" "benzoquinone reductase" "ACV52589.1" "BQR"
+"1...465" "GQ354817.1" 1 480 "gene" "protein disulfide isomerase" "ACV52588.1" "PDI"
+"1...466" "GQ354815.1" 1 526 "gene" "proteasome subunit beta type-6 precursor" "ACV52586.1" "Pb"
+"1...467" "GQ354813.1" 1 439 "gene" "phospholipid hydroperoxide glutathione peroxidase" "ACV52584.1" "PHGPx"
+"1...468" "GQ354811.1" 1 481 "gene" "thiazole biosynthetic enzyme" "ACV52582.1" "THI"
+"1...469" "GQ354810.1" 1 300 "gene" "ASR" "ACV52581.1" "Asr"
+"1...470" "GQ354809.1" 1 309 "gene" "endopeptidase inhibitor" "ACV52580.1" "Mir"
+"1...471" "GQ354808.1" 1 525 "gene" "asparagine synthetase" "ACV52579.1" "Asn"
+"1...472" "GQ354807.1" 1 420 "gene" "late embryogenesis-like protein" "ACV52578.1" "Lea"
+"1...473" "GQ354806.1" 1 541 "gene" "subtilisin-like serine protease" "ACV52577.1" "P69"
+"1...474" "GQ354805.1" 1 394 "gene" "ras-related GTP-binding protein" "ACV52576.1" "Ras"
+"1...475" "GQ354804.1" 1 557 "gene" "MAP kinase" "ACV52575.1" "F4"
+"1...476" "FJ858876.1" 1 1656 "CDS" "BTB/POZ protein" "ACQ59090.1" "similar to AtPOB1"
+"1...477" "FJ440631.1" 1 2079 "CDS" "sulfite reductase" "ACN82434.1" "NbSIR"
+"1...478" "AF494086.1" 1 527 "CDS" "CSN3" "AAO85512.1" NA
+"1...479" "AY179605.1" 1 413 "gene" "actin" "AAN73054.1" NA
+"1...480" "AF486816.2" 1 1025 "gene" NA NA "PCNA"
+"2...481" "AF486816.2" 1 912 "regulatory" NA NA NA
+"3...482" "AF486816.2" 913 1025 "mRNA" "proliferating cell nuclear antigen" NA NA
+"4...483" "AF486816.2" 1023 1025 "CDS" "proliferating cell nuclear antigen" "AAL93204.1" NA
+"1...484" "AF516181.1" 1 634 "gene" "SGT1-like protein" "AAM94380.1" "SGT1.2"
+"1...485" "AF516180.1" 1 634 "gene" "SGT1-like protein" "AAM94379.1" "SGT1.1"
+"1...486" "EF514216.1" 1 235 "gene" "xyloglucan-specific endo-beta-1,4-glucanase inhibitor protein" "ABS30428.1" "XEGIP2"
+"1...487" "EF417987.1" 52 1 "mRNA" "flagellin-sensitive protein 2" "ABN71365.1" "NbFls2"
+"1...488" "DQ867120.1" 1 861 "gene" NA NA "SYP132"
+"2...489" "DQ867120.1" 34 861 "CDS" "syntaxin" "ABI93942.1" "similar to Arabidopsis thaliana SYP132"
+"1...490" "AF233891.1" 1 399 "gene" "cellulose synthase" "AAG21096.1" "CesA-1a"
+"1...491" "KX457971.1" 1 2439 "gene" "bZIP28 protein" "ANQ38585.1" "bZIP28"
+"1...492" "KX457970.1" 1 1274 "gene" NA NA "NAC089"
+"2...493" "KX457970.1" 21 1250 "CDS" "endoplasmic reticulum transcription factor" "ANQ38584.1" NA
+"1...494" "KU212214.1" 1 1518 "CDS" "papain-like cysteine proteinase" "ANJ02840.1" "CP14"
+"1...495" "KX247369.1" 1 1242 "gene" "ATP-dependent RNA helicase eIF4a" "ANG84008.1" "IF4a"
+"1...496" "KX120977.1" 1 2373 "gene" "phosphoinositide 3-kinase" "ANG60478.1" "PI3K"
+"1...497" "KX120976.1" 1 360 "gene" "autophagy-related protein 8a" "ANG60477.1" "ATG8a"
+"1...498" "KU561374.1" 1 936 "CDS" "autophagy protein 9" "ANG08859.1" "NbATG9"
+"1...499" "KU561373.1" 1 1146 "CDS" "autophagy protein 2" "ANG08858.1" "NbATG2"
+"1...500" "KU561372.1" 1 327 "CDS" "autophagy protein 8f" "ANG08857.1" "NbATG8f"
+"1...501" "KU561371.1" 1 651 "CDS" "VPS15" "ANG08856.1" "NbVPS15"
+"1...502" "KU234094.1" 1 463 "mRNA" "nicotine N-demethylase" "ANF07088.1" "cytochrome P450 82E"
+"1...503" "KX139065.1" 1 246 "CDS" "SAUR14" "ANF06981.1" NA
+"1...504" "KX139064.1" 1 312 "CDS" "gibberellin-regulated protein 6" "ANF06980.1" NA
+"1...505" "KX139063.1" 1 447 "CDS" "gibberellin-regulated protein 14" "ANF06979.1" NA
+"1...506" "KX139062.1" 1 612 "CDS" "pathogen-like protein" "ANF06978.1" NA
+"1...507" "KX139061.1" 1 237 "CDS" "defensin-like protein 2" "ANF06977.1" NA
+"1...508" "KX139060.1" 1 264 "CDS" "defensin-like protein 1" "ANF06976.1" NA
+"1...509" "KR296788.1" 1 447 "CDS" "ubiquitin-conjugating enzyme E2" "ANE23920.1" "NbUBC3 catalytic (UBCc) domain"
+"1...510" "KX098601.1" 1 864 "CDS" "transcription factor IIIA 7ZF" "ANC33508.1" NA
+"1...511" "KX098600.1" 1 1119 "CDS" "transcription factor IIIA 9ZF" "ANC33507.1" NA
+"1...512" "KR082148.1" 1 1698 "CDS" "GAI1" "AMO02501.1" "similar to DELLA protein GAI"
+"1...513" "KR082147.1" 1 822 "CDS" "XTH15.2" "AMO02500.1" "similar to Arabidopsis brassinosteroid-regulated protein BRU1"
+"1...514" "KR082146.1" 1 345 "CDS" "LTP3.2" "AMO02499.1" "similar to Arabidopsis non-specific lipid-transfer protein LTP3"
+"1...515" "KR082145.1" 1 1374 "CDS" "PID" "AMO02498.1" "similar to Arabidopsis pinoid"
+"1...516" "KU170188.1" 1 1293 "CDS" "histone deacetylase 6" "ANB27803.1" NA
+"1...517" "KP316402.1" 1 1356 "gene" "alpha-tubulin 6" "ALH22047.1" "TUA6"
+"1...518" "KP941063.1" 78 1877 "CDS" "GRETCHEN HAGEN 3.6" "ALB35086.1" "NbGH3.6"
+"1...519" "JX040473.1" 1 1113 "gene" "fertilization independent endosperm 1 protein" "AFV15391.1" "FIE1"
+"1...520" "KT726860.1" 1 2103 "CDS" "heat shock protein 90-3" "ALD51962.1" "NbHsp90-3"
+"1...521" "KT726859.1" 1 2100 "CDS" "heat shock protein 90-2" "ALD51961.1" "NbHsp90-2"
+"1...522" "KT726858.1" 1 2100 "CDS" "heat shock protein 90-1" "ALD51960.1" "NbHsp90-1"
+"1...523" "KR021366.1" 1 360 "CDS" "ATG8CL" "AMA19667.1" "NbATG8CL"
+"1...524" "KR021365.1" 1 372 "CDS" "ATG8IL" "AMA19666.1" "NbATG8IL"
+"1...525" "LC077857.1" 1 1872 "gene" "basic helix-loop-helix transcription factor" NA "NbAN1"
+"1...526" "KT936526.1" 1 2661 "CDS" "NRC2b" "ALQ52762.1" "NbNRC2b"
+"1...527" "KT936525.1" 1 2661 "CDS" "NRC2a" "ALQ52761.1" "NbNRC2a"
+"1...528" "LN877373.1" 1 543 "gene" "ribulose-1,5-bisphosphate carboxylase/oxygenase small chain (Rubisco)" NA "rbcS"
+"1...529" "KP979608.1" 1 1242 "gene" "eukaryotic translation initiation factor 4A" "ALJ94093.1" "eIF4A"
+"1...530" "AB711136.1" 1 1881 "gene" NA NA "NbWRKY15"
+"2...531" "AB711136.1" 8 1387 "CDS" "transcription factor" NA NA
+"1...532" "AB711135.1" 1 1855 "gene" NA NA "NbWRKY14"
+"2...533" "AB711135.1" 192 1730 "CDS" "transcription factor" NA NA
+"1...534" "AB711134.1" 1 2124 "gene" NA NA "NbWRKY13"
+"2...535" "AB711134.1" 545 1834 "CDS" "transcription factor" NA NA
+"1...536" "AB711133.1" 1 1833 "gene" NA NA "NbWRKY12"
+"2...537" "AB711133.1" 221 1798 "CDS" "transcription factor" NA NA
+"1...538" "AB711132.1" 1 2413 "gene" NA NA "NbWRKY11"
+"2...539" "AB711132.1" 142 2337 "CDS" "transcription factor" NA NA
+"1...540" "AB711131.1" 1 2194 "gene" NA NA "NbWRKY10"
+"2...541" "AB711131.1" 1 1830 "CDS" "transcription factor" NA NA
+"1...542" "AB711130.1" 1 1938 "gene" NA NA "NbWRKY9"
+"2...543" "AB711130.1" 97 1770 "CDS" "transcription factor" NA NA
+"1...544" "KF998581.1" 1 1905 "gene" "leucine-rich repeat receptor-like kinase" "AHW85126.1" "SOBIR1"
+"1...545" "KT347169.1" 1 2952 "gene" "chromomethylase 2" "ALF12303.1" "CMT2"
+"1...546" "LC033852.1" 1 2493 "gene" "phospholipase D beta" NA "NbPLD_beta"
+"1...547" "LC033851.1" 1 2427 "gene" "phospholipase D alpha" NA "NbPLD_alpha"
+"1...548" "KF367456.1" 1 894 "gene" "mitochondrial alternative oxidase 1b" "AGZ61935.1" "AOX1b"
+"1...549" "KF367455.1" 1 1059 "gene" "mitochondrial alternative oxidase 1a" "AGZ61934.1" "AOX1a"
+"1...550" "KM411353.1" 1 598 "gene" "RNA-directed RNA polymerase 1" "ALB01118.1" "RdRp1"
+"1...551" "KM411352.1" 1 641 "gene" "RNA-directed RNA polymerase 1" "ALB01117.1" "RdRp1"
+"1...552" "KM411351.1" 1 641 "gene" "RNA-directed RNA polymerase 1" "ALB01116.1" "RdRp1"
+"1...553" "KM411349.1" 1 641 "gene" "RNA-directed RNA polymerase 1" "ALB01114.1" "RdRp1"
+"1...554" "KM411346.1" 1 279 "gene" "RNA-directed RNA polymerase 1" "ALB01111.1" "RdRp1"
+"1...555" "KM411341.1" 1 279 "gene" "RNA-directed RNA polymerase 1" "ALB01106.1" "RdRp1"
+"1...556" "KM411325.1" 1 279 "gene" "RNA-directed RNA polymerase 1" "ALB01090.1" "RdRp1"
+"1...557" "KM411321.1" 1 279 "gene" "RNA-directed RNA polymerase 1" "ALB01086.1" "RdRp1"
+"1...558" "KM411319.1" 1 279 "gene" "RNA-directed RNA polymerase 1" "ALB01084.1" "RdRp1"
+"1...559" "KM411318.1" 1 279 "gene" "RNA-directed RNA polymerase 1" "ALB01083.1" "RdRp1"
+"1...560" "KM411315.1" 1 279 "gene" "RNA-directed RNA polymerase 1" "ALB01080.1" "RdRp1"
+"1...561" "KM411314.1" 1 279 "gene" "RNA-directed RNA polymerase 1" "ALB01079.1" "RdRp1"
+"1...562" "KM411313.1" 1 279 "gene" "RNA-directed RNA polymerase 1" "ALB01078.1" "RdRp1"
+"1...563" "KM411312.1" 1 279 "gene" "RNA-directed RNA polymerase 1" "ALB01077.1" "RdRp1"
+"1...564" "KM411311.1" 1 279 "gene" "RNA-directed RNA polymerase 1" "ALB01076.1" "RdRp1"
+"1...565" "KM411308.1" 1 779 "gene" NA NA "RdRp1"
+"2...566" "KM411308.1" 1 111 "mRNA" "truncated RNA-directed RNA polymerase 1" "ALB01073.1" NA
+"1...567" "KM411307.1" 1 641 "gene" "RNA-directed RNA polymerase 1" "ALB01072.1" "RdRp1"
+"1...568" "KM411304.1" 1 641 "gene" "RNA-directed RNA polymerase 1" "ALB01069.1" "RdRp1"
+"1...569" "KT225340.1" 1 2069 "gene" NA NA "LecRK"
+"2...570" "KT225340.1" 1 1076 "mRNA" NA NA NA
+"3...571" "KT225340.1" 1157 2069 NA "clade XV lectin receptor kinase" "AKV93708.1" NA
+"1...572" "KT225339.1" 1 1986 "gene" "clade XV lectin receptor kinase" "AKV93707.1" "LecRK"
+"1...573" "KT225338.1" 1 2016 "gene" "clade XIV lectin receptor kinase" "AKV93706.1" "LecRK"
+"1...574" "KT225337.1" 1 2016 "gene" "clade XIV lectin receptor kinase" "AKV93705.1" "LecRK"
+"1...575" "KT225336.1" 1 2010 "gene" "clade XIII lectin receptor kinase" "AKV93704.1" "LecRK"
+"1...576" "KT225335.1" 1 2010 "gene" "clade XIII lectin receptor kinase" "AKV93703.1" "LecRK"
+"1...577" "KT225334.1" 1 3568 "gene" NA NA "LecRK"
+"2...578" "KT225334.1" 1 1240 "mRNA" NA NA NA
+"3...579" "KT225334.1" 2742 3568 NA "clade XVI lectin receptor kinase" "AKV93702.1" NA
+"1...580" "KT225333.1" 1 4464 "gene" NA NA "LecRK"
+"2...581" "KT225333.1" 1 1240 "mRNA" NA NA NA
+"3...582" "KT225333.1" 3638 4464 NA "clade XVI lectin receptor kinase" "AKV93701.1" NA
+"1...583" "KT225332.1" 1 2671 "gene" NA NA "LecRK"
+"2...584" "KT225332.1" 1 388 "mRNA" NA NA NA
+"3...585" "KT225332.1" 407 816 NA NA NA NA
+"4...586" "KT225332.1" 863 1214 NA NA NA NA
+"5...587" "KT225332.1" 2415 2548 NA NA NA NA
+"6...588" "KT225332.1" 2591 2671 NA "clade XVI lectin receptor kinase" "AKV93700.1" NA
+"1...589" "KT225331.1" 1 4866 "gene" NA NA "LecRK"
+"2...590" "KT225331.1" 1 1234 "mRNA" NA NA NA
+"3...591" "KT225331.1" 4070 4866 NA "clade XVI lectin receptor kinase" "AKV93699.1" NA
+"1...592" "KT225330.1" 1 1753 "gene" NA NA "LecRK"
+"2...593" "KT225330.1" 1 273 "mRNA" NA NA NA
+"3...594" "KT225330.1" 299 896 NA NA NA NA
+"4...595" "KT225330.1" 943 1306 NA NA NA NA
+"5...596" "KT225330.1" 1366 1753 NA "clade XII lectin receptor kinase" "AKV93698.1" NA
+"1...597" "KT225329.1" 1 2040 "gene" "clade XII lectin receptor kinase" "AKV93697.1" "LecRK"
+"1...598" "KT225328.1" 1 2046 "gene" "clade XI lectin receptor kinase" "AKV93696.1" "LecRK"
+"1...599" "KT225327.1" 1 2025 "gene" "clade XI lectin receptor kinase" "AKV93695.1" "LecRK"
+"1...600" "KT225326.1" 1 2046 "gene" "clade XI lectin receptor kinase" "AKV93694.1" "LecRK"
+"1...601" "KT225325.1" 1 2242 "gene" NA NA "LecRK"
+"2...602" "KT225325.1" 1 707 "mRNA" NA NA NA
+"3...603" "KT225325.1" 755 1457 NA NA NA NA
+"4...604" "KT225325.1" 1979 2242 NA "clade XI lectin receptor kinase" "AKV93693.1" NA
+"1...605" "KT225324.1" 1 1342 "gene" NA NA "LecRK"
+"2...606" "KT225324.1" 1 427 "mRNA" NA NA NA
+"3...607" "KT225324.1" 495 1342 NA "lectin receptor kinase" "AKV93692.1" NA
+"1...608" "KT225323.1" 1 2076 "gene" "lectin receptor kinase" "AKV93691.1" "LecRK"
+"1...609" "KT225322.1" 1 2076 "gene" "lectin receptor kinase" "AKV93690.1" "LecRK"
+"1...610" "KT225321.1" 1 2016 "gene" "clade X lectin receptor kinase" "AKV93689.1" "LecRK"
+"1...611" "KT225320.1" 1 2172 "gene" NA NA "LecRK"
+"2...612" "KT225320.1" 1 391 "mRNA" NA NA NA
+"3...613" "KT225320.1" 483 1199 NA NA NA NA
+"4...614" "KT225320.1" 1313 2172 NA "lectin receptor kinase" "AKV93688.1" NA
+"1...615" "KT225319.1" 1 2124 "gene" "clade XVII lectin receptor kinase" "AKV93687.1" "LecRK"
+"1...616" "KT225318.1" 1 2124 "gene" "clade XVII lectin receptor kinase" "AKV93686.1" "LecRK"
+"1...617" "KT225317.1" 1 2124 "gene" "clade XVIII lectin receptor kinase" "AKV93685.1" "LecRK"
+"1...618" "KT225316.1" 1 1140 "gene" NA NA "LecRK"
+"2...619" "KT225316.1" 1 254 "mRNA" NA NA NA
+"3...620" "KT225316.1" 306 1140 NA "clade XVIII lectin receptor kinase" "AKV93684.1" NA
+"1...621" "KT225315.1" 1 1950 "gene" "clade IX lectin receptor kinase" "AKV93683.1" "LecRK"
+"1...622" "KT225314.1" 1 1923 "gene" NA NA "LecRK"
+"2...623" "KT225314.1" 1 510 "mRNA" NA NA NA
+"3...624" "KT225314.1" 835 1186 NA NA NA NA
+"4...625" "KT225314.1" 1328 1923 NA "clade IX lectin receptor kinase" "AKV93682.1" NA
+"1...626" "KT225313.1" 1 2133 "gene" "clade VIII lectin receptor kinase" "AKV93681.1" "LecRK"
+"1...627" "KT225312.1" 1 2130 "gene" "clade VIII lectin receptor kinase" "AKV93680.1" "LecRK"
+"1...628" "KT225311.1" 1 2151 "gene" "clade VIII lectin receptor kinase" "AKV93679.1" "LecRK"
+"1...629" "KT225310.1" 1 2151 "gene" "clade VIII lectin receptor kinase" "AKV93678.1" "LecRK"
+"1...630" "KT225309.1" 1 2037 "gene" "clade VII lectin receptor kinase" "AKV93677.1" "LecRK"
+"1...631" "KT225308.1" 1 2088 "gene" "clade VII lectin receptor kinase" "AKV93676.1" "LecRK"
+"1...632" "KT225307.1" 1 2097 "gene" "clade VII lectin receptor kinase" "AKV93675.1" "LecRK"
+"1...633" "KT225306.1" 1 2037 "gene" "clade VI lectin receptor kinase" "AKV93674.1" "LecRK"
+"1...634" "KT225305.1" 1 2040 "gene" "clade VI lectin receptor kinase" "AKV93673.1" "LecRK"
+"1...635" "KT225304.1" 1 2010 "gene" "clade IV lectin receptor kinase" "AKV93672.1" "LecRK"
+"1...636" "KT225303.1" 1 2001 "gene" "clade IV lectin receptor kinase" "AKV93671.1" "LecRK"
+"1...637" "KP763813.1" 1 435 "gene" "ferredoxin" "AKQ98361.1" "Fd"
+"1...638" "KP017278.1" 1 237 "gene" "defensin-like protein 1.2" "AKQ53348.1" "PDF1.2"
+"1...639" "KP017277.1" 1 2229 "gene" "putative cullin-1" "AKQ53347.1" "CUL1"
+"1...640" "KP017276.1" 1 712 "gene" NA NA "SKP1L1"
+"2...641" "KP017276.1" 1 516 "CDS" "SKP1-like protein" "AKQ53346.1" NA
+"3...642" "KP017276.1" 517 712 "3'UTR" NA NA NA
+"1...643" "KP017275.1" 1 642 "gene" NA NA "SKP1.3"
+"2...644" "KP017275.1" 1 462 "CDS" "SKP1-like protein" "AKQ53345.1" NA
+"3...645" "KP017275.1" 463 642 "3'UTR" NA NA NA
+"1...646" "KP017274.1" 1 647 "gene" NA NA "SKP1.2"
+"2...647" "KP017274.1" 1 471 "CDS" "SKP1-like protein" "AKQ53344.1" NA
+"3...648" "KP017274.1" 472 647 "3'UTR" NA NA NA
+"1...649" "KP017273.1" 1 668 "gene" NA NA "SKP1.1"
+"2...650" "KP017273.1" 1 468 "CDS" "SCF ubiquitin ligase" "AKQ53343.1" NA
+"1...651" "LC015775.1" 1 4422 "gene" "PDR-type ACB transporter" NA "NbPDR12"
+"1...652" "LC015774.1" 1 4266 "gene" "PDR-type ACB transporter" NA "NbPDR11"
+"1...653" "LC015773.1" 1 4293 "gene" "PDR-type ACB transporter" NA "NbPDR10"
+"1...654" "LC015772.1" 1 4263 "gene" "PDR-type ACB transporter" NA "NbPDR9"
+"1...655" "LC015771.1" 1 4389 "gene" "PDR-type ACB transporter" NA "NbPDR8"
+"1...656" "LC015770.1" 1 4386 "gene" "PDR-type ACB transporter" NA "NbPDR7"
+"1...657" "LC015769.1" 1 4497 "gene" "PDR-type ACB transporter" NA "NbPDR6b"
+"1...658" "LC015768.1" 1 4497 "gene" "PDR-type ACB transporter" NA "NbPDR6a"
+"1...659" "LC015767.1" 1 4263 "gene" "PDR-type ACB transporter" NA "NbPDR5b"
+"1...660" "LC015766.1" 1 4263 "gene" "PDR-type ACB transporter" NA "NbPDR5a"
+"1...661" "LC015765.1" 1 4359 "gene" "PDR-type ACB transporter" NA "NbPDR4b"
+"1...662" "LC015764.1" 1 4359 "gene" "PDR-type ACB transporter" NA "NbPDR4a"
+"1...663" "LC015763.1" 1 4278 "gene" "PDR-type ACB transporter" NA "NbPDR3"
+"1...664" "LC015762.1" 1 4302 "gene" "PDR-type ACB transporter" NA "NbPDR2b"
+"1...665" "LC015761.1" 1 4311 "gene" "PDR-type ACB transporter" NA "NbPDR2a"
+"1...666" "LC015760.1" 1 4308 "gene" "PDR-type ACB transporter" NA "NbPDR1b"
+"1...667" "LC015759.1" 1 4305 "gene" "PDR-type ACB transporter" NA "NbPDR1a"
+"1...668" "LC015758.1" 1 1815 "gene" "hydroxy 3 methylglutaryl coenzyme A reductase" NA "NbHMGR1"
+"1...669" "LC015757.1" 1 1215 "gene" "acetoacetyl-coenzyme A thiolase" NA "NbACAT1a"
+"1...670" "LC015756.1" 1 1389 "gene" "hydroxymethylglutaryl coenzyme A synthase" NA "NbHMGS1a"
+"1...671" "LC015755.1" 1 1647 "gene" "5-epi-aristolochene synthase" NA "NbEAS1a"
+"1...672" "LC015754.1" 1 1269 "gene" "mevalonate 5-disphosphate decarboxylase" NA "NbMVD1a"
+"1...673" "LC015753.1" 1 1029 "gene" "farnesyl diphosphate synthase" NA "NbFPPS1a"
+"1...674" "KR942297.1" 1 3156 "CDS" "argonaute 1L" "AKK23625.1" "AGO1-1L"
+"1...675" "KR942296.1" 1 3174 "CDS" "argonaute 1H" "AKK23624.1" "AGO1-1H"
+"1...676" "KR559678.1" 1 744 "gene" "WRKY transcription factor" "AKM95893.1" "WRKY79"
+"1...677" "KP456146.1" 1 1047 "gene" NA NA "RABG3f"
+"2...678" "KP456146.1" 136 756 "CDS" "Rab small GTPase" "AKK23734.1" NA
+"1...679" "KJ748371.1" 1 1002 "CDS" "CK2 alpha subunit" "AIT18344.1" "catalytic subunit"
+"1...680" "KJ413940.1" 1 2133 "gene" "oligopeptidase B" "AJA04996.1" "OPB"
+"1...681" "KM986325.1" 1 1305 "gene" NA NA "GAPC3"
+"2...682" "KM986325.1" 1 1014 "CDS" "cytosolic glyceraldehyde-3-phosphate dehydrogenase 3" "AKH15662.1" "GAPc"
+"3...683" "KM986325.1" 1015 1305 "3'UTR" NA NA NA
+"1...684" "KM986324.1" 1 1315 "gene" NA NA "GAPC2"
+"2...685" "KM986324.1" 1 1014 "CDS" "cytosolic glyceraldehyde-3-phosphate dehydrogenase 2" "AKH15661.1" "GAPc"
+"3...686" "KM986324.1" 1015 1315 "3'UTR" NA NA NA
+"1...687" "KM986323.1" 1 1242 "gene" NA NA "GAPC1"
+"2...688" "KM986323.1" 1 1023 "CDS" "cytosolic glyceraldehyde-3-phosphate dehydrogenase 1" "AKH15660.1" "GAPc"
+"3...689" "KM986323.1" 1024 1242 "3'UTR" NA NA NA
+"1...690" "KP247444.1" 1 1056 "CDS" "BES1/BZR1" "AKF02520.1" NA
+"1...691" "LC008357.1" 1 960 "gene" "Aminocyclopropanecarboxylate oxidase" NA "NbACO1b"
+"1...692" "LC008356.1" 1 1458 "gene" "S-adenosylhomocysteine hydrolase" NA "NbSAHH1a"
+"1...693" "LC008355.1" 1 951 "gene" "Aminocyclopropanecarboxylate oxidase" NA "NbACO2a"
+"1...694" "LC008354.1" 1 1659 "gene" "Cystathionine gamma synthase" NA "NbCGS1a"
+"1...695" "LC008353.1" 1 1173 "gene" "S-adenosylmethionine synthetase" NA "NbSAMS1a"
+"1...696" "LC008352.1" 1 960 "gene" "Aminocyclopropanecarboxylate oxidase" NA "NbACO1a"
+"1...697" "KP019941.1" 1 666 "gene" "MADS-box-containing protein" "AJY26920.1" "MADS1"
+"1...698" "KJ830947.1" 1 711 "gene" "developmentally-regulated plasma membrane polypeptide" "AJR22360.1" "DREPP"
+"1...699" "AB702944.1" 1 669 "gene" "small RNA 2'-O-methyltransferase" NA "HEN1"
+"1...700" "AB702943.1" 1 669 "gene" "small RNA 2'-O-methyltransferase" NA "HEN1"
+"1...701" "HG983331.1" 1 1350 "gene" "SANT/HTH Myb transcription factor" NA "SANT/HTH Myb"
+"1...702" "JX987081.1" 1 1611 "gene" "sodium/hydrogen exchanger 1" "AGS56985.1" "NHX1"
+"1...703" "KP771975.1" 1 2982 "gene" "NAD(+) ADP-ribosyl transferase" "AJV21328.1" "PARP1"
+"1...704" "KJ636446.1" 1 618 "gene" "Rab GTPase" "AJG06868.1" "RabG3c"
+"1...705" "KJ636445.1" 1 621 "gene" "Rab GTPase" "AJG06867.1" "RabG3c"
+"1...706" "KM410159.2" 1 1449 "gene" "epi-aristolochene dihydroxylase" "AIZ01224.2" "EAH"
+"1...707" "HE799297.1" 1 1127 "gene" NA NA "qpt2b"
+"2...708" "HE799297.1" 1 27 "CDS" NA NA NA
+"3...709" "HE799297.1" 139 275 NA NA NA NA
+"4...710" "HE799297.1" 1015 1127 NA "quinolinate phosphoribosyltransferase" NA NA
+"5...711" "HE799297.1" 28 138 "intron" NA NA NA
+"6...712" "HE799297.1" 276 1014 "intron" NA NA NA
+"1...713" "HE799296.1" 1 1314 "gene" NA NA "qpt2a"
+"2...714" "HE799296.1" 1 27 "CDS" NA NA NA
+"3...715" "HE799296.1" 138 274 NA NA NA NA
+"4...716" "HE799296.1" 1202 1314 NA "quinolinate phosphoribosyltransferase" NA NA
+"5...717" "HE799296.1" 28 137 "intron" NA NA NA
+"6...718" "HE799296.1" 275 1201 "intron" NA NA NA
+"1...719" "HE799295.1" 1 1255 "gene" NA NA "qpt1"
+"2...720" "HE799295.1" 1 59 "CDS" NA NA NA
+"3...721" "HE799295.1" 322 455 NA NA NA NA
+"4...722" "HE799295.1" 1143 1255 NA "quinolinate phosphoribosyltransferase" NA NA
+"5...723" "HE799295.1" 60 321 "intron" NA NA NA
+"6...724" "HE799295.1" 456 1142 "intron" NA NA NA
+"1...725" "AJ584638.1" 1 1395 "gene" "geranylgeranyl reductase" NA "chlP"
+"1...726" "KF218187.1" 1 638 "CDS" "varicose" "AHH32698.1" NA
+"1...727" "KM591915.1" 1 312 "CDS" "histone 4" "AIZ04728.1" NA
+"1...728" "KJ626266.1" 1 1053 "gene" "ankyrin repeat domain containing protein 2" "AIY62316.1" "ANKr_2"
+"1...729" "KJ626265.1" 1 1044 "gene" "ankyrin repeat domain containing protein 2" "AIY62315.1" "ANKr_1"
+"1...730" "AB937979.1" 1 1206 "gene" "glyceraldehyde 3-phosphate dehydrogenase-A" NA "NbGAPDH-A"
+"1...731" "KM452915.1" 1 409 "gene" "lanosterol synthase" "AIY33887.1" "LAS1"
+"1...732" "KM249875.1" 13 600 "CDS" "serine/threonine-protein kinase BIK1" "AIU96237.1" NA
+"1...733" "KM249874.1" 1 780 "CDS" "DWARF" "AIU96236.1" NA
+"1...734" "KM085028.1" 1 1050 "gene" "WRKY17" "AIR74899.1" "WRKY17"
+"1...735" "HG974538.1" 1 962 "gene" NA NA "NCAPP"
+"2...736" "HG974538.1" 963 2771 "gene" "beta-glucuronidase" NA "GUS"
+"1...737" "KJ755869.1" 1 2265 "CDS" "putative geranyllinalool synthase" "AIL54747.1" "GLS"
+"1...738" "KJ406179.1" 1 2817 "gene" "chloroplast ATP-dependent Clp protease chaperone protein" "AIM41271.1" "ClpC2B"
+"1...739" "KJ406178.1" 1 2979 "gene" NA NA "ClpC2A"
+"2...740" "KJ406178.1" 97 2823 "CDS" "chloroplast ATP-dependent Clp protease chaperone protein" "AIM41270.1" NA
+"1...741" "KJ406177.1" 1 3014 "gene" NA NA "ClpC1B"
+"2...742" "KJ406177.1" 114 2885 "CDS" "chloroplast ATP-dependent Clp protease chaperone protein" "AIM41269.1" NA
+"1...743" "KJ406176.1" 1 2721 "gene" "chloroplast ATP-dependent Clp protease chaperone protein" "AIM41268.1" "ClpC1A"
+"1...744" "JQ890096.1" 1 1458 "CDS" "S-adenosyl homocysteine hydrolase" "AFK08605.1" "SAHH"
+"1...745" "KJ608353.1" 93 1274 "CDS" "stearoyl-acyl carrier protein desaturase C" "AIC36758.1" NA
+"1...746" "KJ608352.1" 138 1325 "CDS" "stearoyl-acyl carrier protein desaturase B" "AIC36757.1" NA
+"1...747" "KJ608351.1" 84 1271 "CDS" "stearoyl-acyl carrier protein desaturase A" "AIC36756.1" NA
+"1...748" "KF841443.1" 1 483 "gene" "pathogenesis-related protein PR-10" "AIE17036.1" "PR-10"
+"1...749" "KJ877185.1" 1 1827 "gene" "domains rearranged methyltransferase 1" "AID81983.1" "DRM1"
+"1...750" "KJ169550.1" 1 576 "gene" "C3HC4-type RING finger protein" "AHW48349.1" "ZFP1"
+"1...751" "AB894320.1" 1 1359 "gene" "putative aminoacylase" NA "NbACY"
+"1...752" "KC453971.1" 1 2706 "gene" "chromomethylase 3" "AGH70220.1" "CMT3-2"
+"1...753" "JQ965931.1" 1 2303 "gene" NA NA "CMT3"
+"2...754" "JQ965931.1" 81 2303 "CDS" "chromomethylase 3" "AFK80345.1" NA
+"1...755" "KF318459.1" 1 2441 "gene" "chloroplast polyribonucleotide nucleotidyltransferase" "AGS83477.1" "PNPase"
+"1...756" "KC631823.1" 1 256 "5'UTR" NA NA NA
+"2...757" "KC631823.1" 257 2410 "CDS" "putative boron transporter" "AGJ84334.1" NA
+"3...758" "KC631823.1" 2411 2608 "3'UTR" NA NA NA
+"1...759" "KF668648.1" 1 1299 "CDS" "NGATHAb" "AHJ58870.1" "NGAb"
+"1...760" "KF668647.1" 1 1191 "CDS" "NGATHAa" "AHJ58869.1" "NGAa"
+"1...761" "JQ519194.1" 1 651 "CDS" "RabE1" "AFI98561.1" "GTPase"
+"1...762" "KJ200294.1" 1 420 "gene" "thioredoxin h protein" "AHW40458.1" "Trxh1"
+"1...763" "HG938364.1" 1 1050 "gene" "Ankyrin repeat domain containing protein" NA "ANK"
+"1...764" "HG938363.1" 1 1737 "gene" "Ascorbate oxidase" NA "AO"
+"1...765" "KJ530763.1" 1 1698 "gene" NA NA "CMT3"
+"2...766" "KJ530763.1" 1 1199 "regulatory" NA NA NA
+"3...767" "KJ530763.1" 1200 1509 "mRNA" NA NA NA
+"4...768" "KJ530763.1" 1633 1698 NA "chromomethylase 3" NA NA
+"5...769" "KJ530763.1" 1496 1509 "CDS" "chromomethylase 3" "AHW46972.1" NA
+"1...770" "KJ501088.1" 1 1395 "gene" "snRNA-activating protein complex subunit" "AHW29574.1" "SNAPc"
+"1...771" "KJ190939.1" 1 1908 "gene" "suppressor of gene silencing 3" "AHV82104.1" "SGS3"
+"1...772" "AB818894.1" 1 804 "CDS" "phosphatidic acid phosphatase 2" NA NA
+"1...773" "KF990999.1" 1 1647 "gene" "sesquiterpene synthase" "AHM10157.1" "TPS1"
+"1...774" "JX402081.1" 1 567 "CDS" "regulator of gene silencing" "AFU81780.1" "Nbrgs-CaM"
+"1...775" "KF907829.1" 1 771 "gene" "putative small heat shock protein" "AHJ11177.1" "sHsp"
+"1...776" "AB898787.1" 1 1083 "gene" "nuclear pore complex protein Seh1b" NA "NbSeh1b"
+"1...777" "AB898786.1" 1 978 "gene" "nuclear pore complex protein Seh1a" NA "NbSeh1a"
+"1...778" "AB898785.1" 1 3228 "gene" "nuclear pore complex protein Nup107a" NA "NbNup107a"
+"1...779" "AB898784.1" 1 3114 "gene" "nuclear pore complex protein Nup96a" NA "NbNup96a"
+"1...780" "AB898783.1" 1 2160 "gene" "nuclear pore complex protein Nup75b" NA "NbNup75b"
+"1...781" "AB898782.1" 1 2160 "gene" "nuclear pore complex protein Nup75a" NA "NbNup75a"
+"1...782" "AB898781.1" 1 1089 "gene" "nuclear pore complex protein Nup43a" NA "NbNup43a"
+"1...783" "AB898780.1" 1 5625 "gene" "nuclear pore complex protein Nup205a" NA "NbNup205a"
+"1...784" "AB898779.1" 1 4461 "gene" "nuclear pore complex protein Nup155b" NA "NbNup155b"
+"1...785" "AB898778.1" 1 4461 "gene" "nuclear pore complex protein Nup155a" NA "NbNup155a"
+"1...786" "AB898777.1" 1 1323 "gene" "nuclear pore complex protein Aladin-b" NA "NbAladin-b"
+"1...787" "AB898776.1" 1 1323 "gene" "nuclear pore complex protein Aladin-a" NA "NbAladin-a"
+"1...788" "AB898775.1" 1 1296 "gene" "nuclear pore complex protein CG1b" NA "NbCG1b"
+"1...789" "AB898774.1" 1 1290 "gene" "nuclear pore complex protein CG1a" NA "NbCG1a"
+"1...790" "AB898773.1" 1 2271 "gene" "nuclear pore complex protein Nup98b" NA "NbNup98b"
+"1...791" "AB898772.1" 1 3072 "gene" "nuclear pore complex protein Nup98a" NA "NbNup98a"
+"1...792" "AB898771.1" 1 2271 "gene" "nuclear pore complex protein Nup62b" NA "NbNup62b"
+"1...793" "AB898770.1" 1 2229 "gene" "nuclear pore complex protein Nup62a" NA "NbNup62a"
+"1...794" "AB898769.1" 1 1800 "gene" "nuclear pore complex protein Nup58a" NA "NbNup58a"
+"1...795" "AB898768.1" 1 1080 "gene" "nuclear pore complex protein Nup54a" NA "NbNup54a"
+"1...796" "AB898675.1" 1 1677 "gene" "nuclear pore complex protein NDC1b" NA "NbNDC1b"
+"1...797" "AB898674.1" 1 1677 "gene" "nuclear pore complex protein NDC1a" NA "NbNDC1a"
+"1...798" "AB898673.1" 1 3924 "gene" "nuclear pore complex protein Nup133b" NA "NbNup133b"
+"1...799" "AB898672.1" 1 3924 "gene" "nuclear pore complex protein Nup133a" NA "NbNup133a"
+"1...800" "AB898671.1" 1 1008 "gene" "nuclear pore complex protein Nup35b" NA "NbNup35b"
+"1...801" "AB898670.1" 1 1008 "gene" "nuclear pore complex protein Nup35a" NA "NbNup35a"
+"1...802" "AB898669.1" 1 5916 "gene" "nuclear pore complex protein Nup188b" NA "NbNup188b"
+"1...803" "AB898668.1" 1 5910 "gene" "nuclear pore complex protein Nup188a" NA "NbNup188a"
+"1...804" "AB898667.1" 1 5826 "gene" "nuclear pore complex protein gp210b" NA "Nbgp210b"
+"1...805" "AB898666.1" 1 5811 "gene" "nuclear pore complex protein gp210a" NA "Nbgp210a"
+"1...806" "AB898665.1" 1 4461 "gene" "nuclear pore complex protein Nup160a" NA "NbNup160a"
+"1...807" "AB898664.1" 1 909 "gene" "nuclear pore complex protein Sec13d" NA "NbSec13d"
+"1...808" "AB898663.1" 1 909 "gene" "nuclear pore complex protein Sec13c" NA "NbSec13c"
+"1...809" "AB898662.1" 1 906 "gene" "nuclear pore complex protein Sec13b" NA "NbSec13b"
+"1...810" "AB898661.1" 1 909 "gene" "nuclear pore complex protein Sec13a" NA "NbSec13a"
+"1...811" "AB898660.1" 1 2895 "gene" "nuclear pore complex protein ELYSb" NA "NbELYSb"
+"1...812" "AB898659.1" 1 2883 "gene" "nuclear pore complex protein ELYSa" NA "NbELYSa"
+"1...813" "AB898658.1" 1 6126 "gene" "nuclear pore complex protein TPRb" NA "NbTPRb"
+"1...814" "AB898657.1" 1 6138 "gene" "nuclear pore complex protein TPRa" NA "NbTPRa"
+"1...815" "AB897840.1" 1 1044 "gene" "nuclear pore complex protein RAE1b" NA "NbRAE1b"
+"1...816" "AB897839.1" 1 1044 "gene" "nuclear pore complex protein RAE1a" NA "NbRAE1a"
+"1...817" "AB897838.1" 1 4083 "gene" "nuclear pore complex protein Nup136d" NA "NbNup136d"
+"1...818" "AB897837.1" 1 4413 "gene" "nuclear pore complex protein Nup136c" NA "NbNup136c"
+"1...819" "AB897836.1" 1 3915 "gene" "nuclear pore complex protein Nup136b" NA "NbNup136b"
+"1...820" "AB897835.1" 1 3927 "gene" "nuclear pore complex protein Nup136a" NA "NbNup136a"
+"1...821" "AB897834.1" 1 1347 "gene" "nuclear pore complex protein Nup50d" NA "NbNup50d"
+"1...822" "AB897833.1" 1 1332 "gene" "nuclear pore complex protein Nup50c" NA "NbNup50c"
+"1...823" "AB897832.1" 1 1332 "gene" "nuclear pore complex protein Nup50b" NA "NbNup50b"
+"1...824" "AB897831.1" 1 1347 "gene" "nuclear pore complex protein Nup50a" NA "NbNup50a"
+"1...825" "AB897830.1" 1 2589 "gene" "nuclear pore complex protein Nup93b" NA "NbNup93b"
+"1...826" "AB897829.1" 1 2592 "gene" "nuclear pore complex protein Nup93a" NA "NbNup93a"
+"1...827" "AB897510.1" 1 5235 "gene" "nuclear pore complex protein Nup214" NA "NbNup214"
+"1...828" "AB897509.1" 1 2445 "gene" "nuclear pore complex protein Nup88b" NA "NbNup88"
+"1...829" "AB897508.1" 1 2445 "gene" "nuclear pore complex protein Nup88a" NA "NbNup88a"
+"1...830" "HF675000.1" 1764 2480 "gene" "green fluorescent protein" NA "gfp"
+"2...831" "HF675000.1" 3292 3843 "gene" "phosphinothricin acetyltransferase" NA "pat"
+"3...832" "HF675000.1" 7535 8251 "gene" "green fluorescent protein" NA "gfp"
+"1...833" "HQ400943.1" 1 921 "gene" "BTB domain protein" "ADW41580.1" "POB1"
+"1...834" "FJ755907.1" 1 1335 "gene" "Rab GDP dissociation inhibitor" "ACN65853.1" "GDI"
+"1...835" "AB476645.2" 1 1413 "gene" NA NA "GMD"
+"2...836" "AB476645.2" 1 1104 "CDS" "GDP-mannose 4,6-dehydratase" NA NA
+"1...837" "JX481914.1" 1 750 "CDS" "Bax inhibitor 1" "AGN54391.1" "NbBI-1"
+"1...838" "JX481913.1" 1 300 "CDS" "G protein gamma1 subunit" "AGN54390.1" NA
+"1...839" "KF496885.1" 1 495 "gene" "ubiquitin-conjugating enzyme variant" "AHA42253.1" "Suv"
+"1...840" "KF496883.1" 1 462 "gene" "Ubc13-type ubiquitin-conjugating enzyme 2" "AHA42251.1" "Ubc13-2"
+"1...841" "KF496881.1" 1 462 "gene" "Fen-interacting protein 3" "AHA42249.1" "Fni3"
+"1...842" "KF482867.1" 1 882 "CDS" "coilin-like protein" "AHA36703.1" "coilin"
+"1...843" "KC625578.1" 1 603 "gene" "eukarytic translation initiation factor" "AHA36685.1" "eIF(iso)4E"
+"1...844" "KF460578.1" 1 807 "gene" "photosystem II extrinsic subunit" "AGZ95659.1" "PsbP"
+"1...845" "KF437525.1" 1 1836 "CDS" "putative membrane bound NAC transcription factor 2" "AGY49287.1" "NbNTP2"
+"1...846" "KF437524.1" 1 1893 "CDS" "putative membrane bound NAC transcription factor 1" "AGY49286.1" "NbNTP1"
+"1...847" "KC791157.1" 1 1272 "CDS" "MIP1L1" "AGY48888.1" "NbMIP1L1"
+"2...848" "KC791157.1" 1273 1514 "3'UTR" NA NA NA
+"1...849" "KC791156.1" 1 1257 "CDS" "MIP1.4b" "AGY48887.1" "NbMIP1.4b"
+"2...850" "KC791156.1" 1258 1481 "3'UTR" NA NA NA
+"1...851" "KC791155.1" 1 1212 "CDS" "MIP1.4a" "AGY48886.1" "NbMIP1.4a"
+"2...852" "KC791155.1" 1213 1382 "3'UTR" NA NA NA
+"1...853" "KC791154.1" 1 1257 "CDS" "MIP1.3" "AGY48885.1" "NbMIP1.3"
+"2...854" "KC791154.1" 1258 1439 "3'UTR" NA NA NA
+"1...855" "KC791153.1" 1 1260 "CDS" "MIP1.2" "AGY48884.1" "NbMIP1.2"
+"2...856" "KC791153.1" 1261 1572 "3'UTR" NA NA NA
+"1...857" "KC791152.1" 1 1257 "CDS" "MIP1.1b" "AGY48883.1" "NbMIP1.1b"
+"2...858" "KC791152.1" 1258 1456 "3'UTR" NA NA NA
+"1...859" "JX271901.1" 1 1431 "gene" NA NA "MIP1"
+"2...860" "JX271901.1" 1 1263 "CDS" "MIP1.1a" "AFR66645.1" "NbMIP1.1a"
+"3...861" "JX271901.1" 1264 1431 "3'UTR" NA NA NA
+"1...862" "AB780363.1" 1 507 "gene" "translationally controlled tumor protein" NA "NbTCTP"
+"1...863" "KF051949.1" 1 1192 "gene" NA NA "TOM1"
+"2...864" "KF051949.1" 1 51 "5'UTR" NA NA NA
+"3...865" "KF051949.1" 52 918 "CDS" "tobamovirus multiplication protein 1" "AGW21715.1" "NbTOM1"
+"4...866" "KF051949.1" 919 1192 "3'UTR" NA NA NA
+"1...867" "KF051948.1" 1 456 "CDS" "heat shock protein 101" "AGW21714.1" "NbHSP101"
+"1...868" "KF051947.1" 1 429 "CDS" "proteinase inhibitor" "AGW21713.1" "NbPI"
+"1...869" "KF051946.1" 1 496 "CDS" "cysteine protease 2" "AGW21712.1" "NbCP2"
+"1...870" "KF051945.1" 1 352 "CDS" "calmodulin 3" "AGW21711.1" "NbCaM3"
+"1...871" "KF051944.1" 1 339 "CDS" "auxin repressed protein 1" "AGW21710.1" "NbARP1"
+"1...872" "KF280306.1" 1 1797 "CDS" "exocyst 70" "AGV75881.1" "NbExo70"
+"1...873" "KF477304.1" 1 1659 "gene" "U3 small nucleolar ribonucleoprotein" "AGV75878.1" "RNP1"
+"1...874" "KC790391.1" 1 583 "CDS" "UBP1" "AGV06216.1" NA
+"1...875" "KC597256.1" 1 794 "CDS" "metacaspase 9" "AGI37356.1" NA
+"1...876" "JF974261.1" 1 410 "gene" "CBL-interacting protein kinase 6" "AEQ66859.1" "CIPK6"
+"1...877" "JF974260.1" 1 580 "gene" "cacineurin-B like 10" "AEQ66858.1" "CBL10"
+"1...878" "KF017600.1" 1 933 "gene" "epoxide hydrolase" "AGT95861.1" "EH1.1"
+"1...879" "JF915552.1" 1 666 "gene" "glutathione transferase" "AEI01103.1" "GSTU4"
+"1...880" "KC741437.1" 41 529 "CDS" "peroxiredoxin 2B" "AGN92481.1" "PrxIIB"
+"1...881" "KC741436.1" 1 695 "CDS" "2-Cys peroxiredoxin" "AGN92480.1" "2CysPrx"
+"1...882" "JX232203.1" 1 631 "gene" "VTI12" "AGH30274.1" "VTI12"
+"1...883" "JX175259.1" 1 357 "gene" "autophagy-related protein 9" "AGH30270.1" "ATG9"
+"1...884" "JX175258.1" 1 639 "gene" "autophagy-related protein 5" "AGH30269.1" "ATG5"
+"1...885" "KC585517.1" 1 2586 "gene" "9-lipoxygenase" "AGL96414.1" "9-lox"
+"1...886" "EU602317.1" 1 7230 "gene" "neuroblastoma-amplified gene" "ACC64519.1" "NAG"
+"1...887" "KC846070.1" 1 1956 "gene" "plastid GTPase Der" "AGL34232.1" "YphC"
+"1...888" "JQ957860.1" 1 616 "gene" "ROS2" "AFU50366.1" "ROS2"
+"1...889" "JQ957859.1" 1 372 "gene" "ROS1" "AFU50365.1" "ROS1"
+"1...890" "JQ957858.1" 1 591 "gene" "CMT3" "AFU50364.1" "CMT3"
+"1...891" "JQ957857.1" 1 567 "gene" "DRM2" "AFU50363.1" "DRM2"
+"1...892" "JQ957856.1" 1 333 "gene" "DRM1" "AFU50362.1" "DRM1"
+"1...893" "KC505536.1" 1 447 "gene" "chloroplast ferredoxin-thioredoxin reductase catalytic chain" "AGK06902.1" "FTRc"
+"1...894" "KC907732.1" 1 777 "gene" "autophagy protein ATG7" "AGJ91146.1" "ATG7"
+"1...895" "AB778815.1" 1 5555 "gene" NA NA "NbROS1"
+"2...896" "AB778815.1" 1 5391 "CDS" "repressor of silencing 1" NA NA
+"1...897" "KC256804.1" 1 1800 "CDS" "pescadillo" "AGG84230.1" "nop7p-like protein"
+"1...898" "AM902524.1" 1 1069 "gene" "putative serine palmitoyltransferase subunit LCB2" NA "lcb2"
+"1...899" "JN609462.1" 1 1064 "gene" NA NA "CPP1"
+"2...900" "JN609462.1" 151 909 "CDS" "chaperone-like protein of POR 1" "AEP68099.1" NA
+"1...901" "JQ347293.1" 1 1929 "CDS" "poly-A binding protein" "AFP74112.1" NA
+"1...902" "GU183155.1" 1 832 "gene" NA NA "Mir3"
+"2...903" "GU183155.1" 11 628 "CDS" "miraculin-like protein" "ADK62529.1" NA
+"1...904" "JN687989.1" 1 417 "gene" "X-ray cross complementing protein 4" "AEZ36034.1" "XRCC4"
+"1...905" "AB720027.1" 1 1185 "gene" "calcium-sensing receptor" NA "NbCAS"
+"1...906" "JX495610.1" 1 419 "gene" "pyrroline-5-carboxylate reductase" "AFV26084.1" "P5CR"
+"1...907" "JX040475.1" 1 1616 "gene" NA NA "IPT1"
+"2...908" "JX040475.1" 192 1202 "CDS" "isopentenyl transferase 1 protein" "AFV15392.1" NA
+"1...909" "JQ886090.1" 1 1476 "CDS" "catalase 1" "AFU48609.1" NA
+"1...910" "JQ950744.1" 1 1472 "gene" "Ser/Thr phosphatase-containing Kelch repeat domain protein" "AFN44702.1" "BSL1"
+"1...911" "JX317630.1" 1 1077 "gene" "salicylic acid methyl transferase" "AFS35577.1" "SAMT"
+"1...912" "JX317629.1" 1 783 "gene" "salicylic acid-binding protein 2" "AFS35576.1" "SABP2"
+"1...913" "JQ699178.1" 1 1071 "gene" NA NA "SHP"
+"2...914" "JQ699178.1" 52 804 "CDS" "shatterproof" "AFK13160.1" NA
+"1...915" "JQ699177.1" 1 1015 "gene" NA NA "AG"
+"2...916" "JQ699177.1" 31 774 "CDS" "agamous" "AFK13159.1" NA
+"1...917" "HQ245098.1" 1 666 "CDS" "PR16-1" "AEO00531.1" NA
+"1...918" "HQ245096.1" 1 1767 "CDS" "polyphenol oxidase" "AEO00529.1" "NbPPO-1"
+"1...919" "JN255219.1" 38 934 "CDS" "GRX1" "AER93282.1" "NbGRX1"
+"1...920" "AB649285.1" 1 4708 "gene" NA NA "MAPKKKe2"
+"2...921" "AB649285.1" 269 4456 "CDS" "protein kinase" NA NA
+"1...922" "AB649284.1" 1 2794 "gene" NA NA "MAPKKKg"
+"2...923" "AB649284.1" 220 2175 "CDS" "protein kinase" NA NA
+"1...924" "AB649283.1" 1 2477 "gene" NA NA "MAPKKKb"
+"2...925" "AB649283.1" 253 1947 "CDS" "protein kinase" NA NA
+"1...926" "AB638716.1" 1 1139 "gene" NA NA "NbARP"
+"2...927" "AB638716.1" 12 1052 "CDS" "ROX1 homologue" NA NA
+"1...928" "AY206008.1" 1 368 "CDS" "glutathione S-transferase U3" "AAP04397.1" "NbGSTU3"
+"1...929" "AY206007.1" 1 364 "CDS" "glutathione S-transferase U2" "AAP04396.1" "NbGSTU2"
+"1...930" "AY206006.1" 1 357 "CDS" "glutathione S-transferase U1" "AAP04395.1" "NbGSTU1"
+"1...931" "AY206005.1" 1 471 "CDS" "glutathione S-transferase F1" "AAP04394.1" "NbGSTF1"
+"1...932" "JQ256517.1" 1 442 "gene" "glyderaldehyde-3-phosphate dehydrogenase" "AFD62805.1" "GAPDH"
+"1...933" "JQ256516.1" 1 1025 "gene" "actin" "AFD62804.1" "act"
+"1...934" "JF897612.1" 1 826 "gene" NA NA "psbQ2"
+"2...935" "JF897612.1" 1 39 "5'UTR" NA NA NA
+"3...936" "JF897612.1" 40 726 "CDS" "chloroplast PsbQ2 precursor" "AFH58006.1" "16 kDa subunit of the oxygen-evolving complex"
+"4...937" "JF897612.1" 727 826 "3'UTR" NA NA NA
+"1...938" "JF897611.1" 1 816 "gene" NA NA "psbQ1"
+"2...939" "JF897611.1" 1 30 "5'UTR" NA NA NA
+"3...940" "JF897611.1" 31 717 "CDS" "chloroplast PsbQ1 precursor" "AFH58005.1" "16 kDa subunit of the oxygen-evolving complex"
+"4...941" "JF897611.1" 718 816 "3'UTR" NA NA NA
+"1...942" "JF897610.1" 1 1087 "gene" NA NA "psbP4"
+"2...943" "JF897610.1" 1 44 "5'UTR" NA NA NA
+"3...944" "JF897610.1" 45 851 "CDS" "chloroplast PsbP4 precursor" "AFH58004.1" "24 kDa subunit of the oxygen-evolving complex"
+"4...945" "JF897610.1" 852 1087 "3'UTR" NA NA NA
+"1...946" "JF897609.1" 1 1085 "gene" NA NA "psbP3"
+"2...947" "JF897609.1" 1 42 "5'UTR" NA NA NA
+"3...948" "JF897609.1" 43 849 "CDS" "chloroplast PsbP3 precursor" "AFH58003.1" "24 kDa subunit of the oxygen-evolving complex"
+"4...949" "JF897609.1" 850 1085 "3'UTR" NA NA NA
+"1...950" "JF897608.1" 1 1006 "gene" NA NA "psbP2"
+"2...951" "JF897608.1" 1 83 "5'UTR" NA NA NA
+"3...952" "JF897608.1" 84 881 "CDS" "chloroplast PsbP2 precursor" "AFH58002.1" "24 kDa subunit of the oxygen-evolving complex"
+"4...953" "JF897608.1" 882 1006 "3'UTR" NA NA NA
+"1...954" "JF897607.1" 1 1030 "gene" NA NA "psbP1"
+"2...955" "JF897607.1" 1 44 "5'UTR" NA NA NA
+"3...956" "JF897607.1" 45 842 "CDS" "chloroplast PsbP1 precursor" "AFH58001.1" "24 kDa subunit of the oxygen-evolving complex"
+"4...957" "JF897607.1" 843 1030 "3'UTR" NA NA NA
+"1...958" "JF897606.1" 1 1171 "gene" NA NA "psbO4"
+"2...959" "JF897606.1" 1 21 "5'UTR" NA NA NA
+"3...960" "JF897606.1" 22 1023 "CDS" "chloroplast PsbO4 precursor" "AFH58000.1" "33 kDa subunit of the oxygen-evolving complex"
+"4...961" "JF897606.1" 1024 1171 "3'UTR" NA NA NA
+"1...962" "JF897605.1" 1 1114 "gene" NA NA "psbO3"
+"2...963" "JF897605.1" 1 15 "5'UTR" NA NA NA
+"3...964" "JF897605.1" 16 1017 "CDS" "chloroplast PsbO3 precursor" "AFH57999.1" "33 kDa subunit of the oxygen-evolving complex"
+"4...965" "JF897605.1" 1018 1114 "3'UTR" NA NA NA
+"1...966" "JF897604.1" 1 1151 "gene" NA NA "psbO2"
+"2...967" "JF897604.1" 1 20 "5'UTR" NA NA NA
+"3...968" "JF897604.1" 21 1019 "CDS" "chloroplast PsbO2 precursor" "AFH57998.1" "33 kDa subunit of the oxygen-evolving complex"
+"4...969" "JF897604.1" 1020 1151 "3'UTR" NA NA NA
+"1...970" "JF897603.1" 1 1169 "gene" NA NA "psbO1"
+"2...971" "JF897603.1" 1 47 "5'UTR" NA NA NA
+"3...972" "JF897603.1" 48 1046 "CDS" "chloroplast PsbO1 precursor" "AFH57997.1" "33 kDa subunit of the oxygen-evolving complex"
+"4...973" "JF897603.1" 1047 1169 "3'UTR" NA NA NA
+"1...974" "JF904892.1" 1 1309 "gene" NA NA "PRP1"
+"2...975" "JF904892.1" 43 1020 "CDS" "PRP1 precursor" "AEO79031.1" "member of the HyPRP gene family containing a signal peptide (SP), proline-rich domain, and a conserved eight-cysteine motif (8CM)"
+"1...976" "HQ873433.1" 1 1438 "gene" NA NA "DSE1"
+"2...977" "HQ873433.1" 147 1274 "CDS" "decreased size exclusion limit 1" "ADX87418.1" "WD40 repeat protein"
+"1...978" "JQ256518.1" 1 1438 "gene" "3-deoxy-D-arabino-heptulosonate 7-phosphate synthase" "AFD62806.1" "DAHPS"
+"1...979" "HQ441177.1" 1 966 "gene" "MPB2C-like protein" "ADR32211.1" "MPB2Cb"
+"1...980" "JN688264.1" 1 361 "mRNA" "hypothetical protein" "AFC90092.1" NA
+"1...981" "JN688263.1" 1 1242 "mRNA" "eukaryotic initiation factor 4A-14" "AFC90091.1" NA
+"1...982" "JN688262.1" 1 966 "mRNA" "brix domain-containing protein" "AFC90090.1" NA
+"1...983" "GQ354821.1" 1 357 "gene" "thioredoxin H-type 1" "ACV52592.1" "TRXh"
+"1...984" "GQ354819.1" 1 544 "gene" "heat shock protein 70-like protein" "ACV52590.1" "HSP70"
+"1...985" "GQ354816.1" 1 503 "CDS" "hypothetical protein" "ACV52587.1" NA
+"1...986" "GQ354814.1" 1 458 "gene" "transcription factor APFI-like protein" "ACV52585.1" "APFI"
+"1...987" "GQ354812.1" 1 540 "gene" "ACC oxidase" "ACV52583.1" "ACO1"
+"1...988" "GQ354803.1" 1 609 "gene" "FtsH-like protein" "ACV52574.1" "FtsH"
+"1...989" "EU877915.1" 1 1023 "CDS" "ELI3" "ACJ61779.1" "putative CAD"
+"1...990" "EU862551.1" 1 204 "CDS" "ubiquitin" "ACJ54185.1" NA
+"1...991" "EU862550.1" 1 198 "CDS" "ubiquitin" "ACJ54184.1" NA
+"1...992" "EU076715.1" 1 603 "CDS" "4,5-DOPA dioxygenase extradiol" "ABU62755.1" NA
+"1...993" "EF588040.1" 1 1175 "gene" NA NA "THIC"
+"2...994" "EF588040.1" 1 216 "mRNA" NA NA NA
+"3...995" "EF588040.1" 567 1175 NA "THIC" NA NA
+"4...996" "EF588040.1" 1 214 "CDS" "THIC" "ABQ66371.1" "involved in thiamin biosynthetic process"
+"5...997" "EF588040.1" 215 216 "3'UTR" NA NA NA
+"6...998" "EF588040.1" 812 934 "misc_feature" NA NA NA
+"1...999" "DQ517333.1" 1 319 "CDS" "leaf profilin" "ABF60824.1" "PRF"
+"1...1000" "DQ517332.1" 1 380 "CDS" "actin depolymerizing factor" "ABF60823.1" "ADF"
+"1...1001" "DQ321491.1" 1 2715 "CDS" "AGO4-2" "ABC61505.1" "argonaute protein"
+"1...1002" "DQ321490.1" 1 2736 "CDS" "AGO4-1" "ABC61504.1" "argonaute protein"
+"1...1003" "DQ321489.1" 1 2937 "CDS" "AGO1-2" "ABC61503.1" "argonaute protein"
+"1...1004" "DQ321488.1" 1 3156 "CDS" "AGO1-1" "ABC61502.1" "argonaute protein"
+"1...1005" "AY644732.1" 1 331 "gene" NA NA "SAR8.2m"
+"2...1006" "AY644732.1" 1 184 "CDS" "SAR8.2m" "AAV65395.1" NA
+"1...1007" "AY569436.1" 1 698 "CDS" "protein serine/threonine phosphatase" "AAS80154.1" "PP5"
+"1...1008" "AY547495.1" 1 512 "CDS" "WRKY2" "AAS55706.1" "NbWRKY2"
+"1...1009" "AY547494.1" 1 534 "CDS" "NTF6" "AAS55705.1" "NbNTF6"
+"1...1010" "AY547493.1" 1 186 "CDS" "COI1" "AAS55704.1" "NbCOI1"
+"1...1011" "AY547492.1" 1 473 "CDS" "MYB1" "AAS55703.1" "NbMYB1"
+"1...1012" "U19262.1" 15 369 "CDS" "phytoene dehydrogenase precursor" "AAC48983.1" NA
+"1...1013" "HQ699883.1" 1 1182 "gene" "sulfite oxidase" "AEV40816.1" "SO"
+"1...1014" "JF694761.1" 1 1029 "gene" "Potato virus X SL1 RNA interacting protein 2" "AEE92843.1" "PSL1IP2"
+"1...1015" "HQ110098.1" 1 1116 "gene" "glycolate oxidase" "ADM26718.1" "GOX"
+"1...1016" "AB573717.1" 38 721 "gene" "ethylene response factor 3" NA "NbERF3"
+"1...1017" "HM012811.1" 1 2043 "gene" "plastid RNA-binding protein" "ADG01868.1" "PTAC10"
+"1...1018" "JN232974.1" 1 1872 "CDS" "Bti9" "AEO18237.1" "NbBti9"
+"1...1019" "JN232968.1" 1 1857 "CDS" "Lyk11" "AEO18231.1" "NbLyk11"
+"1...1020" "JN687995.1" 1 373 "CDS" "DNA protein kinase catalytic subunit" "AEZ36040.1" "DNA PKcs"
+"1...1021" "JN687994.1" 1 547 "gene" "KU80" "AEZ36039.1" "ku80"
+"1...1022" "JN687993.1" 1 390 "gene" NA NA "ku70"
+"2...1023" "JN687993.1" 1 343 "CDS" "KU70" "AEZ36038.1" "NHEJ mediated DNA double strand break repair, telomere maintenance"
+"1...1024" "JN687992.1" 1 356 "CDS" "DNA ligase 6" "AEZ36037.1" "DNA repair, DNA ligation and seed germination"
+"1...1025" "JN687991.1" 1 442 "CDS" "DNA ligase 4" "AEZ36036.1" "DNA ligation, double-strand break repair, response to DNA damage stimulus, response to X-ray"
+"1...1026" "JN687990.1" 1 200 "CDS" "artemis" "AEZ36035.1" "membrane insertion protein involved in chloroplast organization and NHEJ mediated DNA double strand break repair"
+"1...1027" "GQ223795.1" 1 1134 "CDS" "heterotrimeric G protein beta 2 subunit" "ACR77529.1" NA
+"1...1028" "GQ223794.1" 1 981 "CDS" "heterotrimeric G protein beta 1 subunit" "ACR77528.1" "Nbb1"
+"1...1029" "GQ223793.1" 1 1155 "CDS" "heterotrimeric GTP-binding protein subunit alpha" "ACR77527.1" NA
+"1...1030" "EF661029.1" 1 411 "CDS" "histone H3" "ABS11143.1" NA
+"1...1031" "JF903807.1" 1 397 "gene" "delta 1-pyrroline-5-carboxylate synthetase" "AEP83831.1" "P5CS"
+"1...1032" "EU117390.1" 1 63 "mRNA" NA NA NA
+"2...1033" "EU117390.1" 131 236 NA NA NA NA
+"3...1034" "EU117390.1" 2042 2097 NA NA NA NA
+"4...1035" "EU117390.1" 2276 2353 NA NA NA NA
+"5...1036" "EU117390.1" 3420 3493 NA NA NA NA
+"6...1037" "EU117390.1" 3581 3714 NA NA NA NA
+"7...1038" "EU117390.1" 3796 3891 NA NA NA NA
+"8...1039" "EU117390.1" 4037 4182 NA "4/1 protein" "ABV69700.1" NA
+"1...1040" "EU117387.1" 143 895 "CDS" "4/1 protein" "ABV69697.1" NA
+"1...1041" "FR878011.1" 1 1086 "gene" "phantastica" NA "phan"
+"1...1042" "AB613021.1" 1 1555 "gene" NA NA "NbEDGP"
+"2...1043" "AB613021.1" 25 1347 "CDS" "extracellular dermal glycoprotein" NA NA
+"1...1044" "AB610801.1" 1 715 "CDS" "Nam-like protein" NA NA
+"1...1045" "AB610800.1" 1 662 "gene" NA NA "GR"
+"2...1046" "AB610800.1" 1 601 "CDS" "quinone reductase" NA NA
+"1...1047" "AB610799.1" 1 582 "gene" NA NA "APX"
+"2...1048" "AB610799.1" 1 579 "CDS" "ascorbate peroxidase" NA NA
+"1...1049" "AB610798.1" 1 346 "CDS" "acetylglutamate kinase" NA NA
+"1...1050" "HM236482.1" 1 981 "gene" "plastid RNA-binding protein 1" "ADI50287.1" "PRP1"
+"1...1051" "AB552920.1" 1 1231 "gene" "3-hydroxy-3-methylglutaryl-coenzyme A reductase" NA "HMGR2"
+"1...1052" "AB552919.1" 1 1596 "gene" "NADP-dependent malic enzyme" NA "NADP-ME"
+"1...1053" "AB445392.1" 1 1617 "gene" "double WRKY type transfactor" NA "NbWRKY8"
+"1...1054" "AB445391.1" 1 1677 "gene" "double WRKY type transfactor" NA "NbWRKY7"
+"1...1055" "AB603768.1" 1 648 "gene" "NAD kinase" NA "NbNADK3"
+"1...1056" "AB603767.1" 1 660 "gene" "NAD kinase" NA "NbNADK2"
+"1...1057" "AB603766.1" 1 1143 "gene" NA NA "NbNADK1"
+"2...1058" "AB603766.1" 96 995 "CDS" "NAD kinase" NA NA
+"1...1059" "AB603765.1" 1 1905 "gene" NA NA "NbG6PDH-P2"
+"2...1060" "AB603765.1" 12 1793 "CDS" "glucose-6-phosphate dehydrogenase" NA NA
+"1...1061" "AB603764.1" 1 1808 "gene" NA NA "NbG6PDH-P1"
+"2...1062" "AB603764.1" 1 1767 "CDS" "glucose-6-phosphate dehydrogenase" NA NA
+"1...1063" "AB603763.1" 1 1676 "gene" NA NA "NbG6PDH-Cyto"
+"2...1064" "AB603763.1" 50 1585 "CDS" "glucose-6-phosphate dehydrogenase" NA NA
+"1...1065" "GU128961.2" 1 630 "gene" "methanol inducible protein" "ACY74744.2" "MIG-21"
+"1...1066" "HQ332145.1" 1 2020 "gene" NA NA "Serk3B"
+"2...1067" "HQ332145.1" 17 1864 "CDS" "SERK3B" "ADO86983.1" "similar to Arabidopsis BAK1/SERK3"
+"1...1068" "HQ332144.1" 1 2020 "gene" NA NA "Serk3A"
+"2...1069" "HQ332144.1" 17 1864 "CDS" "SERK3A" "ADO86982.1" "similar to Arabidopsis BAK1/SERK3"
+"1...1070" "AB572856.1" 1 600 "gene" "Sec14 like protein" NA "Nbsec14P"
+"1...1071" "FN649467.1" 1 1191 "gene" NA NA "dreb2a"
+"2...1072" "FN649467.1" 1 190 "5'UTR" NA NA NA
+"3...1073" "FN649467.1" 191 1183 "CDS" "transcription factor DREB2a" NA NA
+"4...1074" "FN649467.1" 1184 1191 "3'UTR" NA NA NA
+"1...1075" "HQ023242.1" 1 1293 "gene" "nuclear localized protein 1" "ADM26560.1" "NLP1"
+"1...1076" "HM480168.1" 36 761 "CDS" "plastid NEP interaction protein" "ADK55590.1" "NbNIP"
+"1...1077" "GQ477179.1" 1 1845 "CDS" "chloroplast envelope protein 1" "ACV87735.1" "CEP1"
+"1...1078" "GQ261740.1" 1 1542 "CDS" "ankyrin repeat-rich protein" "ACT37362.1" NA
+"1...1079" "EU779659.1" 1 1348 "gene" NA NA "NbEH2.2"
+"2...1080" "EU779659.1" 216 1163 "CDS" "epoxide hydrolase" "ACE82566.1" "alpha beta hydrolase type"
+"1...1081" "EU779658.1" 1 1239 "gene" NA NA "NbEH2.1"
+"2...1082" "EU779658.1" 178 1125 "CDS" "epoxide hydrolase" "ACE82565.1" "alpha beta hydrolase type"
+"1...1083" "EU106046.1" 1 888 "gene" "chloroplast-localized protein" "ABV24460.1" "28C12"
+"1...1084" "EF562630.1" 1 1503 "CDS" "fucosyltransferase 1" "ABU48860.1" NA
+"1...1085" "DQ492287.1" 1 1353 "gene" NA NA "CathB"
+"2...1086" "DQ492287.1" 4 1074 "CDS" "cathepsin B" "ABF47216.1" "cysteine protease"
+"1...1087" "FJ598042.1" 1 510 "CDS" "chloroplast plastocyanin precursor" "ACV32157.1" NA
+"1...1088" "AB507799.1" 1 717 "gene" "hypothetical protein" NA "NbSS52"
+"1...1089" "EF562628.1" 1 93 "5'UTR" NA NA NA
+"2...1090" "EF562628.1" 94 1635 "CDS" "xylosyltransferase 1" "ABU48858.1" NA
+"3...1091" "EF562628.1" 1636 1887 "3'UTR" NA NA NA
+"1...1092" "HH768121.1" 1 735 "CDS" NA NA NA
+"1...1093" "HH768119.1" 1 729 "CDS" NA NA NA
+"1...1094" "GU205153.1" 249 4433 "CDS" "MAPKKKe" "ADK36643.1" "protein kinase"
+"1...1095" "FM986783.1" 1 355 "gene" "dicel-like 4" NA "dcl4"
+"1...1096" "FM986782.1" 1 297 "gene" "dicel-like 3" NA "dcl3"
+"1...1097" "FM986781.1" 1 673 "gene" "dicel-like 2" NA "dcl2"
+"1...1098" "FM986780.1" 1 238 "gene" "dicel-like 1" NA "dcl1"
+"1...1099" "GQ859157.1" 1 672 "CDS" "ERF1" "ADH04266.1" "ethylene response factor/AP2 transcription factor"
+"1...1100" "GQ859156.1" 1 2670 "CDS" "ARF1" "ADH04265.1" "auxin response factor transcription factor"
+"1...1101" "GQ859155.1" 1 762 "CDS" "HB1" "ADH04264.1" "homeodomain transcription factor"
+"1...1102" "GQ859153.1" 1 1974 "CDS" "bHLH2 transcription factor" "ADH04263.1" "bHLH/MYC-like transcription factor"
+"1...1103" "GQ859152.1" 1 2043 "CDS" "bHLH1 transcription factor" "ADH04262.1" "bHLH/MYC-like transcription factor"
+"1...1104" "AB453053.1" 1 694 "CDS" "serine palmitoyltransferase subunit I" NA NA
+"1...1105" "AB378334.1" 89 1558 "CDS" "serine palmitoyltransferase" NA NA
+"1...1106" "GQ477382.1" 44 988 "CDS" "nine-cis-epoxycarotenoid dioxygenase-like protein" "ADM18297.1" "NbNCED-like"
+"1...1107" "GQ477381.1" 1 1106 "gene" NA NA "GDCP1"
+"2...1108" "GQ477381.1" 54 1106 "CDS" "mitochondrial glycine decarboxylase complex P-protein-like protein" "ADM18296.1" NA
+"1...1109" "FN908499.1" 1 655 "gene" NA NA "lip"
+"2...1110" "FN908499.1" 239 655 "CDS" "bZIP transcription factor" NA NA
+"1...1111" "FJ914316.1" 1 3204 "gene" NA NA "MAP90"
+"2...1112" "FJ914316.1" 1 553 "5'UTR" NA NA NA
+"3...1113" "FJ914316.1" 554 2995 "CDS" "microtubule-associated protein" "ADB08056.1" NA
+"4...1114" "FJ914316.1" 2996 3204 "3'UTR" NA NA NA
+"1...1115" "HC928116.1" 64 888 "CDS" NA NA NA
+"1...1116" "HM211400.1" 1 1875 "CDS" "fructokinase-like protein 2" "ADI87422.1" "FLN2"
+"1...1117" "HM211399.1" 1 1461 "CDS" "fructokinase-like protein 1" "ADI87414.1" "FLN1"
+"1...1118" "GU722291.1" 1 3480 "gene" "increased size exclusion limit 2" "ADE05573.1" "ISE2"
+"1...1119" "AY722009.1" 16 3378 "CDS" "putative RNA-dependent RNA polymerase RdRP2" "AAU21243.1" NA
+"1...1120" "AY722008.1" 160 3753 "CDS" "putative RNA-dependent RNA polymerase SDE1" "AAU21242.1" NA
+"1...1121" "AY699399.1" 1 3012 "CDS" "retinoblastoma protein" "AAU05979.1" "NbRBR1"
+"1...1122" "AY500243.1" 1 596 "gene" NA NA "CITRX2"
+"2...1123" "AY500243.1" 21 566 "CDS" "thioredoxin protein" "AAS80320.1" NA
+"1...1124" "AY500242.1" 1 596 "gene" NA NA "CITRX1"
+"2...1125" "AY500242.1" 21 566 "CDS" "thioredoxin protein" "AAS80319.1" NA
+"1...1126" "AY574374.1" 1 3674 "gene" NA NA "RdRp1m"
+"2...1127" "AY574374.1" 84 1523 "CDS" "RdRp1m truncated protein" "AAS78669.1" "NbRdRp1m"
+"1...1128" "AY500155.1" 29 1864 "CDS" "MAP3Ka" "AAS78639.1" "MEK kinase"
+"1...1129" "AY368905.1" 1 2100 "CDS" "molecular chaperone Hsp90-2" "AAR12194.1" "NbHsp90-2"
+"1...1130" "AY368904.1" 1 2100 "CDS" "molecular chaperone Hsp90-1" "AAR12193.1" "NbHsp90-1"
+"1...1131" "U46000.1" 112 1347 "CDS" "squalene synthetase" "AAA87048.1" NA
+"2...1132" "U46000.1" 1626 1626 "polyA_site" NA NA NA
+"1...1133" "AB538870.1" 1 1674 "gene" "GTP cyclohydrolase II/3,4-dihydroxy-2-butanone 4-phosphate synthase" NA "NbRibA"
+"1...1134" "GU388433.1" 1 648 "gene" "ER luminal protein receptor 2a" "ADI60302.1" "ERD2a"
+"1...1135" "GU388432.1" 1 648 "gene" "ER luminal protein receptor 2b" "ADI60301.1" "ERD2b"
+"1...1136" "HM150713.1" 1 1335 "mRNA" "CMPG1b" "ADI46214.1" NA
+"1...1137" "HM150712.1" 1 1335 "mRNA" "CMPG1a" "ADI46213.1" NA
+"1...1138" "AB479031.1" 1 1332 "gene" "S locus glycoprotein like protein" NA "NbSGLP"
+"1...1139" "FJ465091.1" 1 2082 "CDS" "sulfite reductase" "ACN23794.1" NA
+"1...1140" "GU722290.1" 1 1647 "gene" "increased size exclusion limit 1b" "ADE05572.1" "ISE1b"
+"1...1141" "GU722289.1" 1 1656 "gene" "increased size exclusion limit 1a" "ADE05571.1" "ISE1a"
+"1...1142" "GU361620.1" 1 3138 "gene" "calcium ATPase" "ADD91580.1" "NbCA1"
+"1...1143" "HC463818.1" 112 1347 "CDS" NA NA NA
+"1...1144" "DQ121388.1" 1 873 "CDS" "PHB2" "AAZ30377.1" "NbPHB2"
+"1...1145" "AY365188.1" 58 1467 "CDS" "unknown" "AAQ63971.1" "contains ankyrin and tetratricopeptide (TPR) repeats"
+"1...1146" "AY290702.1" 88 849 "CDS" "zinc finger protein PIF1" "AAQ54303.1" "putative transcription factor NbPIF1"
+"1...1147" "AY235682.1" 1 1434 "CDS" "P58IPK" "AAP41819.1" "NbP58IPK"
+"1...1148" "AY286011.1" 1 1494 "gene" "hexokinase" "AAP40021.1" "HXK1"
+"1...1149" "AY271742.1" 1 187 "5'UTR" NA NA NA
+"2...1150" "AY271742.1" 188 1837 "CDS" "Potyvirus VPg interacting protein" "AAP22954.1" "PVIPnb"
+"3...1151" "AY271742.1" 1838 2043 "3'UTR" NA NA NA
+"1...1152" "AY238968.1" 1 1740 "CDS" "pectin methyl-esterase" "AAO85706.1" NA
+"1...1153" "AF494084.1" 1 462 "CDS" "SKP1" "AAO85510.1" NA
+"1...1154" "AF494083.1" 1 1113 "CDS" "SGT1" "AAO85509.1" NA
+"1...1155" "AY217740.1" 115 726 "CDS" "putative developmental protein" "AAO59435.1" "NbDP"
+"1...1156" "AF479625.1" 41 1864 "CDS" "EDS1-like protein" "AAL85347.1" "NbEDS1"
+"1...1157" "AF305075.1" 1 1118 "gene" NA NA "PCNA"
+"2...1158" "AF305075.1" 110 904 "CDS" "proliferating cell nuclear antigen" "AAG24908.1" "DNA polymerase processivity factor"
+"1...1159" "DQ158182.1" 1 931 "gene" NA NA "PI"
+"2...1160" "DQ158182.1" 1 840 "CDS" "trypsin proteinase inhibitor precursor" "ABA42892.1" NA
+"1...1161" "GU441835.1" 1 1365 "gene" NA NA "NMMP1"
+"2...1162" "GU441835.1" 70 1164 "CDS" "matrix metalloprotease 1" "ADD21635.1" "matrixin"
+"1...1163" "FJ755171.1" 44 1635 "gene" NA NA "AT3-1"
+"2...1164" "FJ755171.1" 44 781 "CDS" NA NA NA
+"3...1165" "FJ755171.1" 1130 1635 NA NA NA NA
+"1...1166" "GQ223796.1" 1 1221 "CDS" "adenylyl cyclase" "ACR77530.1" NA
+"1...1167" "FJ463755.1" 1 2004 "gene" "ER luminal-binding protein" "ACK55195.1" "BLP4"
+"1...1168" "EU194916.1" 1 1257 "gene" "branched-chain aminotransferase" "ABW76425.1" "BCAT"
+"1...1169" "AB360636.1" 1 1119 "gene" "MAP kinase kinase" NA "NbMEK2"
+"1...1170" "GU189242.1" 1 1212 "gene" "Tap46" "ACZ65511.1" "Tap46"
+"1...1171" "DQ465395.1" 91 975 "CDS" "SRC2-like protein" "ABE98329.1" "C2-domain containing protein"
+"1...1172" "DQ447646.1" 1 483 "CDS" "BTF3" "ABE01085.1" "NbBTF3"
+"1...1173" "DQ000300.1" 1 933 "gene" "TSC13 protein" "AAY17262.1" "TSC13"
+"1...1174" "AY701316.1" 1 1584 "CDS" "autophagy protein beclin1" "AAW80627.1" NA
+"1...1175" "AY847958.1" 1 221 "mRNA" NA NA NA
+"2...1176" "AY847958.1" 542 791 NA "ubiquitin/s27a 40s ribosomal protein" "AAW56553.1" NA
+"1...1177" "AY438029.1" 1 925 "gene" NA NA "NDR1"
+"2...1178" "AY438029.1" 85 702 "CDS" "NDR1-like protein" "AAR21296.1" "NbNDR1"
+"1...1179" "AY450851.1" 1 6429 "gene" "phytocalpain" "AAQ55288.2" "DEK"
+"1...1180" "AY351387.1" 120 2315 "CDS" "DNA gyrase B subunit" "AAR07943.1" NA
+"1...1181" "AY351386.1" 132 2939 "CDS" "DNA gyrase A subunit" "AAR07942.1" NA
+"1...1182" "FJ824852.1" 41 706 "CDS" "QM" "ACT65738.1" "NbQM"
+"1...1183" "AF494085.1" 1 594 "CDS" "CSN8" "AAO85511.1" NA
+"1...1184" "AY135174.1" 1 1097 "gene" NA NA "PAF1"
+"2...1185" "AY135174.1" 64 888 "CDS" "20S proteasome alpha 6 subunit" "AAN07899.1" "NbPAF1"
+"1...1186" "FM244835.1" 1 945 "gene" "fibrillarin 2" NA "fib2"
+"1...1187" "HB870707.1" 64 888 "CDS" NA NA NA
+"1...1188" "HB777464.1" 1 978 "CDS" NA NA NA
+"1...1189" "HB776220.1" 1 978 "CDS" NA NA NA
+"1...1190" "HB832796.1" 517 852 "CDS" NA NA NA
+"1...1191" "HB816087.1" 1 483 "CDS" NA NA NA
+"1...1192" "HB810327.1" 1 483 "CDS" NA NA NA
+"1...1193" "HB738892.1" 1 1740 "CDS" NA NA NA
+"1...1194" "HB786628.1" 1 1191 "CDS" NA NA NA
+"1...1195" "HB819725.1" 1 483 "CDS" NA NA NA
+"1...1196" "HB783822.1" 1 2553 "CDS" NA NA NA
+"1...1197" "HB748588.1" 1 1740 "CDS" NA NA NA
+"1...1198" "HB801929.1" 1 1740 "CDS" NA NA NA
+"1...1199" "HB669231.1" 1 1740 "CDS" NA NA NA
+"1...1200" "HB694814.1" 1 1740 "CDS" NA NA NA
+"1...1201" "HB701998.1" 1 462 "CDS" NA NA NA
+"1...1202" "HB689414.1" 1 1191 "CDS" NA NA NA
+"1...1203" "HB696598.1" 1 1191 "CDS" NA NA NA
+"1...1204" "FN432043.1" 1 1231 "gene" NA NA "ncapp"
+"2...1205" "FN432043.1" 1 77 "5'UTR" NA NA NA
+"3...1206" "FN432043.1" 78 1151 "CDS" "non-cell-autonomous protein pathway" NA NA
+"4...1207" "FN432043.1" 1152 1231 "3'UTR" NA NA NA
+"1...1208" "FN432042.1" 1 37 "5'UTR" NA NA NA
+"2...1209" "FN432042.1" 38 655 "CDS" "PME inhibitor" NA NA
+"3...1210" "FN432042.1" 656 738 "3'UTR" NA NA NA
+"1...1211" "EU998971.1" 1 1058 "gene" NA NA "HB1"
+"2...1212" "EU998971.1" 29 820 "CDS" "homeodomain leucine-zipper 1" "ACL27274.1" "transcription factor"
+"1...1213" "EU998969.1" 1 1584 "gene" NA NA "CAT1"
+"2...1214" "EU998969.1" 42 1520 "CDS" "catalase" "ACL27272.1" NA
+"1...1215" "EU563474.1" 17 1870 "CDS" "methyltransferase" "ACB54686.1" NA
+"1...1216" "AB304782.1" 1 891 "CDS" "S-adenosylmethionine decarboxylase" NA NA
+"1...1217" "AB304781.1" 1 566 "CDS" "polyamine oxidase" NA NA
+"1...1218" "AB304780.1" 1 356 "CDS" "spermine synthase" NA NA
+"1...1219" "AB304779.1" 1 837 "CDS" "spermidine synthase" NA NA
+"1...1220" "AB304778.1" 1 1302 "CDS" "ornithine decarboxylase" NA NA
+"1...1221" "AB304777.1" 1 599 "CDS" "arginine decarboxylase" NA NA
+"1...1222" "FB916569.1" 1 1191 "CDS" NA NA NA
+"1...1223" "FB868833.1" 1 1740 "CDS" NA NA NA
+"1...1224" "FB913763.1" 1 2553 "CDS" NA NA NA
+"1...1225" "FB878529.1" 1 1740 "CDS" NA NA NA
+"1...1226" "FB907405.1" 1 978 "CDS" NA NA NA
+"1...1227" "FB906161.1" 1 978 "CDS" NA NA NA
+"1...1228" "FB826539.1" 1 1191 "CDS" NA NA NA
+"1...1229" "FB824755.1" 1 1740 "CDS" NA NA NA
+"1...1230" "FB799172.1" 1 1740 "CDS" NA NA NA
+"1...1231" "FB831939.1" 1 462 "CDS" NA NA NA
+"1...1232" "FB819355.1" 1 1191 "CDS" NA NA NA
+"1...1233" "EU862552.1" 1 291 "CDS" "SUMO" "ACJ54186.1" NA
+"1...1234" "AB247455.1" 1 2154 "gene" "lectin receptor kinase-like protein" NA "NbLRK1"
+"1...1235" "EU117119.1" 1 1470 "gene" "serine palmitoyltransferase long chain base subunit" "ABW97709.1" "LCB2"
+"1...1236" "EU016516.1" 1 666 "CDS" "Ran binding protein" "ABS50234.1" "RanBP1"
+"1...1237" "EU243336.1" 144 1202 "CDS" "bypass1" "ABX26124.1" NA
+"1...1238" "EU243335.1" 77 1135 "CDS" "bypass2" "ABX26123.1" NA
+"1...1239" "FM212563.1" 1 448 "gene" NA NA "tom3"
+"2...1240" "FM212563.1" 1 62 "5'UTR" NA NA NA
+"3...1241" "FM212563.1" 63 448 "CDS" "TOM3 protein" NA NA
+"1...1242" "FM212562.1" 1 621 "gene" NA NA "tom1"
+"2...1243" "FM212562.1" 1 620 "CDS" "TOM1 protein" NA NA
+"1...1244" "FB336782.1" 1 735 "CDS" NA NA NA
+"1...1245" "FB336780.1" 1 729 "CDS" NA NA NA
+"1...1246" "AM423109.1" 1 1221 "gene" "Ran GTPase activating protein" NA "ranGAP2"
+"1...1247" "AM423108.1" 1 1602 "gene" "Ran GTPase activating protein" NA "ranGAP1"
+"1...1248" "AB373026.1" 1 1185 "gene" "MAP kinase" NA "NbNTF4"
+"1...1249" "AB373025.1" 1 1182 "gene" "MAP kinase" NA "NbSIPK"
+"1...1250" "AB360635.1" 1 1065 "gene" "MAP kinase" NA "NbMEK1"
+"1...1251" "AB360634.1" 1 1116 "gene" "MAP kinase" NA "NbNTF6"
+"1...1252" "EU375892.1" 1 1329 "5'UTR" NA NA NA
+"2...1253" "EU375892.1" 1330 4095 "CDS" "PHO2" "ACB12194.1" "NbPHO2"
+"3...1254" "EU375892.1" 4096 4247 "3'UTR" NA NA NA
+"1...1255" "EU645483.1" 1 834 "gene" "chloroplast photosystem II 22 kDa component" "ACC95540.1" "psbS1"
+"1...1256" "AB303300.1" 1 1707 "gene" "nitric oxide associated 1" NA "NOA1"
+"1...1257" "EU332891.1" 1 876 "gene" NA NA "NRIP1"
+"2...1258" "EU332891.1" 64 621 "CDS" "chloroplast N receptor-interacting protein 1" "ACA79925.1" "chloroplastic rhodanese sulfurtransferase"
+"1...1259" "EU332890.1" 651 2342 "gene" NA NA "NRIP1"
+"2...1260" "EU332890.1" 651 886 "mRNA" NA NA NA
+"3...1261" "EU332890.1" 989 1099 NA NA NA NA
+"4...1262" "EU332890.1" 1224 1297 NA NA NA NA
+"5...1263" "EU332890.1" 1431 1501 NA NA NA NA
+"6...1264" "EU332890.1" 1611 1664 NA NA NA NA
+"7...1265" "EU332890.1" 2013 2342 NA "chloroplast N receptor-interacting protein 1" NA NA
+"8...1266" "EU332890.1" 714 886 "CDS" NA NA NA
+"9...1267" "EU332890.1" 2013 2087 NA "chloroplast N receptor-interacting protein 1" "ACA79924.1" "chloroplastic rhodanese sulfurtransferase"
+"1...1268" "EU490403.1" 17 1870 "CDS" "putative methyltransferase" "ACA66248.1" "MtsNb"
+"1...1269" "DQ875140.1" 1 3471 "CDS" "myosin VIII-B" "ABJ53202.1" NA
+"1...1270" "DQ875139.1" 1 3591 "CDS" "myosin VIII-2" "ABJ53201.1" NA
+"1...1271" "DQ875138.1" 1 3453 "CDS" "myosin VIII-1" "ABJ53200.1" NA
+"1...1272" "DQ875137.1" 1 4590 "CDS" "myosin XI-K" "ABJ53199.1" NA
+"1...1273" "DQ875136.1" 1 4710 "CDS" "myosin XI-F" "ABJ53198.1" NA
+"1...1274" "DQ875135.1" 1 4539 "CDS" "myosin XI-2" "ABJ53197.1" NA
+"1...1275" "EU165356.1" 1 1490 "gene" NA NA "PMT"
+"2...1276" "EU165356.1" 71 1237 "CDS" "putrescine N-methyltransferase" "ABY25273.1" "S-adenosyl methionine-dependent methyltransferase enzyme"
+"1...1277" "EU165355.1" 1 2046 "gene" NA NA "PDS"
+"2...1278" "EU165355.1" 224 1984 "CDS" "phytoene desaturase" "ABY25272.1" "carotenoid/retinoid oxidoreductase enzyme"
+"1...1279" "EU430512.1" 1 1359 "gene" NA NA "ZN"
+"2...1280" "EU430512.1" 106 1248 "CDS" "chloroplast zebra-necrosis protein" "ACA03877.1" NA
+"1...1281" "DQ531849.1" 1 928 "gene" NA NA "ARF1"
+"2...1282" "DQ531849.1" 115 660 "CDS" "ADP-ribosylation factor 1" "ABF74733.1" NA
+"1...1283" "EF562629.1" 1 48 "5'UTR" NA NA NA
+"2...1284" "EF562629.1" 49 1599 "CDS" "xylosyltransferase 2" "ABU48859.1" NA
+"3...1285" "EF562629.1" 1600 2072 "3'UTR" NA NA NA
+"1...1286" "AB290186.1" 1 465 "gene" "small heat shock protein" NA "Nbshsp"
+"1...1287" "DQ469932.1" 1 1761 "CDS" "phytoene desaturase" "ABE99707.1" "down regulation of PDS leads to photo-bleaching phenotype"
+"1...1288" "AJ504730.1" 1 1842 "gene" "bromodomain-containing RNA-binding protein 2" NA "brp2"
+"1...1289" "AJ504729.1" 1 1848 "gene" "bromodomain-containing RNA-binding protein 1" NA "brp1"
+"1...1290" "EF396238.1" 1 1861 "gene" NA NA "RanGAP1"
+"2...1291" "EF396238.1" 1 1605 "CDS" "RAN GTPase-activating protein 1" "ABQ51814.1" NA
+"1...1292" "EF396237.1" 1 1976 "gene" NA NA "RanGAP2"
+"2...1293" "EF396237.1" 93 1718 "CDS" "RAN GTPase-activating protein 2" "ABQ51813.1" NA
+"1...1294" "EF471738.1" 1 3645 "gene" "BRI1 protein" "ABO27628.1" "BRI1"
+"1...1295" "DQ000202.1" 1 1812 "CDS" "VIP2" "AAY15746.1" "host factor believed to have a functional role in Agrobacterium-mediated plant transformation"
+"1...1296" "AB207048.1" 1 2710 "gene" NA NA "NbCdc27B"
+"2...1297" "AB207048.1" 122 2374 "CDS" "Cdc27B" NA NA
+"1...1298" "AM269909.1" 1 954 "gene" NA NA "fib2"
+"2...1299" "AM269909.1" 1 945 "CDS" "fibrillarin 2" NA NA
+"1...1300" "EF530201.1" 1 756 "CDS" "ribosomal protein L25" "ABP88855.1" "5S rRNA E-loop biding protein"
+"1...1301" "EF474476.1" 1 1230 "CDS" "4-diphosphocytidyl-2-C-methyl-D-erythritol kinase" "ABO87658.1" "IspE"
+"1...1302" "AM261863.1" 1 581 "gene" "tom1 protein" NA "TOM1"
+"1...1303" "EF137254.1" 1 1590 "CDS" "Impa2" "ABM05488.1" "NbImpa2"
+"1...1304" "EF137253.1" 1 1599 "CDS" "Impa1" "ABM05487.1" "NbImpa1"
+"1...1305" "AB243987.1" 1 1270 "gene" NA NA "MAPKK"
+"2...1306" "AB243987.1" 40 1017 "CDS" "mitogen-activated protein kinase kinase" NA NA
+"1...1307" "EF421432.1" 1 1170 "gene" "chalcone synthase" "ABN80439.1" "Chs"
+"1...1308" "EF421431.1" 1 1149 "gene" "dihydroflavonol 4-reductase" "ABN80438.1" "Dfr1"
+"1...1309" "DQ340567.1" 1 3207 "gene" NA NA "psbS1"
+"2...1310" "DQ340567.1" 1 222 "mRNA" NA NA NA
+"3...1311" "DQ340567.1" 356 472 NA NA NA NA
+"4...1312" "DQ340567.1" 1874 2123 NA NA NA NA
+"5...1313" "DQ340567.1" 2963 3207 NA "chloroplast photosystem II 22 kDa component" "ABC59516.1" "psbS1"
+"1...1314" "DQ340566.1" 1 3212 "gene" NA NA "psbS2"
+"2...1315" "DQ340566.1" 1 213 "mRNA" NA NA NA
+"3...1316" "DQ340566.1" 336 452 NA NA NA NA
+"4...1317" "DQ340566.1" 1941 2190 NA NA NA NA
+"5...1318" "DQ340566.1" 2968 3212 NA "chloroplast photosystem II 22 kDa component" "ABC59515.1" "psbS2"
+"1...1319" "DQ297413.1" 1 1017 "gene" "microtubule-associated protein" "ABB97536.1" "MPB2C"
+"1...1320" "EF189156.1" 1 465 "gene" NA NA "H2b"
+"2...1321" "EF189156.1" 1 444 "CDS" "histone 2b" "ABM67703.1" NA
+"1...1322" "AJ619956.2" 1 1020 "gene" NA NA "samt"
+"2...1323" "AJ619956.2" 40 1020 "CDS" "S-adenosylmethionine transporter" NA NA
+"1...1324" "AY887536.1" 1 690 "gene" NA NA "psbQ"
+"2...1325" "AY887536.1" 4 690 "CDS" "chloroplast oxygen-evolving protein 16 kDa subunit" "AAW80966.1" "OEC"
+"1...1326" "EF032736.1" 64 1677 "CDS" "nodulation signaling pathway 1-like protein" "ABJ51763.1" "NSP1-like protein"
+"1...1327" "AY952375.1" 1 1048 "gene" NA NA "psbO"
+"2...1328" "AY952375.1" 11 1009 "CDS" "chloroplast photosynthetic oxygen-evolving protein 33 kDa subunit" "AAX53163.1" "OEC"
+"1...1329" "DQ393833.1" 1 669 "CDS" "eukaryotic translation initiation factor 4E" "ABD57972.1" "Nb-eIF4E"
+"1...1330" "AM167906.1" 1 828 "gene" "ALY protein" NA "aly"
+"1...1331" "AM167905.1" 1 741 "gene" "ALY protein" NA "aly"
+"1...1332" "AB196362.1" 1 696 "gene" "class II ethylene responsive element binding factor-like protein" NA "NbCD1"
+"1...1333" "AY899937.1" 34 426 "CDS" "photosystem I reaction center subunit X PSI-K" "AAW83128.1" NA
+"1...1334" "AM236597.1" 1 837 "gene" "sterol decarboxylase" NA "c4acd"
+"1...1335" "AM236596.1" 1 715 "gene" "1-deoxy-D-xylulose-5-phosphate reductoisomerase" NA "dxr"
+"1...1336" "AB248519.1" 111 383 "CDS" "hypothetical protein" NA NA
+"1...1337" "AB248518.1" 39 623 "CDS" "hypothetical protein" NA NA
+"1...1338" "AB248517.1" 142 471 "CDS" "hypothetical protein" NA NA
+"1...1339" "AB248516.1" 69 311 "CDS" "hypothetical protein" NA NA
+"1...1340" "AB248515.1" 85 1362 "CDS" "hypothetical protein" NA NA
+"1...1341" "AB245431.1" 1 3163 "gene" NA NA "NR2"
+"2...1342" "AB245431.1" 124 2838 "CDS" "nitrate reductase 2" NA NA
+"1...1343" "AB238224.1" 1 3122 "gene" NA NA "NR"
+"2...1344" "AB238224.1" 128 2842 "CDS" "nitrate reductase" NA NA
+"1...1345" "DQ645452.1" 1 1044 "gene" "RNA export 1" "ABG29731.1" "RAE1"
+"1...1346" "DQ121387.1" 1 840 "CDS" "PHB1" "AAZ30376.1" "NbPHB1"
+"1...1347" "AY391715.1" 1 1164 "gene" "UDP-D-apiose/UDP-D-xylose synthase" "AAQ91380.1" "AXS1"
+"1...1348" "DQ084022.1" 37 1119 "CDS" "cysteine proteinase aleuran type" "AAZ32410.1" "NbCYP1"
+"1...1349" "AB111943.2" 1 1531 "gene" NA NA "NbPPS3"
+"2...1350" "AB111943.2" 158 1300 "CDS" "hypothetical protein" NA NA
+"1...1351" "AB219069.1" 1 939 "gene" NA NA "NbPCL1"
+"1...1352" "AB210224.1" 1 1191 "gene" "protein phosphatase 2C" NA "NbP2C"
+"1...1353" "DQ054580.1" 484 4980 "gene" NA NA "NRG1"
+"2...1354" "DQ054580.1" 484 1207 "mRNA" NA NA NA
+"3...1355" "DQ054580.1" 1946 2337 NA NA NA NA
+"4...1356" "DQ054580.1" 2595 2977 NA NA NA NA
+"5...1357" "DQ054580.1" 3813 4024 NA NA NA NA
+"6...1358" "DQ054580.1" 4139 4980 NA "NRG1" "AAY54606.1" "CC-NB-LRR"
+"7...1359" "DQ054580.1" 484 1269 "mRNA" "truncated NRG1" "AAY54607.1" "NRG1TR"
+"1...1360" "DQ000309.1" 1 1710 "gene" "glutamyl-tRNA synthetase" "AAY18610.1" "GRS"
+"1...1361" "AJ697696.1" 1 759 "gene" "ALY protein" NA "aly"
+"1...1362" "AJ697695.1" 1 750 "gene" "ALY protein" NA "aly"
+"1...1363" "AJ580839.1" 1 591 "gene" NA NA "sce1"
+"2...1364" "AJ580839.1" 97 579 "CDS" "SUMO E2 conjugating enzyme SCE1" NA NA
+"1...1365" "AJ571699.1" 1 351 "gene" "magnesium chelatase subunit" NA "su-s"
+"1...1366" "AJ295993.1" 1 1341 "gene" NA NA "gnTI"
+"2...1367" "AJ295993.1" 76 1341 "CDS" "N-acetylglucosaminyltransferase I" NA NA
+"1...1368" "AJ344156.1" 1 1746 "gene" "calcium-dependent protein kinase 2" NA "cdpk2"
+"1...1369" "AY899199.1" 1 1113 "CDS" "SGT1" "AAW82048.1" "molecular chaperone"
+"1...1370" "AY912494.1" 1 471 "mRNA" "ubiquitin/s27a 40S ribosomal protein" "AAX07419.1" "ubiquitin extension protein s27a"
+"1...1371" "AY899938.1" 208 723 "CDS" "zinc finger protein" "AAW83129.1" NA
+"1...1372" "AJ864714.1" 1 2022 "gene" NA NA "x34.2"
+"2...1373" "AJ864714.1" 292 1644 "CDS" "putative glycosyltransferase" NA NA
+"1...1374" "AJ864709.1" 1 1568 "gene" NA NA "x34.3"
+"2...1375" "AJ864709.1" 41 1372 "CDS" "alpha-6-galactosyltransferase" NA NA
+"1...1376" "AB181188.1" 1 851 "gene" "vacuolar processing enzyme 1b" NA "NbVPE-1b"
+"1...1377" "AB181187.1" 1 851 "gene" "vacuolar processing enzyme 1a" NA "NbVPE-1a"
+"1...1378" "AB105430.2" 1 1203 "gene" NA NA "Hsp70"
+"2...1379" "AB105430.2" 1 1154 "CDS" "heat shock protein 70" NA NA
+"1...1380" "AB181296.1" 1 710 "gene" "heat shock protein 70" NA "Hsp70"
+"1...1381" "AB181295.1" 1 741 "gene" "heat shock protein 70" NA "Hsp70"
+"1...1382" "AJ555865.1" 1 957 "gene" "hydroxycinnamoyl-CoA hydroxycinnamoyltransferase" NA "hct"
+"1...1383" "AJ571700.1" 1 409 "gene" "phytoene desaturase" NA "pds"
+"1...1384" "AB113029.1" 1 268 "gene" NA NA "Hsp90"
+"2...1385" "AB113029.1" 1 248 "CDS" "heat shock protein 90" NA NA
+"1...1386" "AB113028.1" 1 265 "gene" NA NA "Hsp90"
+"2...1387" "AB113028.1" 1 245 "CDS" "heat shock protein 90" NA NA
+"1...1388" "AB112816.1" 1 351 "gene" NA NA "Hsp70"
+"2...1389" "AB112816.1" 1 327 "CDS" "heat shock protein 70" NA NA
+"1...1390" "AB112815.1" 1 313 "gene" NA NA "Hsp70"
+"2...1391" "AB112815.1" 1 273 "CDS" "heat shock protein 70" NA NA
+"1...1392" "AB112814.1" 1 422 "gene" NA NA "Hsp70"
+"2...1393" "AB112814.1" 1 414 "CDS" "heat shock protein 70" NA NA
+"1...1394" "AB112813.1" 1 264 "gene" NA NA "Hsp90"
+"2...1395" "AB112813.1" 1 243 "CDS" "heat shock protein 90" NA NA
+"1...1396" "AB098730.1" 1 1206 "gene" NA NA "NbSIPK"
+"2...1397" "AB098730.1" 1 1182 "CDS" "salicylic acid-induced protein kinase" NA NA
+"1...1398" "AB098729.1" 1 1195 "gene" NA NA "NbWIPK"
+"2...1399" "AB098729.1" 1 1131 "CDS" "wound-inuduced protein kinase" NA NA
+"1...1400" "AX666019.1" 28 48 "CDS" NA NA NA
+"1...1401" "AB079499.1" 1 3290 "gene" NA NA "NbrbohB"
+"2...1402" "AB079499.1" 277 3096 "CDS" "respiratory burst oxidase homolog" NA NA
+"1...1403" "AB079498.1" 1 3732 "gene" NA NA "NbrbohA"
+"2...1404" "AB079498.1" 151 3039 "CDS" "respiratory burst oxidase homolog" NA NA
+"1...1405" "AX250447.1" 1 360 "CDS" NA NA NA
+"1...1406" "AX250445.1" 1 381 "CDS" NA NA NA
+"1...1407" "AX250443.1" 1 357 "CDS" NA NA NA
+"1...1408" "AX250439.1" 1 324 "CDS" NA NA NA
+"1...1409" "AX250437.1" 1 297 "CDS" NA NA NA
+"1...1410" "AX250435.1" 1 540 "CDS" NA NA NA
+"1...1411" "AX250423.1" 1 717 "CDS" NA NA NA
+"1...1412" "AX250421.1" 1 765 "CDS" NA NA NA
+"1...1413" "AX250415.1" 1 312 "CDS" NA NA NA
+"1...1414" "AX250405.1" 1 696 "CDS" NA NA NA
+"1...1415" "AB040014.1" 7 1536 "gene" "maturase K" NA "matK"
+"1...1416" "AX080089.1" 15 673 "CDS" NA NA NA

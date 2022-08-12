@@ -48,7 +48,7 @@ ls
 cat Kazuza_CU_for_each_CDS_Format.txt 
 ```
 
-(Optinal) The output of the command above:
+(Optional) The output of the command above:
 
 ```
 >LOCUS#CDS---ACCESSION---nt---nt---PID(length)---organism---title---descriptions for the CDS
